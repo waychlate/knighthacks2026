@@ -16,6 +16,15 @@ A visitor opens the app and sees a live log of recently seen animals. Each entry
 
 Store sightings in a database, analyze them, and train an ML model to find patterns in when and where species appear. Surface this to users as predictions, e.g. "Predicting a [bird species] around 2:30 PM."
 
+## Hackathon tracks
+
+We are targeting these KnightHacks 2026 tracks. Keep them in mind when making design decisions.
+
+- **Best First Time**: we are first-time hackers, so a complete, working, demoable project matters more than ambition. Favor simple, finished slices.
+- **Best AI Hack**: the core of the project is AI: computer vision detection plus species identification, with the prediction model as the stretch.
+- **Best Use of a Hugging Face Model**: run at least one Hugging Face model in the pipeline and be able to show it in the demo. YOLO weights and BioCLIP are both hosted on the Hugging Face Hub, so BioCLIP is the better primary species classifier for this track (use the vision LLM only as a fallback or comparison).
+- **Best Use of Databricks (maybe)**: optional. Only pursue it if time allows; a possible fit is running the analytics and prediction work (`/ml`) on Databricks. Don't let it block the core app.
+
 ## Priorities
 
 This is a hackathon project, so build in this order and keep each stage demoable:
