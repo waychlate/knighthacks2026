@@ -39,7 +39,7 @@ function AppShell({ children, route }) {
       <header className="app-header border-b border-stone-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:py-4">
           <a href="#/" className="flex min-w-0 items-center gap-3" aria-label="En-Vision globe home">
-            <img src="/icons/icon-192.svg" alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
+            <img src={katmai ? '/icons/icon-katmai.svg' : '/icons/icon-192.svg'} alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
           <div className="flex flex-wrap items-center gap-2"><ThemeToggle /><ModeToggle /></div>

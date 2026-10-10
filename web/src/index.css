@@ -85,3 +85,12 @@ html[data-theme='dark'] .katmai-page .theme-toggle { background: #0b2438 !import
 html[data-theme='dark'] .katmai-page .theme-toggle:hover { background: #123a54 !important; }
 html[data-theme='dark'] .katmai-page .status-banner { background: #0b3a55; color: #d6f3ff; }
 html[data-theme='dark'] .katmai-page .status-action { background: #081d30; border-color: #5b9fbc; color: #d6f3ff; }
+.katmai-page .app-header { background: #f0f9ff !important; border-color: #bae6fd !important; }
+.katmai-page .app-logo { border: 1px solid #bae6fd; box-shadow: 0 2px 8px rgba(3,105,161,.16); }
+.katmai-page .bg-emerald-600, .katmai-page .bg-emerald-700 { background-color: #0369a1 !important; }
+.katmai-page .bg-emerald-600:hover, .katmai-page .bg-emerald-700:hover { background-color: #075985 !important; }
+.katmai-page .bg-amber-500 { background-color: #0e7490 !important; }
+.katmai-page .bg-amber-500:hover { background-color: #155e75 !important; }
+html[data-theme='dark'] .katmai-page .app-header { background: #081d30 !important; border-color: #21465e !important; }
+html[data-theme='dark'] .katmai-page .app-logo { border-color: #397b9b; box-shadow: 0 2px 10px rgba(14,116,144,.25); }
+html[data-theme='dark'] .katmai-page .bg-white { background-color: #081d30 !important; }
