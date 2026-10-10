@@ -79,3 +79,9 @@ html[data-theme='dark'] .katmai-theme .text-stone-500 { color: #9fc4d5 !importan
 html[data-theme='dark'] .katmai-theme .border-stone-200 { border-color: #21465e !important; }
 html[data-theme='dark'] .katmai-theme .bg-emerald-100 { background-color: #0b3a55 !important; }
 html[data-theme='dark'] .katmai-theme .text-emerald-800, html[data-theme='dark'] .katmai-theme .text-emerald-700 { color: #a8e1fa !important; }
+html[data-theme='dark'] .katmai-page { background: #061522 !important; color: #e7f7ff; }
+html[data-theme='dark'] .katmai-page .app-header { background: #081d30 !important; border-color: #21465e !important; }
+html[data-theme='dark'] .katmai-page .theme-toggle { background: #0b2438 !important; border-color: #396b85 !important; color: #c8efff !important; }
+html[data-theme='dark'] .katmai-page .theme-toggle:hover { background: #123a54 !important; }
+html[data-theme='dark'] .katmai-page .status-banner { background: #0b3a55; color: #d6f3ff; }
+html[data-theme='dark'] .katmai-page .status-action { background: #081d30; border-color: #5b9fbc; color: #d6f3ff; }

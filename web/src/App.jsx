@@ -32,9 +32,10 @@ function NetworkStatus() {
   return <div className="status-banner" role="status"><span>{offline ? 'Offline: cached park data may be stale; fresh sightings may be delayed.' : 'A new En-Vision update is ready.'}</span><div className="flex items-center gap-2">{offline && <button type="button" className="status-action" onClick={() => window.location.reload()}>Retry</button>}{update && <button type="button" className="status-action" onClick={() => window.envisionUpdateSW?.(true)}>Update</button>}</div></div>
 }
 
-function AppShell({ children }) {
+function AppShell({ children, route }) {
+  const katmai = route.name === 'park' && route.park === 'katmai'
   return (
-    <div className="app-shell min-h-screen bg-stone-50">
+    <div className={`app-shell min-h-screen bg-stone-50 ${katmai ? 'katmai-page' : ''}`}>
       <header className="app-header border-b border-stone-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:py-4">
           <a href="#/" className="flex min-w-0 items-center gap-3" aria-label="En-Vision globe home">
@@ -59,5 +60,5 @@ export default function App() {
 
   if (route.name === 'globe') return <Suspense fallback={<div className="globe-loading"><span>Loading En-Vision globe…</span></div>}><GlobePage sightings={sightings} cameras={cameras} /></Suspense>
 
-  return <AppShell><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell>
+  return <AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell>
 }
