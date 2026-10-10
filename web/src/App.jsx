@@ -1,16 +1,15 @@
-import { useMemo } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import ErrorBanner from './components/ErrorBanner'
 import ModeToggle from './components/ModeToggle'
-import Nav from './components/Nav'
-import AnalyticsPage from './pages/AnalyticsPage'
 import CameraPage from './pages/CameraPage'
-import CamerasPage from './pages/CamerasPage'
-import FeedPage from './pages/FeedPage'
+import ParkPage from './pages/ParkPage'
 import { filterByMode } from './lib/live'
 import { useCameras } from './lib/useCameras'
 import { useMode } from './lib/useMode'
 import { useRoute } from './lib/useRoute'
 import { useSightings } from './lib/useSightings'
+
+const GlobePage = lazy(() => import('./pages/GlobePage'))
 
 export default function App() {
   const route = useRoute()
@@ -21,18 +20,22 @@ export default function App() {
   // demo rows are replays and seed data.
   const sightings = useMemo(() => filterByMode(all, mode), [all, mode])
 
+  if (route.name === 'globe')
+    return (
+      <Suspense fallback={<div className="h-screen bg-black" />}>
+        <GlobePage sightings={sightings} cameras={cameras} />
+      </Suspense>
+    )
+
   return (
     <div className="min-h-screen bg-stone-50">
       <header className="border-b border-stone-200 bg-white">
         <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-3 px-4 py-5">
-          <div>
+          <a href="#/">
             <h1 className="text-2xl font-bold text-stone-900">🦌 Animal Logger</h1>
             <p className="text-sm text-stone-500">Recent wildlife sightings from the park cameras</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Nav route={route} />
-            <ModeToggle />
-          </div>
+          </a>
+          <ModeToggle />
         </div>
       </header>
 
@@ -44,12 +47,12 @@ export default function App() {
           </p>
         )}
 
-        {route.name === 'feed' && <FeedPage sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}
-        {route.name === 'cameras' && <CamerasPage sightings={sightings} cameras={cameras} />}
+        {route.name === 'park' && (
+          <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />
+        )}
         {route.name === 'camera' && (
           <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />
         )}
-        {route.name === 'analytics' && <AnalyticsPage sightings={sightings} loading={loading} mode={mode} />}
       </main>
     </div>
   )

@@ -21,7 +21,7 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
   if (!loading && !camera && mine.length === 0) {
     return (
       <p className="text-stone-500">
-        Camera not found. <a className="text-emerald-700 underline" href="#/cameras">Back to cameras</a>
+        Camera not found. <a className="text-emerald-700 underline" href="#/park/yellowstone/cameras">Back to cameras</a>
       </p>
     )
   }
@@ -31,7 +31,7 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
 
   return (
     <>
-      <a href="#/cameras" className="text-sm text-emerald-700 hover:underline">
+      <a href="#/park/yellowstone/cameras" className="text-sm text-emerald-700 hover:underline">
         ← All cameras
       </a>
       <h2 className="mt-2 text-xl font-bold text-stone-900">📷 {name}</h2>

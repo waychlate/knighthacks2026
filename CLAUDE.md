@@ -22,11 +22,12 @@ Update this section whenever it changes.
 
 - **Done:**
   - **Worker:** capture (files, video, image URLs) -> YOLO -> BioCLIP -> dedupe -> Supabase, tested with fakes (14 tests). Ran on public-domain bison clips (CUDA); `worker/species.json` is the Yellowstone list.
-  - **Web:** feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
+  - **Web:** 3D globe landing page (`react-globe.gl`; park markers appear on zoom, hover/tap card; Yellowstone live, Katmai a "no cameras yet" marker) leading to `#/park/:slug/{sightings,cameras,predictions,chat,analytics}`; old `#/cameras` and `#/analytics` redirect. Also: feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
   - **Supabase SQL:** `schema.sql` (with `source_kind`, `cameras.park`), `social.sql`, and a synthetic `seed.sql`.
   - **`/ml`:** synthetic generator, three models, temporal-split evaluation, `predict.py` (10 tests). All on SYNTHETIC data; the simple hourly profile beat gradient boosting.
   - Both overnight branches are merged into `main`.
 - **Not verified:**
+  - Globe on a real GPU and on a phone (only headless swiftshader and a mouse were tried; touch tap card untested).
   - Nothing has run against a real Supabase project (schema, seed, social tables, worker writes, realtime chat, `predict.py` write path).
   - The worker has not seen daylight frames from the live Electric Peak cam; YOLO may miss small distant animals. Species ID on hard clips (bison calves) is about 59% right.
   - Demo video playback in a real browser (only the `src` was checked).
