@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
-// Tiny hash router: #/ (feed), #/cameras, #/camera/:id. No dependency needed.
+// Tiny hash router: #/ (feed), #/cameras, #/camera/:id, #/analytics. No dependency needed.
 function parse(hash) {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   if (parts[0] === 'cameras') return { name: 'cameras' }
+  if (parts[0] === 'analytics') return { name: 'analytics' }
   if (parts[0] === 'camera' && parts[1]) return { name: 'camera', id: decodeURIComponent(parts[1]) }
   return { name: 'feed' }
 }

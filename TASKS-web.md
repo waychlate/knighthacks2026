@@ -22,33 +22,33 @@ The pipeline run has its own file, `TASKS.md`, on `overnight/pipeline`. Do not d
 - Demo clips: put short public-domain or CC0 clips (or a placeholder poster image if none are available) in `web/public/demo/`; keep files small and note the source and license in `PROGRESS-web.md`. Never download from YouTube.
 
 ## 1. Camera list, camera view, Demo/Live toggle
-- [ ] Header toggle **Demo / Live**, default Demo, remembered in `localStorage` (wrapped in try/catch). One shared hook/context.
-- [ ] Cameras page lists cameras per the rules above. Clicking a camera opens its view with a video panel: Demo mode loops the demo clip; Live mode shows the latest still, refreshed every 60 s with a cache-busting query.
-- [ ] Bubble in the panel's top-left: green pulsing dot "Live", or amber "Demo clip". If the live image fails to load, show "Live feed unavailable"; **never fall back to the demo clip while the toggle says Live**.
-- [ ] The sightings feed filters by `source_kind` to match the mode. Empty live feed says "Waiting for the first sighting".
-- [ ] Pure helper functions (mode filtering, live-URL cache-busting) in `web/src/lib/` with vitest tests.
+- [x] Header toggle **Demo / Live**, default Demo, remembered in `localStorage` (wrapped in try/catch). One shared hook/context.
+- [x] Cameras page lists cameras per the rules above. Clicking a camera opens its view with a video panel: Demo mode loops the demo clip; Live mode shows the latest still, refreshed every 60 s with a cache-busting query.
+- [x] Bubble in the panel's top-left: green pulsing dot "Live", or amber "Demo clip". If the live image fails to load, show "Live feed unavailable"; **never fall back to the demo clip while the toggle says Live**.
+- [x] The sightings feed filters by `source_kind` to match the mode. Empty live feed says "Waiting for the first sighting".
+- [x] Pure helper functions (mode filtering, live-URL cache-busting) in `web/src/lib/` with vitest tests.
 - Accept: `npm run lint`, `npm run build`, `npx vitest run` pass; headless Chromium (with the NPS URL intercepted) shows the bubble flipping with the toggle and no console errors.
 
 ## 2. Per-park live chat
-- [ ] `supabase/social.sql`: `chat_messages(id, park text, display_name text, body text check length <= 280, created_at timestamptz default now(), is_hidden boolean default false)`. RLS: public read where not hidden, anon insert only (no update/delete), length and non-empty checks, a per-name rate-limit trigger (e.g. at most 1 message per 2 s per name). Add the table to the realtime publication. Keep the file re-runnable.
-- [ ] Chat panel on the park/camera view: one room per park (the camera's `park`), display name stored in `localStorage`, live updates via Supabase Realtime. With no keys, use an in-memory mock room labeled as sample chat (cross-tab via `BroadcastChannel` is a nice touch, optional).
-- [ ] Client-side word filter and 280-char cap in a pure function with vitest tests; disable send for empty or over-length text.
+- [x] `supabase/social.sql`: `chat_messages(id, park text, display_name text, body text check length <= 280, created_at timestamptz default now(), is_hidden boolean default false)`. RLS: public read where not hidden, anon insert only (no update/delete), length and non-empty checks, a per-name rate-limit trigger (e.g. at most 1 message per 2 s per name). Add the table to the realtime publication. Keep the file re-runnable.
+- [x] Chat panel on the park/camera view: one room per park (the camera's `park`), display name stored in `localStorage`, live updates via Supabase Realtime. With no keys, use an in-memory mock room labeled as sample chat (cross-tab via `BroadcastChannel` is a nice touch, optional).
+- [x] Client-side word filter and 280-char cap in a pure function with vitest tests; disable send for empty or over-length text.
 - Accept: lint, build, vitest pass; headless check shows posting a message in one tab appears in the list, no console errors.
 
 ## 3. Comments on sightings
-- [ ] `comments(id, sighting_id, display_name, body <=280, created_at, is_hidden)` in `social.sql` with the same RLS and rate-limit approach. `sighting_id` is a plain uuid, with no foreign key so the file runs standalone.
-- [ ] Expandable comment thread on each sighting card, same filter and mock behavior as chat.
+- [x] `comments(id, sighting_id, display_name, body <=280, created_at, is_hidden)` in `social.sql` with the same RLS and rate-limit approach. `sighting_id` is a plain uuid, with no foreign key so the file runs standalone.
+- [x] Expandable comment thread on each sighting card, same filter and mock behavior as chat.
 - Accept: lint, build, vitest pass; headless check adds and shows a comment on a mock sighting.
 
 ## 4. Analytics page (cut first if short on time)
-- [ ] `#/analytics` with a nav link: Recharts for sightings by hour of day, by species, and by camera, from the loaded sightings (respecting the mode toggle). Aggregation in pure functions in `web/src/lib/` with vitest tests.
+- [x] `#/analytics` with a nav link: Recharts for sightings by hour of day, by species, and by camera, from the loaded sightings (respecting the mode toggle). Aggregation in pure functions in `web/src/lib/` with vitest tests.
 - Accept: lint, build, vitest pass; headless check of `#/analytics` shows the charts with no console errors.
 
 ## 5. Polish and resilience (cut first if short on time)
-- [ ] Error banner when a Supabase request fails instead of an empty list.
-- [ ] Layout check at 375 px and 900 px (headless screenshots); fix overflow.
-- [ ] Basic accessibility: labels, focus styles, `aria-current`, alt text; toggle and bubble readable by screen readers.
+- [x] Error banner when a Supabase request fails instead of an empty list.
+- [x] Layout check at 375 px and 900 px (headless screenshots); fix overflow.
+- [x] Basic accessibility: labels, focus styles, `aria-current`, alt text; toggle and bubble readable by screen readers.
 - Accept: lint and build pass; screenshots look right.
 
 ## 6. Docs
-- [ ] Short README section for the web app: Demo/Live toggle, where demo clips live, how chat and comments work, how to load `supabase/social.sql`.
+- [x] Short README section for the web app: Demo/Live toggle, where demo clips live, how chat and comments work, how to load `supabase/social.sql`.
