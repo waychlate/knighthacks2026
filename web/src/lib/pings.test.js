@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { latestSighting } from './parks'
 import { cooldownLeftMs, distanceKm, makeSamplePings, markPinged, nearestPark, recent, roundCoord, toGeoJSON } from './pings'
 
 const store = () => {
@@ -38,5 +39,11 @@ describe('pings', () => {
     expect(f.every((x) => x.properties.sample)).toBe(true)
     expect(f.some((x) => x.properties.near)).toBe(true)
     expect(f.some((x) => !x.properties.near)).toBe(true)
+  })
+  it('finds the newest sighting at a park', () => {
+    const cams = [{ id: 'a', park: 'yellowstone' }, { id: 'b', park: 'katmai' }]
+    const list = [{ id: 1, camera: { id: 'b' } }, { id: 2, camera: { id: 'a' } }, { id: 3, camera: { id: 'a' } }]
+    expect(latestSighting('yellowstone', list, cams).id).toBe(2)
+    expect(latestSighting('nowhere', list, cams)).toBeUndefined()
   })
 })

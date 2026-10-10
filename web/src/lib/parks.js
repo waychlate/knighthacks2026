@@ -12,3 +12,9 @@ export function sightingsToday(slug, sightings, cameras) {
   const midnight = new Date().setHours(0, 0, 0, 0)
   return sightings.filter((s) => ids.has(s.camera.id) && new Date(s.seen_at).getTime() >= midnight).length
 }
+
+// Newest sighting at the park's cameras (the list is newest first), or undefined.
+export function latestSighting(slug, sightings, cameras) {
+  const ids = new Set(cameras.filter((c) => c.park === slug).map((c) => c.id))
+  return sightings.find((s) => ids.has(s.camera.id))
+}

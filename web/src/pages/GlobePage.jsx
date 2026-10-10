@@ -4,8 +4,8 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import PingSheet from '../components/PingSheet'
 import { useMode } from '../lib/useMode'
-import { PARKS, sightingsToday } from '../lib/parks'
-import { cooldownLeftMs, markPinged, toGeoJSON } from '../lib/pings'
+import { latestSighting, PARKS, sightingsToday } from '../lib/parks'
+import { cooldownLeftMs, distanceKm, markPinged, toGeoJSON } from '../lib/pings'
 import { timeAgo } from '../lib/time'
 import { usePings } from '../lib/usePings'
 import { parkHref } from '../lib/useRoute'
@@ -15,6 +15,8 @@ maplibregl.setWorkerUrl(workerUrl)
 
 // Park markers show once the map is zoomed in past this level.
 const SHOW_PARKS_ZOOM = 4
+// Zoomed in this far with the map centred inside a park, its overview panel opens at the bottom.
+const OVERVIEW_ZOOM = 7
 const isTouch = () => window.matchMedia('(hover: none)').matches
 
 // Imagery © Esri (no key; credited on screen). Terrain from the free AWS Terrarium tiles.
@@ -46,7 +48,7 @@ const STYLE = {
   terrain: { source: 'terrain', exaggeration: 1.5 },
 }
 
-function Card({ park, stats, onOpen, touch }) {
+function Card({ park, stats, latest, onOpen, showButton }) {
   return (
     <div className="pointer-events-auto absolute bottom-24 left-1/2 z-10 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-2xl bg-white/95 p-4 shadow-lg">
       <p className="font-semibold text-stone-900">🌲 {park.name}</p>
@@ -58,7 +60,12 @@ function Card({ park, stats, onOpen, touch }) {
       ) : (
         <p className="mt-2 text-sm text-stone-500">No cameras yet.</p>
       )}
-      {touch ? (
+      {park.active && (
+        <p className="mt-1 text-sm text-stone-500">
+          {latest ? `Latest: ${latest.species.common_name} · ${timeAgo(latest.seen_at)}` : 'No sightings yet in this mode.'}
+        </p>
+      )}
+      {showButton ? (
         <button onClick={onOpen} className="mt-3 rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white">
           Open park
         </button>
@@ -90,12 +97,15 @@ export default function GlobePage({ sightings, cameras }) {
   const mapRef = useRef()
   const [ready, setReady] = useState(false)
   const [zoomed, setZoomed] = useState(false)
-  const [picked, setPicked] = useState(null)
+  const [picked, setPicked] = useState(null) // park under the pointer / tapped
+  const [focus, setFocus] = useState(null) // park the map is zoomed in over
   const [here, setHere] = useState(null) // position waiting for the ping sheet
   const [msg, setMsg] = useState(null)
   const touch = isTouch()
   const { mode } = useMode()
   const { pings, post } = usePings(mode)
+
+  const shown = picked ?? focus
 
   const stats = useMemo(
     () =>
@@ -111,10 +121,20 @@ export default function GlobePage({ sightings, cameras }) {
     map.on('error', (e) => console.error('maplibre:', e.error?.message ?? e))
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right')
 
+    // Park markers are map pins (user pings are circles). Same colour for every park; parks without
+    // cameras are dimmed. The wrapper is positioned by MapLibre, so the shape lives on a child.
     const markers = PARKS.map((park) => {
-      const el = document.createElement('button')
+      const el = document.createElement('div')
+      el.style.cssText = 'display:none;cursor:pointer'
+      el.setAttribute('role', 'button')
       el.setAttribute('aria-label', park.name)
-      el.style.cssText = `display:none;width:22px;height:22px;border-radius:50%;border:3px solid #fff;cursor:pointer;background:${park.active ? '#34d399' : '#fbbf24'}`
+      const pin = document.createElement('div')
+      pin.style.cssText = `width:34px;height:34px;background:#047857;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.5);opacity:${park.active ? 1 : 0.6}`
+      const icon = document.createElement('span')
+      icon.textContent = '🌲'
+      icon.style.cssText = 'transform:rotate(45deg);font-size:16px;line-height:1'
+      pin.appendChild(icon)
+      el.appendChild(pin)
       const open = () => {
         window.location.hash = parkHref(park.slug).slice(1)
       }
@@ -127,7 +147,7 @@ export default function GlobePage({ sightings, cameras }) {
         if (touch) setPicked(park)
         else open()
       })
-      new maplibregl.Marker({ element: el }).setLngLat([park.lng, park.lat]).addTo(map)
+      new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat([park.lng, park.lat]).addTo(map)
       return el
     })
 
@@ -135,8 +155,12 @@ export default function GlobePage({ sightings, cameras }) {
       const z = map.getZoom() >= SHOW_PARKS_ZOOM
       setZoomed(z)
       markers.forEach((el) => (el.style.display = z ? 'block' : 'none'))
+      const c = map.getCenter()
+      const inside = map.getZoom() >= OVERVIEW_ZOOM ? PARKS.find((p) => distanceKm(c.lat, c.lng, p.lat, p.lng) <= p.radiusKm) : null
+      setFocus((prev) => (prev?.slug === inside?.slug ? prev : (inside ?? null)))
     }
     map.on('zoom', onZoom)
+    map.on('moveend', onZoom)
     map.on('click', () => touch && setPicked(null))
 
     map.on('load', () => {
@@ -152,7 +176,7 @@ export default function GlobePage({ sightings, cameras }) {
       })
       map.addLayer({
         id: 'ping-point', type: 'circle', source: 'pings', filter: ['!', ['has', 'point_count']],
-        paint: { 'circle-color': ['case', ['get', 'near'], '#34d399', '#9ca3af'], 'circle-radius': 7, 'circle-stroke-width': 2, 'circle-stroke-color': '#fff' },
+        paint: { 'circle-color': ['case', ['get', 'near'], '#f97316', '#9ca3af'], 'circle-radius': 7, 'circle-stroke-width': 2, 'circle-stroke-color': '#fff' },
       })
       map.on('click', 'ping-clusters', async (e) => {
         const f = e.features[0]
@@ -209,7 +233,15 @@ export default function GlobePage({ sightings, cameras }) {
         </p>
       </div>
 
-      {picked && <Card park={picked} stats={stats[picked.slug]} onOpen={() => (window.location.hash = parkHref(picked.slug).slice(1))} touch={touch} />}
+      {shown && (
+        <Card
+          park={shown}
+          stats={stats[shown.slug]}
+          latest={latestSighting(shown.slug, sightings, cameras)}
+          onOpen={() => (window.location.hash = parkHref(shown.slug).slice(1))}
+          showButton={touch || shown === focus}
+        />
+      )}
 
       <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
         {msg && <p className="rounded-lg bg-black/70 px-3 py-1.5 text-sm text-white">{msg}</p>}
