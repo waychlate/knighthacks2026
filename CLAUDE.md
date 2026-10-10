@@ -77,11 +77,12 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 
 ## Commands
 
-_Fill in as the pieces are scaffolded. Planned:_
-
-- `/web`: `npm install`, `npm run dev`, `npm run build`, `npm run lint`
-- `/worker`: `pip install -r requirements.txt`, `python -m worker.main --source <url|file>`
-- `/ml`: `pip install -r requirements.txt`
+- `/web` (React + Vite): `npm install`, `npm run dev`, `npm run build`, `npm run lint`. With no Supabase keys in `.env` it runs on mock data.
+- `/worker` (Python 3.10+): `pip install -r requirements.txt`, then from `/worker`:
+  `python -m animal_worker.main --source <file|url|webcam index> --camera "Name" [--dry-run]`
+  Tests: `python -m pytest` (from `/worker`).
+- `/ml`: not scaffolded yet.
+- Database: run `supabase/schema.sql` in the Supabase SQL editor.
 
 ## Conventions
 

@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.pt
+*.onnx
+.DS_Store
+sample_videos/
