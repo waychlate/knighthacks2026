@@ -13,8 +13,8 @@ import { parkHref } from '../lib/useRoute'
 // Vite must bundle MapLibre's worker (it imports a shared chunk), so hand it the built URL.
 maplibregl.setWorkerUrl(workerUrl)
 
-// Park markers remain visible at world zoom so the globe has recognizable destinations.
-const SHOW_PARKS_ZOOM = 0
+// Park markers show once the map is zoomed in past this level (2.6 is a few scroll notches from the start).
+const SHOW_PARKS_ZOOM = 2.6
 // Zoomed in this far with the map centred inside a park, its overview panel opens at the bottom.
 const OVERVIEW_ZOOM = 7
 const isTouch = () => window.matchMedia('(hover: none)').matches
@@ -126,7 +126,7 @@ export default function GlobePage({ sightings, cameras }) {
     const markers = PARKS.map((park) => {
       const el = document.createElement('div')
       const accent = park.slug === 'katmai' ? '#0369a1' : '#047857'
-      el.style.cssText = 'display:block;cursor:pointer;position:relative;width:148px;height:76px;transition:opacity .2s ease'
+      el.style.cssText = 'display:none;cursor:pointer;position:relative;width:148px;height:76px;transition:opacity .2s ease'
       el.setAttribute('role', 'button')
       el.setAttribute('aria-label', park.name)
       const halo = document.createElement('div')
@@ -162,7 +162,7 @@ export default function GlobePage({ sightings, cameras }) {
     const onZoom = () => {
       const z = map.getZoom() >= SHOW_PARKS_ZOOM
       setZoomed(z)
-      markers.forEach((el) => (el.style.opacity = z ? '1' : '0.92'))
+      markers.forEach((el) => (el.style.display = z ? 'block' : 'none'))
       const c = map.getCenter()
       const inside = map.getZoom() >= OVERVIEW_ZOOM ? PARKS.find((p) => distanceKm(c.lat, c.lng, p.lat, p.lng) <= p.radiusKm) : null
       setFocus((prev) => (prev?.slug === inside?.slug ? prev : (inside ?? null)))
@@ -242,7 +242,7 @@ export default function GlobePage({ sightings, cameras }) {
       </div>
 
       {(usingMock || pingsError) && (
-        <p className="absolute left-3 top-14 z-10 max-w-xs rounded-lg bg-amber-100 px-3 py-2 text-xs text-amber-900">
+        <p className="globe-notice absolute left-3 z-10 max-w-xs rounded-lg bg-amber-100 px-3 py-2 text-xs text-amber-900">
           {usingMock
             ? 'Supabase keys are missing, so pings are not saved: they vanish when you reload.'
             : `Could not load pings: ${pingsError}. Has supabase/pings.sql been run?`}

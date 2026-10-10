@@ -44,6 +44,15 @@ button:active, a:active { transform: translateY(1px); }
 html[data-theme='dark'] .katmai-environment::before { background: linear-gradient(180deg, rgba(14,116,144,.18), rgba(2,132,199,.36) 48%, rgba(7,89,133,.2)); border-color: rgba(56,189,248,.28); }
 html[data-theme='dark'] .katmai-waterline { color: #38bdf8; }
 html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #041827, #073552 52%, #075985) !important; }
+/* iPhone notch and home indicator: keep headers and map controls out of the unsafe areas.
+   Needs viewport-fit=cover (set in index.html); env() is 0 on devices without a notch. */
+.app-header { padding-top: env(safe-area-inset-top); }
+.globe-notice { top: calc(3.5rem + env(safe-area-inset-top)); }
+.ping-sheet { padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + .5rem)); }
+.maplibregl-map .maplibregl-ctrl-top-right { top: env(safe-area-inset-top); right: env(safe-area-inset-right); }
+.maplibregl-map .maplibregl-ctrl-top-left { top: env(safe-area-inset-top); left: env(safe-area-inset-left); }
+.maplibregl-map .maplibregl-ctrl-bottom-right { bottom: env(safe-area-inset-bottom); right: env(safe-area-inset-right); }
+.maplibregl-map .maplibregl-ctrl-bottom-left { bottom: env(safe-area-inset-bottom); left: env(safe-area-inset-left); }
 @keyframes shimmer { to { background-position: -200% 0; } }
 @media (max-width: 639px) {
   .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
@@ -56,7 +65,7 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
   .chat-dock { right: .75rem; left: .75rem; }
   .chat-dock > * { width: 100% !important; }
   .globe-brand { padding-top: calc(1rem + env(safe-area-inset-top)); }
-  .globe-card { bottom: 7.5rem; }
+  .globe-card { bottom: calc(7.5rem + env(safe-area-inset-bottom)); }
   .globe-actions { bottom: calc(1rem + env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

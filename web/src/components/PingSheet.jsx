@@ -20,7 +20,7 @@ export default function PingSheet({ species: options, onSubmit, onCancel }) {
   }
 
   return (
-    <div className="absolute inset-0 z-20 flex items-end justify-center bg-black/50 p-4 sm:items-center">
+    <div className="ping-sheet absolute inset-0 z-20 flex items-end justify-center bg-black/50 p-4 sm:items-center">
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-xl">
         <h2 className="text-lg font-semibold text-stone-900">📍 Drop a ping</h2>
         <p className="mt-1 text-xs text-stone-500">
