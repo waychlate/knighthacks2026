@@ -38,21 +38,24 @@ button:active, a:active { transform: translateY(1px); }
 .katmai-waterline { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #0284c7; font-size: 1.1rem; letter-spacing: .35rem; }
 .katmai-waterline span:nth-child(2) { flex: 1; overflow: hidden; color: #38bdf8; font-size: 1.5rem; letter-spacing: .1rem; white-space: nowrap; }
 .katmai-fish { margin-right: .3rem; font-size: .9rem; }
+.yellowstone-bison { margin-right: .3rem; font-size: .9rem; }
+.yellowstone-page .app-header { background: #fbf7ed !important; border-color: #e7d39b !important; }
+.yellowstone-page .app-logo { border: 1px solid #d6b85a; box-shadow: 0 2px 8px rgba(120,93,20,.16); }
+.yellowstone-page .bg-emerald-600, .yellowstone-page .bg-emerald-700 { background-color: #3f6212 !important; }
+.yellowstone-page .bg-emerald-600:hover, .yellowstone-page .bg-emerald-700:hover { background-color: #365314 !important; }
+.yellowstone-page .bg-amber-500 { background-color: #ca8a04 !important; }
+.yellowstone-page .bg-amber-500:hover { background-color: #a16207 !important; }
+.yellowstone-environment { position: relative; isolation: isolate; overflow: hidden; }
+.yellowstone-environment::before { content: ''; position: absolute; z-index: -2; right: -12%; bottom: 5%; left: -12%; height: 12rem; transform: rotate(2deg); border-top: 2px solid rgba(202,138,4,.22); background: linear-gradient(165deg, rgba(54,83,20,.08), rgba(250,204,21,.18) 48%, rgba(120,113,108,.1)); clip-path: polygon(0 26%, 18% 35%, 34% 17%, 52% 31%, 68% 18%, 84% 35%, 100% 22%, 100% 78%, 82% 68%, 63% 85%, 45% 70%, 27% 86%, 10% 70%, 0 82%); pointer-events: none; }
+.yellowstone-environment::after { content: ''; position: absolute; z-index: -1; top: 4.75rem; right: 0; left: 0; height: 5px; background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(202,138,4,.25) 14px 36px, transparent 36px 58px); pointer-events: none; }
+.yellowstone-trail { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #a16207; font-size: 1.1rem; letter-spacing: .18rem; }
+.yellowstone-trail span:nth-child(2) { flex: 1; overflow: hidden; color: #eab308; font-size: 1.3rem; white-space: nowrap; }
 .katmai-canopy { position: relative; overflow: hidden; background: linear-gradient(145deg, #082f49, #0c4a6e 52%, #075985) !important; box-shadow: inset 0 -8px 0 rgba(2,132,199,.18); }
 .katmai-canopy::before { content: '🌿  🌿  🌿'; position: absolute; top: -1.1rem; right: .8rem; color: rgba(186,230,253,.35); font-size: 1.2rem; letter-spacing: .3rem; }
 .katmai-chat section { border-color: #7dd3fc !important; box-shadow: 0 18px 36px rgba(3,105,161,.25); }
 html[data-theme='dark'] .katmai-environment::before { background: linear-gradient(180deg, rgba(14,116,144,.18), rgba(2,132,199,.36) 48%, rgba(7,89,133,.2)); border-color: rgba(56,189,248,.28); }
 html[data-theme='dark'] .katmai-waterline { color: #38bdf8; }
 html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #041827, #073552 52%, #075985) !important; }
-/* iPhone notch and home indicator: keep headers and map controls out of the unsafe areas.
-   Needs viewport-fit=cover (set in index.html); env() is 0 on devices without a notch. */
-.app-header { padding-top: env(safe-area-inset-top); }
-.globe-notice { top: calc(3.5rem + env(safe-area-inset-top)); }
-.ping-sheet { padding-bottom: max(1rem, calc(env(safe-area-inset-bottom) + .5rem)); }
-.maplibregl-map .maplibregl-ctrl-top-right { top: env(safe-area-inset-top); right: env(safe-area-inset-right); }
-.maplibregl-map .maplibregl-ctrl-top-left { top: env(safe-area-inset-top); left: env(safe-area-inset-left); }
-.maplibregl-map .maplibregl-ctrl-bottom-right { bottom: env(safe-area-inset-bottom); right: env(safe-area-inset-right); }
-.maplibregl-map .maplibregl-ctrl-bottom-left { bottom: env(safe-area-inset-bottom); left: env(safe-area-inset-left); }
 @keyframes shimmer { to { background-position: -200% 0; } }
 @media (max-width: 639px) {
   .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
@@ -65,7 +68,7 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
   .chat-dock { right: .75rem; left: .75rem; }
   .chat-dock > * { width: 100% !important; }
   .globe-brand { padding-top: calc(1rem + env(safe-area-inset-top)); }
-  .globe-card { bottom: calc(7.5rem + env(safe-area-inset-bottom)); }
+  .globe-card { bottom: 7.5rem; }
   .globe-actions { bottom: calc(1rem + env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
@@ -115,3 +118,13 @@ html[data-theme='dark'] .katmai-page .status-action { background: #081d30; borde
 html[data-theme='dark'] .katmai-page .app-header { background: #081d30 !important; border-color: #21465e !important; }
 html[data-theme='dark'] .katmai-page .app-logo { border-color: #397b9b; box-shadow: 0 2px 10px rgba(14,116,144,.25); }
 html[data-theme='dark'] .katmai-page .bg-white { background-color: #081d30 !important; }
+html[data-theme='dark'] .yellowstone-page { background: #172014 !important; color: #fefce8; }
+html[data-theme='dark'] .yellowstone-page .app-header { background: #26351b !important; border-color: #566b32 !important; }
+html[data-theme='dark'] .yellowstone-page .app-logo { border-color: #c9a227; box-shadow: 0 2px 10px rgba(234,179,8,.2); }
+html[data-theme='dark'] .yellowstone-page .theme-toggle { background: #334621 !important; border-color: #71854a !important; color: #fef9c3 !important; }
+html[data-theme='dark'] .yellowstone-page .bg-white { background-color: #26351b !important; }
+html[data-theme='dark'] .yellowstone-page .bg-stone-50 { background-color: #172014 !important; }
+html[data-theme='dark'] .yellowstone-page .bg-stone-100 { background-color: #304124 !important; }
+html[data-theme='dark'] .yellowstone-page .text-stone-900 { color: #fefce8 !important; }
+html[data-theme='dark'] .yellowstone-page .text-stone-500 { color: #cad5a1 !important; }
+html[data-theme='dark'] .yellowstone-page .border-stone-200 { border-color: #53663a !important; }

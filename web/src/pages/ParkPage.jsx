@@ -16,15 +16,16 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
   const parkCameras = cameras.filter((c) => c.park === slug)
   const ids = new Set(parkCameras.map((c) => c.id))
   const parkSightings = sightings.filter((s) => ids.has(s.camera.id))
-  const themeClass = slug === 'katmai' ? 'katmai-theme' : 'forest-theme'
+  const themeClass = slug === 'katmai' ? 'katmai-theme' : slug === 'yellowstone' ? 'yellowstone-theme' : 'forest-theme'
 
   return (
-    <div className={`${themeClass} ${slug === 'katmai' ? 'katmai-environment' : ''}`}>
+    <div className={`${themeClass} ${slug === 'katmai' ? 'katmai-environment' : ''} ${slug === 'yellowstone' ? 'yellowstone-environment' : ''}`}>
       <div className="mb-4">
         <a href="#/" className="text-sm text-emerald-700 hover:underline">← Globe</a>
         <h2 className="text-xl font-bold text-stone-900">{park?.name ?? slug}</h2>
         {park?.region && <p className="text-sm text-stone-500">{park.region}</p>}
         {slug === 'katmai' && <div className="katmai-waterline" aria-hidden><span>🐟</span><span>〰</span><span>🐟</span></div>}
+        {slug === 'yellowstone' && <div className="yellowstone-trail" aria-hidden><span>🦬</span><span>━━━</span><span>♨</span></div>}
       </div>
 
       {!park?.active ? (
