@@ -32,7 +32,7 @@ Update this section whenever it changes.
   - Demo video playback in a real browser (only the `src` was checked).
 - **Not started:** Vercel deploy; other parks; real accounts and moderation beyond the `is_hidden` flag.
 - **Decided (2026-10-10):** live source is the NPS Yellowstone "North Entrance - Electric Peak" still. Demo uses recorded clips; the web app has a Demo/Live toggle. Social (per-park chat, comments on sightings) is added anonymously. Databricks is skipped.
-- **Work split:** two overnight branches. `overnight/pipeline` follows `TASKS.md` (worker, ml, schema, seed). `overnight/web-social` follows `TASKS-web.md` (all of web, `supabase/social.sql`). Each task file lists what the branch owns and must not touch; the data contract is in both files.
+- **Work split (24 h to go):** three people, no Claude Code for two of them. See `TEAM.md` for roles, git rules and the clock; per-person guides are `TASKS-A.md` (worker, tiling), `TASKS-B.md` (docs, QA, species lists) and `TASKS-C.md` (integrator: Supabase, Vercel, merges, web). Nobody pushes to `main` except the integrator. The old `TASKS.md` and `TASKS-web.md` are finished.
 
 ### Stream source
 

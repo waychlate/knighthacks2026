@@ -61,3 +61,7 @@ python -m animal_worker.still_poller --out sample_videos/yellowstone --every 60
 - Demo clips live in `web/public/demo/` (public-domain NPS bison clips). `web/src/lib/cameraConfig.js` maps camera names to their clip and live image.
 - Each park has one anonymous chat room (camera page) and every sighting has a comment thread. Run `supabase/social.sql` after `schema.sql` to enable them; without keys they run on an in-memory sample. Hide a bad message by setting `is_hidden = true` in the Supabase dashboard.
 - `cd web && npm run dev | lint | build | test`.
+
+## Team and setup
+- Roles, git rules and the schedule: [TEAM.md](TEAM.md).
+- One-time Supabase and Vercel setup (needs a human): `bash scripts/setup-supabase-vercel.sh`.
