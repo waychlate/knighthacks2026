@@ -4,7 +4,7 @@ import PredictionCard from '../components/PredictionCard'
 import SightingList from '../components/SightingList'
 import { usePredictions } from '../lib/usePredictions'
 
-export default function FeedPage({ sightings, cameras, loading }) {
+export default function FeedPage({ sightings, cameras, loading, mode }) {
   const prediction = usePredictions()
   const [filters, setFilters] = useState({ speciesId: '', cameraId: '' })
 
@@ -28,7 +28,7 @@ export default function FeedPage({ sightings, cameras, loading }) {
     <>
       <PredictionCard {...prediction} />
       <Filters species={species} cameras={cameras} value={filters} onChange={setFilters} />
-      <SightingList sightings={visible} loading={loading} emptyText="No sightings match these filters." />
+      <SightingList sightings={visible} loading={loading} emptyText={mode === 'live' ? 'Waiting for the first sighting from the live camera.' : 'No sightings match these filters.'} />
     </>
   )
 }

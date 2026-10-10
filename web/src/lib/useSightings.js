@@ -3,13 +3,15 @@ import { supabase } from './supabase'
 import { makeMockHistory, makeMockSighting } from './mock'
 
 const LIMIT = 50
-const SELECT = 'id, seen_at, confidence, snapshot_url, species(*), camera:cameras(*)'
+// '*' keeps working before and after the source_kind column exists
+const SELECT = '*, species(*), camera:cameras(*)'
 
-// Returns the most recent sightings, newest first, kept live.
+// Returns the most recent sightings (all modes; the app filters by Demo/Live), newest first, kept live.
 // Uses Supabase Realtime when configured, otherwise a mock generator.
 export function useSightings() {
   const [sightings, setSightings] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const usingMock = !supabase
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export function useSightings() {
       .limit(LIMIT)
       .then(({ data, error }) => {
         if (cancelled) return
-        if (error) console.error(error)
+        if (error) setError(error.message)
         setSightings(data ?? [])
         setLoading(false)
       })
@@ -51,5 +53,5 @@ export function useSightings() {
     }
   }, [])
 
-  return { sightings, loading, usingMock }
+  return { sightings, loading, usingMock, error }
 }
