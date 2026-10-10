@@ -29,6 +29,8 @@ Update this section whenever it changes.
 
 Undecided. The goal is a national park cam, but public NPS cams are mostly scenery and the best wildlife cam (Katmai bears) is seasonal. Candidates found so far (none verified live, none with terms of use read): Cornell FeederWatch Cam, Katmai/explore.org, Yellowstone NPS cams, African waterhole cams on YouTube.
 
+Background, candidate details, and draft species lists are in `HANDOFF.md`.
+
 **Do not connect the worker to any live stream, scrape any site, or contact anyone until the user has chosen a source and checked its terms.** Develop and test against local video/image files and mock data.
 
 ## Hackathon tracks
