@@ -13,10 +13,10 @@ export default function ChatPanel({ park }) {
   const latest = messages[messages.length - 1]
 
   return (
-    <div className="chat-dock fixed right-4 z-50">
+    <div className={`chat-dock fixed right-4 z-50 ${park === 'katmai' ? 'katmai-chat' : ''}`}>
       {view === 'expanded' ? (
         <section className="w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xl shadow-stone-900/15" aria-label={title}>
-          <div className="flex items-center justify-between gap-3 bg-emerald-700 px-4 py-3 text-white">
+          <div className={`flex items-center justify-between gap-3 bg-emerald-700 px-4 py-3 text-white ${park === 'katmai' ? 'katmai-canopy' : ''}`}>
             <div>
               <h3 className="font-semibold">{title}</h3>
               {usingMock && <span className="text-xs text-emerald-100">sample chat</span>}

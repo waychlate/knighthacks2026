@@ -19,11 +19,12 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
   const themeClass = slug === 'katmai' ? 'katmai-theme' : 'forest-theme'
 
   return (
-    <div className={themeClass}>
+    <div className={`${themeClass} ${slug === 'katmai' ? 'katmai-environment' : ''}`}>
       <div className="mb-4">
         <a href="#/" className="text-sm text-emerald-700 hover:underline">← Globe</a>
         <h2 className="text-xl font-bold text-stone-900">{park?.name ?? slug}</h2>
         {park?.region && <p className="text-sm text-stone-500">{park.region}</p>}
+        {slug === 'katmai' && <div className="katmai-waterline" aria-hidden><span>🐟</span><span>〰</span><span>🐟</span></div>}
       </div>
 
       {!park?.active ? (
@@ -34,7 +35,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
           {tab === 'sightings' && <FeedPage sightings={parkSightings} cameras={parkCameras} loading={loading} mode={mode} />}
           {tab === 'cameras' && <CamerasPage sightings={parkSightings} cameras={parkCameras} />}
           {tab === 'predictions' && <Predictions />}
-          {tab === 'chat' && <ChatPanel park={slug} />}
+          {tab === 'chat' && <div className="katmai-chat-zone"><ChatPanel park={slug} /></div>}
           {tab === 'analytics' && <AnalyticsPage sightings={parkSightings} loading={loading} mode={mode} />}
         </>
       )}

@@ -10,6 +10,7 @@ export default function Nav({ park, tab }) {
     <nav className="flex flex-wrap gap-1" aria-label="Park sections">
       {TABS.map((t) => (
         <a key={t} href={parkHref(park, t)} className={link(t === tab)} aria-current={t === tab ? 'page' : undefined}>
+          {park === 'katmai' && <span className="katmai-fish" aria-hidden>🐟</span>}
           {t}
         </a>
       ))}
