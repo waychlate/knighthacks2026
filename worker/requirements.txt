@@ -1,0 +1,9 @@
+opencv-python-headless>=4.9
+ultralytics>=8.3        # YOLO detection (weights are also on the Hugging Face Hub)
+open_clip_torch>=2.26   # loads BioCLIP from the Hugging Face Hub
+torch
+pillow
+numpy
+supabase>=2.5
+python-dotenv>=1.0
+pytest>=8

@@ -1,0 +1,15 @@
+{
+  "_comment": "Candidate species BioCLIP chooses between. Replace with animals that live in the chosen park. 'coco_group' is optional documentation only.",
+  "species": [
+    {"common_name": "Northern Cardinal", "scientific_name": "Cardinalis cardinalis"},
+    {"common_name": "Blue Jay", "scientific_name": "Cyanocitta cristata"},
+    {"common_name": "Great Blue Heron", "scientific_name": "Ardea herodias"},
+    {"common_name": "Bald Eagle", "scientific_name": "Haliaeetus leucocephalus"},
+    {"common_name": "White-tailed Deer", "scientific_name": "Odocoileus virginianus"},
+    {"common_name": "American Black Bear", "scientific_name": "Ursus americanus"},
+    {"common_name": "Eastern Gray Squirrel", "scientific_name": "Sciurus carolinensis"},
+    {"common_name": "Raccoon", "scientific_name": "Procyon lotor"},
+    {"common_name": "Coyote", "scientific_name": "Canis latrans"},
+    {"common_name": "Red Fox", "scientific_name": "Vulpes vulpes"}
+  ]
+}
