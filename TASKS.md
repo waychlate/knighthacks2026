@@ -42,8 +42,8 @@ The web/social run has its own file, `TASKS-web.md`, on `overnight/web-social`. 
 - Accept: documented result in `PROGRESS.md`. If weights or media can't be downloaded, mark blocked and move on.
 
 ## 5. Schema and seed data
-- [ ] Edit `supabase/schema.sql` for the data contract above (`source_kind`, `cameras.park`). Keep it re-runnable.
-- [ ] Generate `supabase/seed.sql` from the ML synthetic generator (`/ml`, not hand-written): Yellowstone cameras (Electric Peak plus two or three demo-only cameras, all `park='yellowstone'`), the species list, and synthetic sightings with `source_kind='replay'`. Comment clearly that it is synthetic.
+- [x] Edit `supabase/schema.sql` for the data contract above (`source_kind`, `cameras.park`). Keep it re-runnable.
+- [x] Generate `supabase/seed.sql` from the ML synthetic generator (`/ml`, not hand-written): Yellowstone cameras (Electric Peak plus two or three demo-only cameras, all `park='yellowstone'`), the species list, and synthetic sightings with `source_kind='replay'`. Comment clearly that it is synthetic.
 - Accept: valid SQL in the schema's shape (review carefully; no database needed); the README says how to load and regenerate it.
 
 ## 6. ML: sighting predictions (`/ml`) (do last; cut first if short on time)

@@ -20,6 +20,10 @@ npm run dev
 2. Run `supabase/schema.sql` in the SQL editor.
 3. `cp .env.example .env` and fill in the URL, anon key (frontend), and service-role key (worker).
 
+To fill the feed with **synthetic** demo data, run `supabase/seed.sql` in the SQL editor after `schema.sql`
+(fresh database only; it refuses to run if `sightings` is not empty). Regenerate it with
+`python ml/make_seed.py` (see `ml/requirements.txt`); the rows are made up and marked `replay`.
+
 ### 3. Worker
 ```bash
 cd worker

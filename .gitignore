@@ -11,3 +11,4 @@ venv/
 *.onnx
 .DS_Store
 sample_videos/
+ml/out/
