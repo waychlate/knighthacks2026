@@ -16,6 +16,21 @@ A visitor opens the app and sees a live log of recently seen animals. Each entry
 
 Store sightings in a database, analyze them, and train an ML model to find patterns in when and where species appear. Surface this to users as predictions, e.g. "Predicting a [bird species] around 2:30 PM."
 
+## Current status
+
+Update this section whenever it changes.
+
+- **Done:** web feed with species/camera filters, cameras pages, prediction card (sample data); Supabase schema; worker pipeline (capture -> YOLO -> BioCLIP -> dedupe -> Supabase) with dedupe unit tests.
+- **Not verified:** the worker has never run YOLO/BioCLIP on real footage, and nothing has run against a real Supabase project yet.
+- **Not started:** `/ml` (analytics + predictions), analytics page in the web app, Vercel deploy.
+- **Undecided:** which live camera to use. See "Stream source" below.
+
+### Stream source
+
+Undecided. The goal is a national park cam, but public NPS cams are mostly scenery and the best wildlife cam (Katmai bears) is seasonal. Candidates found so far (none verified live, none with terms of use read): Cornell FeederWatch Cam, Katmai/explore.org, Yellowstone NPS cams, African waterhole cams on YouTube.
+
+**Do not connect the worker to any live stream, scrape any site, or contact anyone until the user has chosen a source and checked its terms.** Develop and test against local video/image files and mock data.
+
 ## Hackathon tracks
 
 We are targeting these KnightHacks 2026 tracks. Keep them in mind when making design decisions.
@@ -69,7 +84,7 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 - Sample about 1-2 frames per second (or use motion detection first); do not run YOLO on every frame.
 - Dedupe: merge detections of the same species on the same camera within a cooldown window (default 60s) into one `Sighting`.
 - Save a cropped snapshot to Supabase Storage with each sighting.
-- The stream source is still undecided (a national park live cam is the goal). Check each source's terms of use before scraping. Until one is chosen, develop against a local video file or a mock sighting generator.
+- Develop against local video files or a mock sighting generator (see "Stream source" above).
 
 ### Supabase notes
 
@@ -96,6 +111,36 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 
 ## Working agreements for Claude
 
-- Check this file and the README before making structural decisions; update this file when the stack, commands, or data model change.
-- Ask before adding heavy dependencies or paid/external services.
-- Develop on the designated feature branch; don't open a PR unless asked.
+- Check this file, `TASKS.md`, and the README before making structural decisions; update this file when the stack, commands, data model, or status change.
+- When the user is present: ask before adding heavy dependencies or paid/external services.
+- Develop on a feature branch, never `main`; don't open a PR unless asked.
+
+## Unattended / overnight mode
+
+Applies when the user is away (for example `claude -p` or a long unattended session on their laptop). Nobody can answer questions, so decide, log, and keep going.
+
+**How to work**
+1. Read this file, then `TASKS.md` and `PROGRESS.md`. Work through `TASKS.md` top to bottom, skipping tasks already marked done.
+2. For each task: implement it, run the verification in its acceptance criteria, fix failures, then commit. One commit per task (or finer), with a clear message.
+3. After each task, append to `PROGRESS.md`: what was done, what was verified and how, anything skipped or uncertain. Be factual: never mark a task done unless its checks actually passed.
+4. If a task is blocked (missing key, unavailable network, unclear requirement), spend at most a few attempts on it, write the blocker and what you tried in `PROGRESS.md`, and move to the next task. Don't thrash.
+5. Stop when all tasks are done or blocked. Finish with a summary at the top of `PROGRESS.md` listing done, blocked, and what the user should check first.
+
+**Decide, don't ask.** Pick the simplest option that fits the stack above, note the decision in `PROGRESS.md`, and continue. Prefer a working, demoable slice over polish.
+
+**Verification is required.** Before committing, run what applies: `npm run lint` and `npm run build` in `/web`; `python -m pytest` in `/worker` (and `/ml` once it exists). Never skip, disable, or delete a failing test to get green. For UI changes, also load the page in headless Chromium (Playwright) and check for console errors.
+
+**Allowed without asking**
+- Editing and creating files in this repo; installing project dependencies into a local virtualenv (`.venv`) or `web/node_modules`.
+- Dependencies already in the stack, plus: `recharts`, `vitest`, `@testing-library/react`, `playwright` (dev only), and CPU `torch`.
+- Downloading Hugging Face model weights (YOLO, BioCLIP) into the default cache.
+- Downloading a few small, clearly freely licensed (CC0/public domain) test images or clips for local testing. Keep them out of git (`worker/sample_videos/` is gitignored) and note the source in `PROGRESS.md`.
+- `git add`, `git commit`, and `git push` to the current feature branch.
+
+**Never**
+- Touch `.env` or any file with secrets; print or commit keys; hard-code credentials. Everything must work with no keys (mock data, `--dry-run`).
+- Connect to live camera streams, scrape websites, or send emails/messages. (See "Stream source".)
+- Call paid or metered APIs (including vision LLM APIs), or create accounts or deployments (Vercel, Supabase, Databricks).
+- Push to `main`, force-push, rewrite history, or delete branches.
+- Run destructive commands (`rm -rf` outside build artifacts you created, `git reset --hard`, dropping databases), or install global packages or modify anything outside this repo directory.
+- Present synthetic or mock data as real. Anything generated must be labeled as synthetic in code, UI, and docs.
