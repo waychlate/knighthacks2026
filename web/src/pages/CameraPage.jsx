@@ -33,8 +33,8 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
 
   return (
     <div className={themeClass}>
-      <a href={`#/park/${park}/cameras`} className="park-back-link text-sm text-emerald-700 hover:underline">
-        ← All cameras
+      <a href={`#/park/${park}/cameras`} className="back-button">
+        <span className="back-arrow" aria-hidden>←</span> All cameras
       </a>
       <h2 className="mt-2 text-xl font-bold text-stone-900">📷 {name}</h2>
       {location && <p className="text-sm text-stone-500">{location}</p>}

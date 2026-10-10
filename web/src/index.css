@@ -61,6 +61,17 @@ html[data-theme='dark'] .yellowstone-camera-card::before, html[data-theme='dark'
 html[data-theme='dark'] .katmai-environment::before { background: linear-gradient(180deg, rgba(14,116,144,.18), rgba(2,132,199,.36) 48%, rgba(7,89,133,.2)); border-color: rgba(56,189,248,.28); }
 html[data-theme='dark'] .katmai-waterline { color: #38bdf8; }
 html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #041827, #073552 52%, #075985) !important; }
+/* Back buttons ("← Globe", "← All cameras"): a pill with a 44px tap target. Park themes recolour it via --park-*. */
+.back-button { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: .5rem 1rem; border: 1px solid #a7f3d0; border-radius: 999px; background: var(--park-soft, #d1fae5); color: var(--park-accent-strong, #065f46); font-size: .875rem; font-weight: 600; text-decoration: none; transition: background-color .15s ease; }
+.back-button:hover { background: #a7f3d0; }
+.back-button:focus-visible { outline: 2px solid var(--park-accent, #059669); outline-offset: 2px; }
+.back-arrow { display: inline-block; transition: transform .15s ease; }
+.back-button:hover .back-arrow { transform: translateX(-3px); }
+.katmai-theme .back-button { border-color: #7dd3fc; }
+.katmai-theme .back-button:hover { background: #bae6fd; }
+html[data-theme='dark'] .back-button { border-color: rgba(167,243,208,.4); background: rgba(167,243,208,.14); color: #bbf7d0; }
+html[data-theme='dark'] .back-button:hover { background: rgba(167,243,208,.24); }
+html[data-theme='dark'] .katmai-theme .back-button { border-color: rgba(125,211,252,.45); background: rgba(56,189,248,.16); color: #bae6fd; }
 @keyframes shimmer { to { background-position: -200% 0; } }
 @media (max-width: 639px) {
   .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
