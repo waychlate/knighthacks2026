@@ -146,3 +146,7 @@ Applies when the user is away (for example `claude -p` or a long unattended sess
 - Push to `main`, force-push, rewrite history, or delete branches.
 - Run destructive commands (`rm -rf` outside build artifacts you created, `git reset --hard`, dropping databases), or install global packages or modify anything outside this repo directory.
 - Present synthetic or mock data as real. Anything generated must be labeled as synthetic in code, UI, and docs.
+
+## Git attribution
+
+Do not add `Co-Authored-By` lines (or any Claude attribution) to commit messages or PR descriptions. The user is the sole author.
