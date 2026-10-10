@@ -141,11 +141,11 @@ Frontend-only checklist for turning Animal Logger into a polished, installable P
 
 ## Deployment
 
-- [ ] Confirm Vercel serves the manifest.
-- [ ] Confirm Vercel serves the service worker.
-- [ ] Push PWA changes to GitHub `main`.
-- [ ] Confirm Vercel starts a new deployment.
-- [ ] Test the deployed HTTPS site.
+- [x] Confirm Vercel serves the manifest.
+- [x] Confirm Vercel serves the service worker.
+- [x] Push PWA changes to GitHub `main`.
+- [x] Confirm Vercel starts a new deployment. (Deployed site includes the pushed En-Vision dark-theme toggle.)
+- [x] Test the deployed HTTPS site.
 - [ ] Install the deployed app on a phone.
 - [ ] Test the installed version.
 - [ ] Confirm later deployments update the installed app.
