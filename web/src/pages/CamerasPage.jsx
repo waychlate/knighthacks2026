@@ -3,7 +3,7 @@ import { cameraHref } from '../lib/useRoute'
 import { timeAgo } from '../lib/time'
 import { useMode } from '../lib/useMode'
 
-export default function CamerasPage({ sightings, cameras }) {
+export default function CamerasPage({ sightings, cameras, park }) {
   const { mode } = useMode()
   if (cameras.length === 0) return <p className="text-stone-500">No cameras registered yet.</p>
 
@@ -33,13 +33,13 @@ export default function CamerasPage({ sightings, cameras }) {
         return (
           <li key={cam.id}>
             {unavailable ? (
-              <div aria-disabled="true" className="block rounded-xl border border-stone-200 bg-stone-100 p-4 opacity-60">
+              <div aria-disabled="true" className={`camera-card ${park === 'yellowstone' ? 'yellowstone-camera-card' : ''} block rounded-xl border border-stone-200 bg-stone-100 p-4 opacity-60`}>
                 {body}
               </div>
             ) : (
               <a
                 href={cameraHref(cam.id)}
-                className="block rounded-xl border border-stone-200 bg-white p-4 shadow-sm hover:border-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                className={`camera-card ${park === 'yellowstone' ? 'yellowstone-camera-card' : ''} block rounded-xl border border-stone-200 bg-white p-4 shadow-sm hover:border-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500`}
               >
                 {body}
               </a>

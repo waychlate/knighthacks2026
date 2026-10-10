@@ -34,7 +34,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
         <>
           <div className="mb-5"><Nav park={slug} tab={tab} /></div>
           {tab === 'sightings' && <FeedPage sightings={parkSightings} cameras={parkCameras} loading={loading} mode={mode} />}
-          {tab === 'cameras' && <CamerasPage sightings={parkSightings} cameras={parkCameras} />}
+          {tab === 'cameras' && <CamerasPage park={slug} sightings={parkSightings} cameras={parkCameras} />}
           {tab === 'predictions' && <Predictions />}
           {tab === 'chat' && <div className="katmai-chat-zone"><ChatPanel park={slug} /></div>}
           {tab === 'analytics' && <AnalyticsPage sightings={parkSightings} loading={loading} mode={mode} />}
