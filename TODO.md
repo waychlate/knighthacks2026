@@ -136,7 +136,7 @@ Frontend-only checklist for turning Animal Logger into a polished, installable P
 - [x] Verify the service worker is registered.
 - [x] Verify the offline shell loads.
 - [ ] Verify install behavior on supported browsers.
-- [ ] Verify app icons and splash-screen colors.
+- [x] Verify app icons and splash-screen colors. (Manifest theme/background values and all declared icon assets verified in the local browser.)
 - [x] Verify browser back navigation and refresh behavior.
 
 ## Deployment
