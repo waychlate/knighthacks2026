@@ -5,6 +5,8 @@ from __future__ import annotations
 import time
 from collections.abc import Iterator
 
+from .still_poller import fetch_still
+
 
 def frames(source: str, fps: float = 1.0) -> Iterator[tuple[float, "np.ndarray"]]:
     """Yield (timestamp, BGR frame) roughly `fps` times per second.
@@ -39,3 +41,25 @@ def frames(source: str, fps: float = 1.0) -> Iterator[tuple[float, "np.ndarray"]
             yield now, frame
     finally:
         cap.release()
+
+
+def _decode(data: bytes):
+    import cv2
+    import numpy as np
+
+    return cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+
+
+def image_frames(url, every=60.0, fetch=fetch_still, decode=_decode, sleep=time.sleep, clock=time.time):
+    """Poll a still-image URL and yield (timestamp, BGR frame) for each new image.
+
+    Polls no faster than every 30 s. Unchanged images (same ETag) are skipped; any
+    fetch error propagates and stops the worker rather than retrying in a tight loop.
+    """
+    every = max(every, 30.0)
+    etag = None
+    while True:
+        data, etag = fetch(url, etag)
+        if data:
+            yield clock(), decode(data)
+        sleep(every)
