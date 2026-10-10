@@ -20,9 +20,17 @@ Store sightings in a database, analyze them, and train an ML model to find patte
 
 Update this section whenever it changes.
 
-- **Done:** web feed with species/camera filters, cameras pages, prediction card (sample data); Supabase schema; worker pipeline (capture -> YOLO -> BioCLIP -> dedupe -> Supabase) with dedupe unit tests.
-- **Not verified:** the worker has never run YOLO/BioCLIP on real footage, and nothing has run against a real Supabase project yet.
-- **Not started:** `/ml` (analytics + predictions), analytics page in the web app, Vercel deploy.
+- **Done:**
+  - **Worker:** capture (files, video, image URLs) -> YOLO -> BioCLIP -> dedupe -> Supabase, tested with fakes (14 tests). Ran on public-domain bison clips (CUDA); `worker/species.json` is the Yellowstone list.
+  - **Web:** feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
+  - **Supabase SQL:** `schema.sql` (with `source_kind`, `cameras.park`), `social.sql`, and a synthetic `seed.sql`.
+  - **`/ml`:** synthetic generator, three models, temporal-split evaluation, `predict.py` (10 tests). All on SYNTHETIC data; the simple hourly profile beat gradient boosting.
+  - Both overnight branches are merged into `main`.
+- **Not verified:**
+  - Nothing has run against a real Supabase project (schema, seed, social tables, worker writes, realtime chat, `predict.py` write path).
+  - The worker has not seen daylight frames from the live Electric Peak cam; YOLO may miss small distant animals. Species ID on hard clips (bison calves) is about 59% right.
+  - Demo video playback in a real browser (only the `src` was checked).
+- **Not started:** Vercel deploy; other parks; real accounts and moderation beyond the `is_hidden` flag.
 - **Decided (2026-10-10):** live source is the NPS Yellowstone "North Entrance - Electric Peak" still. Demo uses recorded clips; the web app has a Demo/Live toggle. Social (per-park chat, comments on sightings) is added anonymously. Databricks is skipped.
 - **Work split:** two overnight branches. `overnight/pipeline` follows `TASKS.md` (worker, ml, schema, seed). `overnight/web-social` follows `TASKS-web.md` (all of web, `supabase/social.sql`). Each task file lists what the branch owns and must not touch; the data contract is in both files.
 

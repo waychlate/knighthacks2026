@@ -1,6 +1,18 @@
 import { cameraHref } from '../lib/useRoute'
+import { dayTag } from '../lib/time'
 
 const clock = (iso) => new Date(iso).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+
+// Clock time, with "tomorrow" (or a weekday) when the model expects it on a later day.
+function When({ iso }) {
+  const tag = dayTag(iso)
+  return (
+    <>
+      <strong>{clock(iso)}</strong>
+      {tag && <span className="ml-1 rounded-full bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-800">{tag}</span>}
+    </>
+  )
+}
 
 function inText(iso) {
   const mins = Math.round((new Date(iso).getTime() - Date.now()) / 60000)
@@ -41,8 +53,7 @@ export default function PredictionCard({ predictions, loading, usingMock }) {
       ) : (
         <>
           <p className="text-lg text-stone-900">
-            Predicting a <strong>{next.species.common_name}</strong> around{' '}
-            <strong>{clock(next.predicted_for)}</strong>
+            Predicting a <strong>{next.species.common_name}</strong> around <When iso={next.predicted_for} />
           </p>
           <p className="mt-1 text-sm text-stone-600">
             <Where camera={next.camera} /> · {inText(next.predicted_for)} · {Math.round(next.probability * 100)}% likely
@@ -53,7 +64,7 @@ export default function PredictionCard({ predictions, loading, usingMock }) {
               {later.map((p) => (
                 <li key={p.id} className="flex flex-wrap justify-between gap-x-3">
                   <span>
-                    <strong className="font-medium text-stone-800">{p.species.common_name}</strong> around {clock(p.predicted_for)}
+                    <strong className="font-medium text-stone-800">{p.species.common_name}</strong> around <When iso={p.predicted_for} />
                   </span>
                   <span className="text-stone-500">{Math.round(p.probability * 100)}% likely</span>
                 </li>
