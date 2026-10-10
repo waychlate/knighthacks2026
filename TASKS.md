@@ -49,14 +49,14 @@ The web/social run has its own file, `TASKS-web.md`, on `overnight/web-social`. 
 ## 6. ML: sighting predictions (`/ml`) (do last; cut first if short on time)
 Goal: given a (synthetic, for now) sighting history, predict when each species is likely to be seen, e.g. "Predicting an elk around 6:30 AM near Electric Peak Cam".
 
-- [ ] Scaffold `/ml`: `requirements.txt` (pandas, numpy, scikit-learn, pytest), `README.md`, `tests/`. Build task 5's generator here first if not done.
-- [ ] `ml/synthetic.py`: ~14 days of sightings for the species in `worker/species.json` and 3 cameras, each species with a known time-of-day profile (e.g. elk at dawn/dusk), camera preference, weekday/weekend effect and noise. Fixed seed. CSV in the `Sighting` shape (species, camera, `seen_at` UTC, confidence). Labeled **synthetic** everywhere.
-- [ ] Framing: per (species, camera, hour slot), the probability of at least one sighting in that hour.
-- [ ] Models: (a) naive per-(species, camera) rate; (b) smoothed historical rate by hour (and weekday); (c) a scikit-learn model (gradient boosting or logistic regression) with hour sin/cos, weekday, species, camera, recent activity. Simple and explainable.
-- [ ] Evaluation: temporal split (train earlier days, test the last 3; never shuffle across time). Brier score or log loss per model, plus hit rate: how often the top predicted hour for a species falls within +/-1 h of a real sighting. Write the table into `ml/README.md`.
-- [ ] Recovery check: compare each model's learned hourly profile with the true generating profile and report the error. Be honest in the README that synthetic results are optimistic. If the learned model does not beat the baseline, say so and keep the simpler one.
-- [ ] `ml/predict.py`: train, predict the next 24 hours, keep predictions above a probability threshold, write `Prediction` rows (see `supabase/schema.sql`) to `ml/out/predictions.json`. Write to Supabase only if keys are set; never require them.
-- [ ] Copy a sample to `web/public/predictions.sample.json`, clearly marked sample/synthetic, with timestamps relative to "now". The web run reads it; do not edit any other `/web` file.
+- [x] Scaffold `/ml`: `requirements.txt` (pandas, numpy, scikit-learn, pytest), `README.md`, `tests/`. Build task 5's generator here first if not done.
+- [x] `ml/synthetic.py`: ~14 days of sightings for the species in `worker/species.json` and 3 cameras, each species with a known time-of-day profile (e.g. elk at dawn/dusk), camera preference, weekday/weekend effect and noise. Fixed seed. CSV in the `Sighting` shape (species, camera, `seen_at` UTC, confidence). Labeled **synthetic** everywhere.
+- [x] Framing: per (species, camera, hour slot), the probability of at least one sighting in that hour.
+- [x] Models: (a) naive per-(species, camera) rate; (b) smoothed historical rate by hour (and weekday); (c) a scikit-learn model (gradient boosting or logistic regression) with hour sin/cos, weekday, species, camera, recent activity. Simple and explainable.
+- [x] Evaluation: temporal split (train earlier days, test the last 3; never shuffle across time). Brier score or log loss per model, plus hit rate: how often the top predicted hour for a species falls within +/-1 h of a real sighting. Write the table into `ml/README.md`.
+- [x] Recovery check: compare each model's learned hourly profile with the true generating profile and report the error. Be honest in the README that synthetic results are optimistic. If the learned model does not beat the baseline, say so and keep the simpler one.
+- [x] `ml/predict.py`: train, predict the next 24 hours, keep predictions above a probability threshold, write `Prediction` rows (see `supabase/schema.sql`) to `ml/out/predictions.json`. Write to Supabase only if keys are set; never require them.
+- [x] Copy a sample to `web/public/predictions.sample.json`, clearly marked sample/synthetic, with timestamps relative to "now". The web run reads it; do not edit any other `/web` file.
 - Accept: `python -m pytest` passes in `/ml` (generator determinism, no leakage in the time split, probabilities in [0,1], output schema); `python ml/predict.py` runs with no keys; the metrics table exists.
 
 ## 7. Docs

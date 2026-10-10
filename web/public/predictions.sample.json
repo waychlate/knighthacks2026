@@ -1,0 +1,85 @@
+{
+  "synthetic": true,
+  "note": "SYNTHETIC sample predictions from ml/predict.py trained on made-up data; not real forecasts.",
+  "generated_at": "2026-10-10T12:29:43.874146+00:00",
+  "predictions": [
+    {
+      "id": "sample-1",
+      "offset_minutes": 60,
+      "probability": 0.149,
+      "species": {
+        "common_name": "Sandhill crane",
+        "scientific_name": "Antigone canadensis"
+      },
+      "camera": {
+        "name": "Hayden Valley Demo Cam",
+        "location": "Hayden Valley (demo camera)"
+      }
+    },
+    {
+      "id": "sample-2",
+      "offset_minutes": 120,
+      "probability": 0.144,
+      "species": {
+        "common_name": "Bald eagle",
+        "scientific_name": "Haliaeetus leucocephalus"
+      },
+      "camera": {
+        "name": "Hayden Valley Demo Cam",
+        "location": "Hayden Valley (demo camera)"
+      }
+    },
+    {
+      "id": "sample-3",
+      "offset_minutes": 420,
+      "probability": 0.278,
+      "species": {
+        "common_name": "American bison",
+        "scientific_name": "Bison bison"
+      },
+      "camera": {
+        "name": "Hayden Valley Demo Cam",
+        "location": "Hayden Valley (demo camera)"
+      }
+    },
+    {
+      "id": "sample-4",
+      "offset_minutes": 600,
+      "probability": 0.19,
+      "species": {
+        "common_name": "Pronghorn",
+        "scientific_name": "Antilocapra americana"
+      },
+      "camera": {
+        "name": "Electric Peak Cam",
+        "location": "North Entrance, Gardiner"
+      }
+    },
+    {
+      "id": "sample-5",
+      "offset_minutes": 780,
+      "probability": 0.161,
+      "species": {
+        "common_name": "Coyote",
+        "scientific_name": "Canis latrans"
+      },
+      "camera": {
+        "name": "Lamar Valley Demo Cam",
+        "location": "Lamar Valley (demo camera)"
+      }
+    },
+    {
+      "id": "sample-6",
+      "offset_minutes": 1440,
+      "probability": 0.34,
+      "species": {
+        "common_name": "Elk",
+        "scientific_name": "Cervus canadensis"
+      },
+      "camera": {
+        "name": "Electric Peak Cam",
+        "location": "North Entrance, Gardiner"
+      }
+    }
+  ]
+}
