@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { NOTE_MAX, PING_SPECIES } from '../lib/pings'
+import { NOTE_MAX } from '../lib/pings'
 
-// Confirm step for a ping: optional species and note, plus the privacy notice.
-export default function PingSheet({ onSubmit, onCancel }) {
+// Confirm step for a ping: optional species and note, plus the privacy notice. `species` is the list for
+// the park the user is in, or null outside every park (then a free-text box).
+export default function PingSheet({ species: options, onSubmit, onCancel }) {
   const [species, setSpecies] = useState('')
   const [note, setNote] = useState('')
   const [busy, setBusy] = useState(false)
@@ -27,12 +28,22 @@ export default function PingSheet({ onSubmit, onCancel }) {
         </p>
         <label className="mt-4 block text-sm text-stone-700">
           What did you see? (optional)
-          <select value={species} onChange={(e) => setSpecies(e.target.value)} className="mt-1 w-full rounded-lg border border-stone-300 px-2 py-2">
-            <option value="">Not sure / something else</option>
-            {PING_SPECIES.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
+          {options ? (
+            <select value={species} onChange={(e) => setSpecies(e.target.value)} className="mt-1 w-full rounded-lg border border-stone-300 px-2 py-2">
+              <option value="">Not sure / something else</option>
+              {options.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              value={species}
+              maxLength={60}
+              onChange={(e) => setSpecies(e.target.value)}
+              placeholder="e.g. great blue heron"
+              className="mt-1 w-full rounded-lg border border-stone-300 px-2 py-2"
+            />
+          )}
         </label>
         <label className="mt-3 block text-sm text-stone-700">
           Note (optional)

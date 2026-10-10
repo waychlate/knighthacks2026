@@ -1,4 +1,4 @@
-import { PARKS } from './parks'
+import { getPark, PARKS } from './parks'
 
 // User pings: "I saw something here". User-reported, anonymous, never mixed into `sightings`.
 // Pure helpers live here so they are easy to test; the React hook is in usePings.js.
@@ -7,12 +7,6 @@ export const PING_TTL_MS = 24 * 60 * 60 * 1000
 export const PING_COOLDOWN_MS = 5 * 60 * 1000
 export const NOTE_MAX = 140
 const ROUND_STEP = 0.005 // about 500 m; supabase/pings.sql rounds the same way
-
-// Candidate species for the picker: the Yellowstone list in worker/species.json (the only park with data).
-export const PING_SPECIES = [
-  'Elk', 'American bison', 'Pronghorn', 'Mule deer', 'Coyote', 'Gray wolf', 'Grizzly bear',
-  'American black bear', 'Bighorn sheep', 'Moose', 'Bald eagle', 'Trumpeter swan', 'Sandhill crane', 'Red fox',
-]
 
 export const roundCoord = (x) => Math.round(x / ROUND_STEP) * ROUND_STEP
 
@@ -33,6 +27,9 @@ export function nearestPark(lat, lng) {
   }
   return best?.slug ?? null
 }
+
+// Species list for a location: that park's species, or null outside every park (the sheet then asks for free text).
+export const speciesFor = (lat, lng) => getPark(nearestPark(lat, lng))?.species ?? null
 
 // Pings from the last 24 hours only.
 export const recent = (pings, now = Date.now()) =>

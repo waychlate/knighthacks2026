@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import PingSheet from '../components/PingSheet'
 import { useMode } from '../lib/useMode'
 import { latestSighting, PARKS, sightingsToday } from '../lib/parks'
-import { cooldownLeftMs, distanceKm, markPinged, toGeoJSON } from '../lib/pings'
+import { cooldownLeftMs, distanceKm, markPinged, speciesFor, toGeoJSON } from '../lib/pings'
 import { timeAgo } from '../lib/time'
 import { usePings } from '../lib/usePings'
 import { parkHref } from '../lib/useRoute'
@@ -250,7 +250,7 @@ export default function GlobePage({ sightings, cameras }) {
         </button>
       </div>
 
-      {here && <PingSheet onSubmit={submitPing} onCancel={() => setHere(null)} />}
+      {here && <PingSheet species={speciesFor(here.lat, here.lng)} onSubmit={submitPing} onCancel={() => setHere(null)} />}
     </div>
   )
 }

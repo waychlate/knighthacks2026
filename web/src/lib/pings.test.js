@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { latestSighting } from './parks'
-import { cooldownLeftMs, distanceKm, makeSamplePings, markPinged, nearestPark, recent, roundCoord, toGeoJSON } from './pings'
+import { cooldownLeftMs, speciesFor, distanceKm, makeSamplePings, markPinged, nearestPark, recent, roundCoord, toGeoJSON } from './pings'
 
 const store = () => {
   const m = {}
@@ -45,5 +45,12 @@ describe('pings', () => {
     const list = [{ id: 1, camera: { id: 'b' } }, { id: 2, camera: { id: 'a' } }, { id: 3, camera: { id: 'a' } }]
     expect(latestSighting('yellowstone', list, cams).id).toBe(2)
     expect(latestSighting('nowhere', list, cams)).toBeUndefined()
+  })
+  it('offers only the species of the park you are in', () => {
+    expect(speciesFor(44.6, -110.5)).toContain('American bison')
+    expect(speciesFor(44.6, -110.5)).not.toContain('Brown bear')
+    expect(speciesFor(58.5, -155.1)).toContain('Brown bear')
+    expect(speciesFor(58.5, -155.1)).not.toContain('American bison')
+    expect(speciesFor(28.54, -81.38)).toBeNull()
   })
 })

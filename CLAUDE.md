@@ -70,7 +70,7 @@ Prefer a working end-to-end slice over polishing any single layer. Seed data and
 - `Sighting`: id, species_id, camera_id, timestamp (UTC), confidence, optional image/clip URL
 - `Prediction`: id, species_id, camera_id (nullable = anywhere), predicted_for (UTC), probability. Written by the ML job, read by the frontend.
 - `Sighting.source_kind`: `live` or `replay` (default `replay`). `Camera.park`: park slug, default `yellowstone`.
-- Pings (`supabase/pings.sql`): `pings` (lat, lng rounded to ~500 m by a trigger, optional species_name, note up to 140 chars, `is_hidden`). User-reported, never written into `sightings`; `/ml` ignores them. "In a park" is decided client-side from `radiusKm` in `web/src/lib/parks.js`.
+- Pings (`supabase/pings.sql`): `pings` (lat, lng rounded to ~500 m by a trigger, optional species_name, note up to 140 chars, `is_hidden`). User-reported, never written into `sightings`; `/ml` ignores them. "In a park" is decided client-side from `radiusKm` in `web/src/lib/parks.js`, which also holds each park's species list (`species`, unverified, from model knowledge; Yellowstone mirrors `worker/species.json`). The ping picker offers only the species of the park you are in, or free text outside every park. The worker has no Katmai list yet.
 - Social (`supabase/social.sql`): `comments` and `chat_messages` (one chat room per park, anonymous display names, 280-char limit, `is_hidden` moderation flag). They are never written into `sightings`, and `/ml` reads only camera-detected sightings.
 
 Store timestamps in UTC and convert to the park's local time only for display. Sightings should be append-only; the prediction work depends on clean history.
