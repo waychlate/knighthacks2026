@@ -45,29 +45,16 @@ Verified: web build and lint, the UI in headless Chromium, the dedupe unit tests
 - The `predictions` table is not yet written to by anything. The card shows hard-coded sample data.
 - `/ml` does not exist yet.
 
-## 4. Open decision: the live camera source
+## 4. Live camera source (decided 2026-10-10)
 
-Nothing is chosen. Two research agents ran, but the cloud session's network policy blocked `nps.gov`, `explore.org`, YouTube and the Cornell sites, so **all findings came from search snippets. No cam page or terms page was actually read, and no cam is confirmed live.** Treat every row below as a lead, not a fact.
+Chosen: NPS Yellowstone "North Entrance - Electric Peak", a still JPEG at `https://www.nps.gov/webcams-yell/mammoth_electric.jpg` refreshed every 30-60 s (the NPS page says elk, bison and pronghorn graze there). The user checked the cam and NPS disclaimer; credit NPS. The main demo runs on recorded clips and our own collected frames (`worker/animal_worker/still_poller.py` saves them), with the web Demo/Live toggle showing the difference.
 
-| Source | Notes | Concerns |
-|---|---|---|
-| Katmai brown bear cams (Brooks Falls, River Watch), explore.org with NPS | Best wildlife cam; bears are large and frequent. Pages: nps.gov/katm/learn/photosmultimedia/webcams.htm, explore.org/bears. | Seasonal (NPS says mid-June to mid-October); likely ended or replaying highlights as of 2026-10-10. Stream type unverified. Terms unread. |
-| Cornell Lab FeederWatch Cam, Sapsucker Woods | allaboutbirds.org/cams/cornell-lab-feederwatch/. Reportedly on YouTube, live most days. Birds are close and large; 10+ species. | Live status unconfirmed. Terms unread; a search snippet says YouTube terms apply. Small birds may weaken YOLO. |
-| Yellowstone NPS webcams | nps.gov/yell/learn/photosmultimedia/webcams.htm. About 8-10 cams. An entrance view reportedly shows elk, bison and pronghorn. | Mostly geysers and landscapes. Animals rare and probably small in frame. |
-| African waterhole cams on YouTube (NamibiaCam, Okaukuejo/Etosha, Linkwasha, Camelthorn) | Large animals, many species, easy to read if the YouTube live URLs are current. | Only active during US morning hours; would need a new species list. Not a national park. |
-| Others | Virginia DWR elk and marsh cams; Pennsylvania elk cam (may end mid-October). | Stream type and status unknown. |
+Why not the others (from page reads and search, 2026-10-10):
+- Katmai bear cams: season is "typically late June through early October", so likely ending; explore.org's terms bar bots/automated copying without written consent (more@explore.org for questions).
+- Cornell FeederWatch: page returned 403 to us; stream is on YouTube; Cornell's own terms were not found or read.
+- Other Yellowstone cams: scenery only; only Electric Peak is noted for animals. No recorded footage of that cam exists (NPS only offers Old Faithful livestream recordings).
 
-Key finding: public NPS cams are mostly scenery or weather views, and animals rarely appear on them. The "cameras placed along trails" vision is not something public cams provide.
-
-**Recommended approach:** pitch the national-park vision, but demo with a feed where animals actually appear (feeder or waterhole cam), and frame the app as a template that plugs into any park's cameras. Alternatively use Yellowstone or Katmai if a cam is live and showing animals.
-
-### To resolve (needs a human)
-1. Open the candidate cam pages in a normal browser; see if any is live and has animals in frame.
-2. Read the source's terms of use (and YouTube's, if it is a YouTube stream). Email the operator for permission for non-commercial hackathon use.
-3. Find the real stream URL (for YouTube: `yt-dlp -g <live url>` gives an HLS URL the worker can read).
-4. Only after that, point the worker at it. Until then, develop and test on local files and mock data.
-
-If research is rerun from a laptop with normal internet access, `WebFetch` should work, and an agent can read the actual pages and terms.
+Public-domain replay material: NPS Yellowstone video library (bison clips, check each link) and USGS/NPS stills.
 
 ### Draft candidate species lists (unverified)
 
