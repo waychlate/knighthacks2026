@@ -33,7 +33,7 @@ flowchart LR
 |---|---|
 | Worker (capture, YOLO, BioCLIP, dedupe, Supabase write) | Real. 14 tests pass without models. Ran end to end on a public-domain NPS bison clip on a GPU; crops from three clips were used to tune BioCLIP. |
 | Species ID accuracy | **About 59% of crops correct on the hardest clips** (bison calves and body fragments, after tuning the BioCLIP prompt). Adult bison in clear view scored 0.93 to 1.00. |
-| Live cam (NPS Yellowstone "Electric Peak") | Plumbing works (image URL polling, Live mode). The cam is a wide landscape and **showed no animals in the first 348 collected frames**; tiny distant animals would likely be missed by YOLO. Tiled detection is being tried (see `TASKS-A.md`). |
+| Live cam (NPS Yellowstone "Electric Peak") | Plumbing works (image URL polling, Live mode). The cam is a wide landscape and **showed no animals in the first 348 collected frames**; tiny distant animals would likely be missed by YOLO. Tiled detection is being tried (see `docs/team/ml.md`). |
 | Web app | Real. Lint, build, 17 unit tests and a headless-browser check pass. Runs on mock data without keys. |
 | Chat and comments | Real code and SQL, **never run against a real Supabase project yet**; without keys they run on an in-memory sample. |
 | Predictions (`ml/`) | **Trained on synthetic data** (made-up hour-of-day patterns). The simple hourly profile beat gradient boosting; results are optimistic. See [ml/README.md](ml/README.md). |
@@ -117,7 +117,7 @@ docs/        Devpost text, slides outline, demo script, QA notes (in progress)
 ```
 
 ## Team and project docs
-- Roles, git rules and the schedule: [TEAM.md](TEAM.md); per-person guides: [TASKS-A.md](TASKS-A.md), [TASKS-B.md](TASKS-B.md), [TASKS-C.md](TASKS-C.md).
+- Roles, git rules and the schedule: [TEAM.md](TEAM.md); per-person guides in [docs/team/](docs/team/).
 - Architecture, data model and conventions: [CLAUDE.md](CLAUDE.md). Run logs and measured results: [docs/PROGRESS.md](docs/PROGRESS.md). Finished task lists and the original handoff: [docs/archive/](docs/archive/).
 - Demo script: `docs/demo-script.md` (being written).
 
