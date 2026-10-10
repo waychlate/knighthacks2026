@@ -1,8 +1,11 @@
 import { useMemo, useState } from 'react'
 import Filters from '../components/Filters'
+import PredictionCard from '../components/PredictionCard'
 import SightingList from '../components/SightingList'
+import { usePredictions } from '../lib/usePredictions'
 
 export default function FeedPage({ sightings, cameras, loading }) {
+  const prediction = usePredictions()
   const [filters, setFilters] = useState({ speciesId: '', cameraId: '' })
 
   // Only offer species that actually appear in the log
@@ -23,6 +26,7 @@ export default function FeedPage({ sightings, cameras, loading }) {
 
   return (
     <>
+      <PredictionCard {...prediction} />
       <Filters species={species} cameras={cameras} value={filters} onChange={setFilters} />
       <SightingList sightings={visible} loading={loading} emptyText="No sightings match these filters." />
     </>

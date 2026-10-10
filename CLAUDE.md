@@ -41,6 +41,7 @@ Prefer a working end-to-end slice over polishing any single layer. Seed data and
 - `Camera`: id, name, location (lat/lng or label), status
 - `Species`: id, common name, scientific name, optional image
 - `Sighting`: id, species_id, camera_id, timestamp (UTC), confidence, optional image/clip URL
+- `Prediction`: id, species_id, camera_id (nullable = anywhere), predicted_for (UTC), probability. Written by the ML job, read by the frontend.
 
 Store timestamps in UTC and convert to the park's local time only for display. Sightings should be append-only; the prediction work depends on clean history.
 

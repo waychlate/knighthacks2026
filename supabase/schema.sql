@@ -46,3 +46,18 @@ alter publication supabase_realtime add table sightings;
 insert into storage.buckets (id, name, public)
 values ('snapshots', 'snapshots', true)
 on conflict (id) do nothing;
+
+-- Predictions written by the ML job (/ml). The frontend shows upcoming ones.
+create table if not exists predictions (
+  id             uuid primary key default gen_random_uuid(),
+  species_id     uuid not null references species(id),
+  camera_id      uuid references cameras(id),          -- null = anywhere in the park
+  predicted_for  timestamptz not null,                 -- when we expect to see it (UTC)
+  probability    real not null check (probability >= 0 and probability <= 1),
+  created_at     timestamptz not null default now()
+);
+
+create index if not exists predictions_for_idx on predictions (predicted_for);
+
+alter table predictions enable row level security;
+create policy "public read predictions" on predictions for select using (true);
