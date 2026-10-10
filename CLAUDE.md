@@ -22,12 +22,12 @@ Update this section whenever it changes.
 
 - **Done:**
   - **Worker:** capture (files, video, image URLs) -> YOLO -> BioCLIP -> dedupe -> Supabase, tested with fakes (14 tests). Ran on public-domain bison clips (CUDA); `worker/species.json` is the Yellowstone list.
-  - **Web:** 3D globe landing page (`react-globe.gl`; park markers appear on zoom, hover/tap card; Yellowstone live, Katmai a "no cameras yet" marker) leading to `#/park/:slug/{sightings,cameras,predictions,chat,analytics}`; old `#/cameras` and `#/analytics` redirect. Also: feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
+  - **Web:** 3D globe landing page (MapLibre GL JS globe, Esri satellite imagery + AWS Terrarium 3D terrain, both fetched at runtime so it needs internet; park markers appear on zoom with a hover/tap card; Yellowstone live, Katmai a "no cameras yet" marker), user pings ("Drop ping" at your location, rounded to ~500 m, 24 h expiry, clustered on the globe, 1 per 5 min per device; sample pings show in Demo mode only), a PWA manifest with a placeholder icon (no service worker) leading to `#/park/:slug/{sightings,cameras,predictions,chat,analytics}`; old `#/cameras` and `#/analytics` redirect. Also: feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
   - **Supabase SQL:** `schema.sql` (with `source_kind`, `cameras.park`), `social.sql`, and a synthetic `seed.sql`.
   - **`/ml`:** synthetic generator, three models, temporal-split evaluation, `predict.py` (10 tests). All on SYNTHETIC data; the simple hourly profile beat gradient boosting.
   - Both overnight branches are merged into `main`.
 - **Not verified:**
-  - Globe on a real GPU and on a phone (only headless swiftshader and a mouse were tried; touch tap card untested).
+  - Globe, terrain and pings on a real GPU and on a phone (only headless swiftshader and a mouse were tried; touch tap card and the PWA install untested). `supabase/pings.sql` has not been run against a real project.
   - Nothing has run against a real Supabase project (schema, seed, social tables, worker writes, realtime chat, `predict.py` write path).
   - The worker has not seen daylight frames from the live Electric Peak cam; YOLO may miss small distant animals. Species ID on hard clips (bison calves) is about 59% right.
   - Demo video playback in a real browser (only the `src` was checked).
@@ -70,6 +70,7 @@ Prefer a working end-to-end slice over polishing any single layer. Seed data and
 - `Sighting`: id, species_id, camera_id, timestamp (UTC), confidence, optional image/clip URL
 - `Prediction`: id, species_id, camera_id (nullable = anywhere), predicted_for (UTC), probability. Written by the ML job, read by the frontend.
 - `Sighting.source_kind`: `live` or `replay` (default `replay`). `Camera.park`: park slug, default `yellowstone`.
+- Pings (`supabase/pings.sql`): `pings` (lat, lng rounded to ~500 m by a trigger, optional species_name, note up to 140 chars, `is_hidden`). User-reported, never written into `sightings`; `/ml` ignores them. "In a park" is decided client-side from `radiusKm` in `web/src/lib/parks.js`.
 - Social (`supabase/social.sql`): `comments` and `chat_messages` (one chat room per park, anonymous display names, 280-char limit, `is_hidden` moderation flag). They are never written into `sightings`, and `/ml` reads only camera-detected sightings.
 
 Store timestamps in UTC and convert to the park's local time only for display. Sightings should be append-only; the prediction work depends on clean history.
@@ -113,7 +114,7 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
   Tests: `python -m pytest` (from `/worker`).
 - `/ml` (Python, synthetic data only): from `/ml`, `pip install -r requirements.txt`, `python evaluate.py`, `python predict.py`, `python make_seed.py`, `python -m pytest`. See `ml/README.md`.
 - Setup: `bash scripts/setup-supabase-vercel.sh` (Supabase project, SQL files, keys, Vercel). `npm test` in `/web` runs vitest.
-- Database: run `supabase/schema.sql`, then `supabase/social.sql` (and optionally the synthetic `supabase/seed.sql`) in the Supabase SQL editor.
+- Database: run `supabase/schema.sql`, then `supabase/social.sql`, then `supabase/pings.sql` (and optionally the synthetic `supabase/seed.sql`) in the Supabase SQL editor.
 
 ## Conventions
 
