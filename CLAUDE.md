@@ -37,11 +37,42 @@ Store timestamps in UTC and convert to the park's local time only for display. S
 
 ## Tech stack
 
-**Not yet decided.** Update this section once chosen, and then fill in the commands below. Until then, don't assume a framework; ask or propose one before scaffolding.
+```
+camera/stream --> worker (Python) --> Supabase (Postgres + Storage + Realtime) <-- Vite app on Vercel
+```
+
+| Piece | Choice |
+|---|---|
+| Detector worker (`/worker`) | Python, OpenCV/ffmpeg for frame capture, YOLO (Ultralytics) for animal detection |
+| Species ID | Crop each detection, then classify with a vision LLM API first; BioCLIP is the fallback if cost or latency is a problem |
+| Database / storage / live updates | Supabase (Postgres, Storage for snapshots, Realtime for the live feed) |
+| Frontend (`/web`) | React + Vite + Tailwind, `@supabase/supabase-js`, Recharts for analytics |
+| Frontend hosting | Vercel (any static host would work) |
+| Prediction (`/ml`, stretch) | pandas + scikit-learn |
+
+There is no custom API server. The worker writes sightings straight to Supabase and the frontend reads them. Add a small FastAPI service only if we need custom logic later (e.g. serving predictions).
+
+The worker is a long-running process and cannot run on Vercel. Run it on a laptop for the demo, or on an always-on host (Railway, Fly.io, a VPS).
+
+### Worker notes
+
+- Sample about 1-2 frames per second (or use motion detection first); do not run YOLO on every frame.
+- Dedupe: merge detections of the same species on the same camera within a cooldown window (default 60s) into one `Sighting`.
+- Save a cropped snapshot to Supabase Storage with each sighting.
+- The stream source is still undecided (a national park live cam is the goal). Check each source's terms of use before scraping. Until one is chosen, develop against a local video file or a mock sighting generator.
+
+### Supabase notes
+
+- The schema lives in `supabase/schema.sql` so everyone shares one source of truth.
+- Keys go in `.env` (never committed). The worker uses the service-role key; the frontend only ever gets the public anon key. Enable row-level security with public read-only access on `sightings`.
 
 ## Commands
 
-_To be filled in once the stack is chosen (install, dev server, tests, lint, build)._
+_Fill in as the pieces are scaffolded. Planned:_
+
+- `/web`: `npm install`, `npm run dev`, `npm run build`, `npm run lint`
+- `/worker`: `pip install -r requirements.txt`, `python -m worker.main --source <url|file>`
+- `/ml`: `pip install -r requirements.txt`
 
 ## Conventions
 
