@@ -53,7 +53,7 @@ camera/stream --> worker (Python) --> Supabase (Postgres + Storage + Realtime) <
 | Piece | Choice |
 |---|---|
 | Detector worker (`/worker`) | Python, OpenCV/ffmpeg for frame capture, YOLO (Ultralytics) for animal detection |
-| Species ID | Crop each detection, then classify with a vision LLM API first; BioCLIP is the fallback if cost or latency is a problem |
+| Species ID | Crop each detection, then classify with BioCLIP (Hugging Face, zero-shot against the park's candidate species list). Optionally fall back to a vision LLM API for low-confidence crops |
 | Database / storage / live updates | Supabase (Postgres, Storage for snapshots, Realtime for the live feed) |
 | Frontend (`/web`) | React + Vite + Tailwind, `@supabase/supabase-js`, Recharts for analytics |
 | Frontend hosting | Vercel (any static host would work) |
