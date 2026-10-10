@@ -23,15 +23,16 @@ Update this section whenever it changes.
 - **Done:** web feed with species/camera filters, cameras pages, prediction card (sample data); Supabase schema; worker pipeline (capture -> YOLO -> BioCLIP -> dedupe -> Supabase) with dedupe unit tests.
 - **Not verified:** the worker has never run YOLO/BioCLIP on real footage, and nothing has run against a real Supabase project yet.
 - **Not started:** `/ml` (analytics + predictions), analytics page in the web app, Vercel deploy.
-- **Undecided:** which live camera to use. See "Stream source" below.
+- **Decided (2026-10-10):** live source is the NPS Yellowstone "North Entrance - Electric Peak" still. Demo uses recorded clips; the web app has a Demo/Live toggle. Social (per-park chat, comments on sightings) is added anonymously. Databricks is skipped.
+- **Work split:** two overnight branches. `overnight/pipeline` follows `TASKS.md` (worker, ml, schema, seed). `overnight/web-social` follows `TASKS-web.md` (all of web, `supabase/social.sql`). Each task file lists what the branch owns and must not touch; the data contract is in both files.
 
 ### Stream source
 
-Undecided. The goal is a national park cam, but public NPS cams are mostly scenery and the best wildlife cam (Katmai bears) is seasonal. Candidates found so far (none verified live, none with terms of use read): Cornell FeederWatch Cam, Katmai/explore.org, Yellowstone NPS cams, African waterhole cams on YouTube.
+Chosen: the NPS Yellowstone "North Entrance - Electric Peak" webcam, a JPEG at `https://www.nps.gov/webcams-yell/mammoth_electric.jpg` refreshed every 30-60 s. The user viewed the cam and the NPS disclaimer on 2026-10-10 and approved it. Credit NPS when showing its images. Poll no faster than every 30 s and send a descriptive User-Agent (see `worker/animal_worker/still_poller.py`).
 
-Background, candidate details, and draft species lists are in `HANDOFF.md`.
+Other candidates (Katmai/explore.org, Cornell FeederWatch, African waterhole cams) were rejected for now: explore.org's terms bar bots without written consent, Katmai's bear season is ending, and Cornell's terms are unread. Background is in `HANDOFF.md`.
 
-**Do not connect the worker to any live stream, scrape any site, or contact anyone until the user has chosen a source and checked its terms.** Develop and test against local video/image files and mock data.
+**Unattended runs must not fetch the live URL or any other live stream, scrape any site, or contact anyone.** The user starts the still collector by hand to record frames into the gitignored `worker/sample_videos/yellowstone/`; unattended runs may read those frames. Develop and test against local files, a local test server, and mock data.
 
 ## Hackathon tracks
 
@@ -59,6 +60,8 @@ Prefer a working end-to-end slice over polishing any single layer. Seed data and
 - `Species`: id, common name, scientific name, optional image
 - `Sighting`: id, species_id, camera_id, timestamp (UTC), confidence, optional image/clip URL
 - `Prediction`: id, species_id, camera_id (nullable = anywhere), predicted_for (UTC), probability. Written by the ML job, read by the frontend.
+- `Sighting.source_kind`: `live` or `replay` (default `replay`). `Camera.park`: park slug, default `yellowstone`.
+- Social (`supabase/social.sql`): `comments` and `chat_messages` (one chat room per park, anonymous display names, 280-char limit, `is_hidden` moderation flag). They are never written into `sightings`, and `/ml` reads only camera-detected sightings.
 
 Store timestamps in UTC and convert to the park's local time only for display. Sightings should be append-only; the prediction work depends on clean history.
 
@@ -134,7 +137,8 @@ Applies when the user is away (for example `claude -p` or a long unattended sess
 
 **Allowed without asking**
 - Editing and creating files in this repo; installing project dependencies into a local virtualenv (`.venv`) or `web/node_modules`.
-- Dependencies already in the stack, plus: `recharts`, `vitest`, `@testing-library/react`, `playwright` (dev only), and CPU `torch`.
+- Dependencies already in the stack, plus: `recharts`, `vitest`, `@testing-library/react`, `playwright` (dev only), and `torch` (CUDA build, falling back to CPU).
+- Installing Python 3.12 with `uv python install 3.12` for the repo-local `worker/.venv` (the system Python 3.14 may lack wheels); approved by the user on 2026-10-10.
 - Downloading Hugging Face model weights (YOLO, BioCLIP) into the default cache.
 - Downloading a few small, clearly freely licensed (CC0/public domain) test images or clips for local testing. Keep them out of git (`worker/sample_videos/` is gitignored) and note the source in `PROGRESS.md`.
 - `git add`, `git commit`, and `git push` to the current feature branch.
