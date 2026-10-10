@@ -63,9 +63,7 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
         </section>
       </div>
 
-      <div className="mt-6">
-        <ChatPanel park={camera?.park ?? mine[0]?.camera.park ?? 'yellowstone'} />
-      </div>
+      <ChatPanel park={camera?.park ?? mine[0]?.camera.park ?? 'yellowstone'} />
     </>
   )
 }
