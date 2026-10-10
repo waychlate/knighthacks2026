@@ -118,7 +118,7 @@ docs/        Devpost text, slides outline, demo script, QA notes (in progress)
 
 ## Team and project docs
 - Roles, git rules and the schedule: [TEAM.md](TEAM.md); per-person guides: [TASKS-A.md](TASKS-A.md), [TASKS-B.md](TASKS-B.md), [TASKS-C.md](TASKS-C.md).
-- Architecture, data model and conventions: [CLAUDE.md](CLAUDE.md). Run logs and measured results: [PROGRESS.md](PROGRESS.md), [PROGRESS-web.md](PROGRESS-web.md).
+- Architecture, data model and conventions: [CLAUDE.md](CLAUDE.md). Run logs and measured results: [docs/PROGRESS.md](docs/PROGRESS.md). Finished task lists and the original handoff: [docs/archive/](docs/archive/).
 - Demo script: `docs/demo-script.md` (being written).
 
 ## Credits and licenses

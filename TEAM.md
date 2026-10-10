@@ -32,7 +32,7 @@ C creates the Supabase project and Vercel site. If you need a key, C sends it pr
 
 ## Honesty rules (these are judged)
 - Synthetic or mock data is always labelled as such. Never call it real.
-- Don't say the AI is better than we measured. Our numbers are in `ml/README.md` and `PROGRESS.md`.
+- Don't say the AI is better than we measured. Our numbers are in `ml/README.md` and `docs/PROGRESS.md`.
 
 ## Rough clock (H0 = now; C: write the real deadline here: __________)
 | Hours from now | What |
