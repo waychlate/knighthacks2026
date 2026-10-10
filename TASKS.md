@@ -22,18 +22,18 @@ The web/social run has its own file, `TASKS-web.md`, on `overnight/web-social`. 
 - Species list for Yellowstone (edit `worker/species.json`): elk, American bison, pronghorn, mule deer, coyote, gray wolf, grizzly bear, black bear, bighorn sheep, moose, bald eagle, trumpeter swan, sandhill crane, red fox. Common and scientific names; this list is from model knowledge, not checked against NPSpecies.
 
 ## 1. Environment
-- [ ] Create `worker/.venv` with Python 3.12 (`uv python install 3.12` then `uv venv --python 3.12 worker/.venv`; the system Python 3.14 likely lacks wheels). Install `worker/requirements.txt` with the CUDA build of torch, falling back to CPU if CUDA fails.
-- [ ] Download YOLO and BioCLIP weights into the default cache.
+- [x] Create `worker/.venv` with Python 3.12 (`uv python install 3.12` then `uv venv --python 3.12 worker/.venv`; the system Python 3.14 likely lacks wheels). Install `worker/requirements.txt` with the CUDA build of torch, falling back to CPU if CUDA fails.
+- [x] Download YOLO and BioCLIP weights into the default cache.
 - Accept: `python -c "import torch, ultralytics, open_clip; print(torch.cuda.is_available())"` runs inside the venv. Record versions and the CUDA result in `PROGRESS.md`.
 
 ## 2. Make the worker testable without models
-- [ ] Refactor `worker/animal_worker/main.py` so the per-frame logic is a function, e.g. `process_frame(frame, ts, detector, classifier, deduper, sink)`, with injected dependencies. Heavy imports stay lazy.
-- [ ] pytest tests with fake detector/classifier/sink: logs a sighting, respects the dedupe cooldown, skips below-threshold classifications, handles frames with no detections.
+- [x] Refactor `worker/animal_worker/main.py` so the per-frame logic is a function, e.g. `process_frame(frame, ts, detector, classifier, deduper, sink)`, with injected dependencies. Heavy imports stay lazy.
+- [x] pytest tests with fake detector/classifier/sink: logs a sighting, respects the dedupe cooldown, skips below-threshold classifications, handles frames with no detections.
 - Accept: `python -m pytest` passes from `/worker` without torch/ultralytics importable.
 
 ## 3. Image-URL source
-- [ ] Add a source mode for an `http(s)` image URL that polls every N seconds (default 60, minimum 30), reusing `fetch_still` from `still_poller.py` (User-Agent, ETag, stop on error). Tag sightings from it `source_kind='live'`; sightings from files/video are `replay`. Add a `--source-kind` override.
-- [ ] Test against a local file or a local `http.server`, never a real third-party URL.
+- [x] Add a source mode for an `http(s)` image URL that polls every N seconds (default 60, minimum 30), reusing `fetch_still` from `still_poller.py` (User-Agent, ETag, stop on error). Tag sightings from it `source_kind='live'`; sightings from files/video are `replay`. Add a `--source-kind` override.
+- [x] Test against a local file or a local `http.server`, never a real third-party URL.
 - Accept: pytest covers the polling loop with a fake fetcher and the `source_kind` assignment.
 
 ## 4. Verify the real pipeline (best effort)

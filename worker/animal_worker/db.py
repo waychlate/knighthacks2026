@@ -16,9 +16,9 @@ class SightingStore:
         self._camera_ids: dict[str, str] = {}
         self._species_ids: dict[str, str] = {}
 
-    def camera_id(self, name: str, location: str | None = None) -> str:
+    def camera_id(self, name: str, location: str | None = None, park: str = "yellowstone") -> str:
         if name not in self._camera_ids:
-            row = self.client.table("cameras").upsert({"name": name, "location": location}, on_conflict="name").execute()
+            row = self.client.table("cameras").upsert({"name": name, "location": location, "park": park}, on_conflict="name").execute()
             self._camera_ids[name] = row.data[0]["id"]
         return self._camera_ids[name]
 
@@ -40,7 +40,8 @@ class SightingStore:
         bucket.upload(path, buf.getvalue(), {"content-type": "image/jpeg"})
         return bucket.get_public_url(path)
 
-    def insert_sighting(self, *, species_id: str, camera_id: str, confidence: float, snapshot_url: str | None):
+    def insert_sighting(self, *, species_id: str, camera_id: str, confidence: float, snapshot_url: str | None, source_kind: str = "replay"):
         self.client.table("sightings").insert(
-            {"species_id": species_id, "camera_id": camera_id, "confidence": round(confidence, 3), "snapshot_url": snapshot_url}
+            {"species_id": species_id, "camera_id": camera_id, "confidence": round(confidence, 3), "snapshot_url": snapshot_url,
+             "source_kind": source_kind}
         ).execute()
