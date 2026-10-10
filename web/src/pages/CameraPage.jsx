@@ -37,26 +37,30 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
       <h2 className="mt-2 text-xl font-bold text-stone-900">📷 {name}</h2>
       {location && <p className="text-sm text-stone-500">{location}</p>}
 
-      <div className="mt-4">
-        <CameraPanel camera={{ name, ...camera }} />
-      </div>
+      <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:items-start">
+        <section>
+          <CameraPanel camera={{ name, ...camera }} />
 
-      {counts.length > 0 && (
-        <div className="my-4 flex flex-wrap gap-2">
-          {counts.map(({ species, n }) => (
-            <span key={species.id} className="rounded-full bg-emerald-100 px-3 py-1 text-sm text-emerald-800">
+          {counts.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {counts.map(({ species, n }) => (
+                <span key={species.id} className="rounded-full bg-emerald-100 px-3 py-1 text-sm text-emerald-800">
               {species.common_name} · {n}
-            </span>
-          ))}
-        </div>
-      )}
+                </span>
+              ))}
+            </div>
+          )}
 
-      <div className="mt-4">
-        <SightingList
-          sightings={mine}
-          loading={loading}
-          emptyText={mode === 'live' ? 'Waiting for the first sighting from the live camera.' : 'Nothing seen on this camera yet.'}
-        />
+        </section>
+
+        <section>
+          <h3 className="mb-3 text-lg font-semibold text-stone-900">Detected animals</h3>
+          <SightingList
+            sightings={mine}
+            loading={loading}
+            emptyText={mode === 'live' ? 'Waiting for the first sighting from the live camera.' : 'Nothing seen on this camera yet.'}
+          />
+        </section>
       </div>
 
       <div className="mt-6">
