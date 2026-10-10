@@ -37,8 +37,8 @@ The web/social run has its own file, `TASKS-web.md`, on `overnight/web-social`. 
 - Accept: pytest covers the polling loop with a fake fetcher and the `source_kind` assignment.
 
 ## 4. Verify the real pipeline (best effort)
-- [ ] Download a few public-domain test clips/images into `worker/sample_videos/`: the Yellowstone bison clips in the NPS video library (nps.gov/yell/learn/photosmultimedia/vl_bisoncalves.htm, check each link works and the license says public domain) and USGS/NPS public-domain stills. Never download from YouTube. Record URL and license of each in `PROGRESS.md`; skip any item without an explicit public-domain label.
-- [ ] Run the worker with `--dry-run` on those clips and on whatever frames exist in `worker/sample_videos/yellowstone/`. Confirm at least one correct `SIGHTING`. Tune BioCLIP prompts and `--min-confidence`, then record what worked, what did not, and speed (GPU and, if cheap, CPU) in `PROGRESS.md`. Small distant animals on the cam frames may not be detected; say so.
+- [x] Download a few public-domain test clips/images into `worker/sample_videos/`: the Yellowstone bison clips in the NPS video library (nps.gov/yell/learn/photosmultimedia/vl_bisoncalves.htm, check each link works and the license says public domain) and USGS/NPS public-domain stills. Never download from YouTube. Record URL and license of each in `PROGRESS.md`; skip any item without an explicit public-domain label.
+- [x] Run the worker with `--dry-run` on those clips and on whatever frames exist in `worker/sample_videos/yellowstone/`. Confirm at least one correct `SIGHTING`. Tune BioCLIP prompts and `--min-confidence`, then record what worked, what did not, and speed (GPU and, if cheap, CPU) in `PROGRESS.md`. Small distant animals on the cam frames may not be detected; say so.
 - Accept: documented result in `PROGRESS.md`. If weights or media can't be downloaded, mark blocked and move on.
 
 ## 5. Schema and seed data
