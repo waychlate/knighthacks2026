@@ -13,8 +13,8 @@ import { parkHref } from '../lib/useRoute'
 // Vite must bundle MapLibre's worker (it imports a shared chunk), so hand it the built URL.
 maplibregl.setWorkerUrl(workerUrl)
 
-// Park markers show once the map is zoomed in past this level.
-const SHOW_PARKS_ZOOM = 4
+// Park markers remain visible at world zoom so the globe has recognizable destinations.
+const SHOW_PARKS_ZOOM = 0
 // Zoomed in this far with the map centred inside a park, its overview panel opens at the bottom.
 const OVERVIEW_ZOOM = 7
 const isTouch = () => window.matchMedia('(hover: none)').matches
@@ -125,16 +125,24 @@ export default function GlobePage({ sightings, cameras }) {
     // cameras are dimmed. The wrapper is positioned by MapLibre, so the shape lives on a child.
     const markers = PARKS.map((park) => {
       const el = document.createElement('div')
-      el.style.cssText = 'display:none;cursor:pointer'
+      const accent = park.slug === 'katmai' ? '#0369a1' : '#047857'
+      el.style.cssText = 'display:block;cursor:pointer;position:relative;width:148px;height:76px;transition:opacity .2s ease'
       el.setAttribute('role', 'button')
       el.setAttribute('aria-label', park.name)
+      const halo = document.createElement('div')
+      halo.style.cssText = `position:absolute;left:50%;bottom:10px;width:52px;height:52px;transform:translateX(-50%);border-radius:50%;background:${accent};opacity:.18;box-shadow:0 0 0 7px rgba(255,255,255,.22),0 0 22px ${accent}`
       const pin = document.createElement('div')
-      pin.style.cssText = `width:34px;height:34px;background:#047857;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.5);opacity:${park.active ? 1 : 0.6}`
+      pin.style.cssText = `position:absolute;left:50%;bottom:18px;width:40px;height:40px;background:${accent};border:3px solid #fff;border-radius:50% 50% 50% 0;transform:translateX(-50%) rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 9px rgba(0,0,0,.55);opacity:${park.active ? 1 : 0.82}`
       const icon = document.createElement('span')
       icon.textContent = '🌲'
-      icon.style.cssText = 'transform:rotate(45deg);font-size:16px;line-height:1'
+      icon.style.cssText = 'transform:rotate(45deg);font-size:18px;line-height:1'
+      const label = document.createElement('span')
+      label.textContent = park.name.replace(' National Park', '')
+      label.style.cssText = `position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);white-space:nowrap;border:1px solid rgba(255,255,255,.9);border-radius:999px;padding:3px 8px;background:rgba(8,47,73,.9);color:#fff;font:600 11px/1.1 system-ui,sans-serif;letter-spacing:.01em;box-shadow:0 2px 8px rgba(0,0,0,.35)`
       pin.appendChild(icon)
+      el.appendChild(halo)
       el.appendChild(pin)
+      el.appendChild(label)
       const open = () => {
         window.location.hash = parkHref(park.slug).slice(1)
       }
@@ -154,7 +162,7 @@ export default function GlobePage({ sightings, cameras }) {
     const onZoom = () => {
       const z = map.getZoom() >= SHOW_PARKS_ZOOM
       setZoomed(z)
-      markers.forEach((el) => (el.style.display = z ? 'block' : 'none'))
+      markers.forEach((el) => (el.style.opacity = z ? '1' : '0.92'))
       const c = map.getCenter()
       const inside = map.getZoom() >= OVERVIEW_ZOOM ? PARKS.find((p) => distanceKm(c.lat, c.lng, p.lat, p.lng) <= p.radiusKm) : null
       setFocus((prev) => (prev?.slug === inside?.slug ? prev : (inside ?? null)))
