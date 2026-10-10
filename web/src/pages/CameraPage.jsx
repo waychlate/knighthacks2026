@@ -1,7 +1,9 @@
 import { useMemo } from 'react'
+import CameraPanel from '../components/CameraPanel'
+import ChatPanel from '../components/ChatPanel'
 import SightingList from '../components/SightingList'
 
-export default function CameraPage({ id, sightings, cameras, loading }) {
+export default function CameraPage({ id, sightings, cameras, loading, mode }) {
   const camera = cameras.find((c) => c.id === id)
   const mine = useMemo(() => sightings.filter((s) => s.camera.id === id), [sightings, id])
 
@@ -35,6 +37,10 @@ export default function CameraPage({ id, sightings, cameras, loading }) {
       <h2 className="mt-2 text-xl font-bold text-stone-900">📷 {name}</h2>
       {location && <p className="text-sm text-stone-500">{location}</p>}
 
+      <div className="mt-4">
+        <CameraPanel camera={{ name, ...camera }} />
+      </div>
+
       {counts.length > 0 && (
         <div className="my-4 flex flex-wrap gap-2">
           {counts.map(({ species, n }) => (
@@ -46,7 +52,15 @@ export default function CameraPage({ id, sightings, cameras, loading }) {
       )}
 
       <div className="mt-4">
-        <SightingList sightings={mine} loading={loading} emptyText="Nothing seen on this camera yet." />
+        <SightingList
+          sightings={mine}
+          loading={loading}
+          emptyText={mode === 'live' ? 'Waiting for the first sighting from the live camera.' : 'Nothing seen on this camera yet.'}
+        />
+      </div>
+
+      <div className="mt-6">
+        <ChatPanel park={camera?.park ?? mine[0]?.camera.park ?? 'yellowstone'} />
       </div>
     </>
   )

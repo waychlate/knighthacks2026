@@ -55,3 +55,9 @@ python -m animal_worker.still_poller --out sample_videos/yellowstone --every 60
 ### 4. ML and synthetic data
 `ml/` predicts when species appear, trained on **synthetic** data only; results and caveats are in [ml/README.md](ml/README.md).
 `python ml/predict.py` writes `web/public/predictions.sample.json` for the prediction card, and `python ml/make_seed.py` regenerates `supabase/seed.sql`.
+
+## Web app: Demo / Live, chat and comments
+- The header switch is **Demo** (recorded clips and seed/mock data, amber "Demo clip" bubble) or **Live** (green "Live" bubble; only the NPS Electric Peak cam has a live image, refreshed every minute; other cameras are greyed out). Live never falls back to the demo clip: a failed image says "Live feed unavailable". The feed, cameras and analytics follow the switch (`source_kind`).
+- Demo clips live in `web/public/demo/` (public-domain NPS bison clips). `web/src/lib/cameraConfig.js` maps camera names to their clip and live image.
+- Each park has one anonymous chat room (camera page) and every sighting has a comment thread. Run `supabase/social.sql` after `schema.sql` to enable them; without keys they run on an in-memory sample. Hide a bad message by setting `is_hidden = true` in the Supabase dashboard.
+- `cd web && npm run dev | lint | build | test`.
