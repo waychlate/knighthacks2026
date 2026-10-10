@@ -59,7 +59,7 @@ bash scripts/setup-supabase-vercel.sh
 It walks through creating the Supabase project, running the SQL files, writing `.env`, checking the API, deploying to Vercel, and a worker smoke test.
 
 By hand:
-1. Create a project at supabase.com. In the SQL editor run, in order: `supabase/schema.sql`, `supabase/social.sql`, then (optional, **synthetic** demo data, fresh database only) `supabase/seed.sql`.
+1. Create a project at supabase.com. In the SQL editor run, in order: `supabase/schema.sql`, `supabase/social.sql`, `supabase/pings.sql`, then (optional, **synthetic** demo data, fresh database only) `supabase/seed.sql`.
 2. `cp .env.example .env` and fill in `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (worker, **secret**), `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (web, public). `.env` is gitignored; never commit it.
 3. **Vercel:** import this repo, Root Directory `web`, framework Vite, and add the two `VITE_` variables. The worker cannot run on Vercel; run it on a laptop.
 
@@ -111,7 +111,7 @@ python make_seed.py      # regenerates supabase/seed.sql (synthetic)
 worker/      Python pipeline: capture, YOLO, BioCLIP, dedupe, Supabase writes, still_poller.py
 ml/          Synthetic data, models, evaluation, predictions (all synthetic)
 web/         React + Vite + Tailwind app, Recharts, Supabase client
-supabase/    schema.sql, social.sql, seed.sql (synthetic)
+supabase/    schema.sql, social.sql, pings.sql, seed.sql (synthetic)
 scripts/     setup-supabase-vercel.sh (guided setup)
 docs/        Devpost text, slides outline, demo script, QA notes (in progress)
 ```

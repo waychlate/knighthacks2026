@@ -103,7 +103,7 @@ export default function GlobePage({ sightings, cameras }) {
   const [msg, setMsg] = useState(null)
   const touch = isTouch()
   const { mode } = useMode()
-  const { pings, post } = usePings(mode)
+  const { pings, post, error: pingsError, usingMock } = usePings(mode)
 
   const shown = picked ?? focus
 
@@ -232,6 +232,14 @@ export default function GlobePage({ sightings, cameras }) {
           Spin the globe and zoom in to find parks
         </p>
       </div>
+
+      {(usingMock || pingsError) && (
+        <p className="absolute left-3 top-14 z-10 max-w-xs rounded-lg bg-amber-100 px-3 py-2 text-xs text-amber-900">
+          {usingMock
+            ? 'Supabase keys are missing, so pings are not saved: they vanish when you reload.'
+            : `Could not load pings: ${pingsError}. Has supabase/pings.sql been run?`}
+        </p>
+      )}
 
       {shown && (
         <Card

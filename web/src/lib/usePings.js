@@ -50,5 +50,5 @@ export function usePings(mode) {
   }, [])
 
   const pings = useMemo(() => recent(mode === 'demo' ? [...real, ...samples] : real), [real, samples, mode])
-  return { pings, post, error }
+  return { pings, post, error, usingMock: !supabase }
 }

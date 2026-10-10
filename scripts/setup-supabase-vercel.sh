@@ -258,6 +258,11 @@ say "Anonymous chat rooms and sighting comments, with length limits and a rate l
 run_sql_file supabase/social.sql
 pause "Did it say Success?"
 
+stage "Create user pings (pings.sql)"
+say "The globe's Drop ping button writes here. Locations are rounded to about 500 m by the database."
+run_sql_file supabase/pings.sql
+pause "Did it say Success?"
+
 # ── 5 ─────────────────────────────────────────────────────────────────────
 stage "Load the synthetic demo data (seed.sql)"
 say "Made-up sightings so the feed isn't empty. They are labelled replay; they are not real."
