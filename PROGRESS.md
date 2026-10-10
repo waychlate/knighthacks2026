@@ -4,7 +4,18 @@ Log for unattended runs. Newest entry at the bottom. Put the summary of the late
 
 ## Latest run summary
 
-_No unattended run yet._
+**Pipeline run, 2026-10-10 (supervised, not overnight): all 7 tasks done. `python -m pytest` passes in `/worker` (14) and `/ml` (10).**
+
+Done: venv with CUDA torch; worker refactored and tested without models; image-URL (live still) source; real YOLO + BioCLIP run on public-domain bison clips; Yellowstone species list; schema (`source_kind`, `cameras.park`) and synthetic `seed.sql`; `/ml` predictions with evaluation; README.
+
+Not done / blocked: nothing blocked.
+
+**Check these first:**
+1. **Species-ID accuracy is the weak spot.** On the hard bison-calf clips only 59% of crops were labeled bison even after prompt tuning (adult bison in clear view: 0.93-1.00); raising `--min-confidence` trades misses for fewer false sightings.
+2. **Dawn frames from the Electric Peak collector are untested.** The 193 frames so far were night infrared with nothing visible. YOLO only knows COCO animals (cow/horse/sheep for bison/elk), so small distant animals may never be detected; run the worker on morning frames before promising the live demo.
+3. **Nothing has run against a real Supabase project** (schema, seed, `StoreSink`, snapshot upload, `predict.py` write path). `seed.sql` was reviewed, not executed.
+4. **ML is on synthetic data** and boosting did not beat the simple hourly profile (see `ml/README.md`).
+5. **For the merge with `overnight/web-social`:** wire the prediction card to `web/public/predictions.sample.json`, and reconcile camera names (seed uses `Electric Peak Cam`, `Lamar Valley Demo Cam`, `Hayden Valley Demo Cam`).
 
 ## Log
 
