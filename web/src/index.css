@@ -38,9 +38,6 @@ button:active, a:active { transform: translateY(1px); }
 .katmai-waterline { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #0284c7; font-size: 1.1rem; letter-spacing: .35rem; }
 .katmai-waterline span:nth-child(2) { flex: 1; overflow: hidden; color: #38bdf8; font-size: 1.5rem; letter-spacing: .1rem; white-space: nowrap; }
 .katmai-fish { margin-right: .3rem; font-size: .9rem; }
-.katmai-sprite { position: fixed; z-index: 35; left: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); width: 11rem; height: 15.4rem; border: 1px solid rgba(125,211,252,.65); border-radius: 1rem; background-color: rgba(8,47,73,.78); background-image: url('/katmai/bear-catching-salmon-sprite.png'); background-position: 0 100%; background-repeat: no-repeat; background-size: 800% 100%; box-shadow: 0 14px 30px rgba(3,105,161,.28); animation: katmai-catch 10s steps(8) infinite; pointer-events: none; }
-.katmai-sprite-label { position: absolute; right: .5rem; bottom: .45rem; border-radius: 999px; padding: .2rem .45rem; background: rgba(8,47,73,.88); color: #e0f2fe; font-size: .65rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-@keyframes katmai-catch { from { background-position: 0 100%; } to { background-position: 100% 100%; } }
 .katmai-canopy { position: relative; overflow: hidden; background: linear-gradient(145deg, #082f49, #0c4a6e 52%, #075985) !important; box-shadow: inset 0 -8px 0 rgba(2,132,199,.18); }
 .katmai-canopy::before { content: '🌿  🌿  🌿'; position: absolute; top: -1.1rem; right: .8rem; color: rgba(186,230,253,.35); font-size: 1.2rem; letter-spacing: .3rem; }
 .katmai-chat section { border-color: #7dd3fc !important; box-shadow: 0 18px 36px rgba(3,105,161,.25); }
@@ -63,7 +60,6 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
   .globe-actions { bottom: calc(1rem + env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
-@media (max-width: 639px) { .katmai-sprite { left: .5rem; bottom: calc(.5rem + env(safe-area-inset-bottom)); width: 8.5rem; height: 11.9rem; } }
 
 html[data-theme='dark'] { color-scheme: dark; background: #10251a; }
 html[data-theme='dark'] body { background: #10251a; color: #e7f5eb; }
