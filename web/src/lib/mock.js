@@ -36,3 +36,13 @@ export function makeMockHistory(n = 12) {
     makeMockSighting(new Date(now - (i + 1) * 7 * 60 * 1000)),
   )
 }
+
+// Sample predictions (same shape as a joined `predictions` row), relative to "now".
+export function makeMockPredictions() {
+  const at = (mins) => new Date(Date.now() + mins * 60 * 1000).toISOString()
+  return [
+    { id: 'pred-1', predicted_for: at(25), probability: 0.78, species: MOCK_SPECIES[2], camera: MOCK_CAMERAS[2] },
+    { id: 'pred-2', predicted_for: at(115), probability: 0.64, species: MOCK_SPECIES[1], camera: MOCK_CAMERAS[1] },
+    { id: 'pred-3', predicted_for: at(240), probability: 0.52, species: MOCK_SPECIES[0], camera: null },
+  ]
+}
