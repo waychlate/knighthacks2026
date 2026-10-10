@@ -1,4 +1,5 @@
 import ChatPanel from '../components/ChatPanel'
+import KatmaiSprite from '../components/KatmaiSprite'
 import Nav from '../components/Nav'
 import PredictionCard from '../components/PredictionCard'
 import { getPark } from '../lib/parks'
@@ -20,6 +21,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
 
   return (
     <div className={`${themeClass} ${slug === 'katmai' ? 'katmai-environment' : ''}`}>
+      {slug === 'katmai' && <KatmaiSprite />}
       <div className="mb-4">
         <a href="#/" className="text-sm text-emerald-700 hover:underline">← Globe</a>
         <h2 className="text-xl font-bold text-stone-900">{park?.name ?? slug}</h2>
