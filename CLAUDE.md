@@ -97,7 +97,7 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 - `/worker` (Python 3.10+): `pip install -r requirements.txt`, then from `/worker`:
   `python -m animal_worker.main --source <file|url|webcam index> --camera "Name" [--dry-run]`
   Tests: `python -m pytest` (from `/worker`).
-- `/ml`: not scaffolded yet.
+- `/ml` (Python): not scaffolded yet; see `TASKS.md` task 1. Planned: `pip install -r requirements.txt`, `python ml/predict.py`, `python -m pytest` (from `/ml`).
 - Database: run `supabase/schema.sql` in the Supabase SQL editor.
 
 ## Conventions
