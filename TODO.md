@@ -93,7 +93,7 @@ Frontend-only checklist for turning Animal Logger into a polished, installable P
 - [x] Add a wildlife, mountain, or camera mark to the app identity.
 - [x] Maintain strong contrast in bright outdoor conditions.
 - [x] Respect reduced-motion preferences.
-- [ ] Consider a dark forest mode later.
+- [x] Consider a dark forest mode later. (Implemented as a persisted accessible theme toggle.)
 
 ## Offline behavior
 

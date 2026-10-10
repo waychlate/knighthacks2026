@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import ErrorBanner from './components/ErrorBanner'
 import ModeToggle from './components/ModeToggle'
+import ThemeToggle from './components/ThemeToggle'
 import CameraPage from './pages/CameraPage'
 import ParkPage from './pages/ParkPage'
 import { filterByMode } from './lib/live'
@@ -40,7 +41,7 @@ function AppShell({ children }) {
             <img src="/icons/icon-192.svg" alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
-          <div className="flex flex-wrap items-center gap-3"><ModeToggle /></div>
+          <div className="flex flex-wrap items-center gap-2"><ThemeToggle /><ModeToggle /></div>
         </div>
       </header>
       <NetworkStatus />
