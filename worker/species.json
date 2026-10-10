@@ -1,15 +1,19 @@
 {
-  "_comment": "Candidate species BioCLIP chooses between. Replace with animals that live in the chosen park. 'coco_group' is optional documentation only.",
+  "_comment": "Candidate species BioCLIP chooses between: Yellowstone. List from model knowledge, not checked against NPSpecies (park code YELL).",
   "species": [
-    {"common_name": "Northern Cardinal", "scientific_name": "Cardinalis cardinalis"},
-    {"common_name": "Blue Jay", "scientific_name": "Cyanocitta cristata"},
-    {"common_name": "Great Blue Heron", "scientific_name": "Ardea herodias"},
-    {"common_name": "Bald Eagle", "scientific_name": "Haliaeetus leucocephalus"},
-    {"common_name": "White-tailed Deer", "scientific_name": "Odocoileus virginianus"},
-    {"common_name": "American Black Bear", "scientific_name": "Ursus americanus"},
-    {"common_name": "Eastern Gray Squirrel", "scientific_name": "Sciurus carolinensis"},
-    {"common_name": "Raccoon", "scientific_name": "Procyon lotor"},
+    {"common_name": "Elk", "scientific_name": "Cervus canadensis"},
+    {"common_name": "American bison", "scientific_name": "Bison bison"},
+    {"common_name": "Pronghorn", "scientific_name": "Antilocapra americana"},
+    {"common_name": "Mule deer", "scientific_name": "Odocoileus hemionus"},
     {"common_name": "Coyote", "scientific_name": "Canis latrans"},
-    {"common_name": "Red Fox", "scientific_name": "Vulpes vulpes"}
+    {"common_name": "Gray wolf", "scientific_name": "Canis lupus"},
+    {"common_name": "Grizzly bear", "scientific_name": "Ursus arctos horribilis"},
+    {"common_name": "American black bear", "scientific_name": "Ursus americanus"},
+    {"common_name": "Bighorn sheep", "scientific_name": "Ovis canadensis"},
+    {"common_name": "Moose", "scientific_name": "Alces alces"},
+    {"common_name": "Bald eagle", "scientific_name": "Haliaeetus leucocephalus"},
+    {"common_name": "Trumpeter swan", "scientific_name": "Cygnus buccinator"},
+    {"common_name": "Sandhill crane", "scientific_name": "Antigone canadensis"},
+    {"common_name": "Red fox", "scientific_name": "Vulpes vulpes"}
   ]
 }

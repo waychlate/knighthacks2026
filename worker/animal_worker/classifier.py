@@ -31,7 +31,8 @@ class SpeciesClassifier:
         self.model, _, self.preprocess = open_clip.create_model_and_transforms(HF_MODEL)
         self.model.eval()
         tokenizer = open_clip.get_tokenizer(HF_MODEL)
-        prompts = [f"a photo of {s.scientific_name}." for s in species]
+        # "scientific (common)" beat scientific-only, common-only, ensemble and taxonomy-prefix prompts on bison clips
+        prompts = [f"a photo of {s.scientific_name} ({s.common_name})." for s in species]
         with torch.no_grad():
             text = self.model.encode_text(tokenizer(prompts))
             self.text_features = text / text.norm(dim=-1, keepdim=True)
