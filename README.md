@@ -29,3 +29,9 @@ pip install -r requirements.txt
 python -m animal_worker.main --source path/to/video.mp4 --camera "Test Cam" --dry-run
 ```
 Edit `worker/species.json` to list the animals that live in your park; BioCLIP picks from that list.
+
+## Web app: Demo / Live, chat and comments
+- The header switch is **Demo** (recorded clips and seed/mock data, amber "Demo clip" bubble) or **Live** (green "Live" bubble; only the NPS Electric Peak cam has a live image, refreshed every minute; other cameras are greyed out). Live never falls back to the demo clip: a failed image says "Live feed unavailable". The feed, cameras and analytics follow the switch (`source_kind`).
+- Demo clips live in `web/public/demo/` (public-domain NPS bison clips). `web/src/lib/cameraConfig.js` maps camera names to their clip and live image.
+- Each park has one anonymous chat room (camera page) and every sighting has a comment thread. Run `supabase/social.sql` after `schema.sql` to enable them; without keys they run on an in-memory sample. Hide a bad message by setting `is_hidden = true` in the Supabase dashboard.
+- `cd web && npm run dev | lint | build | test`.

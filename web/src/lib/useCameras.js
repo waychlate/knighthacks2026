@@ -4,6 +4,7 @@ import { MOCK_CAMERAS } from './mock'
 
 export function useCameras() {
   const [cameras, setCameras] = useState(supabase ? [] : MOCK_CAMERAS)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (!supabase) return
@@ -13,13 +14,14 @@ export function useCameras() {
       .select('*')
       .order('name')
       .then(({ data, error }) => {
-        if (error) console.error(error)
-        if (!cancelled) setCameras(data ?? [])
+        if (cancelled) return
+        if (error) setError(error.message)
+        setCameras((data ?? []).map((c) => ({ park: 'yellowstone', ...c })))
       })
     return () => {
       cancelled = true
     }
   }, [])
 
-  return cameras
+  return { cameras, error }
 }

@@ -1,0 +1,154 @@
+{
+  "synthetic": true,
+  "note": "SYNTHETIC sample predictions from ml/predict.py trained on made-up data; not real forecasts.",
+  "generated_at": "2026-10-10T12:29:43.874146+00:00",
+  "predictions": [
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-10T13:00:00+00:00",
+      "probability": 0.226
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T14:00:00+00:00",
+      "probability": 0.204
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T15:00:00+00:00",
+      "probability": 0.244
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Lamar Valley Demo Cam",
+      "predicted_for": "2026-10-10T15:00:00+00:00",
+      "probability": 0.203
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T16:00:00+00:00",
+      "probability": 0.238
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T17:00:00+00:00",
+      "probability": 0.232
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T18:00:00+00:00",
+      "probability": 0.267
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T19:00:00+00:00",
+      "probability": 0.278
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Lamar Valley Demo Cam",
+      "predicted_for": "2026-10-10T19:00:00+00:00",
+      "probability": 0.226
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Lamar Valley Demo Cam",
+      "predicted_for": "2026-10-10T20:00:00+00:00",
+      "probability": 0.249
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-10T20:00:00+00:00",
+      "probability": 0.215
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Lamar Valley Demo Cam",
+      "predicted_for": "2026-10-10T21:00:00+00:00",
+      "probability": 0.232
+    },
+    {
+      "species": "American bison",
+      "scientific_name": "Bison bison",
+      "camera": "Lamar Valley Demo Cam",
+      "predicted_for": "2026-10-10T22:00:00+00:00",
+      "probability": 0.215
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-10T23:00:00+00:00",
+      "probability": 0.215
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-11T00:00:00+00:00",
+      "probability": 0.238
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-11T00:00:00+00:00",
+      "probability": 0.219
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-11T01:00:00+00:00",
+      "probability": 0.259
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-11T01:00:00+00:00",
+      "probability": 0.255
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-11T11:00:00+00:00",
+      "probability": 0.3
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Electric Peak Cam",
+      "predicted_for": "2026-10-11T12:00:00+00:00",
+      "probability": 0.34
+    },
+    {
+      "species": "Elk",
+      "scientific_name": "Cervus canadensis",
+      "camera": "Hayden Valley Demo Cam",
+      "predicted_for": "2026-10-11T12:00:00+00:00",
+      "probability": 0.231
+    }
+  ]
+}
