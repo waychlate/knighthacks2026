@@ -69,10 +69,13 @@ html[data-theme='dark'] .status-banner { background: #1b4d32; color: #d7f3df; }
 html[data-theme='dark'] .status-action { background: #173b29; color: #d7f3df; border-color: #6fa883; }
 html[data-theme='dark'] .skeleton { background: linear-gradient(90deg, #1d3b2b 25%, #2b523a 50%, #1d3b2b 75%); background-size: 200% 100%; }
 html[data-theme='dark'] .empty-state { border-color: #47785b; color: #c5dfcf; }
-html[data-theme='dark'] .katmai-theme .bg-white { background-color: #122c3b !important; }
-html[data-theme='dark'] .katmai-theme .bg-stone-50 { background-color: #0f2530 !important; }
+html[data-theme='dark'] .katmai-theme { background: #061522; color: #e7f7ff; }
+html[data-theme='dark'] .katmai-theme .bg-white { background-color: #081d30 !important; }
+html[data-theme='dark'] .katmai-theme .bg-stone-50 { background-color: #061522 !important; }
+html[data-theme='dark'] .katmai-theme .bg-stone-100 { background-color: #0b2438 !important; }
 html[data-theme='dark'] .katmai-theme .text-stone-900 { color: #effaff !important; }
-html[data-theme='dark'] .katmai-theme .text-stone-500 { color: #a8c9d8 !important; }
-html[data-theme='dark'] .katmai-theme .border-stone-200 { border-color: #315b70 !important; }
-html[data-theme='dark'] .katmai-theme .bg-emerald-100 { background-color: #123f58 !important; }
-html[data-theme='dark'] .katmai-theme .text-emerald-800, html[data-theme='dark'] .katmai-theme .text-emerald-700 { color: #9cdbf4 !important; }
+html[data-theme='dark'] .katmai-theme .text-stone-800 { color: #d7f0fb !important; }
+html[data-theme='dark'] .katmai-theme .text-stone-500 { color: #9fc4d5 !important; }
+html[data-theme='dark'] .katmai-theme .border-stone-200 { border-color: #21465e !important; }
+html[data-theme='dark'] .katmai-theme .bg-emerald-100 { background-color: #0b3a55 !important; }
+html[data-theme='dark'] .katmai-theme .text-emerald-800, html[data-theme='dark'] .katmai-theme .text-emerald-700 { color: #a8e1fa !important; }
