@@ -1,10 +1,5 @@
-function timeAgo(iso) {
-  const secs = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000))
-  if (secs < 60) return 'just now'
-  if (secs < 3600) return `${Math.floor(secs / 60)} min ago`
-  if (secs < 86400) return `${Math.floor(secs / 3600)} hr ago`
-  return `${Math.floor(secs / 86400)} d ago`
-}
+import { cameraHref } from '../lib/useRoute'
+import { timeAgo } from '../lib/time'
 
 export default function SightingCard({ sighting }) {
   const { species, camera, seen_at, confidence, snapshot_url } = sighting
@@ -22,10 +17,10 @@ export default function SightingCard({ sighting }) {
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold text-stone-900">{species.common_name}</p>
         <p className="truncate text-sm italic text-stone-500">{species.scientific_name}</p>
-        <p className="truncate text-sm text-stone-600">
+        <a href={cameraHref(camera.id)} className="block truncate text-sm text-stone-600 hover:text-emerald-700 hover:underline">
           📷 {camera.name}
           {camera.location ? ` · ${camera.location}` : ''}
-        </p>
+        </a>
       </div>
       <div className="shrink-0 text-right text-sm">
         <p className="font-medium text-stone-800">{timeAgo(seen_at)}</p>
