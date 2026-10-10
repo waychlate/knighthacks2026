@@ -1,3 +1,5 @@
+> **Archived.** Finished or superseded; kept for history. Current plan: [TEAM.md](../../TEAM.md).
+
 # TASKS (pipeline run)
 
 Backlog for the **`overnight/pipeline`** branch. Follow "Unattended / overnight mode" in CLAUDE.md. Work top to bottom. Mark a task `[x]` only when every acceptance check passed; otherwise leave it and log the blocker in `PROGRESS.md`.

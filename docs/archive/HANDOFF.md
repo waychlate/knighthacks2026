@@ -1,3 +1,5 @@
+> **Archived.** Finished or superseded; kept for history. Current plan: [TEAM.md](../../TEAM.md).
+
 # HANDOFF: Animal Logger (KnightHacks 2026)
 
 Everything decided and learned in the cloud planning session, so a local session on a laptop can pick up cleanly. `CLAUDE.md` holds the standing rules; `TASKS.md` is the backlog; this file holds the context and research behind them.

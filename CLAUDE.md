@@ -32,13 +32,13 @@ Update this section whenever it changes.
   - Demo video playback in a real browser (only the `src` was checked).
 - **Not started:** Vercel deploy; other parks; real accounts and moderation beyond the `is_hidden` flag.
 - **Decided (2026-10-10):** live source is the NPS Yellowstone "North Entrance - Electric Peak" still. Demo uses recorded clips; the web app has a Demo/Live toggle. Social (per-park chat, comments on sightings) is added anonymously. Databricks is skipped.
-- **Work split (24 h to go):** three people, no Claude Code for two of them. See `TEAM.md` for roles, git rules and the clock; per-person guides are `TASKS-A.md` (worker, tiling), `TASKS-B.md` (docs, QA, species lists) and `TASKS-C.md` (integrator: Supabase, Vercel, merges, web). Nobody pushes to `main` except the integrator. The old `TASKS.md` and `TASKS-web.md` are finished.
+- **Work split (24 h to go):** three people, no Claude Code for two of them. See `TEAM.md` for roles, git rules and the clock; per-person guides are `TASKS-A.md` (worker, tiling), `TASKS-B.md` (docs, QA, species lists) and `TASKS-C.md` (integrator: Supabase, Vercel, merges, web). Nobody pushes to `main` except the integrator. The finished overnight task lists are in `docs/archive/`; run logs are in `docs/PROGRESS.md`.
 
 ### Stream source
 
 Chosen: the NPS Yellowstone "North Entrance - Electric Peak" webcam, a JPEG at `https://www.nps.gov/webcams-yell/mammoth_electric.jpg` refreshed every 30-60 s. The user viewed the cam and the NPS disclaimer on 2026-10-10 and approved it. Credit NPS when showing its images. Poll no faster than every 30 s and send a descriptive User-Agent (see `worker/animal_worker/still_poller.py`).
 
-Other candidates (Katmai/explore.org, Cornell FeederWatch, African waterhole cams) were rejected for now: explore.org's terms bar bots without written consent, Katmai's bear season is ending, and Cornell's terms are unread. Background is in `HANDOFF.md`.
+Other candidates (Katmai/explore.org, Cornell FeederWatch, African waterhole cams) were rejected for now: explore.org's terms bar bots without written consent, Katmai's bear season is ending, and Cornell's terms are unread. Background is in `docs/archive/HANDOFF.md`.
 
 **Unattended runs must not fetch the live URL or any other live stream, scrape any site, or contact anyone.** The user starts the still collector by hand to record frames into the gitignored `worker/sample_videos/yellowstone/`; unattended runs may read those frames. Develop and test against local files, a local test server, and mock data.
 
@@ -110,8 +110,9 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 - `/worker` (Python 3.10+): `pip install -r requirements.txt`, then from `/worker`:
   `python -m animal_worker.main --source <file|url|webcam index> --camera "Name" [--dry-run]`
   Tests: `python -m pytest` (from `/worker`).
-- `/ml` (Python): not scaffolded yet; see `TASKS.md` task 1. Planned: `pip install -r requirements.txt`, `python ml/predict.py`, `python -m pytest` (from `/ml`).
-- Database: run `supabase/schema.sql` in the Supabase SQL editor.
+- `/ml` (Python, synthetic data only): from `/ml`, `pip install -r requirements.txt`, `python evaluate.py`, `python predict.py`, `python make_seed.py`, `python -m pytest`. See `ml/README.md`.
+- Setup: `bash scripts/setup-supabase-vercel.sh` (Supabase project, SQL files, keys, Vercel). `npm test` in `/web` runs vitest.
+- Database: run `supabase/schema.sql`, then `supabase/social.sql` (and optionally the synthetic `supabase/seed.sql`) in the Supabase SQL editor.
 
 ## Conventions
 
@@ -124,7 +125,7 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 
 ## Working agreements for Claude
 
-- Check this file, `TASKS.md`, and the README before making structural decisions; update this file when the stack, commands, data model, or status change.
+- Check this file, `TEAM.md`, and the README before making structural decisions; update this file when the stack, commands, data model, or status change.
 - When the user is present: ask before adding heavy dependencies or paid/external services.
 - Develop on a feature branch, never `main`; don't open a PR unless asked.
 
@@ -133,13 +134,13 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 Applies when the user is away (for example `claude -p` or a long unattended session on their laptop). Nobody can answer questions, so decide, log, and keep going.
 
 **How to work**
-1. Read this file, then `TASKS.md` and `PROGRESS.md`. Work through `TASKS.md` top to bottom, skipping tasks already marked done.
+1. Read this file, then the task file the user names (a `TASKS-*.md`; finished ones are in `docs/archive/`) and `docs/PROGRESS.md`. Work through the task file top to bottom, skipping tasks already marked done.
 2. For each task: implement it, run the verification in its acceptance criteria, fix failures, then commit. One commit per task (or finer), with a clear message.
-3. After each task, append to `PROGRESS.md`: what was done, what was verified and how, anything skipped or uncertain. Be factual: never mark a task done unless its checks actually passed.
-4. If a task is blocked (missing key, unavailable network, unclear requirement), spend at most a few attempts on it, write the blocker and what you tried in `PROGRESS.md`, and move to the next task. Don't thrash.
-5. Stop when all tasks are done or blocked. Finish with a summary at the top of `PROGRESS.md` listing done, blocked, and what the user should check first.
+3. After each task, append to `docs/PROGRESS.md`: what was done, what was verified and how, anything skipped or uncertain. Be factual: never mark a task done unless its checks actually passed.
+4. If a task is blocked (missing key, unavailable network, unclear requirement), spend at most a few attempts on it, write the blocker and what you tried in `docs/PROGRESS.md`, and move to the next task. Don't thrash.
+5. Stop when all tasks are done or blocked. Finish with a summary at the top of `docs/PROGRESS.md` listing done, blocked, and what the user should check first.
 
-**Decide, don't ask.** Pick the simplest option that fits the stack above, note the decision in `PROGRESS.md`, and continue. Prefer a working, demoable slice over polish.
+**Decide, don't ask.** Pick the simplest option that fits the stack above, note the decision in `docs/PROGRESS.md`, and continue. Prefer a working, demoable slice over polish.
 
 **Verification is required.** Before committing, run what applies: `npm run lint` and `npm run build` in `/web`; `python -m pytest` in `/worker` (and `/ml` once it exists). Never skip, disable, or delete a failing test to get green. For UI changes, also load the page in headless Chromium (Playwright) and check for console errors.
 
@@ -148,7 +149,7 @@ Applies when the user is away (for example `claude -p` or a long unattended sess
 - Dependencies already in the stack, plus: `recharts`, `vitest`, `@testing-library/react`, `playwright` (dev only), and `torch` (CUDA build, falling back to CPU).
 - Installing Python 3.12 with `uv python install 3.12` for the repo-local `worker/.venv` (the system Python 3.14 may lack wheels); approved by the user on 2026-10-10.
 - Downloading Hugging Face model weights (YOLO, BioCLIP) into the default cache.
-- Downloading a few small, clearly freely licensed (CC0/public domain) test images or clips for local testing. Keep them out of git (`worker/sample_videos/` is gitignored) and note the source in `PROGRESS.md`.
+- Downloading a few small, clearly freely licensed (CC0/public domain) test images or clips for local testing. Keep them out of git (`worker/sample_videos/` is gitignored) and note the source in `docs/PROGRESS.md`.
 - `git add`, `git commit`, and `git push` to the current feature branch.
 
 **Never**

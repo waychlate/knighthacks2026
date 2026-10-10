@@ -10,7 +10,7 @@ git clone git@github.com:waychlate/knighthacks2026.git && cd knighthacks2026
 git checkout -b b/story
 mkdir -p docs
 ```
-Read `README.md`, `CLAUDE.md` (project overview and tracks), `ml/README.md`, and `PROGRESS.md` (what is verified and what is not).
+Read `README.md`, `CLAUDE.md` (project overview and tracks), `ml/README.md`, and `docs/PROGRESS.md` (what is verified and what is not).
 
 ## 1. Test the app like a visitor (1 to 2 h) -> `docs/qa.md`
 Open the deployed site (C gives you the link; until then ask C to share a screen or run `cd web && npm install && npm run dev`). Do this on your **phone** and on a laptop:

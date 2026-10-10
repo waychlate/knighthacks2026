@@ -1,8 +1,10 @@
 # PROGRESS
 
-Log for unattended runs. Newest entry at the bottom. Put the summary of the latest run in this block.
+Run logs from the two supervised build runs (2026-10-10), with what was verified and how. The task lists they followed are in [archive/](archive/). Measured results quoted in the README come from here.
 
-## Latest run summary
+## Pipeline run (worker, ml, schema, seed)
+
+### Latest run summary
 
 **Pipeline run, 2026-10-10 (supervised, not overnight): all 7 tasks done. `python -m pytest` passes in `/worker` (14) and `/ml` (10).**
 
@@ -17,23 +19,23 @@ Not done / blocked: nothing blocked.
 4. **ML is on synthetic data** and boosting did not beat the simple hourly profile (see `ml/README.md`).
 5. **For the merge with `overnight/web-social`:** wire the prediction card to `web/public/predictions.sample.json`, and reconcile camera names (seed uses `Electric Peak Cam`, `Lamar Valley Demo Cam`, `Hayden Valley Demo Cam`).
 
-## Log
+### Log
 
-### Task 1: Environment (done 2026-10-10)
+#### Task 1: Environment (done 2026-10-10)
 - Python 3.12.15 installed with `uv` (bootstrapped in a scratchpad venv, not global); `worker/.venv` created (gitignored).
 - Installed torch 2.6.0+cu124 / torchvision 0.21.0+cu124 plus `worker/requirements.txt`. First attempt timed out on a CUDA wheel download; retried with `UV_HTTP_TIMEOUT=600`.
 - Verified: `import torch, ultralytics, open_clip` works; `torch.cuda.is_available()` is True (RTX 4070 Laptop).
 - Weights: BioCLIP (`imageomics/bioclip`) downloaded to the Hugging Face cache; `yolov8n.pt` downloads into the working directory on first run (gitignored `*.pt`).
 
-### Task 2: Worker testable without models (done)
+#### Task 2: Worker testable without models (done)
 - `main.py`: per-frame logic is now `process_frame(frame, ts, camera, detector, classifier, deduper, sink)`; sinks are `LogSink` (dry run) and `StoreSink` (Supabase). Heavy imports and `dotenv` stay inside `main()`.
 - Verified: `python -m pytest` in `/worker` passes (14 tests: logs a sighting, no detections, below-threshold, cooldown dedupe, two animals per frame, plus task 3 tests), also with torch/ultralytics/open_clip import-blocked.
 
-### Task 3: Image-URL source (done)
+#### Task 3: Image-URL source (done)
 - `capture.image_frames(url, every, ...)` polls via `still_poller.fetch_still` (User-Agent, ETag skip, minimum 30 s, errors propagate). `main.py` treats `http(s)://...jpg|jpeg|png` sources as image mode and tags them `source_kind='live'`; files/video are `replay`; `--source-kind`, `--every`, `--park` flags added. `db.py` now sends `source_kind` and `cameras.park`, which need the schema change in task 5 before a real Supabase run.
 - Verified with fakes only (fake fetcher/decoder/sleep); the live NPS URL was not fetched by this run. `--help` works.
 
-### Task 4: Real-pipeline check (done, with caveats)
+#### Task 4: Real-pipeline check (done, with caveats)
 - **Species list:** `worker/species.json` is now the 14-animal Yellowstone list (model knowledge, not checked against NPSpecies).
 - **Clips (public domain, all `Copyright Info: Public domain` on the NPS page, <https://www.nps.gov/yell/learn/photosmultimedia/vl_bisoncalves.htm>):** three 1280x720 Lamar Valley bison-calf clips (47 s, 43 s, 20 s) downloaded from the NPS video embed pages to `worker/sample_videos/nps/` (gitignored): `yell-Bison00704MTS`, `yell-Bison00715MTS`, `yell-Bison00772MTS`. The NPS page itself notes one clip may no longer be available. No YouTube downloads.
 - **Pipeline runs end to end** (`python -m animal_worker.main --source <clip> --dry-run`): YOLO + BioCLIP on the RTX 4070 (CUDA) took ~25 s wall time for the 20 s clip including model load (~1 fps sampling). First correct `SIGHTING` line: `American bison (Bison bison) 100%`.
@@ -42,14 +44,26 @@ Not done / blocked: nothing blocked.
 - **Electric Peak frames (collector output):** 193 frames so far, 03:08-06:22 cam time, all night infrared with nothing visible except sensor noise and a tiny speck. 19 sampled frames gave 0 detections, which is correct. Whether YOLO (trained on COCO, small distant animals) finds elk/bison at dawn is untested until daylight frames exist.
 - **COCO limit:** YOLO's animal classes are bird, cat, dog, horse, sheep, cow, elephant, bear, zebra, giraffe. Elk, bison, pronghorn and deer rely on being detected as horse/cow/sheep; a miss there never reaches BioCLIP.
 
-### Task 5: Schema and seed data (done; SQL reviewed but not executed, no database available)
+#### Task 5: Schema and seed data (done; SQL reviewed but not executed, no database available)
 - `supabase/schema.sql`: added `sightings.source_kind` (`live`|`replay`, default `replay`) and `cameras.park` (default `yellowstone`), each also as `alter table ... add column if not exists`; policies are `drop policy if exists` + create, and the realtime publication add is wrapped so the file is re-runnable.
 - `ml/synthetic.py`: deterministic SYNTHETIC generator (seed 42) with exposed `PROFILES` (true hour-of-day peaks, camera weights, weekend effect) for the 14 Yellowstone species and 3 cameras. Times are generated in America/Denver and stored as UTC.
 - `ml/make_seed.py` writes `supabase/seed.sql` (323 synthetic sightings for the last 14 days, labeled SYNTHETIC in the header, `source_kind='replay'`, guard that refuses to run if `sightings` is non-empty). `ml/tests/test_synthetic.py` (5 tests) passes in `ml/.venv`: determinism, UTC and window, species match `worker/species.json`, elk dawn/dusk shape, SQL labeling and quote escaping.
 - **For the merge:** the seed's cameras are `Electric Peak Cam` (real) and `Lamar Valley Demo Cam` / `Hayden Valley Demo Cam` (demo-only), all `park='yellowstone'`. The web run picks its own mock camera names; reconcile them when merging.
 
-### Task 6: ML predictions (done, on SYNTHETIC data)
+#### Task 6: ML predictions (done, on SYNTHETIC data)
 - `ml/models.py`, `ml/evaluate.py`, `ml/predict.py`, `ml/README.md` (metrics table, recovery check, honesty section); `ml/tests` has 10 passing tests (generator determinism and window, no temporal leakage, probabilities in [0,1], hourly beats naive on hit rate, prediction schema and 24 h window, sample labeled synthetic). Run with `ml/.venv` (gitignored; `uv venv --python 3.12`, `uv pip install -r ml/requirements.txt`).
 - Results (42 synthetic days, last 3 as test, mean over 5 seeds): naive Brier 0.0227, hourly profile 0.0212, gradient boosting 0.0214; hit rate within +/-1 h: 0.00 / 0.67 / 0.61; profile error vs truth: 0.57 / 0.15 / 0.20. **Boosting did not beat the simpler hourly profile, so `predict.py` uses the hourly profile.** Deviation from TASKS.md: history is 42 days, not ~14, because 14 days of ~2% positive hours is too sparse to evaluate; the seed data (`make_seed.py`) still uses 14 days.
 - Bug caught while evaluating: an evaluation window ending mid-day made the last test day mostly empty and biased the labels; windows now end at local midnight.
 - `python ml/predict.py` ran with no keys (env vars unset) and produced `ml/out/predictions.json` (21 rows above 0.2) and `web/public/predictions.sample.json` (6 species, labeled synthetic, `offset_minutes` relative to `generated_at`). **For the web merge:** `web/src/lib/usePredictions.js` and the prediction card still use the hard-coded mock; this run did not touch `/web`. Wire the card to `predictions.sample.json` (`generated_at` + `offset_minutes` -> time; keep the "sample predictions" badge). The Supabase write path in `predict.py` is untested (no project, no keys).
+
+## Web run (web, social)
+
+### Latest run summary
+
+**Web run, 2026-10-10 (supervised): all 6 tasks built. `npm run lint`, `npm run build` and `npx vitest run` (14 tests) pass; a headless Chromium script (NPS image URL intercepted, nothing hit the real cam) passed 27 checks with no console errors.**
+
+Not verified: nothing has run against a real Supabase project (`supabase/social.sql`, realtime chat, comments inserts, the rate-limit trigger are reviewed, not executed). The demo `<video>` was only checked for its src, not playback (Playwright's Chromium lacks H.264). Chat and comments are mock (cross-tab via BroadcastChannel) without keys.
+
+For the merge with `overnight/pipeline`: `usePredictions` already reads `/predictions.sample.json` (offset_minutes + generated_at) with a hard-coded fallback; the file arrives with the pipeline branch. Mock cameras use the seed's names. Demo clips in `web/public/demo/` are 15 s, 640 px re-encodes of NPS public-domain Lamar Valley bison clips (`Copyright Info: Public domain`, nps.gov/yell/learn/photosmultimedia/vl_bisoncalves.htm), about 640 KB total.
+
+### Log
