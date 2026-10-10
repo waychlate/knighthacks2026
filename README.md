@@ -61,7 +61,7 @@ It walks through creating the Supabase project, running the SQL files, writing `
 By hand:
 1. Create a project at supabase.com. In the SQL editor run, in order: `supabase/schema.sql`, `supabase/social.sql`, `supabase/pings.sql`, then (optional, **synthetic** demo data, fresh database only) `supabase/seed.sql`.
 2. `cp .env.example .env` and fill in `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (worker, **secret**), `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (web, public). `.env` is gitignored; never commit it.
-3. **Vercel:** import this repo, Root Directory `web`, framework Vite, and add the two `VITE_` variables. The worker cannot run on Vercel; run it on a laptop.
+3. **Vercel:** import this repo, Root Directory `web`, framework Vite, and add the two `VITE_` variables. (If you use Vercel's Supabase integration instead, its `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` work too; the app reads either set.) The worker cannot run on Vercel; run it on a laptop.
 
 ### 3. Worker
 ```bash
