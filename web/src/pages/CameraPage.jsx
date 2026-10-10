@@ -28,10 +28,12 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
 
   const name = camera?.name ?? mine[0]?.camera.name
   const location = camera?.location ?? mine[0]?.camera.location
+  const park = camera?.park ?? mine[0]?.camera.park ?? 'yellowstone'
+  const themeClass = park === 'katmai' ? 'katmai-theme' : 'forest-theme'
 
   return (
-    <>
-      <a href="#/park/yellowstone/cameras" className="text-sm text-emerald-700 hover:underline">
+    <div className={themeClass}>
+      <a href={`#/park/${park}/cameras`} className="park-back-link text-sm text-emerald-700 hover:underline">
         ← All cameras
       </a>
       <h2 className="mt-2 text-xl font-bold text-stone-900">📷 {name}</h2>
@@ -63,7 +65,7 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
         </section>
       </div>
 
-      <ChatPanel park={camera?.park ?? mine[0]?.camera.park ?? 'yellowstone'} />
-    </>
+      <ChatPanel park={park} />
+    </div>
   )
 }

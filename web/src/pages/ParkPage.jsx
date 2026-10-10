@@ -16,9 +16,10 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
   const parkCameras = cameras.filter((c) => c.park === slug)
   const ids = new Set(parkCameras.map((c) => c.id))
   const parkSightings = sightings.filter((s) => ids.has(s.camera.id))
+  const themeClass = slug === 'katmai' ? 'katmai-theme' : 'forest-theme'
 
   return (
-    <>
+    <div className={themeClass}>
       <div className="mb-4">
         <a href="#/" className="text-sm text-emerald-700 hover:underline">← Globe</a>
         <h2 className="text-xl font-bold text-stone-900">{park?.name ?? slug}</h2>
@@ -37,6 +38,6 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
           {tab === 'analytics' && <AnalyticsPage sightings={parkSightings} loading={loading} mode={mode} />}
         </>
       )}
-    </>
+    </div>
   )
 }

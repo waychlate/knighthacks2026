@@ -50,7 +50,7 @@ const STYLE = {
 
 function Card({ park, stats, latest, onOpen, showButton }) {
   return (
-    <div className="pointer-events-auto absolute bottom-24 left-1/2 z-10 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-2xl bg-white/95 p-4 shadow-lg">
+    <div className="globe-card pointer-events-auto absolute bottom-24 left-1/2 z-10 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-2xl bg-white/95 p-4 shadow-lg">
       <p className="font-semibold text-stone-900">🌲 {park.name}</p>
       <p className="text-sm text-stone-500">{park.region}</p>
       {park.active ? (
@@ -226,8 +226,8 @@ export default function GlobePage({ sightings, cameras }) {
     <div className="relative h-screen w-screen overflow-hidden bg-black">
       <div className="absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 p-4 text-center text-white">
-        <h1 className="text-2xl font-bold drop-shadow">🦌 Animal Logger</h1>
+      <div className="globe-brand pointer-events-none absolute inset-x-0 top-0 z-10 p-4 text-center text-white">
+        <h1 className="text-2xl font-bold drop-shadow">En-Vision</h1>
         <p className={`text-sm text-white/80 transition-opacity ${zoomed ? 'opacity-0' : 'opacity-100'}`}>
           Spin the globe and zoom in to find parks
         </p>
@@ -251,7 +251,7 @@ export default function GlobePage({ sightings, cameras }) {
         />
       )}
 
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
+      <div className="globe-actions absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
         {msg && <p className="rounded-lg bg-black/70 px-3 py-1.5 text-sm text-white">{msg}</p>}
         <button onClick={startPing} className="rounded-full bg-emerald-600 px-5 py-3 font-medium text-white shadow-lg hover:bg-emerald-500">
           📍 Drop ping

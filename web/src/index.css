@@ -1,1 +1,50 @@
 @import "tailwindcss";
+
+:root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+html { background: #fafaf9; }
+body { margin: 0; min-width: 320px; overflow-x: hidden; }
+button, a, select, input { min-height: 44px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:active, a:active { transform: translateY(1px); }
+:focus-visible { outline: 3px solid #10b981; outline-offset: 2px; }
+.mobile-nav { display: none; }
+.status-banner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem 1rem; background: #ecfdf5; color: #065f46; font-size: .875rem; }
+.status-action { border: 1px solid #059669; border-radius: .5rem; padding: .25rem .75rem; background: white; color: #047857; font-weight: 600; }
+.skeleton { border-radius: .75rem; background: linear-gradient(90deg, #e7e5e4 25%, #f5f5f4 50%, #e7e5e4 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+.empty-state { display: grid; place-items: center; gap: .35rem; border: 1px dashed #d6d3d1; border-radius: 1rem; padding: 2rem 1rem; text-align: center; color: #57534e; }
+.chat-dock { bottom: calc(1rem + env(safe-area-inset-bottom)); }
+.filter-toggle { min-height: 36px; }
+.touch-target { min-height: 44px; }
+.chart-scroll { overflow-x: auto; }
+.globe-loading { display: grid; place-items: center; min-height: 100vh; background: #fafaf9; color: #166534; font-weight: 700; }
+.globe-brand h1 { letter-spacing: -.02em; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.globe-brand p { text-shadow: 0 1px 8px rgba(0,0,0,.7); }
+.globe-card { border: 1px solid rgba(22,101,52,.18); box-shadow: 0 14px 36px rgba(28,25,23,.22); }
+.globe-actions button { min-height: 48px; border: 2px solid rgba(255,255,255,.75); background: #166534; box-shadow: 0 8px 22px rgba(0,0,0,.32); }
+.globe-actions button:hover { background: #15803d; }
+.katmai-theme { --park-accent: #0369a1; --park-accent-strong: #075985; --park-soft: #e0f2fe; }
+.katmai-theme > .mb-4 { border-left: 3px solid var(--park-accent); padding-left: .85rem; }
+.katmai-theme .park-back-link, .katmai-theme .text-emerald-700 { color: var(--park-accent-strong) !important; }
+.katmai-theme .bg-emerald-50 { background-color: #f0f9ff !important; }
+.katmai-theme .bg-emerald-100 { background-color: var(--park-soft) !important; }
+.katmai-theme .bg-emerald-600, .katmai-theme .bg-emerald-700 { background-color: var(--park-accent) !important; }
+.katmai-theme .bg-emerald-600:hover, .katmai-theme .bg-emerald-700:hover { background-color: var(--park-accent-strong) !important; }
+.katmai-theme .text-emerald-800 { color: var(--park-accent-strong) !important; }
+.katmai-theme .border-emerald-200, .katmai-theme .border-emerald-100 { border-color: #bae6fd !important; }
+.katmai-theme .from-emerald-50 { --tw-gradient-from: #e0f2fe var(--tw-gradient-from-position) !important; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@media (max-width: 639px) {
+  .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  .desktop-nav { display: none; }
+  .mobile-nav { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; display: block; padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #d6d3d1; background: rgba(255,255,255,.96); box-shadow: 0 -4px 18px rgba(28,25,23,.08); }
+  .mobile-nav nav { justify-content: space-around; gap: .25rem; }
+  .mobile-nav nav a { display: flex; flex: 1; min-height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; padding: .25rem; font-size: .72rem; }
+  .mobile-nav .nav-icon { font-size: 1.15rem; line-height: 1; }
+  .sighting-meta { max-width: 7rem; font-size: .75rem; }
+  .chat-dock { right: .75rem; left: .75rem; }
+  .chat-dock > * { width: 100% !important; }
+  .globe-brand { padding-top: calc(1rem + env(safe-area-inset-top)); }
+  .globe-card { bottom: 7.5rem; }
+  .globe-actions { bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

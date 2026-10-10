@@ -1,9 +1,18 @@
+import { useEffect, useState } from 'react'
 import { useMode } from '../lib/useMode'
 
 const base = 'px-3 py-1.5 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500'
 
 export default function ModeToggle() {
   const { mode, setMode } = useMode()
+  const [offline, setOffline] = useState(() => !navigator.onLine)
+  useEffect(() => {
+    const online = () => setOffline(false)
+    const offlineState = () => setOffline(true)
+    window.addEventListener('online', online)
+    window.addEventListener('offline', offlineState)
+    return () => { window.removeEventListener('online', online); window.removeEventListener('offline', offlineState) }
+  }, [])
   return (
     <div role="group" aria-label="Data source" className="inline-flex overflow-hidden rounded-lg border border-stone-300">
       {[
@@ -23,7 +32,7 @@ export default function ModeToggle() {
               : 'bg-white text-stone-600 hover:bg-stone-100'
           }`}
         >
-          {label}
+          {value === 'live' && offline ? 'Live · offline' : label}
         </button>
       ))}
     </div>

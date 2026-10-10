@@ -13,7 +13,7 @@ export default function ChatPanel({ park }) {
   const latest = messages[messages.length - 1]
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="chat-dock fixed right-4 z-50">
       {view === 'expanded' ? (
         <section className="w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xl shadow-stone-900/15" aria-label={title}>
           <div className="flex items-center justify-between gap-3 bg-emerald-700 px-4 py-3 text-white">

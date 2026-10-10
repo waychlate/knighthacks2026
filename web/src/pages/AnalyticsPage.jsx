@@ -60,12 +60,15 @@ export default function AnalyticsPage({ sightings, loading, mode }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        <p className="sr-only">Sightings by hour: {hours.map((item) => `${item.label}, ${item.count}`).join('; ')}.</p>
       </Card>
       <Card title="Sightings by species">
         <Horizontal data={species} />
+        <p className="sr-only">Sightings by species: {species.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
       </Card>
       <Card title="Sightings by camera">
         <Horizontal data={cameras} />
+        <p className="sr-only">Sightings by camera: {cameras.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
       </Card>
     </div>
   )
