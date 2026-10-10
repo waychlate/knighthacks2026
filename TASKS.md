@@ -60,4 +60,4 @@ Goal: given a (synthetic, for now) sighting history, predict when each species i
 - Accept: `python -m pytest` passes in `/ml` (generator determinism, no leakage in the time split, probabilities in [0,1], output schema); `python ml/predict.py` runs with no keys; the metrics table exists.
 
 ## 7. Docs
-- [ ] README: how to run the worker on a clip, on the live still (`--source <image URL>`), how to run the collector, and how the seed and ML data are generated. Short enough for a teammate to follow from a clean clone.
+- [x] README: how to run the worker on a clip, on the live still (`--source <image URL>`), how to run the collector, and how the seed and ML data are generated. Short enough for a teammate to follow from a clean clone.
