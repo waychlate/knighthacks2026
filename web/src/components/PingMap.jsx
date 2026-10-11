@@ -34,6 +34,9 @@ export default function PingMap({ park, cameras, className = '' }) {
     mapRef.current = map
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right')
     map.on('click', (e) => flowRef.current.place(e.lngLat.lat, e.lngLat.lng))
+    // The card is flex-sized and loads lazily: re-measure whenever its box changes.
+    const resize = new ResizeObserver(() => map.resize())
+    resize.observe(holder.current)
     map.on('load', () => {
       map.addSource('pings', { type: 'geojson', data: toGeoJSON([]) })
       map.addLayer({
@@ -51,7 +54,10 @@ export default function PingMap({ park, cameras, className = '' }) {
       map.on('mouseleave', 'ping-point', () => (map.getCanvas().style.cursor = flowRef.current.placing ? 'crosshair' : ''))
       setReady(true)
     })
-    return () => map.remove()
+    return () => {
+      resize.disconnect()
+      map.remove()
+    }
   }, [park])
 
   useEffect(() => {
@@ -79,7 +85,7 @@ export default function PingMap({ park, cameras, className = '' }) {
 
   return (
     <section className={`park-map-card relative overflow-hidden rounded-2xl border border-stone-200 bg-black shadow-sm ${className}`} aria-label={`${park.name} pings`}>
-      <div ref={holder} className="absolute inset-0" />
+      <div className="absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
       <p className="pointer-events-none absolute left-2 top-2 rounded-md bg-black/60 px-2 py-1 text-xs text-white">📍 Pings near {park.name} · last 24 h</p>
       <div className="absolute inset-x-0 bottom-2 flex flex-col items-center gap-1.5 px-2">
         {flow.msg && <p className="rounded-lg bg-black/75 px-3 py-1 text-center text-xs text-white">{flow.msg}</p>}
