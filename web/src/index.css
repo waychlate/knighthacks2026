@@ -12,7 +12,6 @@ button:active, a:active { transform: translateY(1px); }
 .status-action { border: 1px solid #059669; border-radius: .5rem; padding: .25rem .75rem; background: white; color: #047857; font-weight: 600; }
 .skeleton { border-radius: .75rem; background: linear-gradient(90deg, #e7e5e4 25%, #f5f5f4 50%, #e7e5e4 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
 .empty-state { display: grid; place-items: center; gap: .35rem; border: 1px dashed #d6d3d1; border-radius: 1rem; padding: 2rem 1rem; text-align: center; color: #57534e; }
-.chat-dock { bottom: calc(1rem + env(safe-area-inset-bottom)); }
 .filter-toggle { min-height: 36px; }
 .touch-target { min-height: 44px; }
 .chart-scroll { overflow-x: auto; }
@@ -27,7 +26,7 @@ button:active, a:active { transform: translateY(1px); }
 .yellowstone-trail-background { position: absolute; z-index: 0; inset: -2rem -8% -2rem -8%; min-height: 100%; background: url('/yellowstone/trail-winding.svg') center top / 100% 100% no-repeat; opacity: .52; pointer-events: none; }
 .desktop-dashboard-section { min-width: 0; }
 .desktop-section-title { margin-bottom: .7rem; color: #365b3d; font-size: 1.05rem; font-weight: 700; letter-spacing: .01em; }
-.mobile-camera-page, .mobile-chat-route { display: none; }
+.mobile-chat-route { display: none; }
 .yellowstone-theme .desktop-camera-dashboard .camera-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .yellowstone-theme .desktop-camera-dashboard .yellowstone-camera-card { width: 100%; min-height: 10.5rem; }
 .yellowstone-theme .desktop-camera-dashboard .yellowstone-camera-card > p { width: min(100%, 22rem); }
@@ -134,19 +133,21 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
 @keyframes shimmer { to { background-position: -200% 0; } }
 @media (max-width: 639px) {
   .park-layout { display: block; }
-  .desktop-chat-sidebar, .desktop-camera-dashboard { display: none; }
-  .mobile-camera-page, .mobile-chat-route { display: block; }
+  .desktop-chat-sidebar { display: none; }
+  .mobile-chat-route { display: block; }
+  .desktop-camera-dashboard .camera-grid { grid-template-columns: 1fr !important; }
   .river-background { inset: -1rem -28%; background-size: 150% 100%; opacity: .18; }
   .yellowstone-trail-background { inset: -1rem -28%; opacity: .2; }
   .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
   .desktop-nav { display: none; }
   .mobile-nav { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; display: block; padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #d6d3d1; background: rgba(255,255,255,.96); box-shadow: 0 -4px 18px rgba(28,25,23,.08); }
-  .mobile-nav nav { justify-content: space-around; gap: .25rem; }
-  .mobile-nav nav a { display: flex; flex: 1; min-height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; padding: .25rem; font-size: .72rem; }
+  .mobile-nav nav { display: flex; align-items: flex-end; }
+  .mobile-nav-item { display: flex; flex: 1; min-width: 0; min-height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; padding: .25rem; border: 0; background: none; color: #57534e; font-size: .68rem; font-weight: 500; }
+  .mobile-nav-item.is-active { color: #047857; font-weight: 700; }
   .mobile-nav .nav-icon { font-size: 1.15rem; line-height: 1; }
+  .mobile-nav-globe { position: relative; margin-top: -1.6rem; color: #047857; font-weight: 700; }
+  .mobile-nav-globe .nav-icon { display: grid; width: 3.4rem; height: 3.4rem; place-items: center; border: 3px solid #fff; border-radius: 9999px; background: #059669; font-size: 1.6rem; box-shadow: 0 4px 14px rgba(5,150,105,.45); }
   .sighting-meta { max-width: 7rem; font-size: .75rem; }
-  .chat-dock { right: .75rem; left: .75rem; }
-  .chat-dock > * { width: 100% !important; }
   .globe-brand { padding-top: calc(1rem + env(safe-area-inset-top)); }
   .globe-card { bottom: 7.5rem; }
   .globe-actions { bottom: calc(1rem + env(safe-area-inset-bottom)); }
@@ -217,3 +218,6 @@ html[data-theme='dark'] .app-shell.yellowstone-page .yellowstone-camera-card { b
 .app-header { padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
 .globe-brand { padding-left: calc(1rem + env(safe-area-inset-left)); padding-right: calc(1rem + env(safe-area-inset-right)); }
 .bear-splash { position: fixed; inset: 0; z-index: 60; }
+.globe-pill { justify-self: center; border: 1px solid #a7f3d0; border-radius: 9999px; background: #ecfdf5; padding: .4rem 1rem; color: #047857; font-size: .9rem; font-weight: 600; white-space: nowrap; }
+.globe-pill:hover { background: #d1fae5; }
+@media (max-width: 639px) { .globe-pill-desktop { display: none; } }
