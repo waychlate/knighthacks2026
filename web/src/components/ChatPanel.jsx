@@ -6,11 +6,35 @@ import ThreadPanel from './ThreadPanel'
 const pretty = (park) => park.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
 
 // One live chat room per park.
-export default function ChatPanel({ park }) {
+export default function ChatPanel({ park, desktop = false }) {
   const { messages, post, error, usingMock } = useThread('chat_messages', 'park', park, makeMockChat(park))
   const [view, setView] = useState('bubble')
   const title = `${pretty(park)} chat`
   const latest = messages[messages.length - 1]
+
+  if (desktop) {
+    return (
+      <section className="desktop-chat-panel rounded-2xl border border-stone-200 bg-white shadow-sm" aria-label={title}>
+        <div className={`flex items-center justify-between gap-3 bg-emerald-700 px-4 py-3 text-white ${park === 'katmai' ? 'katmai-canopy' : ''}`}>
+          <div>
+            <h3 className="font-semibold">💬 {title}</h3>
+            {usingMock && <span className="text-xs text-emerald-100">sample chat</span>}
+          </div>
+          {latest && <span className="text-xs text-emerald-100">Live room</span>}
+        </div>
+        <div className="max-h-[calc(100vh-12rem)] overflow-y-auto p-4">
+          <ThreadPanel
+            compact
+            title={title}
+            messages={messages}
+            onPost={post}
+            error={error}
+            empty="No messages yet. Say hi to other visitors."
+          />
+        </div>
+      </section>
+    )
+  }
 
   return (
     <div className={`chat-dock fixed right-4 z-50 ${park === 'katmai' ? 'katmai-chat' : ''}`}>
