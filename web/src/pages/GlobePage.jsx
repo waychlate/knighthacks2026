@@ -260,7 +260,7 @@ export default function GlobePage({ sightings, cameras }) {
     const back = returnTo // coming back from a park page
     const start = back ? { center: [back.park.lng, back.park.lat], zoom: 11, pitch: 50 } : { center: [-115, 45], zoom: 2.2 }
     const map = new maplibregl.Map({ container: holder.current, style: STYLE, ...start, maxPitch: 70, attributionControl: { compact: true } })
-    mapRef.current = map; window.__map = map
+    mapRef.current = map
     map.on('error', (e) => console.error('maplibre:', e.error?.message ?? e))
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right')
 
