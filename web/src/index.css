@@ -50,10 +50,10 @@ button:active, a:active { transform: translateY(1px); }
 .yellowstone-environment::after { content: ''; position: absolute; z-index: -1; top: 4.75rem; right: 0; left: 0; height: 5px; background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(139,115,85,.36) 14px 36px, transparent 36px 58px); pointer-events: none; }
 .yellowstone-trail { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #2e5b3e; font-size: 1.1rem; letter-spacing: .18rem; }
 .yellowstone-trail span:nth-child(2) { flex: 1; overflow: hidden; color: #8b7355; font-size: 1.3rem; white-space: nowrap; }
-.yellowstone-camera-card { position: relative; isolation: isolate; min-height: 8.25rem; border: 0 !important; border-radius: 0 !important; background: url('/yellowstone/leaf-camera-button.png') center/100% 100% no-repeat !important; padding: 1.35rem 2.25rem 1.35rem 2.5rem !important; filter: drop-shadow(0 5px 5px rgba(31,61,36,.2)); transition: filter .2s ease, transform .2s ease; }
+.yellowstone-camera-card { position: relative; isolation: isolate; min-height: 8.25rem; border: 0 !important; border-radius: 0 !important; background-color: transparent !important; background-image: url('/yellowstone/leaf-camera-button.png') !important; background-position: center !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; clip-path: polygon(0 50%, 7% 38%, 16% 20%, 31% 8%, 49% 4%, 66% 8%, 82% 21%, 95% 40%, 100% 50%, 95% 60%, 82% 79%, 66% 92%, 49% 96%, 31% 92%, 16% 80%, 7% 62%); padding: 1.35rem 2.25rem 1.35rem 2.5rem !important; filter: drop-shadow(0 5px 5px rgba(31,61,36,.2)); transition: filter .2s ease, transform .2s ease; }
 .yellowstone-camera-card::before, .yellowstone-camera-card::after { content: none; }
 .yellowstone-camera-card:hover { filter: drop-shadow(0 7px 7px rgba(31,61,36,.28)); transform: translateY(-1px); }
-.yellowstone-camera-card:focus-visible { outline: 3px solid #d8b566; outline-offset: 4px; filter: drop-shadow(0 0 4px rgba(216,181,102,.75)) drop-shadow(0 5px 5px rgba(31,61,36,.2)); }
+.yellowstone-camera-card:focus-visible { outline: none; filter: drop-shadow(0 0 4px #f3df9b) drop-shadow(0 0 7px rgba(216,181,102,.8)); }
 .yellowstone-camera-card > * { position: relative; z-index: 1; }
 .yellowstone-camera-card .text-stone-900 { color: #f3f5d8 !important; }
 .yellowstone-camera-card .text-stone-700, .yellowstone-camera-card .text-stone-500 { color: #d5dfb9 !important; }
