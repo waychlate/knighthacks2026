@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import Filters from '../components/Filters'
 import SightingList from '../components/SightingList'
 
+const MAX_SIGHTINGS = 10 // keep the feed short; the list is newest first
+
 export default function FeedPage({ sightings, cameras, loading, mode }) {
   const [filters, setFilters] = useState({ speciesId: '', cameraId: '' })
 
@@ -13,11 +15,13 @@ export default function FeedPage({ sightings, cameras, loading, mode }) {
 
   const visible = useMemo(
     () =>
-      sightings.filter(
-        (s) =>
-          (!filters.speciesId || s.species.id === filters.speciesId) &&
-          (!filters.cameraId || s.camera.id === filters.cameraId),
-      ),
+      sightings
+        .filter(
+          (s) =>
+            (!filters.speciesId || s.species.id === filters.speciesId) &&
+            (!filters.cameraId || s.camera.id === filters.cameraId),
+        )
+        .slice(0, MAX_SIGHTINGS),
     [sightings, filters],
   )
 

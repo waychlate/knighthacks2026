@@ -231,3 +231,9 @@ html[data-theme='dark'] .mobile-nav { background: #10251a; border-color: #2f6045
 html[data-theme='dark'] .mobile-nav-item { color: #cfe3c2; }
 html[data-theme='dark'] .mobile-nav-item.is-active, html[data-theme='dark'] .mobile-nav-globe { color: #6ee7b7; }
 html[data-theme='dark'] .mobile-nav-globe .nav-icon { border-color: #10251a; }
+/* The globe card stays a light card in the dark theme: keep its text dark (the dark theme lightens every stone text colour). */
+html[data-theme='dark'] .globe-card .text-stone-900 { color: #1c1917 !important; }
+html[data-theme='dark'] .globe-card .text-stone-800 { color: #292524 !important; }
+html[data-theme='dark'] .globe-card .text-stone-700 { color: #44403c !important; }
+html[data-theme='dark'] .globe-card .text-stone-500 { color: #57534e !important; }
+html[data-theme='dark'] .globe-card .text-stone-400 { color: #78716c !important; }
