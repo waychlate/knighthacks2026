@@ -30,7 +30,7 @@ button:active, a:active { transform: translateY(1px); }
 .desktop-section-title { margin-bottom: .7rem; color: #365b3d; font-size: 1.05rem; font-weight: 700; letter-spacing: .01em; }
 .mobile-chat-route { display: none; }
 .yellowstone-theme .desktop-camera-dashboard .camera-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.yellowstone-theme .desktop-camera-dashboard .yellowstone-camera-card { width: 100%; min-height: 13rem; }
+.yellowstone-theme .desktop-camera-dashboard .yellowstone-camera-card { width: 100%; min-height: 14rem; }
 .yellowstone-theme .desktop-camera-dashboard .yellowstone-camera-card > p { width: min(100%, 22rem); }
 .globe-loading { display: grid; place-items: center; min-height: 100vh; background: #fafaf9; color: #166534; font-weight: 700; }
 .bear-loading { display: grid; place-items: center; min-height: 100vh; gap: .65rem; background: #fafaf9; color: #365b3d; font-weight: 700; }
@@ -119,7 +119,7 @@ button:active, a:active { transform: translateY(1px); }
 .yellowstone-environment::before { content: none; }
 .yellowstone-trail { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #2e5b3e; font-size: 1.1rem; letter-spacing: .18rem; }
 .yellowstone-trail span:nth-child(2) { flex: 1; overflow: hidden; color: #8b7355; font-size: 1.3rem; white-space: nowrap; }
-.yellowstone-camera-card { position: relative; isolation: isolate; display: flex !important; width: min(100%, 25rem); min-height: 13rem; height: auto; margin-inline: auto; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border: 0 !important; border-radius: 1.25rem !important; background-color: transparent !important; background-image: url('/yellowstone/log-camera-button.png') !important; background-position: center !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; clip-path: polygon(2% 18%, 8% 10%, 22% 12%, 38% 8%, 52% 11%, 68% 8%, 83% 12%, 97% 18%, 100% 32%, 98% 68%, 92% 86%, 77% 90%, 62% 88%, 46% 92%, 30% 88%, 15% 91%, 5% 82%, 0 65%, 1% 34%); padding: 2.75rem clamp(3rem, 9vw, 4rem) !important; text-align: center; transition: transform .2s ease; }
+.yellowstone-camera-card { position: relative; isolation: isolate; display: flex !important; width: min(100%, 25rem); min-height: 13rem; height: auto; margin-inline: auto; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border: 0 !important; border-radius: 1.25rem !important; background-color: transparent !important; background-image: url('/yellowstone/log-camera-button.png') !important; background-position: center !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; clip-path: polygon(2% 18%, 8% 10%, 22% 12%, 38% 8%, 52% 11%, 68% 8%, 83% 12%, 97% 18%, 100% 32%, 98% 68%, 92% 86%, 77% 90%, 62% 88%, 46% 92%, 30% 88%, 15% 91%, 5% 82%, 0 65%, 1% 34%); padding: 3.5rem clamp(4rem, 11vw, 5rem) !important; text-align: center; transition: transform .2s ease; }
 .yellowstone-camera-card::before, .yellowstone-camera-card::after { content: none; }
 .yellowstone-page .yellowstone-camera-card { background-color: transparent !important; box-shadow: none !important; }
 html[data-theme='dark'] .yellowstone-page .yellowstone-camera-card { background-color: transparent !important; box-shadow: none !important; }
@@ -131,8 +131,8 @@ html[data-theme='dark'] .yellowstone-page .yellowstone-camera-card { background-
 .yellowstone-camera-card .text-stone-900 { color: #f3f5d8 !important; }
 .yellowstone-camera-card .text-stone-700, .yellowstone-camera-card .text-stone-500 { color: #d5dfb9 !important; }
 .yellowstone-camera-card[aria-disabled='true'] { opacity: .68; }
-@media (max-width: 640px) { .yellowstone-camera-card { width: min(100%, 23rem); min-height: 12.5rem; padding: 2.5rem 3rem !important; } }
-.katmai-camera-card { position: relative; isolation: isolate; display: flex !important; min-height: 12rem; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border: 0 !important; border-radius: 0 !important; background-color: transparent !important; background-image: url('/katmai/rock-camera-button.png') !important; background-position: center !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; clip-path: polygon(0 50%, 6% 31%, 16% 13%, 34% 4%, 61% 5%, 84% 15%, 96% 32%, 100% 50%, 96% 68%, 84% 85%, 61% 95%, 34% 96%, 16% 87%, 6% 69%); padding: 2.5rem 3.75rem !important; text-align: center; color: #102b3d; filter: drop-shadow(0 5px 5px rgba(3,64,91,.28)); transition: filter .2s ease, transform .2s ease; }
+@media (max-width: 640px) { .yellowstone-camera-card { width: min(100%, 23rem); min-height: 13.5rem; padding: 3.25rem 3.75rem !important; } }
+.katmai-camera-card { position: relative; isolation: isolate; display: flex !important; min-height: 13rem; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border: 0 !important; border-radius: 0 !important; background-color: transparent !important; background-image: url('/katmai/rock-camera-button.png') !important; background-position: center !important; background-size: 100% 100% !important; background-repeat: no-repeat !important; clip-path: polygon(0 50%, 6% 31%, 16% 13%, 34% 4%, 61% 5%, 84% 15%, 96% 32%, 100% 50%, 96% 68%, 84% 85%, 61% 95%, 34% 96%, 16% 87%, 6% 69%); padding: 3.25rem 4.75rem !important; text-align: center; color: #102b3d; filter: drop-shadow(0 5px 5px rgba(3,64,91,.28)); transition: filter .2s ease, transform .2s ease; }
 .katmai-camera-card::before, .katmai-camera-card::after { content: none; }
 .katmai-camera-card:hover { filter: drop-shadow(0 7px 7px rgba(3,64,91,.36)); transform: translateY(-1px); }
 .katmai-camera-card:focus-visible { outline: none; filter: drop-shadow(0 0 4px #d8f3ff) drop-shadow(0 0 7px rgba(56,189,248,.8)); }
@@ -147,7 +147,7 @@ html[data-theme='dark'] .katmai-camera-card { filter: drop-shadow(0 6px 7px rgba
 html[data-theme='dark'] .katmai-camera-card .text-stone-900 { color: #0b2638 !important; }
 html[data-theme='dark'] .katmai-camera-card .text-stone-700 { color: #123b52 !important; }
 html[data-theme='dark'] .katmai-camera-card .text-stone-500 { color: #1c4c65 !important; }
-@media (max-width: 640px) { .katmai-camera-card { min-height: 12rem; padding: 2.4rem 3rem !important; } }
+@media (max-width: 640px) { .katmai-camera-card { min-height: 13rem; padding: 3rem 3.75rem !important; } }
 .katmai-canopy { position: relative; overflow: hidden; background: linear-gradient(145deg, #082f49, #0c4a6e 52%, #075985) !important; box-shadow: inset 0 -8px 0 rgba(2,132,199,.18); }
 .katmai-canopy::before { content: '🌿  🌿  🌿'; position: absolute; top: -1.1rem; right: .8rem; color: rgba(186,230,253,.35); font-size: 1.2rem; letter-spacing: .3rem; }
 .katmai-chat section { border-color: #7dd3fc !important; box-shadow: 0 18px 36px rgba(3,105,161,.25); }
