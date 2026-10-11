@@ -11,7 +11,7 @@ export const navTab = (tab) => (tab === 'sightings' || tab === 'predictions' ? '
 
 const openSettings = () => window.dispatchEvent(new Event('envision:open-settings'))
 
-export default function Nav({ park, tab }) {
+export default function Nav({ park, tab, limited = false }) {
   const current = navTab(tab)
   const icon = park === 'katmai' ? <span className="katmai-fish" aria-hidden>🐟</span> : <span className="yellowstone-bison" aria-hidden>🦬</span>
   const renderLink = (t) => (
@@ -29,21 +29,23 @@ export default function Nav({ park, tab }) {
 
   return (
     <>
-      <div className="desktop-nav">
-        <nav className="flex flex-wrap gap-1" aria-label="Primary park sections">
-          {['cameras', 'analytics'].map(renderLink)}
-        </nav>
-      </div>
+      {!limited && (
+        <div className="desktop-nav">
+          <nav className="flex flex-wrap gap-1" aria-label="Primary park sections">
+            {['cameras', 'analytics'].map(renderLink)}
+          </nav>
+        </div>
+      )}
       {createPortal(
       <div className="mobile-nav">
         <nav aria-label="Park sections">
-          {item('cameras', '📷', 'Cameras')}
+          {!limited && item('cameras', '📷', 'Cameras')}
           {item('chat', '💬', 'Chat')}
           <a href="#/" className="mobile-nav-item mobile-nav-globe" aria-label="Back to the globe">
             <span className="nav-icon" aria-hidden>🌍</span>
             Globe
           </a>
-          {item('analytics', '📊', 'Analytics')}
+          {!limited && item('analytics', '📊', 'Analytics')}
           <button type="button" onClick={openSettings} className="mobile-nav-item">
             <span className="nav-icon" aria-hidden>⚙</span>
             Settings

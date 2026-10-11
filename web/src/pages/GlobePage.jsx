@@ -63,7 +63,7 @@ function Card({ park, stats, latest, onOpen, onBack, showButton }) {
           {stats.cameras} camera{stats.cameras === 1 ? '' : 's'} · {stats.today} sighting{stats.today === 1 ? '' : 's'} today
         </p>
       ) : (
-        <p className="mt-2 text-sm text-stone-500">No cameras yet.</p>
+        <p className="mt-2 text-sm text-stone-500">Cameras coming soon. Chat and pings are open.</p>
       )}
       {park.active && (
         <p className="mt-1 text-sm text-stone-500">
@@ -208,7 +208,7 @@ export default function GlobePage({ sightings, cameras }) {
     // cameras are dimmed. The wrapper is positioned by MapLibre, so the shape lives on a child.
     const markers = PARKS.map((park) => {
       const el = document.createElement('div')
-      const accent = park.slug === 'katmai' ? '#0369a1' : '#047857'
+      const accent = !park.active ? '#6b7280' : park.slug === 'katmai' ? '#0369a1' : '#047857' // grey: no cameras yet
       el.style.cssText = 'display:none;cursor:pointer;position:relative;width:148px;height:76px;transition:opacity .2s ease'
       el.setAttribute('role', 'button')
       el.setAttribute('aria-label', park.name)

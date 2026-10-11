@@ -26,7 +26,7 @@ Live table demo (3–5 min, recorded fallback video). Most features already work
    - Update `web/public/predictions.sample.json` (or a new real file) and the prediction card with the new label.
    - Add a test for the loader's parsing and for the profile.
    - Note the bias (daytime, near trails, tourists) in `ml/README.md`.
-2. **Greyed parks and chat** (`web/`)
+2. **Greyed parks and chat** (`web/`) - DONE
    - Add the 5 parks in `web/src/lib/parks.js` with `active:false` and iNat-derived `species`.
    - `GlobePage.jsx`: grey marker colour, using a flag instead of the hard-coded katmai/other colour.
    - `ParkPage.jsx:31-32`: for inactive parks, show the "no cameras yet" note plus the chat tab (`ChatPanel`/`useThread` already take any slug). Pings already work via `radiusKm`.

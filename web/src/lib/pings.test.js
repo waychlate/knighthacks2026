@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { latestSighting } from './parks'
+import { getPark, latestSighting } from './parks'
 import { cooldownLeftMs, speciesFor, distanceKm, makeSamplePings, markPinged, nearestPark, recent, roundCoord, toGeoJSON } from './pings'
 
 const store = () => {
@@ -44,6 +44,13 @@ describe('pings', () => {
     const [f] = toGeoJSON([{ id: 'demo-1', lat: 44.6, lng: -110.5, created_at: new Date().toISOString(), sample: true, demo: true }]).features
     expect(f.properties.demo).toBe(true)
     expect(f.properties.sample).toBe(true)
+  })
+  it('knows the greyed-out parks: ping picker lists their species, and they have no cameras', () => {
+    for (const [slug, lat, lng] of [['yosemite', 37.85, -119.55], ['everglades', 25.4, -80.9], ['grand-canyon', 36.1, -112.1], ['great-smoky-mountains', 35.6, -83.5], ['denali', 63.1, -151.2]]) {
+      expect(nearestPark(lat, lng)).toBe(slug)
+      expect(speciesFor(lat, lng).length).toBeGreaterThan(5)
+      expect(getPark(slug).active).toBe(false)
+    }
   })
   it('finds the newest sighting at a park', () => {
     const cams = [{ id: 'a', park: 'yellowstone' }, { id: 'b', park: 'katmai' }]

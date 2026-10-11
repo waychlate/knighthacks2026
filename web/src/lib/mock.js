@@ -57,7 +57,7 @@ export function makeMockPredictions() {
 export function makeMockChat(park = 'yellowstone') {
   const ago = (m) => new Date(Date.now() - m * 60 * 1000).toISOString()
   return [
-    { id: 'chat-1', park, display_name: 'ranger_rae (sample)', body: 'Sample chat: elk are usually out near Gardiner around sunrise.', created_at: ago(42) },
-    { id: 'chat-2', park, display_name: 'trailmix (sample)', body: 'Sample chat: anyone seen the Lamar Valley bison today?', created_at: ago(15) },
+    { id: 'chat-1', park, display_name: 'ranger_rae (sample)', body: 'Sample chat: wildlife is usually most active around sunrise.', created_at: ago(42) },
+    { id: 'chat-2', park, display_name: 'trailmix (sample)', body: 'Sample chat: anyone seen anything good today?', created_at: ago(15) },
   ]
 }

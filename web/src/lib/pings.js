@@ -78,5 +78,10 @@ export function makeSamplePings(now = Date.now()) {
     mk(6, 58.55, -155.1, 'Brown bear', 'Sample ping: fishing at the falls.', 20),
     mk(7, 58.48, -154.95, 'Brown bear', 'Sample ping', 90),
     mk(8, 28.54, -81.38, '', 'Sample ping: backyard heron (elsewhere).', 45),
+    mk(9, 37.74, -119.6, 'Mule deer', 'Sample ping: grazing in the valley.', 25),
+    mk(10, 25.35, -80.95, 'Great blue heron', 'Sample ping', 55),
+    mk(11, 36.06, -112.14, 'Elk', 'Sample ping: near the rim.', 80),
+    mk(12, 35.62, -83.46, 'American black bear', 'Sample ping: crossing the road.', 40),
+    mk(13, 63.2, -151.0, 'Caribou', 'Sample ping: a small herd.', 110),
   ]
 }

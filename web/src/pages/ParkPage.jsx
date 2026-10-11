@@ -19,30 +19,6 @@ function Predictions({ park }) {
   return <PredictionCard park={park} {...usePredictions()} />
 }
 
-const KATMAI_CAMERA_PREVIEWS = [
-  ['Brooks Falls Bear Cam', 'Bear watch · coming soon'],
-  ['Salmon River Cam', 'River view · coming soon'],
-  ['Katmai Bear Watch', 'Alaska wildlife · coming soon'],
-]
-
-function KatmaiCameraPreviews() {
-  return (
-    <>
-      <p className="mb-3 rounded-lg bg-stone-100 px-3 py-4 text-stone-600">Camera links and live stats will be connected later.</p>
-      <ul className="grid gap-3 sm:grid-cols-2">
-        {KATMAI_CAMERA_PREVIEWS.map(([name, detail]) => (
-          <li key={name}>
-            <div aria-disabled="true" className="camera-card katmai-camera-card opacity-90">
-              <p className="font-semibold text-stone-900">🐻 {name}</p>
-              <p className="text-sm text-stone-500">{detail}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
-
 export default function ParkPage({ slug, tab, sightings, cameras, loading, mode }) {
   const park = getPark(slug)
   const parkCameras = cameras.filter((c) => c.park === slug)
@@ -66,7 +42,18 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
           </div>
 
           {!park?.active ? (
-            slug === 'katmai' && tab === 'cameras' ? <KatmaiCameraPreviews /> : <p className="rounded-lg bg-stone-100 px-3 py-4 text-stone-600">No cameras here yet. Check back later.</p>
+            <>
+              <Nav park={slug} tab="chat" limited />
+              <p className="rounded-lg bg-stone-100 px-3 py-4 text-stone-600">
+                📷 Cameras coming soon for {park?.name ?? slug}. You can still chat with other visitors and drop a ping on the map.
+              </p>
+              {phone && park && (
+                <div className="mt-4 space-y-4">
+                  <ParkMap park={park} cameras={parkCameras} className="park-map-phone" />
+                  <ChatPanel park={slug} />
+                </div>
+              )}
+            </>
           ) : (
             <>
               <div className="mb-5"><Nav park={slug} tab={tab} /></div>
