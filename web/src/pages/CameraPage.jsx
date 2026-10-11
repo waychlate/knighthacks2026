@@ -32,7 +32,7 @@ export default function CameraPage({ id, sightings, cameras, loading, mode }) {
   const themeClass = park === 'katmai' ? 'katmai-theme' : 'forest-theme'
 
   return (
-    <div className={themeClass}>
+    <div className={`${themeClass} px-2 py-2 sm:px-6 sm:py-4`}>
       <a href={`#/park/${park}/cameras`} className="back-button">
         <span className="back-arrow" aria-hidden>←</span> All cameras
       </a>
