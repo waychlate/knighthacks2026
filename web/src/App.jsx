@@ -37,7 +37,7 @@ function NetworkStatus() {
 function AppShell({ children, route, openSettings }) {
   const katmai = route.name === 'park' && route.park === 'katmai'
   const yellowstone = route.name === 'park' && route.park === 'yellowstone'
-  const parkPage = katmai || yellowstone
+  const parkPage = route.name === 'park'
   return (
     <div className={`app-shell min-h-screen bg-stone-50 ${katmai ? 'katmai-page' : ''} ${yellowstone ? 'yellowstone-page' : ''}`}>
       <header className="app-header border-b border-stone-200 bg-white">
