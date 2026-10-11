@@ -9,7 +9,7 @@ export default function CamerasPage({ sightings, cameras, park }) {
   if (cameras.length === 0) return <p className="text-stone-500">No cameras registered yet.</p>
 
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
+    <ul className="camera-grid grid gap-3 sm:grid-cols-2">
       {cameras.map((cam) => {
         const mine = sightings.filter((s) => s.camera.id === cam.id) // newest first
         const unavailable = mode === 'live' && !hasLiveFeed(cam)
