@@ -118,8 +118,11 @@ collects the cameras. Every accepted detection is appended to
 After `schema.sql` and `katmai-cams.sql` have been applied and the two worker
 Supabase variables are available in the environment, add `--publish`:
 ```powershell
+.\.venv\Scripts\python.exe -m animal_worker.katmai_live --check --publish
 .\.venv\Scripts\python.exe -m animal_worker.katmai_live --every 60 --publish
 ```
+The check command validates the local model, Supabase credentials, required
+Katmai camera rows, and sightings table without contacting a camera.
 The publisher uploads the detected crop, stores the frame's UTC capture time,
 and inserts a `source_kind=live` sighting. Supabase Realtime then adds it to the
 website feed without a page refresh. Use `--camera brooks-falls-low` to run one

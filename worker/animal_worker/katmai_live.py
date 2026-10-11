@@ -8,7 +8,7 @@ import logging
 import os
 import queue
 import threading
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 from pathlib import Path
 
 from .classifier import Species
@@ -20,6 +20,7 @@ from .main import in_bear_season, process_frame
 log = logging.getLogger("katmai_live")
 WORKER_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = WORKER_ROOT.parent
+REQUIRED_CAMERA_NAMES = {camera.name for camera in KATMAI_CAMERAS.values()}
 
 
 class KatmaiLabelClassifier:
@@ -137,6 +138,21 @@ def enqueue_latest(work, item, *, log_message=log.warning):
         work.put_nowait(item)
 
 
+def check_supabase(store) -> int:
+    """Verify the live feed tables and canonical Katmai camera rows are readable."""
+    response = store.client.table("cameras").select("name").eq("park", "katmai").execute()
+    names = {row["name"] for row in response.data}
+    missing = sorted(REQUIRED_CAMERA_NAMES - names)
+    if missing:
+        raise RuntimeError(
+            "missing Katmai cameras: " + ", ".join(missing)
+            + "; run supabase/schema.sql and supabase/katmai-cams.sql"
+        )
+    # This also confirms the sightings table exists and can be read with this key.
+    store.client.table("sightings").select("id").limit(1).execute()
+    return len(names)
+
+
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", default="sample_videos/katmai-live")
@@ -151,6 +167,8 @@ def parse_args(argv=None):
     parser.add_argument("--tile-size", type=int, default=512)
     parser.add_argument("--publish", action="store_true",
                         help="write accepted sightings to Supabase; otherwise local audit only")
+    parser.add_argument("--check", action="store_true",
+                        help="verify model and, with --publish, Supabase setup; do not contact cameras")
     return parser.parse_args(argv)
 
 
@@ -173,6 +191,18 @@ def main(argv=None):
             raise SystemExit("Cannot publish: missing " + " and ".join(missing) + " in the environment")
         from .db import SightingStore
         store = SightingStore()
+
+    if args.check:
+        print(f"Model ready: {weights}")
+        if store is not None:
+            try:
+                count = check_supabase(store)
+            except Exception as exc:
+                raise SystemExit(f"Supabase check failed: {exc}") from None
+            print(f"Supabase ready: {count} Katmai camera rows and sightings table are readable")
+        else:
+            print("Local mode ready. Add --publish to check Supabase too.")
+        return
 
     from .detector import AnimalDetector
     detector = AnimalDetector(

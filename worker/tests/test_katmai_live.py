@@ -6,7 +6,9 @@ from animal_worker.katmai_live import (
     KatmaiLabelClassifier,
     LiveFrameProcessor,
     LiveSightingSink,
+    check_supabase,
     enqueue_latest,
+    parse_args,
 )
 
 
@@ -98,3 +100,53 @@ def test_full_queue_discards_oldest_frame():
 
     assert work.get_nowait() == "new"
     assert messages == ["Detector is behind; dropped the oldest queued frame"]
+
+
+def test_check_flag_can_verify_publish_setup_without_running_cameras():
+    args = parse_args(["--check", "--publish"])
+    assert args.check is True
+    assert args.publish is True
+
+
+def test_supabase_check_requires_all_canonical_cameras():
+    class Query:
+        data = [
+            {"name": "Brooks Falls Bearcam"},
+            {"name": "Brooks Falls Low Cam"},
+            {"name": "River Watch Cam"},
+        ]
+
+        def select(self, fields):
+            return self
+
+        def eq(self, field, value):
+            return self
+
+        def limit(self, value):
+            return self
+
+        def execute(self):
+            return self
+
+    store = SimpleNamespace(client=SimpleNamespace(table=lambda name: Query()))
+    assert check_supabase(store) == 3
+
+
+def test_supabase_check_explains_missing_camera_setup():
+    class Query:
+        data = [{"name": "Brooks Falls Low Cam"}]
+
+        def select(self, fields):
+            return self
+
+        def eq(self, field, value):
+            return self
+
+        def execute(self):
+            return self
+
+    store = SimpleNamespace(client=SimpleNamespace(table=lambda name: Query()))
+
+    import pytest
+    with pytest.raises(RuntimeError, match="run supabase/schema.sql"):
+        check_supabase(store)
