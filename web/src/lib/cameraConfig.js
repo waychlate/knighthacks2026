@@ -4,16 +4,16 @@
 
 export const NPS_ELECTRIC_PEAK = 'https://www.nps.gov/webcams-yell/mammoth_electric.jpg'
 
-// Katmai: explore.org live video, shown in Live mode only. `youtubeId` = the explore.org YouTube live
-// (embedded click-to-load, from the NPS Brooks Falls Low cam page); without one we only link out.
-// The NPS "Brooks Falls Bearcam" page links to the same explore.org "low" stream as the Low cam.
+// Katmai: explore.org live video, shown in Live mode only. `youtubeId` = the explore.org YouTube live,
+// embedded click-to-load. Stream IDs change between seasons: if an embed says unavailable, update them
+// (find the current live on explore.org or the @explorebears YouTube channel).
 const EXPLORE_CREDIT = 'explore.org with the National Park Service'
-const BROOKS_LOW = { youtubeId: 'b6HFyBmGx28', page: 'https://explore.org/livecams/brown-bears/brooks-falls-brown-bears-low' }
+const explore = (youtubeId) => ({ stream: { youtubeId, page: `https://www.youtube.com/watch?v=${youtubeId}` }, credit: EXPLORE_CREDIT })
 
 const CONFIG = {
-  'Brooks Falls Bearcam': { stream: BROOKS_LOW, credit: EXPLORE_CREDIT },
-  'Brooks Falls Low Cam': { stream: BROOKS_LOW, credit: EXPLORE_CREDIT },
-  'River Watch Cam': { stream: { page: 'https://explore.org/livecams/brown-bears/river-watch-brown-bear-salmon-cams' }, credit: EXPLORE_CREDIT },
+  'Brooks Falls Bearcam': explore('J7ZrIDvqlic'),
+  'Brooks Falls Low Cam': explore('EwTH5yY7Mks'),
+  'River Watch Cam': explore('wkVLYfU-Kew'),
   'Electric Peak Cam': { liveImage: NPS_ELECTRIC_PEAK, demoVideo: '/demo/electric-peak.mp4', credit: 'National Park Service' },
   'Lamar Valley Demo Cam': { demoVideo: '/demo/lamar-valley.mp4', credit: 'National Park Service (recorded clip)' },
   'Hayden Valley Demo Cam': { demoVideo: '/demo/hayden-valley.mp4', credit: 'National Park Service (recorded clip)' },

@@ -73,7 +73,7 @@ def resolve_stream(url, run=subprocess.run):
     """Direct media URL for a stream page (YouTube etc.) via yt-dlp; direct media URLs pass through."""
     if url.lower().split("?")[0].endswith(DIRECT_SUFFIXES):
         return url
-    out = run(["yt-dlp", "--no-playlist", "-f", "best[height<=720]/best", "-g", url],
+    out = run(["yt-dlp", "--no-playlist", "-f", "bv*[height<=720]/best", "-g", url],
               capture_output=True, text=True, timeout=90)
     lines = out.stdout.split()
     if out.returncode or not lines:

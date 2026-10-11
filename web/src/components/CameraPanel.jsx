@@ -41,7 +41,7 @@ function StreamPanel({ camera, media }) {
               </button>
             )}
             <a href={page} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-200 underline">
-              {youtubeId ? 'Open on explore.org ↗' : 'Watch on explore.org ↗'}
+              {youtubeId ? 'Open on YouTube ↗' : 'Watch on explore.org ↗'}
             </a>
           </div>
         )}
