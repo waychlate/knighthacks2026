@@ -9,6 +9,7 @@ import { useCameras } from './lib/useCameras'
 import { useMode } from './lib/useMode'
 import { useRoute } from './lib/useRoute'
 import { useSightings } from './lib/useSightings'
+import { markWelcomeSeen } from './lib/welcome'
 
 const GlobePage = lazy(() => import('./pages/GlobePage'))
 
@@ -54,6 +55,7 @@ function AppShell({ children, route }) {
 
 export default function App() {
   const route = useRoute()
+  if (route.name !== 'globe') markWelcomeSeen() // deep links skip the welcome screen
   const { mode } = useMode()
   const { sightings: all, loading, usingMock, error: sightingsError } = useSightings()
   const { cameras, error: camerasError } = useCameras()

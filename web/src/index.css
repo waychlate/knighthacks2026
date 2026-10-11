@@ -210,5 +210,7 @@ html[data-theme='dark'] .yellowstone-page .bg-stone-100 { background-color: #2a3
 html[data-theme='dark'] .yellowstone-page .text-stone-900 { color: #edf5df !important; }
 html[data-theme='dark'] .yellowstone-page .text-stone-500 { color: #b9c99b !important; }
 html[data-theme='dark'] .yellowstone-page .border-stone-200 { border-color: #536d48 !important; }
+.leave-fade { background: #fafaf9; }
+html[data-theme='dark'] .leave-fade { background: #10251a; }
 html[data-theme='dark'] .yellowstone-page .yellowstone-prediction-card { background: #101d14 !important; border-color: #536d48 !important; }
 html[data-theme='dark'] .app-shell.yellowstone-page .yellowstone-camera-card { background-color: transparent !important; box-shadow: none !important; }
