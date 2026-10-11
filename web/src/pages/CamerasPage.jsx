@@ -15,7 +15,7 @@ export default function CamerasPage({ sightings, cameras, park }) {
         const unavailable = mode === 'live' && !hasLiveFeed(cam)
         const body = (
           <>
-            <p className="font-semibold text-stone-900">📷 {cam.name}</p>
+            <p className="font-semibold text-stone-900">{park === 'katmai' ? '🐻' : '📷'} {cam.name}</p>
             {cam.location && <p className="text-sm text-stone-500">{cam.location}</p>}
             {unavailable ? (
               <p className="mt-3 text-sm text-stone-500">No live feed. Switch to Demo to see a recorded clip.</p>
