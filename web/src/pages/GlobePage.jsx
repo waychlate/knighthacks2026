@@ -2,6 +2,7 @@ import * as maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import ParkSearch from '../components/ParkSearch'
 import PingSheet from '../components/PingSheet'
 import StarField from '../components/StarField'
 import Welcome from '../components/Welcome'
@@ -376,6 +377,7 @@ export default function GlobePage({ sightings, cameras }) {
         <button onClick={flow.start} className="rounded-full bg-emerald-600 px-5 py-3 font-medium text-white shadow-lg hover:bg-emerald-500">
           📍 Drop ping
         </button>
+        <ParkSearch onPick={(park) => previewRef.current(park)} />
       </div>
 
       {here && <PingSheet demo={here.demo} species={speciesFor(here.lat, here.lng)} onSubmit={flow.submit} onCancel={flow.cancel} />}
