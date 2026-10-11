@@ -140,7 +140,7 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
   .desktop-camera-dashboard .camera-grid { grid-template-columns: 1fr !important; }
   .river-background { inset: -1rem -28%; background-size: 150% 100%; opacity: .18; }
   .yellowstone-trail-background { inset: -1rem -28%; opacity: .2; }
-  .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  .app-main { padding-bottom: calc(7.5rem + env(safe-area-inset-bottom)); }
   .desktop-nav { display: none; }
   .mobile-nav { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; display: block; padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #d6d3d1; background: #ffffff; box-shadow: 0 -4px 18px rgba(28,25,23,.08); }
   .mobile-nav nav { display: flex; align-items: flex-end; }
