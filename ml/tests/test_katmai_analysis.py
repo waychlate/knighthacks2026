@@ -6,7 +6,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from katmai_analysis import build_report, markdown_report, summarize_public_observations, wilson_interval
+from katmai_analysis import (
+    build_report,
+    markdown_report,
+    summarize_daily_features,
+    summarize_public_observations,
+    wilson_interval,
+)
 
 
 def write_jsonl(path, rows):
@@ -74,3 +80,21 @@ def test_public_observations_are_summarized_without_population_claims(tmp_path):
     assert summary["first_year"] == 2024
     assert summary["last_year"] == 2025
     assert summary["median_coordinate_uncertainty_m"] == 30.0
+
+
+def test_daily_features_summarize_weather_and_observation_days(tmp_path):
+    source = tmp_path / "features.csv"
+    source.write_text(
+        "date,year,month,temperature_c,precipitation_mm,relative_humidity_percent,daylight_hours,gbif_bear_records,gbif_observation_day\n"
+        "2024-07-01,2024,7,10,2,80,18.5,2,1\n"
+        "2024-07-02,2024,7,12,0,70,18.4,0,0\n"
+        "2024-08-01,2024,8,8,4,90,15.5,1,1\n",
+        encoding="utf-8",
+    )
+    summary = summarize_daily_features(source)
+    assert summary["daily_rows"] == 3
+    assert summary["gbif_records_matched"] == 3
+    assert summary["gbif_observation_days"] == 2
+    assert summary["by_month"]["7"]["mean_temperature_c"] == 11.0
+    assert summary["by_month"]["7"]["mean_precipitation_mm_day"] == 1.0
+    assert summary["observation_day_weather"]["mean_temperature_c"] == 9.0

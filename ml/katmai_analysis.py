@@ -22,6 +22,7 @@ DEFAULT_CAPTURES = ROOT / "worker" / "sample_videos" / "katmai"
 DEFAULT_INVENTORY = ROOT / "worker" / "reference" / "katmai" / "npspecies_full.csv"
 DEFAULT_OUTPUT = ROOT / "ml" / "out"
 DEFAULT_GBIF = DEFAULT_OUTPUT / "katmai_brown_bear_gbif.json"
+DEFAULT_FEATURES = DEFAULT_OUTPUT / "katmai_daily_features.csv"
 
 
 def parse_time(value: str | None) -> datetime | None:
@@ -177,7 +178,50 @@ def summarize_public_observations(path: Path) -> dict:
     }
 
 
-def build_report(captures_root: Path, inventory_path: Path, gbif_path: Path | None = None) -> dict:
+def summarize_daily_features(path: Path) -> dict:
+    with Path(path).open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+
+    def number(row, field):
+        value = row.get(field)
+        return float(value) if value not in (None, "", "None") else None
+
+    def average(values):
+        clean = [value for value in values if value is not None]
+        return round(sum(clean) / len(clean), 2) if clean else None
+
+    by_month = {}
+    for month in range(1, 13):
+        selected = [row for row in rows if int(row["month"]) == month]
+        by_month[str(month)] = {
+            "weather_days": len(selected),
+            "mean_temperature_c": average(number(row, "temperature_c") for row in selected),
+            "mean_precipitation_mm_day": average(number(row, "precipitation_mm") for row in selected),
+            "mean_relative_humidity_percent": average(number(row, "relative_humidity_percent") for row in selected),
+            "mean_daylight_hours": average(number(row, "daylight_hours") for row in selected),
+            "gbif_bear_records": sum(int(row["gbif_bear_records"]) for row in selected),
+            "gbif_observation_days": sum(int(row["gbif_observation_day"]) for row in selected),
+        }
+    observation_days = [row for row in rows if int(row["gbif_observation_day"]) == 1]
+    return {
+        "source": str(path),
+        "daily_rows": len(rows),
+        "first_date": rows[0]["date"] if rows else None,
+        "last_date": rows[-1]["date"] if rows else None,
+        "gbif_records_matched": sum(int(row["gbif_bear_records"]) for row in rows),
+        "gbif_observation_days": len(observation_days),
+        "observation_day_weather": {
+            "mean_temperature_c": average(number(row, "temperature_c") for row in observation_days),
+            "mean_precipitation_mm_day": average(number(row, "precipitation_mm") for row in observation_days),
+            "mean_relative_humidity_percent": average(number(row, "relative_humidity_percent") for row in observation_days),
+            "mean_daylight_hours": average(number(row, "daylight_hours") for row in observation_days),
+        },
+        "by_month": by_month,
+    }
+
+
+def build_report(captures_root: Path, inventory_path: Path, gbif_path: Path | None = None,
+                 features_path: Path | None = None) -> dict:
     frames = load_frames(captures_root)
     sightings = load_sightings(captures_root)
     report = {
@@ -194,10 +238,15 @@ def build_report(captures_root: Path, inventory_path: Path, gbif_path: Path | No
             "NPS inventory presence does not mean a species is visible from these cameras.",
             "GBIF record counts reflect observer effort and publication bias, not animal abundance.",
             "The GBIF regional envelope is not the legal boundary of Katmai National Park and Preserve.",
+            "NASA POWER weather is gridded data at one Katmai coordinate, not a camera-site weather station.",
+            "Calculated daylight is an astronomical approximation and does not include terrain or cloud cover.",
+            "A day without a GBIF record is not a confirmed day without bears.",
         ],
     }
     if gbif_path and Path(gbif_path).exists():
         report["public_observations"] = summarize_public_observations(gbif_path)
+    if features_path and Path(features_path).exists():
+        report["daily_features"] = summarize_daily_features(features_path)
     return report
 
 
@@ -238,6 +287,7 @@ def markdown_report(report: dict) -> str:
     lines += [f"| {name} | {count} |" for name, count in inventory["by_category"].items()]
     public = report.get("public_observations")
     if public:
+        features = report.get("daily_features", {})
         month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         lines += [
             "",
@@ -247,13 +297,21 @@ def markdown_report(report: dict) -> str:
             f"**{public['first_year']}-{public['last_year']}** inside the configured Katmai regional envelope.",
             "These are opportunistic records; monthly counts also reflect visitor access, observer effort, and reporting.",
             "",
-            "| Month | Records | Share |",
-            "|---|---:|---:|",
+            "| Month | Records | Share | Mean temp C | Mean rain mm/day | Daylight h |",
+            "|---|---:|---:|---:|---:|---:|",
         ]
         total = public["dated_records"] or 1
         for month, name in enumerate(month_names, 1):
             count = public["by_month"][str(month)]
-            lines.append(f"| {name} | {count} | {100 * count / total:.1f}% |")
+            climate = features.get("by_month", {}).get(str(month), {})
+            temp = climate.get("mean_temperature_c")
+            rain = climate.get("mean_precipitation_mm_day")
+            daylight = climate.get("mean_daylight_hours")
+            lines.append(
+                f"| {name} | {count} | {100 * count / total:.1f}% | "
+                f"{temp if temp is not None else 'n/a'} | {rain if rain is not None else 'n/a'} | "
+                f"{daylight if daylight is not None else 'n/a'} |"
+            )
     lines += ["", "## Limits", ""]
     lines += [f"- {item}" for item in report["limitations"]]
     return "\n".join(lines) + "\n"
@@ -265,9 +323,11 @@ def main(argv=None):
     parser.add_argument("--inventory", type=Path, default=DEFAULT_INVENTORY)
     parser.add_argument("--gbif", type=Path, default=DEFAULT_GBIF,
                         help="optional public occurrence JSON from fetch_gbif.py")
+    parser.add_argument("--features", type=Path, default=DEFAULT_FEATURES,
+                        help="optional daily feature CSV from katmai_features.py")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args(argv)
-    report = build_report(args.captures, args.inventory, args.gbif)
+    report = build_report(args.captures, args.inventory, args.gbif, args.features)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     json_path = args.output_dir / "katmai_analysis.json"
     markdown_path = args.output_dir / "katmai_analysis.md"

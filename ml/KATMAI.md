@@ -217,6 +217,8 @@ From `ml/`:
 
 ```powershell
 .\.venv\Scripts\python.exe fetch_gbif.py
+.\.venv\Scripts\python.exe fetch_weather.py
+.\.venv\Scripts\python.exe katmai_features.py
 .\.venv\Scripts\python.exe katmai_analysis.py
 ```
 
@@ -226,6 +228,17 @@ detection rates. GBIF data is opportunistic: record counts reflect access,
 observer effort, reporting, and publication as well as animal presence. They
 must not be interpreted as population estimates or calibrated probabilities.
 The generated JSON and Markdown reports remain local in `ml/out/`.
+
+NASA POWER daily point data adds temperature, daily minimum and maximum
+temperature, precipitation, relative humidity, and wind speed at the
+NPS-published Katmai coordinate. `katmai_features.py` calculates approximate
+daylight from latitude and day of year, then creates one row per day with the
+weather values and exact-date GBIF record count. The 2026-10-10 run produced
+9,415 rows from 2001-01-01 through 2026-10-11 and matched 731 GBIF records across
+280 observation days. NASA POWER is gridded data for one point rather than a
+camera weather station, and a date without a GBIF record is not a confirmed
+absence. The feature table is suitable for exploration, but not for training a
+calibrated bear-presence model without standardized survey-effort or absence data.
 
 ## Reviewed detector experiment (2026-10-10)
 
