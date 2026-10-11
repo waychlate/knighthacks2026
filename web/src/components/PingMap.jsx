@@ -56,12 +56,13 @@ export default function PingMap({ park, cameras, className = '' }) {
     })
     return () => {
       resize.disconnect()
+      setReady(false)
       map.remove()
     }
   }, [park])
 
   useEffect(() => {
-    if (ready) mapRef.current.getSource('pings').setData(toGeoJSON(inPark))
+    if (ready) mapRef.current.getSource('pings')?.setData(toGeoJSON(inPark))
   }, [ready, inPark])
 
   useEffect(() => {
