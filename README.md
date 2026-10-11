@@ -2,6 +2,8 @@
 
 A wildlife sighting log for parks. Cameras feed a Python worker that **detects animals (YOLO)**, **names the species (BioCLIP, a Hugging Face model)**, and logs each sighting to Supabase. A React web app shows a live feed of recent sightings (species, camera, time), a prediction card ("Predicting an elk around 6:30 AM"), charts, and a chat room for visitors. It opens on a 3D globe of seven national parks (Yellowstone and Katmai have cameras; Yosemite, Everglades, Grand Canyon, Great Smoky Mountains and Denali show "cameras coming soon"), where visitors can also drop anonymous sighting pings. It installs as a PWA.
 
+**Live site: https://knighthacks2026.vercel.app/**
+
 Built for KnightHacks 2026. Tracks: **Best First Time**, **Best AI Hack**, **Best Use of a Hugging Face Model**.
 
 > **Honest status:** the AI pipeline is real and tested on public-domain Yellowstone footage, but the live Yellowstone cam rarely shows animals, so the demo runs on recorded clips (labelled "Demo clip"). The predictions are trained on **synthetic** data. See [Status](#status-what-is-real-and-what-is-not).
@@ -61,7 +63,7 @@ Needs the worker venv and the Supabase keys in `.env`. From `worker/`, each in i
 .venv/bin/python -m animal_worker.katmai_live --every 60 --publish
 ```
 
-Then open the web app (the deployed Vercel site, or `cd web && npm run dev` locally) and switch to **Demo** to watch sightings arrive. Add `--dry-run` to any command to print sightings without writing to Supabase. `--min-confidence 0.9` hides the occasional "Elk" guess on the bison clips (bison score 0.98 to 1.00). Ctrl+C stops each one.
+Then open the web app ([knighthacks2026.vercel.app](https://knighthacks2026.vercel.app/), or `cd web && npm run dev` locally) and switch to **Demo** to watch sightings arrive. Add `--dry-run` to any command to print sightings without writing to Supabase. `--min-confidence 0.9` hides the occasional "Elk" guess on the bison clips (bison score 0.98 to 1.00). Ctrl+C stops each one.
 
 ## Quick start
 
