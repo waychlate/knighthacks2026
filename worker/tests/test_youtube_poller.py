@@ -196,6 +196,21 @@ def test_collection_drains_intermediate_frames_and_saves_current_frames(tmp_path
     assert "private-token" not in (out / "frames.jsonl").read_text(encoding="utf-8")
 
 
+def test_collection_sends_saved_frame_and_metadata_to_callback(tmp_path):
+    cap = FakeCapture([0])
+    calls = []
+
+    assert collect(cap, tmp_path, max_frames=1,
+                   on_frame=lambda frame, row, path: calls.append((frame, row, path))) == 1
+
+    assert len(calls) == 1
+    frame, row, path = calls[0]
+    assert frame == "frame-at-0"
+    assert row["camera"] == "Brooks Falls Low"
+    assert row["captured_at"] == START.isoformat()
+    assert path.exists()
+
+
 def test_collection_enforces_thirty_second_minimum(tmp_path):
     cap = FakeCapture([0, 1, 29, 30])
     assert collect(cap, tmp_path, every=1, max_frames=2) == 2
@@ -275,7 +290,7 @@ def test_katmai_cli_routes_youtube_source_to_collector(tmp_path, monkeypatch, ur
     assert calls["info"] == stream()
     assert calls["out"].as_posix() == "sample_videos/katmai/brooks-falls-low"
     assert calls["options"]["park"] == "katmai"
-    assert calls["options"]["camera"] == "Brooks Falls Low"
+    assert calls["options"]["camera"] == "Brooks Falls Low Cam"
     assert calls["options"]["every"] == 60
     assert calls["options"]["max_frames"] == 2
 
@@ -302,7 +317,7 @@ def test_named_katmai_camera_routes_to_its_url_and_folder(tmp_path, monkeypatch)
     selected = KATMAI_CAMERAS["river-watch"]
     assert calls["url"] == selected.youtube_url
     assert calls["out"].as_posix() == "sample_videos/katmai/river-watch"
-    assert calls["options"]["camera"] == "River Watch"
+    assert calls["options"]["camera"] == "River Watch Cam"
 
 
 def test_default_yellowstone_cli_still_saves_jpeg(tmp_path, monkeypatch):
