@@ -109,6 +109,7 @@ button:active, a:active { transform: translateY(1px); }
 .yellowstone-bison { margin-right: .3rem; font-size: .9rem; }
 .yellowstone-page .app-header { background: #eef3e6 !important; border-color: #b7c9a8 !important; }
 .yellowstone-page .app-logo { border: 1px solid #536b3d; box-shadow: 0 2px 8px rgba(46,91,62,.16); }
+.yellowstone-page .ranger-bear-logo, .katmai-page .ranger-bear-logo { border: 0 !important; box-shadow: none !important; }
 .yellowstone-page .bg-emerald-600, .yellowstone-page .bg-emerald-700 { background-color: #2e5b3e !important; }
 .yellowstone-page .bg-emerald-600:hover, .yellowstone-page .bg-emerald-700:hover { background-color: #23472f !important; }
 .yellowstone-page .bg-amber-500 { background-color: #9a6b2f !important; }
