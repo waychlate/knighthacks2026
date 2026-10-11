@@ -204,6 +204,29 @@ still the default; Katmai is selected explicitly with `--park katmai`.
 
 Add measured sighting histories after the three-camera collection and detection tests work.
 
+## Public historical occurrence analysis
+
+`fetch_gbif.py` queries the official GBIF occurrence API for coordinate-bearing
+`Ursus arctos` records from 2000 onward within a documented rectangular Katmai
+regional envelope. The envelope is centered around the NPS-published Katmai
+coordinates and is not the legal park boundary. The downloaded JSON is written
+to the gitignored `ml/out/katmai_brown_bear_gbif.json` with the exact filters,
+taxon match, retrieval time, record licenses, dataset keys, and source URL.
+
+From `ml/`:
+
+```powershell
+.\.venv\Scripts\python.exe fetch_gbif.py
+.\.venv\Scripts\python.exe katmai_analysis.py
+```
+
+The 2026-10-10 run downloaded 738 unique records dated from 2001 through 2026.
+The resulting report keeps their monthly distribution separate from the camera
+detection rates. GBIF data is opportunistic: record counts reflect access,
+observer effort, reporting, and publication as well as animal presence. They
+must not be interpreted as population estimates or calibrated probabilities.
+The generated JSON and Markdown reports remain local in `ml/out/`.
+
 ## Reviewed detector experiment (2026-10-10)
 
 The three cameras supplied 402 captured frames. A no-cooldown candidate scan

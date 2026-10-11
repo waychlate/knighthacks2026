@@ -16,6 +16,7 @@ then turns the next 24 hours into `Prediction` rows ("Predicting an elk around 6
 | `evaluate.py` | Compares the models and prints the table below. |
 | `predict.py` | Trains the hourly-profile model, writes `ml/out/predictions.json` (gitignored) and `web/public/predictions.sample.json`. |
 | `katmai_analysis.py` | Combines local camera effort and detections with the public NPS Katmai species inventory; writes an honest descriptive JSON and Markdown report. |
+| `fetch_gbif.py` | Downloads public brown-bear occurrence records from the official GBIF API for a documented Katmai regional envelope. |
 | `make_seed.py` | Writes `supabase/seed.sql` from the same generator. |
 
 ## Run
@@ -34,16 +35,20 @@ python -m pytest                 # 10 tests
 python evaluate.py               # the table below
 python predict.py                # from /ml, or `python ml/predict.py` from the repo root; needs no keys
 python make_seed.py              # regenerate supabase/seed.sql
+python fetch_gbif.py             # cache public Katmai-region brown-bear records locally
 python katmai_analysis.py        # local Katmai effort/detection and NPS inventory report
 ```
 
 `katmai_analysis.py` reports detection frames per 100 captured frames with 95%
 Wilson intervals, collection coverage, broad bear/bird rates, and the number of
-approved present species in the NPS inventory. Its output goes to
+approved present species in the NPS inventory. If `fetch_gbif.py` has run, it
+also reports the monthly distribution of public brown-bear occurrence records.
+Its output goes to
 `ml/out/katmai_analysis.{json,md}`. These are survey summaries, not animal
 population estimates. A short, single-day capture cannot support a seasonal or
-hour-of-day forecast; public historical observations and weather/daylight data
-can be added as separate, provenance-labelled inputs later.
+hour-of-day forecast. GBIF records are opportunistic and cover a rectangular
+regional envelope rather than the legal park boundary, so their monthly pattern
+also reflects access, observer effort, reporting, and publication bias.
 
 `predict.py` writes to Supabase only if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are in the environment
 (it also needs the `supabase` package from `worker/requirements.txt`). That path has never been run against a real project.

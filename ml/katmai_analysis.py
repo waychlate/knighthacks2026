@@ -14,12 +14,14 @@ import math
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from statistics import median
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CAPTURES = ROOT / "worker" / "sample_videos" / "katmai"
 DEFAULT_INVENTORY = ROOT / "worker" / "reference" / "katmai" / "npspecies_full.csv"
 DEFAULT_OUTPUT = ROOT / "ml" / "out"
+DEFAULT_GBIF = DEFAULT_OUTPUT / "katmai_brown_bear_gbif.json"
 
 
 def parse_time(value: str | None) -> datetime | None:
@@ -141,12 +143,46 @@ def summarize_inventory(path: Path) -> dict:
     }
 
 
-def build_report(captures_root: Path, inventory_path: Path) -> dict:
+def summarize_public_observations(path: Path) -> dict:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    unique = {}
+    for row in data.get("records", []):
+        if row.get("key") is not None:
+            unique.setdefault(str(row["key"]), row)
+    records = list(unique.values())
+    dated = [row for row in records if row.get("year") and row.get("month")]
+    years = Counter(int(row["year"]) for row in dated)
+    months = Counter(int(row["month"]) for row in dated)
+    uncertainties = [
+        float(row["coordinateUncertaintyInMeters"])
+        for row in records if row.get("coordinateUncertaintyInMeters") is not None
+    ]
+    return {
+        "source": data.get("source"),
+        "source_url": data.get("source_url"),
+        "retrieved_at": data.get("retrieved_at"),
+        "region": data.get("region"),
+        "taxon_match": data.get("taxon_match"),
+        "records": len(records),
+        "dated_records": len(dated),
+        "first_year": min(years) if years else None,
+        "last_year": max(years) if years else None,
+        "by_year": {str(year): years[year] for year in sorted(years)},
+        "by_month": {str(month): months.get(month, 0) for month in range(1, 13)},
+        "basis_of_record": dict(sorted(Counter(row.get("basisOfRecord") or "Unknown" for row in records).items())),
+        "licenses": dict(sorted(Counter(row.get("license") or "Unreported" for row in records).items())),
+        "datasets": len({row.get("datasetKey") for row in records if row.get("datasetKey")}),
+        "median_coordinate_uncertainty_m": round(median(uncertainties), 1) if uncertainties else None,
+        "truncated": bool(data.get("truncated")),
+    }
+
+
+def build_report(captures_root: Path, inventory_path: Path, gbif_path: Path | None = None) -> dict:
     frames = load_frames(captures_root)
     sightings = load_sightings(captures_root)
-    return {
+    report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "analysis_type": "descriptive_camera_effort_and_species_inventory",
+        "analysis_type": "descriptive_camera_effort_species_inventory_and_public_occurrences",
         "camera_survey": summarize_cameras(frames, sightings),
         "nps_inventory": summarize_inventory(inventory_path),
         "limitations": [
@@ -156,8 +192,13 @@ def build_report(captures_root: Path, inventory_path: Path) -> dict:
             "Capture time is not observation time when a live page is replaying highlights.",
             "One short collection window cannot support seasonal or hour-of-day forecasts.",
             "NPS inventory presence does not mean a species is visible from these cameras.",
+            "GBIF record counts reflect observer effort and publication bias, not animal abundance.",
+            "The GBIF regional envelope is not the legal boundary of Katmai National Park and Preserve.",
         ],
     }
+    if gbif_path and Path(gbif_path).exists():
+        report["public_observations"] = summarize_public_observations(gbif_path)
+    return report
 
 
 def markdown_report(report: dict) -> str:
@@ -195,6 +236,24 @@ def markdown_report(report: dict) -> str:
         "|---|---:|",
     ]
     lines += [f"| {name} | {count} |" for name, count in inventory["by_category"].items()]
+    public = report.get("public_observations")
+    if public:
+        month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        lines += [
+            "",
+            "## Public brown-bear observations",
+            "",
+            f"GBIF contributed **{public['records']:,} unique records** from "
+            f"**{public['first_year']}-{public['last_year']}** inside the configured Katmai regional envelope.",
+            "These are opportunistic records; monthly counts also reflect visitor access, observer effort, and reporting.",
+            "",
+            "| Month | Records | Share |",
+            "|---|---:|---:|",
+        ]
+        total = public["dated_records"] or 1
+        for month, name in enumerate(month_names, 1):
+            count = public["by_month"][str(month)]
+            lines.append(f"| {name} | {count} | {100 * count / total:.1f}% |")
     lines += ["", "## Limits", ""]
     lines += [f"- {item}" for item in report["limitations"]]
     return "\n".join(lines) + "\n"
@@ -204,9 +263,11 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--captures", type=Path, default=DEFAULT_CAPTURES)
     parser.add_argument("--inventory", type=Path, default=DEFAULT_INVENTORY)
+    parser.add_argument("--gbif", type=Path, default=DEFAULT_GBIF,
+                        help="optional public occurrence JSON from fetch_gbif.py")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args(argv)
-    report = build_report(args.captures, args.inventory)
+    report = build_report(args.captures, args.inventory, args.gbif)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     json_path = args.output_dir / "katmai_analysis.json"
     markdown_path = args.output_dir / "katmai_analysis.md"

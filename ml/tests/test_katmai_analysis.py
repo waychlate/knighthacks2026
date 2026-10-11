@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from katmai_analysis import build_report, markdown_report, wilson_interval
+from katmai_analysis import build_report, markdown_report, summarize_public_observations, wilson_interval
 
 
 def write_jsonl(path, rows):
@@ -51,3 +51,26 @@ def test_wilson_interval_handles_empty_and_small_samples():
     assert wilson_interval(0, 0) == [0.0, 0.0]
     low, high = wilson_interval(1, 10)
     assert 0 < low < 10 < high < 100
+
+
+def test_public_observations_are_summarized_without_population_claims(tmp_path):
+    source = tmp_path / "gbif.json"
+    source.write_text(json.dumps({
+        "source": "GBIF occurrence search API",
+        "source_url": "https://api.gbif.org/v1/occurrence/search",
+        "retrieved_at": "2026-10-10T00:00:00+00:00",
+        "region": {"name": "Katmai regional envelope"},
+        "taxon_match": {"scientificName": "Ursus arctos"},
+        "truncated": False,
+        "records": [
+            {"key": 1, "year": 2024, "month": 7, "basisOfRecord": "HUMAN_OBSERVATION", "datasetKey": "a", "license": "CC_BY_4_0", "coordinateUncertaintyInMeters": 20},
+            {"key": 2, "year": 2025, "month": 7, "basisOfRecord": "HUMAN_OBSERVATION", "datasetKey": "b", "license": "CC_BY_4_0", "coordinateUncertaintyInMeters": 40},
+            {"key": 2, "year": 2025, "month": 7},
+        ],
+    }), encoding="utf-8")
+    summary = summarize_public_observations(source)
+    assert summary["records"] == 2
+    assert summary["by_month"]["7"] == 2
+    assert summary["first_year"] == 2024
+    assert summary["last_year"] == 2025
+    assert summary["median_coordinate_uncertainty_m"] == 30.0
