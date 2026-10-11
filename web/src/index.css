@@ -39,21 +39,30 @@ button:active, a:active { transform: translateY(1px); }
 .katmai-waterline span:nth-child(2) { flex: 1; overflow: hidden; color: #38bdf8; font-size: 1.5rem; letter-spacing: .1rem; white-space: nowrap; }
 .katmai-fish { margin-right: .3rem; font-size: .9rem; }
 .yellowstone-bison { margin-right: .3rem; font-size: .9rem; }
-.yellowstone-page .app-header { background: #edf6f7 !important; border-color: #b8d2d5 !important; }
-.yellowstone-page .app-logo { border: 1px solid #5b9aa1; box-shadow: 0 2px 8px rgba(31,91,74,.16); }
-.yellowstone-page .bg-emerald-600, .yellowstone-page .bg-emerald-700 { background-color: #1f5b4a !important; }
-.yellowstone-page .bg-emerald-600:hover, .yellowstone-page .bg-emerald-700:hover { background-color: #17483b !important; }
-.yellowstone-page .bg-amber-500 { background-color: #d97706 !important; }
-.yellowstone-page .bg-amber-500:hover { background-color: #c2410c !important; }
+.yellowstone-page .app-header { background: #eef3e6 !important; border-color: #b7c9a8 !important; }
+.yellowstone-page .app-logo { border: 1px solid #536b3d; box-shadow: 0 2px 8px rgba(46,91,62,.16); }
+.yellowstone-page .bg-emerald-600, .yellowstone-page .bg-emerald-700 { background-color: #2e5b3e !important; }
+.yellowstone-page .bg-emerald-600:hover, .yellowstone-page .bg-emerald-700:hover { background-color: #23472f !important; }
+.yellowstone-page .bg-amber-500 { background-color: #9a6b2f !important; }
+.yellowstone-page .bg-amber-500:hover { background-color: #79532a !important; }
 .yellowstone-environment { position: relative; isolation: isolate; overflow: hidden; }
-.yellowstone-environment::before { content: ''; position: absolute; z-index: -2; right: -12%; bottom: 5%; left: -12%; height: 12rem; transform: rotate(2deg); border-top: 2px solid rgba(31,91,74,.22); background: linear-gradient(165deg, rgba(31,91,74,.12), rgba(96,165,177,.18) 48%, rgba(120,113,108,.12)); clip-path: polygon(0 26%, 18% 35%, 34% 17%, 52% 31%, 68% 18%, 84% 35%, 100% 22%, 100% 78%, 82% 68%, 63% 85%, 45% 70%, 27% 86%, 10% 70%, 0 82%); pointer-events: none; }
-.yellowstone-environment::after { content: ''; position: absolute; z-index: -1; top: 4.75rem; right: 0; left: 0; height: 5px; background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(217,119,6,.3) 14px 36px, transparent 36px 58px); pointer-events: none; }
-.yellowstone-trail { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #1f5b4a; font-size: 1.1rem; letter-spacing: .18rem; }
-.yellowstone-trail span:nth-child(2) { flex: 1; overflow: hidden; color: #d97706; font-size: 1.3rem; white-space: nowrap; }
-.yellowstone-camera-card { position: relative; border-color: #6f9384 !important; box-shadow: 0 4px 12px rgba(31,91,74,.1); }
-.yellowstone-camera-card::before { content: ''; position: absolute; z-index: 0; inset: -10px; border-radius: 1rem; background: url('/yellowstone/pine-needle-border.png') center/100% 100% no-repeat; opacity: .68; pointer-events: none; }
+.yellowstone-environment::before { content: ''; position: absolute; z-index: -2; right: -12%; bottom: 5%; left: -12%; height: 12rem; transform: rotate(2deg); border-top: 2px solid rgba(46,91,62,.25); background: linear-gradient(165deg, rgba(46,91,62,.16), rgba(134,154,88,.2) 48%, rgba(139,115,85,.16)); clip-path: polygon(0 26%, 18% 35%, 34% 17%, 52% 31%, 68% 18%, 84% 35%, 100% 22%, 100% 78%, 82% 68%, 63% 85%, 45% 70%, 27% 86%, 10% 70%, 0 82%); pointer-events: none; }
+.yellowstone-environment::after { content: ''; position: absolute; z-index: -1; top: 4.75rem; right: 0; left: 0; height: 5px; background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(139,115,85,.36) 14px 36px, transparent 36px 58px); pointer-events: none; }
+.yellowstone-trail { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #2e5b3e; font-size: 1.1rem; letter-spacing: .18rem; }
+.yellowstone-trail span:nth-child(2) { flex: 1; overflow: hidden; color: #8b7355; font-size: 1.3rem; white-space: nowrap; }
+.yellowstone-camera-card { position: relative; isolation: isolate; min-height: 8.25rem; border: 0 !important; border-radius: 0 !important; background: transparent !important; padding: 1.35rem 2.25rem 1.35rem 2.5rem !important; filter: drop-shadow(0 5px 5px rgba(31,61,36,.2)); transition: filter .2s ease, transform .2s ease; }
+.yellowstone-camera-card::before, .yellowstone-camera-card::after { content: ''; position: absolute; z-index: -1; pointer-events: none; clip-path: polygon(0 50%, 7% 38%, 16% 20%, 31% 8%, 49% 4%, 66% 8%, 82% 21%, 95% 40%, 100% 50%, 95% 60%, 82% 79%, 66% 92%, 49% 96%, 31% 92%, 16% 80%, 7% 62%); }
+.yellowstone-camera-card::before { inset: 0; background: linear-gradient(150deg, #9a7045 0%, #6e4e32 48%, #4b3525 100%); }
+.yellowstone-camera-card::after { inset: 5px; background: linear-gradient(150deg, #4d783d 0%, #2e5b3e 48%, #1e412d 100%), linear-gradient(164deg, transparent 47%, rgba(211,226,157,.42) 48% 49%, transparent 50%); background-blend-mode: overlay; }
+.yellowstone-camera-card:hover { filter: drop-shadow(0 7px 7px rgba(31,61,36,.28)); transform: translateY(-1px); }
+.yellowstone-camera-card:focus-visible { outline: 3px solid #d8b566; outline-offset: 4px; filter: drop-shadow(0 0 4px rgba(216,181,102,.75)) drop-shadow(0 5px 5px rgba(31,61,36,.2)); }
 .yellowstone-camera-card > * { position: relative; z-index: 1; }
-html[data-theme='dark'] .yellowstone-camera-card { border-color: #5e9390 !important; box-shadow: 0 5px 16px rgba(0,0,0,.25); }
+.yellowstone-camera-card .text-stone-900 { color: #f3f5d8 !important; }
+.yellowstone-camera-card .text-stone-700, .yellowstone-camera-card .text-stone-500 { color: #d5dfb9 !important; }
+.yellowstone-camera-card[aria-disabled='true'] { filter: grayscale(.35) drop-shadow(0 4px 4px rgba(31,61,36,.16)); }
+html[data-theme='dark'] .yellowstone-camera-card { filter: drop-shadow(0 6px 7px rgba(0,0,0,.38)); }
+html[data-theme='dark'] .yellowstone-camera-card::before { background: linear-gradient(150deg, #795334 0%, #523923 48%, #352419 100%); }
+html[data-theme='dark'] .yellowstone-camera-card::after { background: linear-gradient(150deg, #315a3b 0%, #183d2b 48%, #0f291d 100%), linear-gradient(164deg, transparent 47%, rgba(196,220,150,.35) 48% 49%, transparent 50%); background-blend-mode: overlay; }
 .katmai-canopy { position: relative; overflow: hidden; background: linear-gradient(145deg, #082f49, #0c4a6e 52%, #075985) !important; box-shadow: inset 0 -8px 0 rgba(2,132,199,.18); }
 .katmai-canopy::before { content: '🌿  🌿  🌿'; position: absolute; top: -1.1rem; right: .8rem; color: rgba(186,230,253,.35); font-size: 1.2rem; letter-spacing: .3rem; }
 .katmai-chat section { border-color: #7dd3fc !important; box-shadow: 0 18px 36px rgba(3,105,161,.25); }
@@ -122,13 +131,13 @@ html[data-theme='dark'] .katmai-page .status-action { background: #081d30; borde
 html[data-theme='dark'] .katmai-page .app-header { background: #081d30 !important; border-color: #21465e !important; }
 html[data-theme='dark'] .katmai-page .app-logo { border-color: #397b9b; box-shadow: 0 2px 10px rgba(14,116,144,.25); }
 html[data-theme='dark'] .katmai-page .bg-white { background-color: #081d30 !important; }
-html[data-theme='dark'] .yellowstone-page { background: #102427 !important; color: #ecf7f4; }
-html[data-theme='dark'] .yellowstone-page .app-header { background: #17383a !important; border-color: #396b6d !important; }
-html[data-theme='dark'] .yellowstone-page .app-logo { border-color: #73b3b2; box-shadow: 0 2px 10px rgba(96,165,177,.2); }
-html[data-theme='dark'] .yellowstone-page .theme-toggle { background: #245052 !important; border-color: #719b9a !important; color: #e1f2ef !important; }
-html[data-theme='dark'] .yellowstone-page .bg-white { background-color: #17383a !important; }
-html[data-theme='dark'] .yellowstone-page .bg-stone-50 { background-color: #102427 !important; }
-html[data-theme='dark'] .yellowstone-page .bg-stone-100 { background-color: #244044 !important; }
-html[data-theme='dark'] .yellowstone-page .text-stone-900 { color: #ecf7f4 !important; }
-html[data-theme='dark'] .yellowstone-page .text-stone-500 { color: #b5d0ce !important; }
-html[data-theme='dark'] .yellowstone-page .border-stone-200 { border-color: #4d7c7d !important; }
+html[data-theme='dark'] .yellowstone-page { background: #101d14 !important; color: #edf5df; }
+html[data-theme='dark'] .yellowstone-page .app-header { background: #1b3323 !important; border-color: #496341 !important; }
+html[data-theme='dark'] .yellowstone-page .app-logo { border-color: #8ba36c; box-shadow: 0 2px 10px rgba(139,163,108,.2); }
+html[data-theme='dark'] .yellowstone-page .theme-toggle { background: #294832 !important; border-color: #718d59 !important; color: #e5efca !important; }
+html[data-theme='dark'] .yellowstone-page .bg-white { background-color: #1b3323 !important; }
+html[data-theme='dark'] .yellowstone-page .bg-stone-50 { background-color: #101d14 !important; }
+html[data-theme='dark'] .yellowstone-page .bg-stone-100 { background-color: #2a3f2c !important; }
+html[data-theme='dark'] .yellowstone-page .text-stone-900 { color: #edf5df !important; }
+html[data-theme='dark'] .yellowstone-page .text-stone-500 { color: #b9c99b !important; }
+html[data-theme='dark'] .yellowstone-page .border-stone-200 { border-color: #536d48 !important; }
