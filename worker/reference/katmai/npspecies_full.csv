@@ -1,0 +1,1051 @@
+Park Code,Category,Order,Family,Taxa Code,Scientific Name,Synonyms,Common Name,Occurrence,Occurrence Tags,Abundance,Nativeness,Nativeness Tags,Record Status
+KATM,Mammal,Artiodactyla,Cervidae,95052,Alces alces,,Moose,Present,,Unknown,Native,,Approved
+KATM,Mammal,Artiodactyla,Cervidae,95050,Rangifer tarandus,Rangifer tarandus tarundus (107258),Caribou,Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Canidae,93340,Canis latrans,,Coyote,Present,,,Native,,Approved
+KATM,Mammal,Carnivora,Canidae,93337,Canis lupus,,Gray wolf,Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Canidae,93347,Vulpes vulpes,,Red fox,Present,,Common,Native,,Approved
+KATM,Mammal,Carnivora,Felidae,93325,Lynx canadensis,,"Canada lynx, Lynx",Present,,Common,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,408533,Enhydra lutris kenyoni,"Enhydra lutris lutris (107233),Enhydra lutris (93283)","Eastern Sea Otter, Northern Sea Otter",Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93288,Gulo gulo,Gulo luscus (151569),Wolverine,Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93285,Lontra canadensis,Lutra canadensis (93311),Northern river otter,Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93296,Martes americana,,American marten,Probably Present,,,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93289,Mustela,,Weasels,,,,,,In Review
+KATM,Mammal,Carnivora,Mustelidae,93292,Mustela erminea,,"Ermine, Short-tailed weasel",Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93291,Mustela nivalis,,Least weasel,Present,,,Native,,Approved
+KATM,Mammal,Carnivora,Mustelidae,93290,Mustela vison,,Mink,Present,,Uncommon,Native,,Approved
+KATM,Mammal,Carnivora,Otariidae,93372,Callorhinus ursinus,,Northern fur seal,Present,,Unknown,Native,,Approved
+KATM,Mammal,Carnivora,Otariidae,93370,Eumetopias jubatus,,"Northern sea lion, Steller's sea lion",Present,,Uncommon,Native,,Approved
+KATM,Mammal,Carnivora,Otariidae,93359,Otariidae,,Eared seals,,,,,,In Review
+KATM,Mammal,Carnivora,Phocidae,93388,Phoca,,"hair seals, harbor seals",,,,,,In Review
+KATM,Mammal,Carnivora,Phocidae,93396,Phoca vitulina,Phoca vitulina richardsi (93398),Harbor seal,Present,,Common,Native,,Approved
+KATM,Mammal,Carnivora,Ursidae,93277,Ursus,,bears,,,,,,In Review
+KATM,Mammal,Carnivora,Ursidae,93280,Ursus americanus,,black bear,Probably Present,,,Native,,Approved
+KATM,Mammal,Carnivora,Ursidae,93279,Ursus arctos,"Ursus arctos horribilis (107229),Ursus arctos pruinosus (107230)","Brown bear, Grizzly bear",Present,,Unknown,Native,,Approved
+KATM,Mammal,Cetacea,,91804,Cetacea,,Whale,,,,,,In Review
+KATM,Mammal,Cetacea,Balaenopteridae,92600,Balaenoptera acutorostrata,,minke whale,Unconfirmed,,,Native,,Approved
+KATM,Mammal,Cetacea,Balaenopteridae,92603,Balaenoptera physalus,,fin whale,Unconfirmed,,,Native,,Approved
+KATM,Mammal,Cetacea,Balaenopteridae,92607,Megaptera novaeangliae,,Humpback whale,Present,,Rare,Native,,Approved
+KATM,Mammal,Cetacea,Delphinidae,92538,Orcinus orca,,"Killer whale, Orca",Present,,Uncommon,Native,,Approved
+KATM,Mammal,Cetacea,Eschrichtiidae,92597,Eschrichtius robustus,,Gray whale,Unconfirmed,,,Native,,Approved
+KATM,Mammal,Cetacea,Monodontidae,92554,Delphinapterus leucas,,"Beluga, White whale",Unconfirmed,,,Native,,Approved
+KATM,Mammal,Cetacea,Phocoenidae,92543,Phocoena phocoena,,Harbor porpoise,Present,,Uncommon,Native,,Approved
+KATM,Mammal,Cetacea,Phocoenidae,92551,Phocoenoides dalli,,Dall's porpoise,Unconfirmed,,,Native,,Approved
+KATM,Mammal,Chiroptera,Vespertilionidae,88706,Myotis lucifugus,,"Little brown bat, Little brown myotis",Present,,Unknown,Native,,Approved
+KATM,Mammal,Eulipotyphla,Soricidae,88122,Sorex cinereus,,Masked shrew,Present,,Unknown,Native,,Approved
+KATM,Mammal,Eulipotyphla,Soricidae,88660,Sorex hoyi,,Pygmy shrew,Present,,Unknown,Native,,Approved
+KATM,Mammal,Eulipotyphla,Soricidae,88665,Sorex monticolus,,"Dusky shrew, Montane shrew",Present,,Unknown,Native,,Approved
+KATM,Mammal,Eulipotyphla,Soricidae,88672,Sorex tundrensis,Sorex arcticus (88129),Tundra shrew,Present,,Unknown,Native,,Approved
+KATM,Mammal,Eulipotyphla,Soricidae,267659,Sorex yukonicus,,tiny shrew,Probably Present,,,Native,,Approved
+KATM,Mammal,Lagomorpha,Leporidae,89638,Lepus americanus,,"Snowshoe hare, Varying hare",Present,,Unknown,Native,,Approved
+KATM,Mammal,Lagomorpha,Leporidae,260644,Lepus othus,"Lepus timidus (89639),Lepus arcticus (260640)","Arctic hare, Tundra hare",Probably Present,,,Native,,Approved
+KATM,Mammal,Rodentia,Castoridae,90673,Castor canadensis,,American beaver,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,90762,Clethrionomys rutilus,,Northern redback vole,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,91720,Dicrostonyx groenlandicus,Dicrostonyx torquatus (91718),Northern collared lemming,Probably Present,,,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,115313,Lemmus trimucronatus,Lemmus sibiricus (91712),Brown lemming,Probably Present,,,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,90767,Microtus oeconomus,,Tundra vole,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,90766,Microtus pennsylvanicus,Microtus gregalis (91692),Meadow vole,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,91709,Ondatra zibethicus,,Muskrat,Probably Present,,,Native,,Approved
+KATM,Mammal,Rodentia,Cricetidae,91715,Synaptomys borealis,,Northern bog lemming,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Dipodidae,91783,Zapus,,Jumping Mice,,,,,,In Review
+KATM,Mammal,Rodentia,Dipodidae,91784,Zapus hudsonius,,Meadow jumping mouse,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Erethizontidae,91792,Erethizon dorsatum,,Porcupine,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Sciuridae,89667,Marmota caligata,,Hoary marmot,Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Sciuridae,89674,Spermophilus,,Ground squirrel,,,,,,In Review
+KATM,Mammal,Rodentia,Sciuridae,89675,Spermophilus parryii,,"Arctic ground squirrel, Parka squirrel",Present,,Unknown,Native,,Approved
+KATM,Mammal,Rodentia,Sciuridae,89697,Tamiasciurus hudsonicus,,Red squirrel,Present,,Unknown,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,79508,Accipiter gentilis,,Northern goshawk,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,79512,Accipiter striatus,,Sharp-shinned hawk,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,262830,Accipitrinae,,,,,,,,In Review
+KATM,Bird,Accipitriformes,Accipitridae,80429,Aquila chrysaetos,Aquila chrysaetos canadensis (80430),Golden eagle,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,80391,Buteo lagopus,,Rough-legged hawk,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,80455,Circus cyaneus,Circus cyaneus hudsonius (80456),Northern harrier,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Accipitridae,80444,Haliaeetus leucocephalus,Haliaeetus leucocephalus alascanus (80446),Bald eagle,Present,,Uncommon,Native,,Approved
+KATM,Bird,Accipitriformes,Pandionidae,81838,Pandion haliaetus,Pandion haliaetus carolinensis (81839),Osprey,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77782,Anas acuta,,Northern pintail,Present,,Common,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77804,Anas americana,,American wigeon,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77806,Anas clypeata,,Northern shoveler,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77790,Anas crecca,,Green-winged teal,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77795,Anas discors,,Blue-winged teal,Unconfirmed,,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77802,Anas penelope,,Eurasian wigeon,Probably Present,,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77770,Anas platyrhynchos,Anas platyrhynchos platyrhynchos (77771),Mallard,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77781,Anas strepera,,Gadwall,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,604484,Anatinae,,,,,,,,In Review
+KATM,Bird,Anseriformes,Anatidae,77723,Anser albifrons,,Greater white-fronted goose,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77838,Aythya,,Diving Ducks,,,,,,In Review
+KATM,Bird,Anseriformes,Anatidae,78519,Aythya affinis,,Lesser scaup,Present,,Occasional,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77839,Aythya americana,,Redhead,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78512,Aythya collaris,,Ring-necked duck,Probably Present,,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78520,Aythya fuligula,,Tufted duck,Probably Present,,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78515,Aythya marila,,Greater scaup,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78513,Aythya valisineria,,Canvasback,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77713,Branta bernicla,Branta nigricans (77715),Brant,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,76625,Branta canadensis,Branta canadensis leucopareia (77708),Canada goose,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78526,Bucephala,,Goldeneyes,,,,,,In Review
+KATM,Bird,Anseriformes,Anatidae,78531,Bucephala albeola,,Bufflehead,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78527,Bucephala clangula,,Common goldeneye,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78530,Bucephala islandica,,Barrow's goldeneye,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77742,Chen caerulescens,,Snow goose,Probably Present,,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,77747,Chen canagica,,Emporer goose,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78533,Clangula hyemalis,,Long-tailed duck,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,76609,Cygnus,,Swans,,,,,,In Review
+KATM,Bird,Anseriformes,Anatidae,76612,Cygnus columbianus,Olor columbianus (76621),Tundra swan,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78535,Histrionicus histrionicus,,Harlequin duck,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78573,Lophodytes cucullatus,,Hooded merganser,Present,,Occasional,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78551,Melanitta fusca,,White-winged scoter,Present,,Abundant,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78560,Melanitta nigra,,Black scoter,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78559,Melanitta perspicillata,,Surf scoter,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78575,Mergus merganser,Mergus merganser americanus (78576),Common merganser,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78577,Mergus serrator,,Red-breasted merganser,Present,,Uncommon,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78564,Oxyura jamaicensis,,Ruddy duck,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78540,Polysticta stelleri,,Steller's eider,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78542,Somateria mollissima,Somateria mollissima v-nigra (78546),Common eider,Present,,Rare,Native,,Approved
+KATM,Bird,Anseriformes,Anatidae,78548,Somateria spectabilis,,King eider,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,,76758,Charadriiformes,,"Alcids, Auks, Gulls, Oystercatchers, Plovers, Shore Birds",,,,,,In Review
+KATM,Bird,Charadriiformes,Alcidae,81951,Aethia cristatella,,Crested auklet,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,265059,Aethia psittacula,Cyclorrhynchus psittacula (81949),Parakeet auklet,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81926,Brachyramphus brevirostris,,kittlitz's murrelet,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81924,Brachyramphus marmoratus,,Marbled murrelet,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81919,Cepphus columba,,Pigeon guillemot,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81956,Cerorhinca monocerata,,Rhinocerus auklet,Present,,Occasional,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81966,Fratercula cirrhata,Lunda cirrhata (81965),Tufted puffin,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81962,Fratercula corniculata,,Horned puffin,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81939,Synthliboramphus antiquus,,Ancient murrelet,Present,,Occasional,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81900,Uria aalge,Uria aalge californica (81902),Common murre,Present,,Common,Native,,Approved
+KATM,Bird,Charadriiformes,Alcidae,81904,Uria lomvia,,Thick-billed murre,Present,,Occasional,Native,,Approved
+KATM,Bird,Charadriiformes,Charadriidae,77630,Charadrius semipalmatus,,Semipalmated plover,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Charadriidae,77694,Pluvialis dominica,,American golden-plover,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Charadriidae,265872,Pluvialis fulva,Pluvialis dominica fulva (77696),Pacific golden-plover,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Charadriidae,77697,Pluvialis squatarola,,Black-bellied plover,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Haematopodidae,77595,Haematopus bachmani,,Black oystercatcher,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81064,Larus argentatus,Larus argentatus smithsonianus (81065),Herring gull,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81073,Larus canus,Larus canus brachyrhynchus (81075),Mew gull,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,80383,Larus glaucescens,,Glaucus-winged gull,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,80376,Larus hyperboreus,,Glaucus gull,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81080,Larus philadelphia,,Bonaparte's gull,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81076,Larus ridibundus,,Black-headed gull,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,694098,Onychoprion aleuticus,,Aleutian tern,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81120,Rissa tridactyla,"Larus tridactyla (81119),Larus tridactyla pollicaris (81123)",Black-legged kittiwake,Present,,Common,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81140,Sterna aleutica,,Aleutian tern,,,,,,In Review
+KATM,Bird,Charadriiformes,Laridae,81137,Sterna paradisaea,,Arctic tern,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Laridae,81110,Xema sabini,,Sabine's gull,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,164584,Actitis macularius,Actitis macularia (79222),Spotted sandpiper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79289,Aphriza virgata,,Surfbird,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,77702,Arenaria interpres,,Ruddy turnstone,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,77705,Arenaria melanocephala,,Black turnstone,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79266,Calidris acuminata,,Sharp-tailed sandpiper,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79284,Calidris alba,,Sanderling,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79276,Calidris alpina,Calidris alpina pacifica (79278),Dunlin,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79269,Calidris bairdii,,Baird's sandpiper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79255,Calidris canutus,,Red knot,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79283,Calidris mauri,,Western sandpiper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79267,Calidris melanotos,,Pectoral sandpiper,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79270,Calidris minutilla,,Least sandpiper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79260,Calidris ptilocnemis,Calidris ptilocnemis couesi (79265),Rock sandpiper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79282,Calidris pusilla,,Semipalmated sandpiper,Unconfirmed,,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79273,Calidris ruficollis,,Red-necked stint,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,164586,Gallinago delicata,"Gallinago gallinago (80257),Capella gallinago delicata (79195),Capella gallinago (79192)",Wilson's snipe,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79290,Limnodromus,,Dowitcher,,,,,,In Review
+KATM,Bird,Charadriiformes,Scolopacidae,79291,Limnodromus griseus,,Short-billed dowitcher,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79295,Limnodromus scolopaceus,,Long-billed dowitcher,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79303,Limosa fedoa,,Marbled godwit,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79308,Limosa haemastica,,Hudsonian godwit,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79304,Limosa lapponica,,Bar-tailed godwit,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79206,Numenius phaeopus,,Whimbrel,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,80295,Phalaropus lobatus,"Lobipes lobatus (80301),Phalaropus fulicaria (265861),Phalaropus fulicarius (80294)",Red-necked phalarope,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79231,Tringa flavipes,,Lesser yellowlegs,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79242,Tringa incana,Heteroscelus incanus (79247),Wandering tattler,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79229,Tringa melanoleuca,,Greater yellowlegs,Present,,Common,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79225,Tringa solitaria,,Solitary sandpiper,Present,,Rare,Native,,Approved
+KATM,Bird,Charadriiformes,Scolopacidae,79301,Tryngites subruficollis,,Buff-breasted sandpiper,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Charadriiformes,Stercorariidae,80357,Stercorarius,,Jaegers,,,,,,In Review
+KATM,Bird,Charadriiformes,Stercorariidae,80360,Stercorarius longicaudus,,Long-tailed jaeger,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Stercorariidae,80359,Stercorarius parasiticus,,Parasitic jaeger,Present,,Uncommon,Native,,Approved
+KATM,Bird,Charadriiformes,Stercorariidae,80358,Stercorarius pomarinus,,Pomarine jaeger,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Columbiformes,Columbidae,82677,Columba livia,,Rock dove,Probably Present,,,Non-native,,Approved
+KATM,Bird,Coraciiformes,Alcedinidae,83980,Ceryle alcyon,Megaceryle alcyon caurina (83968),Belted kingfisher,Present,,Uncommon,Native,,Approved
+KATM,Bird,Falconiformes,,79465,Falconiformes,,"Falconiforms, Falcons",,,,,,In Review
+KATM,Bird,Falconiformes,Falconidae,82533,Falco columbarius,Falco columbarius bendirei (82537),Merlin,Present,,Uncommon,Native,,Approved
+KATM,Bird,Falconiformes,Falconidae,81854,Falco peregrinus,,Peregrin falcon,Present,,Uncommon,Native,,Approved
+KATM,Bird,Falconiformes,Falconidae,81847,Falco rusticolus,Falco rusticolus obsoletus (81850),Gyrfalcon,Present,,Rare,Native,,Approved
+KATM,Bird,Falconiformes,Falconidae,82543,Falco sparverius,Falco sparverius sparverius (82544),American kestrel,Present,,Rare,Native,,Approved
+KATM,Bird,Galliformes,Phasianidae,263111,Falcipennis canadensis,"Dendragapus canadensis (84276),Canachites canadensis osgoodi (83127)",Spruce grouse,Present,,Uncommon,Native,,Approved
+KATM,Bird,Galliformes,Phasianidae,83146,Lagopus,,Ptarmigans,,,,,,In Review
+KATM,Bird,Galliformes,Phasianidae,83147,Lagopus lagopus,Lagopus lagopus albus (83148),Willow ptarmigan,Present,,Common,Native,,Approved
+KATM,Bird,Galliformes,Phasianidae,529883,Lagopus leucura,Lagopus leucurus (83172),White-tailed ptarmigan,Present,,Uncommon,Native,,Approved
+KATM,Bird,Galliformes,Phasianidae,529885,Lagopus muta,Lagopus mutus (83157),Rock ptarmigan,Present,,Common,Native,,Approved
+KATM,Bird,Gaviiformes,Gaviidae,81673,Gavia adamsii,,Yellow-billed loon,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Gaviiformes,Gaviidae,81671,Gavia immer,,Common loon,Present,,Uncommon,Native,,Approved
+KATM,Bird,Gaviiformes,Gaviidae,81678,Gavia pacifica,,Pacific loon,Present,,Uncommon,Native,,Approved
+KATM,Bird,Gaviiformes,Gaviidae,81677,Gavia stellata,,Red-throated loon,Present,,Uncommon,Native,,Approved
+KATM,Bird,Gruiformes,Gruidae,86496,Grus canadensis,,Sandhill crane,Present,,Uncommon,Native,,Approved
+KATM,Bird,Gruiformes,Rallidae,87290,Fulica americana,Fulica americana americana (87291),American coot,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Passeriformes,,85742,Passeriformes,,Perching Birds,,,,,,In Review
+KATM,Bird,Passeriformes,Alaudidae,264079,Eremophila alpestris,,Horned lark,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Bombycillidae,88292,Bombycilla garrulus,,Bohemian wagwing,Probably Present,,,Native,,Approved
+KATM,Bird,Passeriformes,Calcariidae,85681,Calcarius lapponicus,Calcarius lapponicus alascensis (85683),Lapland longspur,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Calcariidae,85691,Plectrophenax hyperboreus,,Mckay's bunting,Present,,Occasional,Native,,Approved
+KATM,Bird,Passeriformes,Calcariidae,85688,Plectrophenax nivalis,Plectrophenax nivalis nivalis (85689),Snow bunting,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Certhiidae,90967,Certhia americana,Certhia familiaris (90957),Brown creeper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Cinclidae,88298,Cinclidae,,Dipper,,,,,,In Review
+KATM,Bird,Passeriformes,Cinclidae,88300,Cinclus mexicanus,Cinclus mexicanus unicolor (88301),American dipper,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Corvidae,87111,Corvus caurinus,,Northwestern crow,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Corvidae,87099,Corvus corax,Corvus corax principalis (87100),Common raven,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Corvidae,87127,Nucifraga columbiana,,Clark's nutcracker,Unconfirmed,,,Native,,Approved
+KATM,Bird,Passeriformes,Corvidae,86237,Perisoreus canadensis,,"Canadian jay, Gray jay",Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Corvidae,87092,Pica,,Magpie,,,,,,In Review
+KATM,Bird,Passeriformes,Corvidae,154788,Pica hudsonia,"Pica pica (87094),Pica pica hudsonia (87095)",Black-billed magpie,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,95274,Carduelis,,Goldfinches,,,,,,In Review
+KATM,Bird,Passeriformes,Fringillidae,95280,Carduelis flammea,Acanthis flammea (95292),Common redpoll,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,95281,Carduelis hornemanni,"Carduelis hornemanni exilipes (106730),Acanthis hornemanni (95288)",Hoary redpoll,Probably Present,,,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,95283,Carduelis pinus,,Pine siskin,Probably Present,,,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,94328,Leucosticte,,"Gray-crowned rosy finch, Rosy finch",,,,,,In Review
+KATM,Bird,Passeriformes,Fringillidae,94329,Leucosticte tephrocotis,,Gray-crowned rosy-finch,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,95311,Loxia curvirostra,,Red crossbill,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,83794,Loxia leucoptera,,White-winged crossbill,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Fringillidae,94318,Pinicola enucleator,Pinicola enucleator flammula (94324),Pine grosbeak,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Hirundinidae,734006,Hirundininae,,,,,,,,In Review
+KATM,Bird,Passeriformes,Hirundinidae,87409,Hirundo rustica,,Barn swallow,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Passeriformes,Hirundinidae,87417,Petrochelidon pyrrhonota,Hirundo pyrrhonota (87415),Cliff swallow,Probably Present,,,Native,,Approved
+KATM,Bird,Passeriformes,Hirundinidae,87396,Riparia riparia,Riparia riparia riparia (87397),Bank swallow,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Hirundinidae,87391,Tachycineta bicolor,Iridoprocne bicolor (87394),Tree swallow,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Hirundinidae,87386,Tachycineta thalassina,Tachycineta thalassina lepida (87387),Violet-green swallow,Present,,Rare,Native,,Approved
+KATM,Bird,Passeriformes,Icteridae,93664,Euphagus carolinus,,Rusty blackbird,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Icteridae,94215,Molothrus ater,,Brown-headed cowbird,Unconfirmed,,,Native,,Approved
+KATM,Bird,Passeriformes,Laniidae,88273,Lanius excubitor,Lanius excubitor invictus (88275),Northern shirke,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Motacillidae,266934,Anthus rubescens,"Anthus spinoletta rubescens (87456),Anthus spinoletta (87454)",American pipit,Present,,Abundant,Native,,Approved
+KATM,Bird,Passeriformes,Motacillidae,166943,Motacilla tschutschensis,Motacilla flava (87448),Eastern yellow wagtail,Probably Present,,,Native,,Approved
+KATM,Bird,Passeriformes,Paridae,265874,Poecile atricapillus,"Parus atricapillus (90058),Parus atricapillus turneri (90065)",Black-capped chickadee,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Paridae,166932,Poecile hudsonica,Parus hudsonicus (90091),Boreal chickadee,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,92649,Dendroica coronata,,Yellow-rumped warbler,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,92634,Dendroica petechia,Dendroica petechia rubiginosa (92638),Yellow warbler,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,92674,Dendroica striata,,Blackpoll warbler,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,92694,Seiurus noveboracensis,,Northern waterthrush,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,91025,Vermivora celata,,Orange-crowned warbler,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,91031,Vermivora ruficapilla,Vermivora ruficapilla ridgwayi (92618),Nashville warbler,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Passeriformes,Parulidae,92740,Wilsonia pusilla,Wilsonia pusilla pileolata (92742),Wilson's warbler,Present,,Abundant,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,84754,Junco hyemalis,Junco hyemalis hyemalis (84756),Dark-eyed junco,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,85634,Melospiza lincolnii,,Lincoln's sparrow,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,85643,Melospiza melodia,Melospiza melodia sanaka (85655),Song sparrow,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,83846,Passerculus sandwichensis,"Passerculus sandwichensis sandwichensis (83854),Passerculus sandwichensis alaudinus (83857)",Savannah sparrow,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,85612,Passerella iliaca,Passerella iliaca unalaschcensis (85616),Fox sparrow,Present,,Abundant,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,84778,Spizella arborea,Spizella arborea ochracea (84780),American tree sparrow,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,85609,Zonotrichia atricapilla,,Golden-crowned sparrow,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Passerellidae,85602,Zonotrichia leucophrys,Zonotrichia leucophrys gambelii (85604),White-crowned sparrow,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Phylloscopidae,88027,Phylloscopus borealis,,Arctic warbler,Present,,Rare,Native,,Approved
+KATM,Bird,Passeriformes,Regulidae,88057,Regulus calendula,,Ruby-crowned kinglet,Present,,Rare,Native,,Approved
+KATM,Bird,Passeriformes,Regulidae,88051,Regulus satrapa,Regulus satrapa olivaceus (88053),Golden-crowned kinglet,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Sittidae,90945,Sitta canadensis,,Red-breasted nuthatch,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Sturnidae,86204,Sturnus vulgaris,,European starling,Probably Present,,,Non-native,,Approved
+KATM,Bird,Passeriformes,Troglodytidae,921891,Troglodytes pacificus,Troglodytes troglodytes (88312),Pacific wren,Present,,Rare,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87177,Catharus fuscescens,Catharus fuscescens salicicola (87180),Veery,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87158,Catharus guttatus,Catharus guttatus guttatus (87160),Hermit thrush,Present,,Abundant,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87174,Catharus minimus,,Gray-cheeked thrush,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87168,Catharus ustulatus,,Swainson's thrush,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87152,Ixoreus naevius,Ixoreus naevius meruloides (87154),Varied thrush,Present,,Common,Native,,Approved
+KATM,Bird,Passeriformes,Turdidae,87129,Turdus,,Robin,,,,,,In Review
+KATM,Bird,Passeriformes,Turdidae,87136,Turdus migratorius,Turdus migratorius migratorius (87138),American robin,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Tyrannidae,267828,Contopus cooperi,Contopus borealis (85853),Olive-sided flycatcher,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Tyrannidae,85826,Empidonax alnorum,Empidonax traillii (85827),Alder flycatcher,Present,,Uncommon,Native,,Approved
+KATM,Bird,Passeriformes,Tyrannidae,85834,Empidonax difficilis,Empidonax difficilis difficilis (85835),Pacific-slope flycatcher,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Passeriformes,Tyrannidae,85818,Sayornis saya,,Say's phoebe,Present,,Rare,Native,,Approved
+KATM,Bird,Pelecaniformes,,83367,Pelecaniformes,,"Herons, Ibises, Pelicans",,,,,,In Review
+KATM,Bird,Piciformes,Picidae,84820,Colaptes auratus,,Northern flicker,Present,,Rare,Native,,Approved
+KATM,Bird,Piciformes,Picidae,84927,Picoides arcticus,,Black-backed woodpecker,Probably Present,,,Native,,Approved
+KATM,Bird,Piciformes,Picidae,546917,Picoides dorsalis,,American Three-toed Woodpecker,Present,,Uncommon,Native,,Approved
+KATM,Bird,Piciformes,Picidae,84936,Picoides pubescens,,Downy woodpecker,Present,,Common,Native,,Approved
+KATM,Bird,Piciformes,Picidae,84928,Picoides tridactylus,,Three-toed woodpecker,Present,,Uncommon,Native,,Approved
+KATM,Bird,Piciformes,Picidae,85739,Picoides villosus,,Hairy woodpecker,Probably Present,,,Native,,Approved
+KATM,Bird,Podicipediformes,Podicipedidae,81686,Podiceps auritus,,Horned grebe,Present,,Rare,Native,,Approved
+KATM,Bird,Podicipediformes,Podicipedidae,81682,Podiceps grisegena,,Red-necked grebe,Present,,Common,Native,,Approved
+KATM,Bird,Podicipediformes,Podicipedidae,81712,Podilymbus podiceps,Podilymbus podiceps podiceps (81713),Pied-billed grebe,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Procellariiformes,Diomedeidae,265863,Phoebastria albatrus,Diomedea albatrus (81723),Short-tailed albatross,Not In Park,False Report,,Native,,Approved
+KATM,Bird,Procellariiformes,Hydrobatidae,82514,Oceanodroma furcata,,Fork-tailed storm-petrel,Present,,Rare,Native,,Approved
+KATM,Bird,Procellariiformes,Hydrobatidae,82517,Oceanodroma leucorhoa,Oceanodroma leucorhoa leucorhoa (82518),Leach's storm-petrel,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Procellariiformes,Procellariidae,82415,Fulmarus glacialis,,Northern fulmar,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Procellariiformes,Procellariidae,82428,Puffinus carneipes,,Flesh-footed shearwater,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Procellariiformes,Procellariidae,82434,Puffinus griseus,,Sooty shearwater,Not In Park,Adjacent,,Native,,Approved
+KATM,Bird,Procellariiformes,Procellariidae,82435,Puffinus tenuirostris,,Short-tailed shearwater,Probably Present,,,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,82979,Aegolius acadicus,,Northern saw-whet owl,Present,,Unknown,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,82974,Aegolius funereus,,Boreal owl,Probably Present,,,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,82971,Asio flammeus,Asio flammeus flammeus (82972),Short-eared owl,Present,,Uncommon,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,543953,Bubo scandiacus,Nyctea scandiaca (80785),Snowy Owl,Present,,Rare,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,80772,Bubo virginianus,,Great horned owl,Present,,Uncommon,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,82964,Strix nebulosa,,Great gray owl,Present,,Uncommon,Native,,Approved
+KATM,Bird,Strigiformes,Strigidae,80787,Surnia ulula,Surnia ulula caparoch (82933),Northern hawk owl,Present,,Rare,Native,,Approved
+KATM,Bird,Suliformes,Phalacrocoracidae,83419,Phalacrocorax auritus,Phalacrocorax auritus cincinatus (83423),Double-crested cormorant,Present,,Uncommon,Native,,Approved
+KATM,Bird,Suliformes,Phalacrocoracidae,83428,Phalacrocorax pelagicus,Phalacrocorax pelagicus pelagicus (83429),Pelagic cormorant,Present,,Uncommon,Native,,Approved
+KATM,Bird,Suliformes,Phalacrocoracidae,83431,Phalacrocorax urile,,Red-faced cormorant,Present,,Uncommon,Native,,Approved
+KATM,Amphibian,Anura,Ranidae,83277,Rana sylvatica,,Wood Frog,Present,,Unknown,Native,,Approved
+KATM,Fish,Clupeiformes,Clupeidae,69748,Clupea harengus pallasii,,Pacific herring,Present,,Abundant,Native,,Approved
+KATM,Fish,Cypriniformes,Catostomidae,65704,Catostomus catostomus,,Longnose sucker,Present,,Common,Native,,Approved
+KATM,Fish,Esociformes,Esocidae,73559,Esox lucius,,Northern pike,Present,,Common,Native,,Approved
+KATM,Fish,Esociformes,Umbridae,73581,Dallia pectoralis,,Alaska blackfish,Present,,Uncommon,Native,,Approved
+KATM,Fish,Gadiformes,Gadidae,73178,Gadus macrocephalus,,Pacific cod,Probably Present,,,Native,,Approved
+KATM,Fish,Gadiformes,Gadidae,73193,Lota lota,,Burbot,Present,,Uncommon,Native,,Approved
+KATM,Fish,Gasterosteiformes,Gasterosteidae,74129,Gasterosteidae,,sticklebacks,,,,,,In Review
+KATM,Fish,Gasterosteiformes,Gasterosteidae,74131,Gasterosteus aculeatus,,Threespine stickleback,Present,,Abundant,Native,,Approved
+KATM,Fish,Gasterosteiformes,Gasterosteidae,74155,Pungitius pungitius,,Ninespine stickleback,Present,,Abundant,Native,,Approved
+KATM,Fish,Lampriformes,Stylephoridae,74126,Stylephorus chordatus,,Sticklebacks,Not In Park,False Report,,Unknown,,Approved
+KATM,Fish,Osmeriformes,Osmeridae,72636,Hypomesus olidus,,Pond smelt,Present,,Common,Native,,Approved
+KATM,Fish,Osmeriformes,Osmeridae,72635,Hypomesus pretiosus,,Surf smelt,Present,,Unknown,Native,,Approved
+KATM,Fish,Osmeriformes,Osmeridae,72647,Osmerus mordax,,Arctic smelt,Probably Present,,,Native,,Approved
+KATM,Fish,Osmeriformes,Osmeridae,72658,Thaleichthys pacificus,,Eulachon,Present,,Common,Native,,Approved
+KATM,Fish,Perciformes,Trichodontidae,75252,Trichodon trichodon,,Pacific sandfish,Present,,Unknown,Native,,Approved
+KATM,Fish,Petromyzontiformes,Petromyzontidae,65130,Lampetra tridentata,Entosphenus tridentatus (65113),Pacific lamprey,Not In Park,False Report,,Native,,Approved
+KATM,Fish,Petromyzontiformes,Petromyzontidae,65119,Lethenteron japonicum,Lampetra japonica (65117),Arctic lamprey,Present,,Uncommon,Native,,Approved
+KATM,Fish,Pleuronectiformes,Pleuronectidae,79857,Platichthys stellatus,,Starry flounder,Present,,Unknown,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71731,Coregonus clupeaformis,,Humpback whitefish,Present,,Common,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71726,Coregonus pidschian,,Humpback whitefish,Unconfirmed,,,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71727,Coregonus sardinella,,Least cisco,Present,,Common,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71728,Coregonus sardinella sardinella,,Least cisco,Not In Park,False Report,,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71768,Oncorhynchus gorbuscha,,Pink salmon,Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71769,Oncorhynchus keta,,Chum salmon,Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71770,Oncorhynchus kisutch,,"Coho salmon, Silver salmon",Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71783,Oncorhynchus mykiss,,"Rainbow trout, Redband trout, Steelhead",Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71772,Oncorhynchus nerka,,"Red salmon, Sockeye salmon",Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71774,Oncorhynchus tshawytscha,,"Chinook salmon, King salmon",Present,,Common,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,268232,Prosopium coulterii,Prosopium coulteri (71810),Pygmy whitefish,Present,,Uncommon,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71806,Prosopium cylindraceum,,Round whitefish,Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71786,Salmo gairdnerii,,Rainbow trout,Not In Park,False Report,,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71794,Salvelinus,,chars,,,,,,In Review
+KATM,Fish,Salmoniformes,Salmonidae,71799,Salvelinus alpinus,,Arctic char,Present,,Common,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71798,Salvelinus malma,,"Dolly varden, Dolly varden char",Present,,Abundant,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,71800,Salvelinus namaycush,,Lake trout,Present,,Common,Native,,Approved
+KATM,Fish,Salmoniformes,Salmonidae,72619,Thymallus arcticus,,Arctic grayling,Present,,Common,Native,,Approved
+KATM,Fish,Scorpaeniformes,Abyssocottidae,266115,Abyssocottidae,,,,,,,,In Review
+KATM,Fish,Scorpaeniformes,Agonidae,72436,Bathyagonus alascanus,Asterotheca alascana (72429),Gray starsnout,Probably Present,,,Native,,Approved
+KATM,Fish,Scorpaeniformes,Agonidae,72452,Pallasina barbata,,Tubenose poacher,Present,,Unknown,Native,,Approved
+KATM,Fish,Scorpaeniformes,Cottidae,70721,Cottus aleuticus,,Coastrange sculpin,Present,,Common,Native,,Approved
+KATM,Fish,Scorpaeniformes,Cottidae,70723,Cottus cognatus,,Slimy sculpin,Present,,Abundant,Native,,Approved
+KATM,Fish,Scorpaeniformes,Cottidae,71458,Icelinus borealis,,Northern sculpin,Probably Present,,,Native,,Approved
+KATM,Fish,Scorpaeniformes,Cottidae,71471,Leptocottus armatus,,Pacific staghorn sculpin,Present,,Unknown,Native,,Approved
+KATM,Fish,Scorpaeniformes,Liparidae,73768,Liparis gibbus,,Variegated snailfish,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,,,735006,Arabis lyrata ssp. occidentalis,,,Unconfirmed,,,Unknown,,Approved
+KATM,Vascular Plant,,,153409,Campanula latisepala X rotundifolia,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,,,158982,Lycopodium annotinum ssp. annotinum,,,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,,,735009,Rhododendron camtschaticum ssp. typicum,,,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Alismatales,Araceae,157732,Lysichiton americanus,,American skunkcabbage,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Juncaginaceae,162639,Triglochin maritimum,Triglochin maritima (141547),"Arrow Grass, Maritime Arrowgrass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Alismatales,Juncaginaceae,141548,Triglochin palustre,,"marsh arrowgrass, marsh arrow-grass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141584,Potamogeton alpinus,,alpine pondweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141591,Potamogeton epihydrus,,ribbonleaf pondweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141596,Potamogeton friesii,,Fries' pondweed,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141597,Potamogeton gramineus,,"grassy pondweed, variableleaf pondweed",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141574,Potamogeton perfoliatus,,Claspingleaf pondweed,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141608,Potamogeton praelongus,,White-stemmed Pondweed,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141580,Potamogeton pusillus,,"baby pondweed, small pondweed",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,292249,Potamogeton pusillus ssp. tenuissimus,,small pondweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,158721,Potamogeton richardsonii,Potamogeton perfoliatus ssp. richardsonii (206645),"red-head pondweed, Richardson pondweed, Richardson's pondweed",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,141622,Potamogeton zosteriformis,,"flatstem pondweed, flat-stem pondweed",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,287314,Stuckenia filiformis,Potamogeton filiformis (141593),fineleaf pondweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,287316,Stuckenia pectinatus,Potamogeton pectinatus (141573),,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Alismatales,Potamogetonaceae,287320,Stuckenia vaginatus,Potamogeton vaginatus (141620),,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Ruppiaceae,141631,Ruppia maritima,,"widgeongrass, widgeon-grass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Alismatales,Scheuchzeriaceae,141544,Scheuchzeria palustris ssp. americana,Scheuchzeria palustris (141542),Rannoch-rush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Alismatales,Tofieldiaceae,142763,Tofieldia coccinea,,northern false-asphodel,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Alismatales,Tofieldiaceae,142767,Tofieldia pusilla,,Scotch false asphodel,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Alismatales,Zosteraceae,142311,Zostera marina,,"eelgrass, seawrack",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,132569,Angelica archangelica,,Norwegian angelica,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,132578,Angelica genuflexa,,kneeling angelica,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,132567,Angelica lucida,,seacoast angelica,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,134745,Bupleurum americanum,Bupleurum triradiatum (153374),American thorow wax,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,133391,Cicuta douglasii,,"Douglas' waterhemlock, water hemlock, western water hemlock",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,93775,Cicuta virosa,Cicuta mackenzieana (133395),Mackenzie's water hemlock,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,133404,Conioselinum gmelinii,"Conioselinum benthamii (154456),Conioselinum chinense (133402),Conioselinum pacificum (133403)",Pacific hemlockparsley,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,160212,Heracleum maximum,Heracleum lanatum (134817),"common cowparsnip, cow parsnip, cowparsnip",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,133466,Ligusticum scoticum,,Scottish licorice-root,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,203774,Ligusticum scoticum ssp. hultenii,Ligusticum hultenii (187390),Hulten's licorice-root,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Apiales,Apiaceae,126401,Podistera macounii,Ligusticum mutellinoides ssp. alpinum (204495),Macoun's woodroot,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Apiales,Araliaceae,132527,Oplopanax horridus,Echinopanax horridus (181781),devilsclub,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Amaryllidaceae,208878,Allium schoenoprasum var. sibiricum,,Wild Chives,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Asparagaceae,157785,Maianthemum dilatatum,,"false lily of the valley, false lily of the vally",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Iridaceae,144288,Iris setosa,,beachhead iris,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Iridaceae,213016,Iris setosa var. setosa,Iris setosa ssp. setosa (157952),beachhead iris,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Iridaceae,144336,Sisyrinchium litorale,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Iridaceae,162925,Sisyrinchium littorale,,Alaska blue-eyed grass,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147953,Coeloglossum viride,Coeloglossum viride ssp. bracteatum (210225),"longbract frog orchid, long-bract frog orchid",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147959,Corallorrhiza trifida,,"Coral Root, Early Coral-Root",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147978,Cypripedium guttatum,,spotted lady's slipper,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147985,Dactylorhiza aristata,,keyflower,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,103376,Dactylorhiza aristata var. aristata,Orchis aristata (189495),keyflower,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,149607,Listera borealis,,"northern listera, northern twayblade",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,149620,Malaxis monophyllos,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,785165,Neottia cordata,"Listera cordata (149610),Listera cordata var. nephrophylla (216766)",heartleaf twayblade,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147011,Platanthera dilatata,,"boreal bog orchid, scentbottle, white bog orchid",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147013,Platanthera hyperborea,,"northern bog orchid, northern green orchid",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,111112,Platanthera hyperborea var. viridiflora,Platanthera convallariifolia (190345),tall Alaskan green orchid,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,146996,Platanthera obtusata,,"bluntleaved orchid, northern small bog orchid",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147026,Platanthera stricta,,"Modoc bog orchid, slender bog orchid",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asparagales,Orchidaceae,147064,Spiranthes romanzoffiana,,"hooded ladies'-tresses, hooded lady's tresses",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133556,Achillea millefolium,"Achillea millefolium var. borealis (207755),Achillea borealis (133557)","bloodwort, carpenter's weed, common yarrow, hierba de las cortaduras, milenrama, milfoil, plumajillo, western yarrow, yarrow",Present,,Uncommon,Unknown,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,141444,Anaphalis margaritacea,,"common pearlyeverlasting, pearly everlasting, pearly-everlasting, western pearly everlasting, western pearlyeverlasting",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133760,Antennaria alpina,Antennaria pallida (135783),alpine pussytoes,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133774,Antennaria friesiana,Antennaria alaskana (88203),Fries' pussytoes,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133776,Antennaria friesiana ssp. alaskana,,Fries' pussytoes,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133775,Antennaria friesiana ssp. friesiana,,Fries' pussytoes,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,88579,Antennaria monocephala,,,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133786,Antennaria monocephala ssp. monocephala,,pygmy pussytoes,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,135790,Antennaria rosea,,Pussytoes,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,141475,Arnica amplexicaulis,Arnica lanceolata ssp. amplexicaulis (667028),"clasping arnica, streambank arnica",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,141479,Arnica chamissonis,,Chamisso arnica,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,94144,Arnica chamissonis ssp. chamissonis,,Chamisso arnica,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,94151,Arnica frigida,"Arnica griscomii ssp. frigida (206474),Arnica louiseana (141490),Arnica louiseana ssp. frigida (206485)",snow arnica,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,141485,Arnica latifolia,,broadleaf arnica,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,141486,Arnica lessingii,,nodding arnica,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,156242,Arnica lessingii ssp. lessingii,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133566,Artemisia arctica,Artemisia arctica ssp. arctica (133567),boreal sagebrush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,200620,Artemisia campestris ssp. borealis,Artemisia borealis (133571),"field sagewort, northern sagewort",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133605,Artemisia globularia,,Purple wormwood,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133572,Artemisia glomerata,,Cudweed sagewort,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133575,Artemisia tilesii,Artemisia tilesii (288945),Tilesius' wormwood,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133577,Artemisia tilesii ssp. elatior,,Wormwood,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133578,Artemisia tilesii ssp. gormanii,,Wormwood,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,133576,Artemisia tilesii ssp. tilesii,,Tilesius' wormwood,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,86020,Artemisia tilesii ssp. unalaschcensis,,Tilesius' wormwood,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,134195,Aster subspicatus,,Douglas aster,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,135964,Chrysanthemum arcticum,Chrysanthemum arcticum ssp. arcticum (154406),arctic daisy,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,136911,Erigeron peregrinus,,"subalpine fleabane, wandering daisy, wandering fleabane",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,136912,Erigeron peregrinus ssp. peregrinus,,Coastal Fleabane,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,181584,Eurybia sibirica,Aster sibiricus (99681),"arctic aster, Siberian aster",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,143024,Hieracium triste,,"low alpine hawkweed, slender hawkweed, woolly hawkweed",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,153776,Matricaria discoidea,"Matricaria matricarioides (145874),Matricaria suaveolens (188947)","disc mayweed, pineapple weed, pineappleweed",Present,,Uncommon,Non-native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,289974,Packera contermina,Senecio conterminus (164987),northwestern groundsel,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,735015,Packera heterophylla,"Senecio resedifolius (137492),Packera cymbalaria (289976)",,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,735016,Packera heterophylla X contermina,Senecio resedifolius X conterminus (159172),,Not In Park,False Report,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,192580,Packera hyperborealis,Senecio hyperborealis (138488),northern groundsel,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,192589,Packera ogotorukensis,Senecio ogotorukensis (162130),Ogotoruk Creek ragwort,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,137455,Petasites frigidus,,Arctic Sweet Coltsfoot,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,215472,Petasites frigidus var. frigidus,,arctic sweet coltsfoot,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,216029,Petasites frigidus var. nivalis,"Petasites hyperboreus (192470),Petasites nivalis (192472)",arctic sweet coltsfoot,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,161013,Petasites frigidus X hyperboreus,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,136359,Prenanthes alata,,western rattlesnakeroot,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,137478,Saussurea angustifolia,,narrowleaf saw-wort,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,138496,Senecio lugens,,small blacktip ragwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,162132,Senecio pseudoarnica,Senecio pseudo-arnica (137491),seaside ragwort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,137495,Senecio triangularis,,"arrowleaf groundsel, arrowleaf ragwort",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,139377,Solidago canadensis,,"Canada goldenrod, Canadian goldenrod, common goldenrod",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,217330,Solidago canadensis var. lepida,Solidago lepida (201511),Canada goldenrod,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,139437,Solidago multiradiata,,"arctic goldenrod, manyray goldenrod, mountain goldenrod, Rocky Mountain goldenrod",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,216617,Solidago multiradiata var. arctica,,Northern Goldenrod,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,216619,Solidago multiradiata var. multiradiata,,Northern Goldenrod,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,197658,Symphyotrichum boreale,Aster junceus (102197),northern bog aster,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,203860,Tanacetum bipinnatum ssp. bipinnatum,Chrysanthemum bipinnatum (135965),Lake Huron tansy,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,138563,Taraxacum lyratum,Taraxacum kamtschaticum (138558),"alpine dandelion, harp dandelion, rock dandelion",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,203865,Taraxacum officinale ssp. ceratophorum,"Taraxacum trigonolobum (138569),Taraxacum lacerum (200068),Taraxacum mitratum (200089)","common dandelion, fleshy dandelion, horned dandelion, rough dandelion",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,203867,Taraxacum officinale ssp. officinale,Taraxacum officinale (138564),common dandelion,Present,,Unknown,Non-native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,288317,Tephroseris atropurpurea,"Senecio atropurpureus (137489),Senecio atropurpureus ssp. frigidus (209938)",arctic groundsel,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Asteraceae,735004,Tephroseris palustris ssp. congesta,"Senecio congestus var. palustris (235044),Senecio congestus (137490)",,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Asterales,Campanulaceae,135371,Campanula lasiocarpa,"Campanula latisepala (171507),Campanula lasiocarpa ssp. lasiocarpa (153407),Campanula latisepala var. dubia (219557)",mountain harebell,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Campanulaceae,136183,Campanula rotundifolia,Campanula langsdorfii (665200),"bluebell, bluebell bellflower, bluebell-of-Scotland, roundleaf harebell",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Asterales,Campanulaceae,135357,Campanula uniflora,,arctic bellflower,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Asterales,Menyanthaceae,129105,Menyanthes trifoliata,,"bog-bean, buckbean, buck-bean, common bogbean",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,131013,Amsinckia menziesii,,"Menzies' fiddleneck, smallflower fiddleneck, small-flower fiddleneck",Probably Present,,,Non-native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,209620,Eritrichium nanum var. chamissonis,Eritrichium chamissonis (183342),arctic alpine forget-me-not,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,130292,Mertensia maritima,,oysterleaf,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,130293,Mertensia maritima var. maritima,Mertensia maritima ssp. maritima (159036),oysterleaf,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,161466,Myosotis asiatica,"Myosotis alpestris (130321),Myosotis alpestris ssp. asiatica (130324)","alpine forget-me-not, Asian forget-me-not",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Boraginales,Boraginaceae,132814,Plagiobothrys orientalis,,Oriental popcornflower,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Boraginales,Hydrophyllaceae,130243,Romanzoffia sitchensis,,Sitka mistmaiden,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Boraginales,Hydrophyllaceae,130245,Romanzoffia unalaschcensis,,Alaska mistmaiden,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123377,Aphragmus eschscholtzianus,,Aleutian cress,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,159528,Arabis ambigua,,,Unconfirmed,,,Unknown,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,168392,Arabis eschscholtziana,Arabis hirsuta ssp. eschscholtziana (89506),Eschscholtz's hairy rockcress,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,89503,Arabis hirsuta,,,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,291800,Arabis kamchatica,"Arabis lyrata (120561),Arabis lyrata ssp. kamchatica (89467),Arabis lyrata var. kamchatica (208889)",Kamchatka rockcress,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,121307,Barbarea orthoceras,,"American yellowrocket, erectpod wintercress, wintercress",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,121323,Cakile edentula,,American searocket,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,121335,Capsella bursa-pastoris,Capsella rubella (121336),Shepherds Purse,Present,,Uncommon,Non-native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,121351,Cardamine bellidifolia,,alpine bittercress,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,211738,Cardamine oligosperma var. kamtschatica,Cardamine umbellata (122326),umbel bittercress,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,121343,Cardamine pratensis,,cuckoo flower,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,211747,Cardamine pratensis var. angustifolia,Cardamine pratensis ssp. angustifolia (208326),cuckoo flower,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122321,Cardamine purpurea,,purple bittercress,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122330,Cochlearia groenlandica,Cochlearia officinalis (122329),Danish scurvygrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122381,Draba aurea,,"Golden whitlowgrass, Mustard",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122361,Draba borealis,,boreal draba,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122362,Draba cinerea,,grayleaf draba,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122397,Draba fladnizensis,,"arctic draba, Austrian draba",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122398,Draba glabella,Draba hirta (122364),smooth draba,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122365,Draba hyperborea,,North Pacific draba,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,154352,Draba kamtschatica,,Kamchatka whitlowgrass,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122408,Draba lactea,,milky draba,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,210937,Draba lonchocarpa var. vestita,,lancepod draba,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122412,Draba longipes,,longstalk whitlowgrass,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122416,Draba nivalis,,"snow draba, yellow arctic draba",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,122441,Draba stenoloba,,Alaska draba,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123260,Erysimum cheiranthoides,Erysimum cheiranthoides ssp. altum (123262),"treacle wallflower, wallflower mustard, wormseed mustard, wormseed wallflower, worm-seed wallflower",Present,,Uncommon,Unknown,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123319,Parrya nudicaulis,,Nakedstem wallflower,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123325,Rorippa islandica,"Rorippa islandica ssp. islandica (158192),Radicula clavata (158144)",Yellow Cress,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123341,Rorippa palustris,,"bog marshcress, bog yellowcress, common yellowcress, marsh yellowcress, marshcress, yellow watercress",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123344,Rorippa palustris ssp. hispida,Rorippa hispida (195708),"bog yellowcress, hispid yellowcress",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123346,Rorippa palustris ssp. occidentalis,Rorippa islandica var. occidentalis (234298),"bog yellowcress, western bog yellowcress",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123342,Rorippa palustris ssp. palustris,,bog yellowcress,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Brassicales,Brassicaceae,123360,Subularia aquatica,,Waterawlwort,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Amaranthaceae,119433,Atriplex alaskensis,,Alaska orache,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Amaranthaceae,110625,Atriplex gmelinii,,Gmelin's saltbush,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,108650,Cerastium aleuticum,,Aleutian chickweed,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,108639,Cerastium beeringianum,"Cerastium beeringianum var. beeringianum (294252),Cerastium beeringianum var. grandiflorum (294254)","Bering chickweed, chickweed",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,109540,Cerastium fischerianum,,Fischer's chickweed,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,109551,Cerastium fontanum,Cerastium caespitosum (160600),"common chickweed, common mouse-ear chickweed, mouse-ear chickweed",Present,,,Non-native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,202723,Cerastium fontanum ssp. vulgare,Cerastium fontanum ssp. triviale (209264),"big chickweed, common mouse-ear chickweed",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,203062,Cerastium nigrescens ssp. arcticum,,,Not In Park,False Report,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,110394,Honckenya peploides,,seaside sandplant,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,111363,Honckenya peploides ssp. major,,Sea-beach Sandwort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,111441,Minuartia arctica,,arctic stitchwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,111452,Minuartia macrocarpa,,longpod stitchwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,114699,Minuartia obtusiloba,,Twinflower sandwort,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,112278,Minuartia rubella,,"beautiful sandwort, boreal stitchwort",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,114799,Moehringia lateriflora,,"blunt-leaf grove-sandwort, bluntleaf sandwort, grove sandwort",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,115725,Sagina maxima ssp. crassicaulis,,stickystem pearlwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,115748,Sagina nivalis,Sagina intermedia (115637),snow pearlwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,116472,Sagina saginoides,,"alpine pearlwort, arctic pearlwort",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,116539,Silene acaulis,Silene acaulis ssp. acaulis (159189),"cushion-pink, moss campion",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,202968,Silene involucrata ssp. involucrata,Gastrolychnis affinis (180245),arctic catchfly,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,109932,Silene uralensis ssp. uralensis,Gastrolychnis apetala (180247),apetalous catchfly,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,164818,Stellaria borealis,,boreal starwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,202995,Stellaria borealis ssp. borealis,,boreal starwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,202997,Stellaria borealis ssp. sitchana,"Stellaria sitchana var. bongardiana (240210),Stellaria sitchana (199644)",Sitka starwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,112524,Stellaria calycantha,Stellaria calycantha ssp. calycantha (160230),"northern chickweed, northern starwort",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,111732,Stellaria crassifolia,,"fleshy starwort, thickleaved chickweed",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,113237,Stellaria dicranoides,Arenaria chamissonis (169176),matted starwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,112424,Stellaria humifusa,,saltmarsh starwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,113304,Stellaria longifolia,,Long-leaved Starwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,112446,Stellaria longipes,"Stellaria crispa (113215),Stellaria edwardsii (199617),Stellaria monantha (112469),Stellaria laeta (112435)","longstalk starwort, long-stalk starwort",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,112457,Stellaria media,,"chickweed, common chickweed, nodding chickweed",Present,,,Non-native,,Approved
+KATM,Vascular Plant,Caryophyllales,Caryophyllaceae,114476,Stellaria ruscifolia,Stellaria ruscifolia ssp. aleutica (203825),circumpolar starwort,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Droseraceae,125899,Drosera anglica,,"English sundew, great sundew",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Droseraceae,125898,Drosera rotundifolia,,roundleaf sundew,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,108800,Claytonia sarmentosa,,Alaska springbeauty,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,111291,Claytonia scammaniana,,Scamman's springbeauty,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,111302,Claytonia sibirica,,Siberian springbeauty,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,112161,Montia chamissoi,Claytonia chamissoi (175927),"toadlily, water Indianlettuce, water miner's lettuce, water minerslettuce",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,111335,Montia fontana,,"annual water minerslettuce, Fountain miner's lettuce",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Montiaceae,201769,Montia fontana ssp. fontana,,Water Blinks,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Plumbaginaceae,121526,Armeria maritima,,thrift seapink,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,848057,Bistorta plumosa,"Polygonum bistorta var. plumosum (215079),Polygonum bistorta ssp. plumosum (206611),Polygonum bistorta (116986)",meadow bistort,Present,,Unknown,Unknown,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,848135,Bistorta vivipara,"Polygonum viviparum (117945),Bistorta vivipara (171768)",alpine bistort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,115983,Koenigia islandica,,Island purslane,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,116005,Oxyria digyna,,"alpine mountainsorrel, mountain sorrel",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,191651,Persicaria lapathifolia,"Polygonum pensylvanicum ssp. oneillii (206619),Polygonum lapathifolium (117901),Polygonum oneillii (193652)",curlytop knotweed,Present,,Rare,Non-native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,191672,Persicaria pensylvanica,Polygonum pensylvanicum (117912),Pennsylvania smartweed,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,118747,Polygonum aviculare,Polygonum buxiforme (118814),Knotweed,Present,,Uncommon,Non-native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,157655,Polygonum caurianum,,Alaska knotweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,119617,Polygonum fowleri,,Fowler's knotweed,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,115834,Rumex acetosella,,Sheep sorrel,Present,,,Non-native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,115845,Rumex arcticus,,arctic dock,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,118410,Rumex graminifolius,,Grassleaf sorrel,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,117316,Rumex occidentalis,Rumex fenestratus (193535),western dock,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Caryophyllales,Polygonaceae,117294,Rumex transitorius,,willow dock,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Celastrales,Celastraceae,122574,Parnassia kotzebuei,,"Kotzebue's grass of Parnassus, Kotzebue's grass-of-Parnassus",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Celastrales,Celastraceae,122575,Parnassia palustris,Parnassia palustris ssp. neogaea (208161),"marsh grass of Parnassus, marsh grass-of-Parnassus, northern grass of Parnassus",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Cornales,Cornaceae,155171,Cornus canadensis X suecica,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Cornales,Cornaceae,130557,Cornus suecica,,Lapland cornel,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Adoxaceae,131716,Sambucus racemosa,,"European red elder, red elderberry, scarlet elderberry",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Adoxaceae,218049,Sambucus racemosa var. racemosa,Sambucus racemosa ssp. pubens (131718),"bunchberry elder, red elderberry",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Adoxaceae,130845,Viburnum edule,,squashberry,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Linnaeaceae,131703,Linnaea borealis,Linnaea borealis ssp. borealis (201481),"American twinflower, northern twinflower, twinflower",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Linnaeaceae,204086,Linnaea borealis ssp. americana,,,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Linnaeaceae,205467,Linnaea borealis ssp. americana,,Twin-flower,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Dipsacales,Valerianaceae,131744,Valeriana capitata,Valeriana capitata var. bracteosa (161189),"captiate valerian, sharpleaf valerian",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,79672,Equisetum arvense,Equisetum arvense var. alpestre (225170),"common horsetail, field horsetail, scouringrush, western horsetail",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,79650,Equisetum fluviatile,"Equisetum fluviatile ssp. linnaeanum (156143),Equisetum fluviatile ssp. arvense (735010),Equisetum limosum (180583)","pipes, river horsetail, water horsetail",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,79683,Equisetum palustre,,marsh horsetail,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,80552,Equisetum pratense,,meadow horsetail,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,79661,Equisetum scirpoides,,dwarf scouringrush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,80575,Equisetum sylvaticum,,woodland horsetail,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Equisetales,Equisetaceae,79638,Equisetum variegatum,,Variegated Scouring-rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Diapensiaceae,209240,Diapensia lapponica var. obovata,"Diapensia lapponica (120238),Diapensia lapponica ssp. obovata (120240)",pincushion plant,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127186,Andromeda polifolia,,bog rosemary,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127657,Arctostaphylos uva-ursi,Arctostaphylos uva-ursi var. uva-ursi (156225),"bearberry, bearberry manzanita, kinnikinnick, mealberry",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,169151,Arctous alpina,Arctostaphylos alpina (127190),alpine bearberry,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,169155,Arctous rubra,Arctostaphylos rubra (94852),red fruit bearberry,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127663,Cassiope lycopodioides,,clubmoss mountain heather,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127784,Chamaedaphne calyculata,,leatherleaf,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,120184,Empetrum nigrum,,black crowberry,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,200386,Empetrum nigrum ssp. hermaphroditum,Empetrum hermaphroditum (120185),Crowberry,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,159074,Harrimanella stelleriana,Cassiope stelleriana (176957),Alaska bellheather,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127666,Ledum palustre,,Labrador tea,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127685,Loiseleuria procumbens,,alpine azalea,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,161413,Moneses uniflora,,"one-flowered shinleaf, one-flowered wintergreen, single delight, woodnymph",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,157180,Orthilia secunda,Pyrola secunda (120197),"one-sided wintergreen, sidebells wintergreen",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,191745,Oxycoccus microcarpos,Vaccinium oxycoccos (163570),Swamp Cranberry,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,119324,Phyllodoce aleutica,Phyllodoce aleutica ssp. aleutica (161077),"Aleutian mountain heath, Aleutian mountainheath",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,120195,Pyrola asarifolia,"Pyrola asarifolia ssp. purpurea (158092),Pyrola asarifolia var. incarnata (235268)","bog wintergreen, liverleaf wintergreen, pink wintergreen",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,120196,Pyrola grandiflora,,"Arctic wintergreen, largeflowered wintergreen",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,120203,Pyrola minor,,"lesser wintergreen, snowline wintergreen",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,206068,Rhododendron camtschaticum ssp. camtschaticum,,Kamchatka rhododendron,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,783962,Rhododendron tomentosum,"Ledum decumbens (127669),Ledum palustre ssp. decumbens (203734),Rhododendron tomentosum ssp. decumbens (991970)",marsh Labrador tea,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,783970,Therorhodion camtschaticum,Rhododendron camtschaticum (119341),Kamchatka rhododendron,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127751,Vaccinium ovalifolium,,"Alaska blueberry, oval-leaf blueberry",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,127705,Vaccinium uliginosum,,bog blueberry,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,207642,Vaccinium uliginosum ssp. alpinum,,"Alpine Blueberry, Bog Blueberry",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,207646,Vaccinium uliginosum ssp. microphyllum,,Bog Blueberry,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Ericaceae,204513,Vaccinium vitis-idaea ssp. minus,Vaccinium vitis-idaea (163574),"Lingowberry, Mountain Cranberry",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Polemoniaceae,138896,Polemonium acutiflorum,"Polemonium acutiflorum ssp. villosum (735011),Polemonium caeruleum ssp. villosum (206582)",tall Jacob's-ladder,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Ericales,Polemoniaceae,138899,Polemonium boreale,,northern Jacob's-ladder,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Polemoniaceae,138900,Polemonium boreale ssp. boreale,,Boreal Jacobs-ladder,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Polemoniaceae,138924,Polemonium pulcherrimum,Polemonium pulcherrimum ssp. lindleyi (205246),"pretty Jacob's-ladder, skunkleaf polemonium",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121064,Androsace chamaejasme,,sweetflower rockjasmine,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,91062,Androsace chamaejasme ssp. lehmanniana,,Lehmann's rockjasmine,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121068,Androsace septentrionalis,,Pygmyflower rockjasmine,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121079,Dodecatheon pulchellum,Dodecatheon radicatum (177643),"darkthroat shootingstar, dark-throat shootingstar, southern shootingstar",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,198780,Dodecatheon pulchellum ssp. macrocarpum,"Dodecatheon pulchellum ssp. superbum (121082),Dodecatheon macrocarpum (155304)",darkthroat shootingstar,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,164687,Douglasia alaskana,Androsace alaskana (121069),Alaskan douglasia,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121696,Primula cuneifolia,,wedgeleaf primrose,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121699,Primula cuneifolia ssp. saxifragifolia,,wedgeleaf primrose,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121701,Primula egaliksensis,,Greenland primrose,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,159786,Primula eximia,Primula tschuktschorum var. arctica (233836),arctic primrose,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121694,Primula tschuktschorum,Primula tschuktschorum var. tschuktschorum (157497),chukchi primrose,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,121736,Trientalis europaea,,arctic starflower,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ericales,Primulaceae,203928,Trientalis europaea ssp. arctica,,Arctic Starflower,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,121400,Astragalus alpinus,Astragalus alpinus ssp. alaskanus (106193),alpine milkvetch,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,123006,Astragalus polaris,Astragalus amblyodon (96400),polar milkvetch,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,121401,Astragalus umbellatus,,Tundra Milk-vetch,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,214930,Lathyrus japonicus var. maritimus,"Lathyrus maritimus (123891),Lathyrus maritimus ssp. maritimus (158041)",beach pea,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,214936,Lathyrus japonicus var. pubescens,Lathyrus maritimus ssp. pubescens (204417),downy beach pea,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,124594,Lathyrus palustris,Lathyrus palustris ssp. pilosus (204422),"marsh pea, marsh vetchling",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,125629,Lupinus nootkatensis,,Nootka lupine,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,218666,Oxytropis borealis var. viscida,"Oxytropis leucantha (191827),Oxytropis viscida (126550)","sticky crazyweed, sticky pointloco, viscid locoweed",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,126531,Oxytropis campestris,Oxytropis campestris var. caerulea (164238),"field locoweed, northern yellow locoweed, white smallflower pointloco",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,208101,Oxytropis campestris ssp. gracilis,Oxytropis gracilis (191815),,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,235647,Oxytropis campestris var. jordalii,Oxytropis jordalii (157220),Jordal's locoweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,212813,Oxytropis campestris var. varians,Oxytropis varians (192524),field locoweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,157222,Oxytropis maydelliana,,Maydell's oxytrope,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,126522,Oxytropis nigrescens,"Oxytropis bryophila (291447),Oxytropis nigrescens ssp. bryophila (126525),Oxytropis nigrescens var. nigrescens (126523)",Blackish oxytrope,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,126547,Oxytropis podocarpa,,stalkpod locoweed,Not In Park,False Report,,Native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,127303,Trifolium hybridum,,Alsike clover,Unconfirmed,,,Non-native,,Approved
+KATM,Vascular Plant,Fabales,Fabaceae,126576,Trifolium repens,,White Clover,Unconfirmed,,,Non-native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,102707,Alnus incana,,gray alder,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,92015,Alnus incana ssp. tenuifolia,Alnus tenuifolia (102772),"mountain alder, speckled alder, thinleaf alder",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,205000,Alnus viridis ssp. fruticosa,Alnus crispa (102021),Siberian alder,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,92022,Alnus viridis ssp. sinuata,"Alnus sinuata (102762),Alnus crispa ssp. sinuata (94753)",,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,102783,Betula,,birch,,,,,,In Review
+KATM,Vascular Plant,Fagales,Betulaceae,100478,Betula kenaica,"Betula papyrifera var. kenaica (103618),Betula papyrifera ssp. kenaica (152456)",Kenai birch,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,152439,Betula kenaica X nana,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,102794,Betula nana,"Betula rotundifolia (159576),Betula glandulosa (103529),Betula nana ssp. exilis (100457)","Dwarf Arctic Birch, Dwarf Birch",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,152449,Betula nana X kenaica,,Dwarf Birch,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Fagales,Betulaceae,94772,Betula neoalaskana,"Betula resinifera (170046),Betula papyrifera ssp. humilis (100489)",resin birch,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Fagales,Myricaceae,96351,Myrica gale,Myrica gale var. tomentosa (231286),sweetgale,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,128151,Gentiana algida,Gentiana frigida (161785),Whitish gentian,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,128162,Gentiana douglasiana,,swamp gentian,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,128163,Gentiana glauca,,pale gentian,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,128169,Gentiana platypetala,,broadpetal gentian,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,129058,Gentianella amarella ssp. acuta,"Gentiana acuta (181259),Gentianella amarella (129055),Gentiana amarella ssp. acuta (207968)","autumn dwarf gentian, autumn dwarfgentian, autumn dwarf-gentian",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,129066,Gentianella propinqua ssp. aleutica,,fourpart dwarf gentian,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,129065,Gentianella propinqua ssp. propinqua,"Gentiana propinqua (129064),Gentianella propinqua (129063)",fourpart dwarf gentian,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Gentianaceae,129122,Swertia perennis,,"alpinebog swertia, felwort, star gentian",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,137982,Galium aparine,,"bedstraw, catchweed bedstraw, cleavers, cleaverwort, goose grass, scarthgrass, stickywilly, sticky-willy, white hedge",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,287453,Galium boreale,Galium boreale (138017),northern bedstraw,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,137984,Galium brandegeei,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,137993,Galium trifidum,,"small bedstraw, threepetal bedstraw, three-petal bedstraw",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,201308,Galium trifidum ssp. columbianum,,Small Bedstraw,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,137994,Galium trifidum ssp. trifidum,,threepetal bedstraw,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Gentianales,Rubiaceae,138799,Galium triflorum,,"fragrant bedstraw, sweet bedstraw, sweetscented bedstraw",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Geraniales,Geraniaceae,157452,Geranium erianthum,,woolly geranium,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Isoetales,Isoetaceae,77887,Isoetes echinospora,,"isoète à spores épineuses, spiny-spore quillwort",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Isoetales,Isoetaceae,91237,Isoetes occidentalis,Isoetes truncata (163225),western quillwort,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Lamiales,Lentibulariaceae,135314,Pinguicula villosa,,hairy butterwort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Lentibulariaceae,135323,Pinguicula vulgaris,,common butterwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Lentibulariaceae,135324,Utricularia,,bladderwort,,,,,,In Review
+KATM,Vascular Plant,Lamiales,Lentibulariaceae,135338,Utricularia macrorhiza,Utricularia vulgaris (135326),"common bladderpod, common bladderwort, greater bladderwort",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Lamiales,Lentibulariaceae,135339,Utricularia minor,,Lesser Bladderwort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,134466,Boschniakia rossica,,northern groundcone,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,130351,Castilleja hyetophila,,Northern Indian Paintbrush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,130370,Castilleja miniata,,Scarlet Indian paintbrush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,133852,Castilleja pallida,,boreal Indian paintbrush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,135085,Castilleja unalaschcensis,,Alaska Indian paintbrush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,138348,Euphrasia mollis,,subalpine eyebright,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,194102,Pedicularis albolabiata,,,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136618,Pedicularis capitata,,Capitate Lousewort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,1007003,Pedicularis interior,"Pedicularis sudetica var. interior (160000),Pedicularis interior (159995)",,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136646,Pedicularis labradorica,Pedicularis labradorica ssp. labradorica (159997),Labrador lousewort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136630,Pedicularis lanata,"Pedicularis kanei ssp. kanei (204059),Pedicularis kanei (136619)",woolly lousewort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136620,Pedicularis langsdorfii,,Langsdorf's lousewort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,203327,Pedicularis langsdorfii ssp. arctica,,arctic lousewort,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136621,Pedicularis oederi,,Oeder's lousewort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136651,Pedicularis parviflora,,smallflower lousewort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,203337,Pedicularis parviflora ssp. parviflora,,smallflower lousewort,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,203340,Pedicularis parviflora ssp. pennellii,Pedicularis pennellii (136632),Pennell's lousewort,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136622,Pedicularis sudetica,,sudetic lousewort,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,136623,Pedicularis verticillata,,whorled lousewort,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,161895,Rhinanthus minor,"Rhinanthus minor ssp. borealis (207887),Rhinanthus minor ssp. groenlandicus (206064)","little yellow rattle, little yellowrattle, little yellow-rattle",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Orobanchaceae,206066,Rhinanthus minor ssp. minor,,"cockscomb rhinanthus, little yellow rattle, little yellowrattle",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Phrymaceae,135686,Mimulus guttatus,,"common monkeyflower, seep monkeyflower",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,132989,Callitriche heterophylla,,"differentleaf waterstarwort, greater waterstarwort, larger waterstarwort, twoheaded water-starwort, variedleaf waterstarwort",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,201956,Callitriche heterophylla ssp. heterophylla,Callitriche anceps (132991),"greater waterstarwort, twoheaded waterstarwort, twoheaded water-starwort",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,155598,Callitriche palustris,Callitriche verna (132990),"spiny waterstarwort, spring waterstarwort, vernal waterstarwort, vernal water-starwort",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,125203,Hippuris tetraphylla,,Four-leaf Marestail,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,125204,Hippuris vulgaris,,"common mare's tail, common mare's-tail",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,135649,Lagotis glauca,,weaselsnout,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,135654,Limosella aquatica,,"awlleaf mudwort, awl-leaf mudwort, northern mudwort, water mudwort",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,164188,Plantago macrocarpa,,seashore plantain,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,129365,Plantago major,,Common plantain,Present,,,Non-native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,214517,Plantago major var. major,,common plantain,Present,,Rare,Non-native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,129348,Plantago maritima,,goose tongue,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,214526,Plantago maritima var. juncoides,"Plantago juncoides (190322),Plantago maritima ssp. juncoides (129350)",goose tongue,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,136668,Veronica americana,,"American speedwell, brooklime",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,136696,Veronica serpyllifolia,,"thymeleaf speedwell, thyme-leaf speedwell",Probably Present,,,Non-native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,136678,Veronica stelleri,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Lamiales,Plantaginaceae,136699,Veronica wormskjoldii,Veronica wormskjoldii var. nutans (161212),American alpine speedwell,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Liliales,Liliaceae,161012,Fritillaria camschatcensis,,Kamchatka fritillary,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Liliales,Liliaceae,150370,Lloydia serotina,,Common Alp Lily,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Liliales,Liliaceae,142758,Streptopus amplexifolius,,"clasping twistedstalk, claspleaf twistedstalk, twisted stalk",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Liliales,Melanthiaceae,139897,Veratrum viride,"Veratrum viride var. eschscholtzii (238796),Veratrum eschscholtzii (199276),Veratrum viride ssp. eschscholtzii (139899)",green false hellebore,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,175857,Diphasiastrum alpinum,Lycopodium alpinum (80025),alpine clubmoss,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,175859,Diphasiastrum complanatum,Lycopodium complanatum (80114),groundcedar,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,175865,Diphasiastrum sitchense,Lycopodium sabinifolium var. sitchense (230329),Sitka clubmoss,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,107303,Huperzia selago,"Lycopodium selago (79992),Lycopodium selago ssp. selago (158990)","fir club moss, fir clubmoss",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,80036,Lycopodium annotinum,,"clubmoss, stiff club moss, stiff clubmoss",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,205560,Lycopodium annotinum ssp. alpestre,Lycopodium annotinum ssp. pungens (205563),,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,80103,Lycopodium clavatum,,"common club moss, running clubmoss",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Lycopodiales,Lycopodiaceae,169612,Lycopodium lagopus,"Lycopodium clavatum ssp. monostachyon (205567),Lycopodium clavatum var. monostachyon (230275)",one-cone clubmoss,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119650,Populus balsamifera,,Balsam Poplar,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119651,Populus balsamifera ssp. balsamifera,Populus tacamahaca (105820),balsam poplar,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119652,Populus balsamifera ssp. trichocarpa,,"balsam poplar, black cottonwood",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119698,Salix alaxensis,,Feltleaf Willow,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,216486,Salix alaxensis var. alaxensis,,feltleaf willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,216488,Salix alaxensis var. longistylis,,feltleaf willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159393,Salix arbusculoides,Salix arbusculoides var. glabra (237998),littletree willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119676,Salix arctica,"Salix arctica var. obcordata (735008),Salix crassijulis (196156),Salix arctica ssp. crassijulis (119678)",arctic willow,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159064,Salix arctica X stolonifera,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119708,Salix barclayi,,Barclay's willow,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159066,Salix barclayi X crassijulis,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119710,Salix bebbiana,"Salix depressa ssp. rostrata (208658),Salix bebbiana var. perrostrata (238084),Salix bebbiana ssp. perrostrata (159069)","Bebb's willow, gray willow",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119726,Salix commutata,,Undergreen Willow,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,196170,Salix desertorum,,,Not In Park,False Report,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119742,Salix fuscescens,Salix arbutifolia (195412),Alaska bog willow,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159418,Salix geyeriana,,Geyer's willow,Not In Park,False Report,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119682,Salix glauca,"Salix glauca var. glabrescens (234119),Salix glauca ssp. glauca var. acutifolia (220152)",grayleaf willow,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,208669,Salix glauca ssp. acutifolia,Salix glauca var. acutifolia (296254),,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,197242,Salix niphoclada,Salix brachycarpa ssp. niphoclada (119716),barrenground willow,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119685,Salix ovalifolia,,Ovalleaf willow,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,216516,Salix ovalifolia var. cyclophylla,,oval-leaf willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,216520,Salix ovalifolia var. ovalifolia,Salix flagellaris (196192),oval-leaf willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159096,Salix ovalifolia X fuscescens,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119686,Salix phlebophylla,Salix anglorum (195406),skeletonleaf willow,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119687,Salix polaris,Salix polaris ssp. pseudopolaris (208691),polar willow,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,120451,Salix pseudomonticola,,False mountain willow,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119688,Salix pulchra,"Salix pulchra var. palmeri (236089),Salix planifolia ssp. pulchra (120449)",Diamond Leaf Willow,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119689,Salix reticulata,"Salix reticulata ssp. reticulata (119691),Salix reticulata var. subrotunda (735007)","Netted willow, Netleaf willow",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,120454,Salix richardsonii,Salix lanata ssp. richardsonii (201628),Richardson's willow,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119694,Salix rotundifolia,,Least willow,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,286627,Salix rotundifolia,,least willow,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,119695,Salix rotundifolia ssp. rotundifolia,,least willow,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,159450,Salix scouleriana,,Scouler's willow,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,120463,Salix sitchensis,,Sitka willow,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Salicaceae,120466,Salix stolonifera,,sprouting leaf willow,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Violaceae,126868,Viola biflora,,arctic yellow violet,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Violaceae,204572,Viola epipsila ssp. repens,Viola epipsila (164562),Marsh Violet,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Violaceae,126906,Viola glabella,,pioneer violet,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Malpighiales,Violaceae,164568,Viola langsdorfii,Viola langsdorffii (126924),Aleutian violet,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,177089,Chamerion angustifolium,"Epilobium angustifolium (126648),Chamaenerion angustifolium (176188),Epilobium angustifolium ssp. angustifolium (126649),Epilobium angustifolium f. spectabile (161748)",fireweed,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,177093,Chamerion latifolium,Epilobium latifolium (126645),dwarf fireweed,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,128820,Circaea alpina,,"alpine circaea, small enchanter's nightshade, small enchanter's-nightshade",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126647,Epilobium anagallidifolium,Epilobium anagallidifolium var. pseudoscaposum (224537),"alpine willowherb, alpine willowweed, pimpernel willowherb",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126659,Epilobium ciliatum ssp. ciliatum,Epilobium adenocaulon (179561),"coast willowweed, fringed willowherb",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126660,Epilobium ciliatum ssp. glandulosum,"Epilobium sertulatum (179611),Epilobium glandulosum (179590)","fringed willowherb, glandular willowherb, glandular willowweed",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126675,Epilobium hornemannii ssp. behringianum,Epilobium behringianum (179567),Hornemann's willowherb,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126674,Epilobium hornemannii ssp. hornemannii,Epilobium hornemannii (126673),Hornemann's willowherb,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126678,Epilobium leptocarpum,,slenderfruit willowherb,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126680,Epilobium luteum,,yellow willowherb,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Myrtales,Onagraceae,126689,Epilobium palustre,,"marsh willowherb, marsh willowweed",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Nymphaeales,Nymphaeaceae,202353,Nuphar lutea ssp. polysepala,Nuphar polysepala (187098),"Rocky Mountain cowlily, Rocky Mountain pondlily, Rocky Mountain pond-lily, yellow pond-lily",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Nymphaeales,Nymphaeaceae,86840,Nymphaea tetragona,,"pygmy waterlily, pygmy water-lily",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ophioglossales,Ophioglossaceae,81345,Botrychium,,"grapefern, grape-fern, moonwort",,,,,,In Review
+KATM,Vascular Plant,Ophioglossales,Ophioglossaceae,81433,Botrychium lanceolatum,,"lanceleaf grapefern, lance-leaf moonwort, triangle moonwort",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ophioglossales,Ophioglossaceae,82136,Botrychium lunaria,,"common moonwort, moonwort grapefern",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ophioglossales,Ophioglossaceae,153668,Botrychium pinnatum,Botrychium boreale (81411),"northern grapefern, northern moonwort, northwestern moonwort",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Pinales,Pinaceae,93037,Picea glauca,,"Black Hills spruce, Canadian spruce, cat spruce, skunk spruce, western white spruce, white spruce",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Pinales,Pinaceae,93046,Picea mariana,,Black spruce,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Pinales,Pinaceae,93053,Picea sitchensis,,"coast spruce, Sitka spruce, tideland spruce, yellow spruce",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145376,Carex anthoxanthea,,grassyslope arctic sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144425,Carex aquatilis,,water sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,211770,Carex aquatilis var. aquatilis,Carex aquatilis ssp. aquatilis (153420),"leafy tussock sedge, water sedge",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,211772,Carex aquatilis var. dives,Carex sitchensis (145344),Sitka sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144428,Carex bicolor,,twocolor sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,889890,Carex bigelowii ssp. lugens,"Carex bigelowii (144429),Carex lugens (147095)",spruce muskeg sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145322,Carex brunnescens,,brownish sedge,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145329,Carex buxbaumii,,"brown bog sedge, Buxbaum's sedge",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,202017,Carex canescens ssp. canescens,Carex canescens (145323),silvery sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,220643,Carex canescens var. disjuncta,,,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145434,Carex chordorrhiza,,"creeping sedge, rope-root sedge",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145435,Carex circinata,,coiled sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,146155,Carex disperma,,"softleaf sedge, soft-leaf sedge, softleaved sedge",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,146188,Carex flava,,yellow sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144450,Carex gmelinii,,Gmelin's sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,146208,Carex gynocrates,Carex dioica ssp. gynocrates (208361),"bog sedge, northern bog sedge",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,174201,Carex hepburnii,,,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144462,Carex krausei,,Krause's sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144463,Carex lachenalii,,twotipped sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,211855,Carex lenticularis var. dolia,Carex enanderi (146172),Enander's sedge,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,211861,Carex lenticularis var. limnophila,,lakeshore sedge,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,146254,Carex lenticularis var. lipocarpa,Carex kelloggii (146244),Kellogg's sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147091,Carex limosa,,Shore Sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147092,Carex livida,,livid sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147093,Carex loliacea,,ryegrass sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144471,Carex lyngbyei,,Lyngbye's sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144472,Carex mackenziei,,Mackenzie's sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147099,Carex macloviana,,"Falkland Island sedge, thickhead sedge",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144473,Carex macrocephala,,largehead sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144474,Carex macrochaeta,,longawn sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147105,Carex media,,closedhead sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144477,Carex membranacea,,fragile sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,147112,Carex mertensii,,Mertens Sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,202602,Carex microchaeta ssp. microchaeta,Carex microchaeta (144478),smallawned sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,202604,Carex microchaeta ssp. nesophila,Carex nesophila (137558),Bering Sea sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137539,Carex micropoda,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137554,Carex nardina,,spike sedge,Present,,,,,In Review
+KATM,Vascular Plant,Poales,Cyperaceae,137562,Carex nigricans,,Black alpine sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137581,Carex pachystachya,,"chamisso sedge, thickhead sedge",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,175231,Carex physocarpa,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137612,Carex pluriflora,,manyflower sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137613,Carex podocarpa,,Shortstalk sedge,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144483,Carex ramenskii,,Ramensk's sedge,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,144484,Carex rariflora,,looseflower alpine sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145342,Carex rostrata,,beaked sedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145305,Carex rotundata,,round sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,137639,Carex rupestris,,"curly sedge, rock sedge",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145306,Carex saxatilis,,rock sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,138183,Carex scirpoidea,,"Canadian single-spike sedge, downy sedge, northern singlespike sedge",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,138197,Carex spectabilis,,showy sedge,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,138212,Carex stylosa,,variegated sedge,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,145311,Carex subspathacea,,Hoppner's sedge,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,138230,Carex tenuiflora,,sparseflower sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,151292,Carex utriculata,,Northwest Territory sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,138265,Carex williamsii,,Williams' sedge,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,139099,Eleocharis acicularis,,Needle spikerush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140188,Eleocharis kamtschatica,,Kamchatka spikerush,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,139092,Eleocharis palustris,,"common spikerush, creeping spikerush, creeping spike-rush, marsh spike-rush, spikesedge",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140214,Eleocharis uniglumis,,onescale spikerush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140223,Eriophorum angustifolium,Eriophorum angustifolium ssp. scabriusculum (140225),"narrowleaf cottonsedge, tall cottongrass, tall cotton-grass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140226,Eriophorum angustifolium ssp. subarcticum,,Tall Cottongrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140235,Eriophorum brachyantherum,,northland cottonsedge,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140236,Eriophorum callitrix,,"arctic cottongrass, arctic cottonsedge",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140237,Eriophorum chamissonis,Eriophorum russeolum var. leucothrix (156903),"Chamisso's cottongrass, Chamisso's cotton-grass, russet cottonsedge",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140228,Eriophorum russeolum,,red cottongrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140231,Eriophorum scheuchzeri,Eriophorum scheuchzeri var. tenuifolium (224358),"dense cotton-grass, shealted cotton-grass, white cottongrass, white cottonsedge",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140250,Eriophorum vaginatum,,tussock cottongrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,140290,Kobresia myosuroides,,"Bellardi bog sedge, Bellardi kobresia",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Cyperaceae,288352,Trichophorum caespitosum,"Scirpus caespitosus (291370),Trichophorum cespitosum (171425)",tufted bulrush,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,158253,Juncus alpinoarticulatus,Juncus alpinus (143466),northern green rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,203689,Juncus alpinoarticulatus ssp. nodulosus,Juncus alpinus ssp. nodulosus (203811),northern green rush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143438,Juncus arcticus,,Arctic rush,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143439,Juncus balticus,,Baltic rush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143441,Juncus biglumis,,twoflowered rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143445,Juncus castaneus,,chestnut rush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,216159,Juncus castaneus ssp. castaneus var. pallidus,,Chestnut Rush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143486,Juncus drummondii,,"Drummond rush, Drummond's rush",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143451,Juncus falcatus,,falcate rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,203821,Juncus falcatus ssp. sitchensis,,Sicle-Leaved Rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143458,Juncus filiformis,,Thread rush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143496,Juncus haenkei,Juncus arcticus ssp. sitchensis (157977),Haenke's rush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143516,Juncus mertensianus,,Mertens' rush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143460,Juncus supiniformis,,hairyleaf rush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,143456,Juncus triglumis,,"threehulled rush, three-hulled rush",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,201682,Luzula arctica ssp. arctica,Juncoides arcticum (183012),Arctic woodrush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144384,Luzula arcuata,,curved woodrush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,201686,Luzula arcuata ssp. arcuata,,curved woodrush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,201688,Luzula arcuata ssp. unalaschcensis,,Alpine Woodrush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,189243,Luzula kjellmaniana,Luzula tundricola (144381),tundra woodrush,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144380,Luzula multiflora,,"common woodrush, common wood-rush",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,158963,Luzula multiflora ssp. kobayasii,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,201692,Luzula multiflora ssp. multiflora,,common woodrush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144395,Luzula parviflora,,"millet woodrush, smallflower woodrush, smallflowered woodrush",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,201698,Luzula parviflora ssp. parviflora,,Small-flowered Woodrush,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144396,Luzula piperi,Luzula wahlenbergii ssp. piperi (205544),"Piper's woodrush, smooth woodrush",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144397,Luzula rufescens,,Hairy woodrush,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144399,Luzula spicata,,"spiked woodrush, spiked wood-rush",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Juncaceae,144382,Luzula wahlenbergii,,Wahlenberg's woodrush,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142872,Agrostis alaskana,,Alaska Bentgrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142882,Agrostis exarata,Agrostis melaleuca (142891),spike bentgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142861,Agrostis hyemalis,,winter bentgrass,Unconfirmed,,,Unknown,,Approved
+KATM,Vascular Plant,Poales,Poaceae,86345,Agrostis mertensii,Agrostis borealis (142876),"arctic bentgrass, northern bentgrass",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142895,Agrostis scabra,Agrostis geminata (86341),Ticklegrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,217432,Agrostis scabra var. geminata,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142908,Alopecurus aequalis,,Short-awn Foxtail,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142905,Alopecurus alpinus,,,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142906,Alopecurus alpinus ssp. glaucus,,"Foxtail, Mountain Timothy",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142948,Arctagrostis latifolia,Agrostis latifolia (155161),wideleaf polargrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,219352,Arctagrostis latifolia var. arundinacea,Arctagrostis latifolia ssp. arundinacea (90776),,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,156219,Arctagrostis latifolia var. latifolia,Arctagrostis latifolia ssp. latifolia (205661),,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,152867,Arctophila fulva,,pendantgrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142974,Bromus ciliatus,Bromopsis ciliata (175395),fringed brome,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,142982,Bromus inermis,,Smooth Brome,Present,,Common,Unknown,,Approved
+KATM,Vascular Plant,Poales,Poaceae,200693,Bromus inermis ssp. pumpellianus,Bromopsis pumpelliana (175427),Pumpelly's brome,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,143573,Calamagrostis canadensis,,"bluejoint, bluejoint reedgrass",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,210527,Calamagrostis canadensis var. langsdorfii,"Calamagrostis scabra (153388),Calamagrostis canadensis ssp. langsdorfii (207314)",bluejoint,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,143559,Calamagrostis deschampsioides,,circumpolar reedgrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,143588,Calamagrostis nutkaensis,,Pacific reedgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,154676,Calamagrostis sesquiflora,Calamagrostis purpurascens ssp. arctica (143596),one and a half flower reedgrass,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,141048,Catabrosa aquatica,,Brookgrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,143617,Cinna latifolia,,"drooping woodreed, slender wood-reed",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,178359,Deschampsia beringensis,,Bering's tufted hairgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,143619,Deschampsia caespitosa,"Aira caespitosa (292418),Deschampsia cespitosa ssp. orientalis (198738),Deschampsia cespitosa ssp. cespitosa (198732)",tufted hairgrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,205342,Dupontia fisheri ssp. psilosantha,,,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,156082,Elymus trachycaulus,,"slender wheatgrass, slender wild rye",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,200380,Elymus trachycaulus ssp. trachycaulus,,slender wheatgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145646,Festuca altaica,,"Altai fescue, rough fescue",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,201245,Festuca brachyphylla ssp. brachyphylla,Festuca brachyphylla (145630),alpine fescue,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,159888,Festuca brevissima,,Alaska fescue,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,182859,Festuca richardsonii,,Richardson's fescue,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145632,Festuca rubra,,"ravine fescue, red fescue",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145633,Festuca rubra ssp. rubra,,red fescue,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145683,Glyceria borealis,,Northern Mannagrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,158120,Glyceria grandis,,American mannagrass,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145688,Glyceria maxima,Glyceria maxima ssp. grandis (145690),reed mannagrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145696,Hierochloe alpina,,alpine sweetgrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145697,Hierochloe odorata,Hierochloe odorata (292439),"sweetgrass, vanilla grass",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145698,Hierochloe odorata ssp. odorata,,vanillagrass,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,145701,Hierochloe pauciflora,,arctic sweetgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,146265,Hordeum brachyantherum,,meadow barley,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,161557,Leymus mollis,"Elymus mollis (144544),Elymus arenarius (144541),Elymus arenarius ssp. mollis (144542)","American dunegrass, American ryegrass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,203763,Leymus mollis ssp. mollis,Elymus arenarius ssp. mollis var. mollis (156093),American dunegrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147309,Phleum alpinum,"Phleum commutatum var. americanum (233593),Phleum commutatum (147311),Phleum alpinum var. americanum (161061)",alpine timothy,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147308,Phleum pratense,,Timothy,Unconfirmed,,,Non-native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147321,Poa,,"bluegrass, bluegrass spp.",,,,,,In Review
+KATM,Vascular Plant,Poales,Poaceae,147324,Poa arctica,,arctic bluegrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147325,Poa arctica ssp. arctica,,arctic bluegrass,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,206411,Poa arctica ssp. lanata,"Poa lanata (147333),Poa malacantha (147335)",arctic bluegrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,205852,Poa arctica ssp. longiculmis,,arctic bluegrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,205854,Poa arctica ssp. williamsii,,Arctic Bluegrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147331,Poa eminens,,Large-flower Speargrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147332,Poa glauca,,"glaucous bluegrass, white bluegrass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147334,Poa macrocalyx,Poa hispidula (148086),largeglume bluegrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,148104,Poa palustris,,"fowl blue grass, fowl bluegrass",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,192010,Poa paucispicula,,Alaska bluegrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,147336,Poa pratensis,,Kentucky bluegrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,206556,Poa pratensis ssp. alpigena,Poa alpigena (147322),Kentucky bluegrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,292239,Poa pratensis ssp. pratensis,,Kentucky bluegrass,Present,,Unknown,Non-native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,148108,Poa pseudoabbreviata,Poa brachyanthera (147339),shortcoal bluegrass,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,148112,Poa stenantha,,northern bluegrass,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,148148,Puccinellia nutkaensis,,Nootka alkaligrass,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,206052,Puccinellia tenella ssp. alaskana,Puccinellia alaskana (193824),tundra alkaligrass,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,215311,Torreyochloa pallida var. pauciflora,Glyceria pauciflora (178748),pale false mannagrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,204144,Trisetum canescens,Trisetum cernuum (139324),tall trisetum,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,139313,Trisetum spicatum,Trisetum spicatum ssp. spicatum (161161),spike trisetum,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Poales,Poaceae,146744,Vahlodea atropurpurea,,mountain hairgrass,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Typhaceae,147651,Sparganium angustifolium,,"narrowleaf burr reed, narrowleaf burreed, narrowleaf bur-reed",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Poales,Typhaceae,147647,Sparganium hyperboreum,,northern bur-reed,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Poales,Typhaceae,168345,Sparganium natans,,small bur-reed,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Athyriaceae,79721,Athyrium filix-femina ssp. cyclosorum,"Athyrium cyclosorum (159559),Athyrium filix-femina (79018)",Lady Fern,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Cystopteridaceae,84468,Cystopteris fragilis,Cystopteris fragilis ssp. fragilis (155231),"brittle bladder fern, brittle bladderfern, fragile fern",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Cystopteridaceae,83130,Gymnocarpium dryopteris,,western oakfern,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Dryopteridaceae,79551,Dryopteris expansa,"Dryopteris austriaca (179004),Dryopteris dilatata ssp. americana (205327),Dryopteris dilatata (79529)",spreading woodfern,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Polypodiaceae,75625,Polypodium glycyrrhiza,Polypodium vulgare (194327),licorice fern,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Pteridaceae,82497,Cryptogramma acrostichoides,,American rockbrake,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Pteridaceae,82519,Cryptogramma crispa,,Parsley Fern,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Pteridaceae,154147,Cryptogramma sitchensis,,Sitka rockbrake,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Thelypteridaceae,160700,Phegopteris connectilis,Thelypteris phegopteris (77298),"long beech fern, narrow beech fern, northern beech fern",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Polypodiales,Woodsiaceae,84658,Woodsia ilvensis,,rusty woodsia,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Papaveraceae,100193,Corydalis pauciflora,,Few-flowered Corydalis,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Papaveraceae,100020,Papaver alboroseum,,Pale Poppy,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Papaveraceae,101263,Papaver nudicaule,,"Arctic poppy, Icelandic poppy",Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Papaveraceae,193047,Papaver radicatum,Papaver alaskanum (191549),rooted poppy,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Papaveraceae,292226,Papaver radicatum ssp. alaskanum,,rooted poppy,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,88470,Aconitum delphiniifolium,,,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,88481,Aconitum delphiniifolium ssp. chamissonianum,,larkspurleaf monkshood,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,200610,Aconitum delphiniifolium ssp. delphiniifolium,,Monkshood,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,88514,Aconitum maximum,,Kamchatka aconite,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,95198,Actaea rubra,,"red baneberry, western baneberry",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,92008,Actaea rubra ssp. arguta,,Baneberry,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,89019,Anemone narcissiflora,,,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,205021,Anemone narcissiflora ssp. alaskana,,,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,205027,Anemone narcissiflora ssp. villosissima,,Narcissus-flowered Anemone,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,89487,Anemone parviflora,,Smallflowered anemone,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,89498,Anemone richardsonii,,Yellow thimbleweed,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,169976,Batrachium aquatile,Ranunculus trichophyllus (94504),,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,735014,Batrachium eradicatum,Ranunculus confervoides (92472),,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,91059,Caltha leptosepala,,White marshmarigold,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,91070,Caltha natans,,floating marsh marigold,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,91048,Caltha palustris,"Caltha palustris var. palustris (210592),Caltha palustris ssp. asarifolia (207335),Caltha palustris var. radicans (216313),Caltha palustris ssp. arctica (207333)","yellow marsh marigold, yellow marsh-marigold",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,735012,Coptidium palasii,Ranunculus pallasii (93241),,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,98736,Coptis trifolia,,threeleaf goldthread,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,91092,Delphinium glaucum,,Glaucous Larkspur,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,92438,Ranunculus abortivus,,"early woodbuttercup, kidney-leaf buttercup, littleleaf buttercup, smallflower buttercup, smallflower crowfoot",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,196762,Ranunculus bongardii,,,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,96880,Ranunculus eschscholtzii,,Eschscholtz Buttercup,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,93230,Ranunculus hyperboreus,Ranunculus hyperboreus ssp. hyperboreus (158152),"arctic buttercup, high northern buttercup",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,97757,Ranunculus lapponicus,,Lapland buttercup,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,98542,Ranunculus nivalis,,snow buttercup,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,104769,Ranunculus reptans,,,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,90541,Thalictrum alpinum,,"alpine meadowrue, alpine meadow-rue",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Ranunculales,Ranunculaceae,91530,Thalictrum sparsiflorum,,"fewflower meadowrue, fewflower meadow-rue",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,92965,Acomastylis rossii,Geum rossii (126285),,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,92977,Amelanchier alnifolia var. semiintegrifolia,Amelanchier florida (169076),"Pacific serviceberry, Saskatoon serviceberry",Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,91116,Argentina egedii,"Potentilla egedii (126293),Potentilla egedii var. grandis (233041),Argentina egedii ssp. egedii (91117),Potentilla egedii ssp. grandis (206655)",Pacific silverweed,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,129607,Aruncus dioicus,Aruncus sylvester (91141),"bride's feathers, goatsbeard",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,155907,Comarum palustre,Potentilla palustris (126302),purple marshlocks,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,286449,Dasiphora floribunda,"Potentilla fruticosa (127008),Pentaphylloides floribunda (160582)",shrubby cinquefoil,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,178964,Dryas alaskensis,Dryas octopetala ssp. alaskensis (126242),Alaskan mountain-avens,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126234,Dryas integrifolia,,entireleaf mountain-avens,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126235,Dryas integrifolia ssp. integrifolia,,entireleaf mountain-avens,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126239,Dryas octopetala,,"Eight-petalled dryas, Mountain avens, White dryad",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126241,Dryas octopetala ssp. octopetala,,Mt. Avens,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,198790,Dryas octopetala ssp. punctata,,eightpetal mountain-avens,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126272,Geum calthifolium,,calthaleaf avens,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126278,Geum macrophyllum,,"largeleaf avens, large-leaf avens",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,106580,Geum macrophyllum var. macrophyllum,Geum macrophyllum ssp. macrophyllum (155437),largeleaf avens,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,212353,Geum macrophyllum var. perincisum,Geum perincisum (106584),"largeleaf avens, large-leaf avens",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,162941,Luetkea pectinata,,partridgefoot,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120335,Physocarpus capitatus,,Pacific ninebark,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127012,Potentilla gracilis,Potentilla alaskana (735005),"graceful cinquefoil, northwest cinquefoil, slender cinquefoil",Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126294,Potentilla hookeriana,,Hooker's cinquefoil,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126298,Potentilla hyparctica,Potentilla emarginata (191358),,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127028,Potentilla nivea,,Snow cinquefoil,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,205321,Potentilla norvegica ssp. monspeliensis,"Potentilla monspeliensis (191408),Potentilla norvegica (127030)",Rough Cinquefoil,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126304,Potentilla uniflora,,oneflower cinquefoil,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126305,Potentilla villosa,,villous cinquefoil,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,126307,Potentilla virgulata,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127121,Rosa acicularis,,Prickly Rose,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127945,Rosa nutkana,,Nootka rose,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127960,Rubus arcticus,,arctic blackberry,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,206096,Rubus arcticus ssp. acaulis,,Nagoon Berry,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,206100,Rubus arcticus ssp. stellatus,Rubus stellatus (128989),Nagoon Berry,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,127962,Rubus chamaemorus,,cloudberry,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,128939,Rubus pedatus,,strawberryleaf raspberry,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,128986,Rubus spectabilis,,salmonberry,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120361,Sanguisorba canadensis,"Sanguisorba stipulata (194213),Sanguisorba sitchensis (194211)",Canadian burnet,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120362,Sanguisorba menziesii,,Menzies Burnet,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120368,Sibbaldia procumbens,,"creeping sibbaldia, creeping-glow-wort, prostrate sibbaldia",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120388,Sorbus scopulina,,Western Mountain-ash,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,120389,Sorbus sitchensis,,Western mountainash,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Rosales,Rosaceae,164778,Spiraea stevenii,Spiraea beauverdiana (120393),beauverd spirea,Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Rosales,Urticaceae,99873,Urtica dioica,,"California nettle, slender nettle, stinging nettle, tall nettle",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Rosales,Urticaceae,99895,Urtica dioica ssp. gracilis,"Urtica gracilis (197302),Urtica lyallii (197313)","California nettle, stinging nettle",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Crassulaceae,193200,Rhodiola integrifolia,"Sedum rosea (122462),Sedum rosea ssp. integrifolium (209926),Rhodiola rosea (193204)",ledge stonecrop,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Grossulariaceae,125266,Ribes glandulosum,,skunk currant,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Grossulariaceae,213809,Ribes hudsonianum var. hudsonianum,Ribes hudsonianum (125272),Hudson Bay currant,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Grossulariaceae,125277,Ribes lacustre,,"prickly currant, swamp currant",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Grossulariaceae,125309,Ribes triste,,American Red Currant,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Haloragaceae,161492,Myriophyllum sibiricum,"Myriophyllum exalbescens (125168),Myriophyllum spicatum (125171)","American watermilfoil, shortspike watermilfoil, Siberian water-milfoil",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,122555,Chrysosplenium tetrandrum,,"goldencarpet, northern golden saxifrage",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,122557,Chrysosplenium wrightii,,Wright Water-carpet,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,209493,Chrysosplenium wrightii var. beringianum,,Wright's golden saxifrage,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,124336,Heuchera glabra,,"alpine alumroot, alpine heuchera",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,124373,Leptarrhena pyrolifolia,,"fireleaf leptarrhena, leatherleaf saxifrage",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,776543,Micranthes nelsoniana var. nelsoniana,"Saxifraga nelsoniana ssp. nelsoniana (202912),Saxifraga punctata ssp. nelsoniana (123416)",heartleaf saxifrage,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,122584,Saxifraga bracteata,,bract saxifrage,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123386,Saxifraga bronchialis,"Saxifraga bronchialis ssp. funstonii (123389),Saxifraga bronchialis ssp. cherlerioides (123388)","spotted saxifrage, yellowdot saxifrage",Present,,Abundant,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123390,Saxifraga caespitosa,,tufted alpine saxifrage,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123392,Saxifraga caespitosa ssp. caespitosa,Saxifraga caespitosa ssp. sileneflora (123394),tufted alpine saxifrage,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123396,Saxifraga eschscholtzii,,"ciliate saxifrage, cusion saxifrage",Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123442,Saxifraga ferruginea,,russethair saxifrage,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123444,Saxifraga flagellaris,,"spider saxifrage, stoloniferous saxifrage, whiplash saxifrage",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123448,Saxifraga flagellaris ssp. setigera,,Flagellate Saxifrage,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123398,Saxifraga foliolosa,,leafystem saxifrage,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123399,Saxifraga hieracifolia,,,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,160092,Saxifraga hieraciifolia,,Stiffstem saxifrage,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123400,Saxifraga hirculus,,yellow marsh saxifrage,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,194479,Saxifraga insularis,Saxifraga punctata ssp. insularis (123415),,Unconfirmed,,,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123459,Saxifraga lyallii ssp. hultenii,Saxifraga lyallii (123456),Hulten's saxifrage,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,160102,Saxifraga nelsoniana,Saxifraga punctata (123411),heartleaf saxifrage,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,202914,Saxifraga nelsoniana ssp. pacifica,Saxifraga punctata ssp. pacifica (123417),Pacific saxifrage,Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123465,Saxifraga nivalis,,Alpine Saxifrage,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123403,Saxifraga oppositifolia,,"purple mountain saxifrage, purple saxifrage",Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123419,Saxifraga rivularis,,"alpine brook saxifrage, pygmy saxifrage, weak saxifrage",Present,,Common,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123475,Saxifraga serpyllifolia,,thymeleaf saxifrage,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,160129,Saxifraga tenuis,,Ottertail Pass saxifrage,Present,,Rare,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,123421,Saxifraga unalaschcensis,,,Present,,Unknown,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,125334,Tellima grandiflora,,bigflower tellima,Present,,Uncommon,Native,,Approved
+KATM,Vascular Plant,Saxifragales,Saxifragaceae,125339,Tiarella trifoliata,,threeleaf foamflower,Probably Present,,,Native,,Approved
+KATM,Vascular Plant,Selaginellales,Selaginellaceae,75264,Selaginella selaginoides,,"club spikemoss, clubmoss, northern spikemoss",Probably Present,,,Native,,Approved

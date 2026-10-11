@@ -11,4 +11,7 @@ venv/
 *.onnx
 .DS_Store
 sample_videos/
+worker/training/
+runs/
 ml/out/
+.test-tmp*/

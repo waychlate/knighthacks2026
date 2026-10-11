@@ -96,6 +96,81 @@ python -m animal_worker.main --stream --source "<stream URL>" --park katmai --ca
 python -m animal_worker.still_poller --out sample_videos/yellowstone --every 60
 ```
 
+**Collect the three Katmai YouTube cameras** (PowerShell, from `worker/`):
+```powershell
+uv pip install --python .\.venv\Scripts\python.exe --link-mode=copy -r requirements-youtube.txt
+.\.venv\Scripts\python.exe -m animal_worker.still_poller --park katmai --list-cameras
+.\.venv\Scripts\python.exe -m animal_worker.katmai_multi_poller --every 60
+```
+The configured feeds are Brooks Falls Low, Brooks Falls, and River Watch. Each
+saves JPEGs and `frames.jsonl` under its own `sample_videos/katmai/<camera-id>/`
+folder. Ctrl+C stops all three. Add `--max-frames 1` for a one-frame-per-camera
+test. Requires an installed Deno, Node, or Bun runtime for YouTube resolution.
+The collector does not run species recognition or write to Supabase.
+See [Katmai setup and test results](ml/KATMAI.md).
+
+To collect just one camera:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.still_poller --park katmai --camera-id river-watch --every 60
+```
+
+**Scan saved Katmai frames locally** (no database or keys):
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.folder_scanner --input sample_videos/katmai/river-watch
+```
+This uses overlapping image tiles to improve small-bird detection, keeps YOLO's
+broad animal label as a species-classification guard, deduplicates consecutive
+frames, and writes `sightings.json` inside the selected camera folder. Birds remain
+`Bird (unidentified)` by default because exact bird naming has not been validated.
+
+Draw the saved YOLO boxes onto copies of every sighting frame:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.annotate_sightings --root sample_videos/katmai
+```
+Annotated copies and an `index.json` are written below
+`sample_videos/katmai/annotated/`; source camera images are not modified.
+
+To annotate every YOLO candidate without the sighting cooldown:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.candidate_scanner --root sample_videos/katmai
+.\.venv\Scripts\python.exe -m animal_worker.annotate_sightings `
+  --root sample_videos/katmai --sightings-name training_candidates.json `
+  --out sample_videos/katmai/annotated-expanded
+```
+
+**Review detections and train a Katmai-specific YOLO model** (from `worker/`):
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.katmai_training init
+.\.venv\Scripts\python.exe -m animal_worker.katmai_training review
+.\.venv\Scripts\python.exe -m animal_worker.katmai_training export
+.\.venv\Scripts\python.exe -m animal_worker.katmai_training train --epochs 50
+```
+The review window shows one boxed crop at a time. Press `B` for bear, `I` for
+bird, or `X` for a false detection such as a branch. It saves after every key,
+so it is safe to close and resume later. Press `U` to undo the previous answer.
+The two custom classes are `bear` and `bird`. Scenery-only frames are included
+as negative examples, which helps suppress detections on water, rocks, and tree
+branches. Pending detections are excluded rather than trusted as ground truth.
+The trained weights are written below `training/katmai/runs/`. The selected
+reviewed model is copied to `training/katmai/current.pt` so scans do not depend
+on a particular run directory.
+
+Scan a camera folder with the reviewed Katmai model:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.folder_scanner `
+  --input sample_videos/katmai/river-watch `
+  --weights training/katmai/current.pt `
+  --bear-confidence 0.40 `
+  --bird-confidence 0.40
+```
+
+The selected model was fine-tuned with waterfall hard negatives. At the 0.40
+threshold it detects a known bear at 0.93 and produces no detections on the five
+Brooks Falls Low waterfall test frames. For a faster CPU experiment, use
+`train --epochs 20 --image-size 320`. Results are documented in
+[ml/KATMAI.md](ml/KATMAI.md); bear detection is useful for testing, while bird
+detection still needs more varied examples.
+
 ### 4. ML (predictions on synthetic data)
 ```bash
 cd ml

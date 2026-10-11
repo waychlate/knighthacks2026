@@ -19,7 +19,7 @@ log = logging.getLogger("worker")
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def parse_args():
+def parse_args(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--source", required=True, help="video file, webcam index, or RTSP/HLS/HTTP URL")
     p.add_argument("--camera", default="Camera 1", help="camera name stored with each sighting")
@@ -34,8 +34,13 @@ def parse_args():
     p.add_argument("--every", type=float, default=60.0, help="seconds between polls of an image URL or --stream (min 30)")
     p.add_argument("--stream", action="store_true",
                    help="source is a live stream page/URL (YouTube, .m3u8): resolve with yt-dlp and grab one frame every --every seconds with ffmpeg")
+    p.add_argument("--weights", default="yolov8n.pt", help="YOLO weights, including a trained best.pt")
+    p.add_argument("--detector-confidence", type=float, default=0.4)
+    p.add_argument("--bird-confidence", type=float, default=0.15)
+    p.add_argument("--bear-confidence", type=float, default=0.3)
+    p.add_argument("--tile-size", type=int, default=None, help="overlapping tile size for distant animals")
     p.add_argument("--dry-run", action="store_true", help="print sightings instead of writing to Supabase")
-    return p.parse_args()
+    return p.parse_args(argv)
 
 
 def species_file_for(park: str, explicit=None) -> str:
@@ -94,13 +99,20 @@ def process_frame(frame, ts, camera, detector, classifier, deduper, sink) -> int
     """Detect, classify and dedupe one frame; send new sightings to `sink`. Returns how many were logged."""
     logged = 0
     for det in detector.detect(frame):
-        result = classifier.classify(det.crop)
+        if hasattr(classifier, "classify_for_label") and hasattr(det, "label"):
+            result = classifier.classify_for_label(det.crop, det.label, det.score)
+        else:
+            result = classifier.classify(det.crop)
         if result is None:
             continue
         species, conf = result
-        if not deduper.should_log(camera, species.scientific_name, ts):
+        species_key = species.scientific_name or species.common_name
+        if not deduper.should_log(camera, species_key, ts):
             continue
-        sink.record(species, conf, det.crop, camera)
+        if hasattr(sink, "record_detection"):
+            sink.record_detection(species, conf, det, camera, ts)
+        else:
+            sink.record(species, conf, det.crop, camera)
         logged += 1
     return logged
 
@@ -130,8 +142,16 @@ def main():
 
         frame_iter = frames(args.source, fps=args.fps)
 
-    detector = AnimalDetector()
-    classifier = SpeciesClassifier(load_species(species_file_for(args.park, args.species_file)), min_confidence=args.min_confidence)
+    detector = AnimalDetector(
+        weights=args.weights,
+        min_score=args.detector_confidence,
+        tile_size=args.tile_size,
+        class_min_scores={"bird": args.bird_confidence, "bear": args.bear_confidence},
+    )
+    classifier = SpeciesClassifier(
+        load_species(species_file_for(args.park, args.species_file)),
+        min_confidence=args.min_confidence,
+    )
     deduper = Deduper(cooldown_s=args.cooldown)
 
     if args.dry_run:
