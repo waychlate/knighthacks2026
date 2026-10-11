@@ -8,9 +8,10 @@ import logging
 import os
 import queue
 import threading
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 
+from .annotate import frame_extras
 from .classifier import Species
 from .dedupe import Deduper
 from .katmai_cameras import KATMAI_CAMERAS
@@ -79,6 +80,7 @@ class LiveSightingSink:
                     snapshot_url=self.store.upload_snapshot(detection.crop),
                     source_kind=source_kind,
                     seen_at=captured_at,
+                    **frame_extras(self.store, species, confidence, detection),
                 )
                 row["published"] = True
             except Exception as exc:
@@ -167,9 +169,36 @@ def parse_args(argv=None):
     parser.add_argument("--tile-size", type=int, default=512)
     parser.add_argument("--publish", action="store_true",
                         help="write accepted sightings to Supabase; otherwise local audit only")
+    parser.add_argument("--replay", metavar="DIR",
+                        help="demo: loop the JPEGs in DIR through the detector, one per --every seconds (min 1), tagged replay; needs one --camera")
     parser.add_argument("--check", action="store_true",
                         help="verify model and, with --publish, Supabase setup; do not contact cameras")
     return parser.parse_args(argv)
+
+
+def replay_folder(folder: Path, args, processor):
+    """Demo: loop saved frames through the live pipeline forever, as fresh `replay` sightings."""
+    import time
+
+    import cv2
+
+    if not args.camera or len(args.camera) != 1:
+        raise SystemExit("--replay needs exactly one --camera")
+    camera = KATMAI_CAMERAS[args.camera[0]]
+    processor.deduper = Deduper(0)  # the same stills repeat on purpose
+    paths = sorted(folder.glob("*.jpg"))
+    if not paths:
+        raise SystemExit(f"No JPEGs in {folder}")
+    try:
+        while True:
+            for path in paths:
+                frame = cv2.imread(str(path))
+                metadata = {"camera": camera.name, "source_kind": "replay",
+                            "captured_at": datetime.now(timezone.utc).isoformat()}
+                processor.process(frame, metadata, path)
+                time.sleep(args.every)
+    except KeyboardInterrupt:
+        log.info("Stopping Katmai replay")
 
 
 def main(argv=None):
@@ -216,6 +245,9 @@ def main(argv=None):
     work = queue.Queue(maxsize=6)
     thread = threading.Thread(target=process_queue, args=(work, processor), daemon=True)
     thread.start()
+
+    if args.replay:
+        return replay_folder(Path(args.replay), args, processor)
 
     cameras = [KATMAI_CAMERAS[key] for key in (args.camera or KATMAI_CAMERAS)]
     source_kind = "live" if in_bear_season(date.today()) else "replay"

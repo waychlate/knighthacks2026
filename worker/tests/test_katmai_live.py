@@ -1,4 +1,6 @@
 import json
+
+import numpy as np
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -35,8 +37,8 @@ class FakeStore:
         return "camera-id"
 
     def upload_snapshot(self, crop):
-        assert crop == "bear-crop"
-        return "https://example.test/bear.jpg"
+        self.uploads = getattr(self, "uploads", 0) + 1
+        return "https://example.test/bear.jpg" if crop == "bear-crop" else f"https://example.test/frame{self.uploads}.jpg"
 
     def insert_sighting(self, **row):
         self.row = row
@@ -61,7 +63,7 @@ def test_live_processor_writes_audit_and_publishes_capture_time(tmp_path):
     output = tmp_path / "live_sightings.jsonl"
     processor = LiveFrameProcessor(detector, LiveSightingSink(output, store=store))
 
-    assert processor.process("frame", metadata(), Path("frame.jpg")) == 1
+    assert processor.process(np.zeros((200, 200, 3), np.uint8), metadata(), Path("frame.jpg")) == 1
 
     audit = json.loads(output.read_text(encoding="utf-8"))
     assert audit["published"] is True
@@ -74,6 +76,10 @@ def test_live_processor_writes_audit_and_publishes_capture_time(tmp_path):
         "snapshot_url": "https://example.test/bear.jpg",
         "source_kind": "live",
         "seen_at": "2026-10-11T12:34:56+00:00",
+        "frame_url": "https://example.test/frame2.jpg",
+        "annotated_url": "https://example.test/frame3.jpg",
+        "bbox": [10, 20, 100, 120],
+        "yolo_score": 0.91,
     }
 
 

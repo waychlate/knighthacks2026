@@ -122,3 +122,22 @@ def test_image_frames_error_propagates():
 
     with pytest.raises(OSError):
         next(image_frames("u", fetch=fetch, sleep=lambda s: None))
+
+
+def test_frame_extras_uploads_clean_and_annotated_frames():
+    import numpy as np
+    from animal_worker.annotate import frame_extras
+    from animal_worker.detector import Detection
+
+    class Store:
+        def __init__(self):
+            self.n = 0
+
+        def upload_snapshot(self, image):
+            self.n += 1
+            return f"url{self.n}"
+
+    det = Detection("crop", (10, 20, 60, 70), 0.912, 21, "bear", frame=np.zeros((100, 120, 3), np.uint8))
+    out = frame_extras(Store(), ELK, 0.9, det)
+    assert out == {"frame_url": "url1", "annotated_url": "url2", "bbox": [10, 20, 60, 70], "yolo_score": 0.912}
+    assert frame_extras(Store(), ELK, 0.9, Detection("crop", (0, 0, 1, 1), 0.5, 1, "bear")) == {}

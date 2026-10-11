@@ -39,6 +39,9 @@ def parse_args(argv=None):
     p.add_argument("--bird-confidence", type=float, default=0.15)
     p.add_argument("--bear-confidence", type=float, default=0.3)
     p.add_argument("--tile-size", type=int, default=None, help="overlapping tile size for distant animals")
+    p.add_argument("--demo", action="store_true",
+                   help="loop a recorded file forever, one replay sighting about every --demo-pause seconds")
+    p.add_argument("--demo-pause", type=float, default=10.0, help="seconds to wait after each logged sighting in --demo")
     p.add_argument("--dry-run", action="store_true", help="print sightings instead of writing to Supabase")
     return p.parse_args(argv)
 
@@ -53,8 +56,8 @@ def species_file_for(park: str, explicit=None) -> str:
 
 
 def in_bear_season(today: date) -> bool:
-    """Brooks Falls bears are there mid-June to late October; off-season the explore.org cams replay old highlights."""
-    return (6, 15) <= (today.month, today.day) <= (10, 31)
+    """Brooks Falls bears are there mid-June to early October (NPS); off-season the explore.org cams replay old highlights."""
+    return (6, 15) <= (today.month, today.day) <= (10, 5)
 
 
 def default_source_kind(image_mode: bool, stream_mode: bool, park: str, today: date) -> str:
@@ -83,7 +86,7 @@ class StoreSink(LogSink):
     def __init__(self, store, location=None, park="yellowstone", source_kind="replay"):
         self.store, self.location, self.park, self.source_kind = store, location, park, source_kind
 
-    def record(self, species, conf, crop, camera):
+    def record(self, species, conf, crop, camera, **extras):
         super().record(species, conf, crop, camera)
         s = self.store
         s.insert_sighting(
@@ -92,7 +95,13 @@ class StoreSink(LogSink):
             confidence=conf,
             snapshot_url=s.upload_snapshot(crop),
             source_kind=self.source_kind,
+            **extras,
         )
+
+    def record_detection(self, species, conf, det, camera, ts):
+        from .annotate import frame_extras
+
+        self.record(species, conf, det.crop, camera, **frame_extras(self.store, species, conf, det))
 
 
 def process_frame(frame, ts, camera, detector, classifier, deduper, sink) -> int:
@@ -106,6 +115,7 @@ def process_frame(frame, ts, camera, detector, classifier, deduper, sink) -> int
         if result is None:
             continue
         species, conf = result
+        det.frame = frame
         species_key = species.scientific_name or species.common_name
         if not deduper.should_log(camera, species_key, ts):
             continue
@@ -162,8 +172,19 @@ def main():
         sink = StoreSink(SightingStore(), args.location, args.park, source_kind)
 
     log.info("Watching %s as camera %r (dry_run=%s, source_kind=%s)", args.source, args.camera, args.dry_run, source_kind)
-    for ts, frame in frame_iter:
-        process_frame(frame, ts, args.camera, detector, classifier, deduper, sink)
+    if args.demo:
+        import time
+
+        from .capture import frames
+
+        deduper.cooldown_s = min(deduper.cooldown_s, args.demo_pause / 2)
+        while True:  # ponytail: reopens the file each lap; fine for short clips
+            for ts, frame in frames(args.source, fps=args.fps):
+                if process_frame(frame, time.time(), args.camera, detector, classifier, deduper, sink):
+                    time.sleep(args.demo_pause)
+    else:
+        for ts, frame in frame_iter:
+            process_frame(frame, ts, args.camera, detector, classifier, deduper, sink)
 
 
 if __name__ == "__main__":

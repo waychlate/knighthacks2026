@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { cameraHref } from '../lib/useRoute'
 import { timeAgo } from '../lib/time'
-import Comments from './Comments'
+import SightingDialog from './SightingDialog'
 
 export default function SightingCard({ sighting }) {
-  const { id, species, camera, seen_at, confidence, snapshot_url } = sighting
+  const { species, camera, seen_at, confidence, snapshot_url } = sighting
   const local = new Date(seen_at).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })
   const [open, setOpen] = useState(false)
 
   return (
-    <li className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
+    <li onClick={(e) => !e.target.closest('a') && setOpen(true)} className="cursor-pointer rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
       <div className="flex items-center gap-4">
         {snapshot_url ? (
           <img src={snapshot_url} alt={`${species.common_name} seen by ${camera.name}`} className="h-16 w-16 rounded-lg object-cover" />
@@ -34,13 +34,13 @@ export default function SightingCard({ sighting }) {
       </div>
       <button
         type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="dialog"
+        onClick={() => setOpen(true)}
         className="mt-2 rounded text-sm text-emerald-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
       >
-        💬 {open ? 'Hide comments' : 'Comments'}
+        💬 Details & comments
       </button>
-      {open && <Comments sightingId={id} />}
+      {open && <SightingDialog sighting={sighting} onClose={() => setOpen(false)} />}
     </li>
   )
 }

@@ -42,13 +42,14 @@ class SightingStore:
 
     def insert_sighting(self, *, species_id: str, camera_id: str, confidence: float,
                         snapshot_url: str | None, source_kind: str = "replay",
-                        seen_at: str | None = None):
+                        seen_at: str | None = None, **extras):
         payload = {
             "species_id": species_id,
             "camera_id": camera_id,
             "confidence": round(confidence, 3),
             "snapshot_url": snapshot_url,
             "source_kind": source_kind,
+            **extras,  # frame_url, annotated_url, bbox, yolo_score (supabase/dev-frames.sql)
         }
         if seen_at is not None:
             payload["seen_at"] = seen_at

@@ -81,12 +81,12 @@ def test_grab_frame_reads_a_jpeg_with_real_ffmpeg(tmp_path):
 
 
 def test_bear_season_edges():
-    assert in_bear_season(date(2026, 6, 15)) and in_bear_season(date(2026, 10, 31))
-    assert not in_bear_season(date(2026, 6, 14)) and not in_bear_season(date(2026, 11, 1))
+    assert in_bear_season(date(2026, 6, 15)) and in_bear_season(date(2026, 10, 5))
+    assert not in_bear_season(date(2026, 6, 14)) and not in_bear_season(date(2026, 10, 6))
 
 
 def test_default_source_kind():
-    in_season, off = date(2026, 10, 10), date(2026, 12, 1)
+    in_season, off = date(2026, 9, 10), date(2026, 12, 1)
     assert default_source_kind(True, False, "yellowstone", off) == "live"      # NPS still
     assert default_source_kind(False, True, "katmai", in_season) == "live"
     assert default_source_kind(False, True, "katmai", off) == "replay"          # old highlights

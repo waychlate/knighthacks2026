@@ -24,6 +24,7 @@ class Detection:
     score: float
     class_id: int
     label: str
+    frame: object = None  # full BGR frame the detection came from; set by process_frame
 
 
 class AnimalDetector:
