@@ -1,6 +1,6 @@
 # PROGRESS
 
-Run logs from the two supervised build runs (2026-10-10), with what was verified and how. The task lists they followed are in [archive/](archive/). Measured results quoted in the README come from here.
+Run logs from the two supervised build runs (2026-10-10), with what was verified and how. The task lists they followed were removed before judging (see git history). Measured results quoted in the README come from here.
 
 ## Pipeline run (worker, ml, schema, seed)
 

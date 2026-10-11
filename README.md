@@ -1,6 +1,6 @@
-# Animal Logger
+# En-Vision (Animal Logger)
 
-A wildlife sighting log for parks. Cameras feed a Python worker that **detects animals (YOLO)**, **names the species (BioCLIP, a Hugging Face model)**, and logs each sighting to Supabase. A React web app shows a live feed of recent sightings (species, camera, time), a prediction card ("Predicting an elk around 6:30 AM"), charts, and a chat room for visitors.
+A wildlife sighting log for parks. Cameras feed a Python worker that **detects animals (YOLO)**, **names the species (BioCLIP, a Hugging Face model)**, and logs each sighting to Supabase. A React web app shows a live feed of recent sightings (species, camera, time), a prediction card ("Predicting an elk around 6:30 AM"), charts, and a chat room for visitors. It opens on a 3D globe of seven national parks (Yellowstone and Katmai have cameras; Yosemite, Everglades, Grand Canyon, Great Smoky Mountains and Denali show "cameras coming soon"), where visitors can also drop anonymous sighting pings. It installs as a PWA.
 
 Built for KnightHacks 2026. Tracks: **Best First Time**, **Best AI Hack**, **Best Use of a Hugging Face Model**.
 
@@ -31,10 +31,13 @@ flowchart LR
 
 | Part | State |
 |---|---|
-| Worker (capture, YOLO, BioCLIP, dedupe, Supabase write) | Real. 14 tests pass without models. Ran end to end on a public-domain NPS bison clip on a GPU; crops from three clips were used to tune BioCLIP. |
+| Worker (capture, YOLO, BioCLIP, dedupe, Supabase write) | Real. 82 tests pass without models (1 skipped). Ran end to end on a public-domain NPS bison clip on a GPU; crops from three clips were used to tune BioCLIP. |
 | Species ID accuracy | **About 59% of crops correct on the hardest clips** (bison calves and body fragments, after tuning the BioCLIP prompt). Adult bison in clear view scored 0.93 to 1.00. |
-| Live cam (NPS Yellowstone "Electric Peak") | Plumbing works (image URL polling, Live mode). The cam is a wide landscape and **showed no animals in the first 348 collected frames**; tiny distant animals would likely be missed by YOLO. Tiled detection is being tried (see `docs/team/ml.md`). |
-| Web app | Real. Lint, build, 17 unit tests and a headless-browser check pass. Runs on mock data without keys. |
+| Live cam (NPS Yellowstone "Electric Peak") | Plumbing works (image URL polling, Live mode). The cam is a wide landscape and **showed no animals in the first 348 collected frames**; tiny distant animals would likely be missed by YOLO. Tiled detection is available in `folder_scanner`. |
+| Web app | Real. Lint, build, 29 unit tests and a headless-browser route check pass. Runs on mock data without keys. Not yet tested on a real phone or GPU. |
+| Katmai detector | A reviewed two-class (bear, bird) YOLO model; all six bear detections on a 147-image holdout were confirmed. Weights are local only (`worker/training/katmai/current.pt`). See [ml/KATMAI.md](ml/KATMAI.md). |
+| Katmai analytics | Real public data (NPS species list, GBIF occurrences, NASA POWER weather), with sample sizes and caveats shown on the page. |
+| iNaturalist data | ~43k real research-grade observations for the seven parks in `ml/data/inat/`. Used for park species lists; the prediction model does not use it yet. |
 | Chat and comments | Real code and SQL, **never run against a real Supabase project yet**; without keys they run on an in-memory sample. |
 | Predictions (`ml/`) | **Trained on synthetic data** (made-up hour-of-day patterns). The simple hourly profile beat gradient boosting; results are optimistic. See [ml/README.md](ml/README.md). |
 | Supabase and Vercel | SQL and a setup wizard exist; nothing has been verified end to end against a live project. |
@@ -59,7 +62,7 @@ bash scripts/setup-supabase-vercel.sh
 It walks through creating the Supabase project, running the SQL files, writing `.env`, checking the API, deploying to Vercel, and a worker smoke test.
 
 By hand:
-1. Create a project at supabase.com. In the SQL editor run, in order: `supabase/schema.sql`, `supabase/social.sql`, `supabase/pings.sql`, then (optional, **synthetic** demo data, fresh database only) `supabase/seed.sql`.
+1. Create a project at supabase.com. In the SQL editor run, in order: `supabase/schema.sql`, `supabase/social.sql`, `supabase/pings.sql`, `supabase/katmai-cams.sql`, then (optional, **synthetic** demo data, fresh database only) `supabase/seed.sql`.
 2. `cp .env.example .env` and fill in `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (worker, **secret**), `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (web, public). `.env` is gitignored; never commit it.
 3. **Vercel:** import this repo, Root Directory `web`, framework Vite, and add the two `VITE_` variables. (If you use Vercel's Supabase integration instead, its `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` work too; the app reads either set.) The worker cannot run on Vercel; run it on a laptop.
 
@@ -134,69 +137,14 @@ To collect just one camera:
 .\.venv\Scripts\python.exe -m animal_worker.still_poller --park katmai --camera-id river-watch --every 60
 ```
 
-**Scan saved Katmai frames locally** (no database or keys):
-```powershell
-.\.venv\Scripts\python.exe -m animal_worker.folder_scanner --input sample_videos/katmai/river-watch
-```
-This uses overlapping image tiles to improve small-bird detection, keeps YOLO's
-broad animal label as a species-classification guard, deduplicates consecutive
-frames, and writes `sightings.json` inside the selected camera folder. Birds remain
-`Bird (unidentified)` by default because exact bird naming has not been validated.
-
-Draw the saved YOLO boxes onto copies of every sighting frame:
-```powershell
-.\.venv\Scripts\python.exe -m animal_worker.annotate_sightings --root sample_videos/katmai
-```
-Annotated copies and an `index.json` are written below
-`sample_videos/katmai/annotated/`; source camera images are not modified.
-
-To annotate every YOLO candidate without the sighting cooldown:
-```powershell
-.\.venv\Scripts\python.exe -m animal_worker.candidate_scanner --root sample_videos/katmai
-.\.venv\Scripts\python.exe -m animal_worker.annotate_sightings `
-  --root sample_videos/katmai --sightings-name training_candidates.json `
-  --out sample_videos/katmai/annotated-expanded
-```
-
-**Review detections and train a Katmai-specific YOLO model** (from `worker/`):
-```powershell
-.\.venv\Scripts\python.exe -m animal_worker.katmai_training init
-.\.venv\Scripts\python.exe -m animal_worker.katmai_training review
-.\.venv\Scripts\python.exe -m animal_worker.katmai_training export
-.\.venv\Scripts\python.exe -m animal_worker.katmai_training train --epochs 50
-```
-The review window shows one boxed crop at a time. Press `B` for bear, `I` for
-bird, or `X` for a false detection such as a branch. It saves after every key,
-so it is safe to close and resume later. Press `U` to undo the previous answer.
-The two custom classes are `bear` and `bird`. Scenery-only frames are included
-as negative examples, which helps suppress detections on water, rocks, and tree
-branches. Pending detections are excluded rather than trusted as ground truth.
-The trained weights are written below `training/katmai/runs/`. The selected
-reviewed model is copied to `training/katmai/current.pt` so scans do not depend
-on a particular run directory.
-
-Scan a camera folder with the reviewed Katmai model:
-```powershell
-.\.venv\Scripts\python.exe -m animal_worker.folder_scanner `
-  --input sample_videos/katmai/river-watch `
-  --weights training/katmai/current.pt `
-  --bear-confidence 0.40 `
-  --bird-confidence 0.40
-```
-
-The selected model was fine-tuned with waterfall hard negatives. At the 0.40
-threshold it detects a known bear at 0.93 and produces no detections on the five
-Brooks Falls Low waterfall test frames. For a faster CPU experiment, use
-`train --epochs 20 --image-size 320`. Results are documented in
-[ml/KATMAI.md](ml/KATMAI.md); bear detection is useful for testing, while bird
-detection still needs more varied examples.
+**Scan, annotate, review and train on Katmai frames:** see [ml/KATMAI.md](ml/KATMAI.md) for the `folder_scanner`, `annotate_sightings`, `candidate_scanner` and `katmai_training` commands, and for the backend handoff (Supabase setup and the private `current.pt` model).
 
 ### 4. ML (predictions on synthetic data)
 ```bash
 cd ml
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest         # 10 tests
+python -m pytest         # 27 tests
 python evaluate.py       # model comparison table
 python predict.py        # writes ml/out/ and web/public/predictions.sample.json (works with no keys)
 python make_seed.py      # regenerates supabase/seed.sql (synthetic)
@@ -212,15 +160,14 @@ python make_seed.py      # regenerates supabase/seed.sql (synthetic)
 worker/      Python pipeline: capture, YOLO, BioCLIP, dedupe, Supabase writes, still_poller.py
 ml/          Synthetic data, models, evaluation, predictions (all synthetic)
 web/         React + Vite + Tailwind app, Recharts, Supabase client
-supabase/    schema.sql, social.sql, pings.sql, seed.sql (synthetic)
+supabase/    schema.sql, social.sql, pings.sql, katmai-cams.sql, seed.sql (synthetic)
 scripts/     setup-supabase-vercel.sh (guided setup)
-docs/        Devpost text, slides outline, demo script, QA notes (in progress)
+docs/        PROGRESS.md (run logs and measured results)
 ```
 
-## Team and project docs
-- Roles, git rules and the schedule: [TEAM.md](TEAM.md); per-person guides in [docs/team/](docs/team/).
-- Architecture, data model and conventions: [CLAUDE.md](CLAUDE.md). Run logs and measured results: [docs/PROGRESS.md](docs/PROGRESS.md). Finished task lists and the original handoff: [docs/archive/](docs/archive/).
-- Demo script: `docs/demo-script.md` (being written).
+## More docs
+- Katmai cameras, detector, analytics and handoff: [ml/KATMAI.md](ml/KATMAI.md). Predictions: [ml/README.md](ml/README.md). iNaturalist data: [ml/data/inat/README.md](ml/data/inat/README.md).
+- Architecture, data model and conventions: [CLAUDE.md](CLAUDE.md). Run logs and measured results: [docs/PROGRESS.md](docs/PROGRESS.md).
 
 ## Credits and licenses
 - Camera images and video clips: **National Park Service** (public domain; credit NPS). The live image is fetched from nps.gov and not stored by the web app.
