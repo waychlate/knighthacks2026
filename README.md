@@ -40,7 +40,7 @@ flowchart LR
 | iNaturalist data | ~43k real research-grade observations for the seven parks in `ml/data/inat/`. Used for park species lists; the prediction model does not use it yet. |
 | Chat and comments | Real code and SQL, **never run against a real Supabase project yet**; without keys they run on an in-memory sample. |
 | Predictions (`ml/`) | **Trained on synthetic data** (made-up hour-of-day patterns). The simple hourly profile beat gradient boosting; results are optimistic. See [ml/README.md](ml/README.md). |
-| Supabase and Vercel | SQL and a setup wizard exist; nothing has been verified end to end against a live project. |
+| Supabase and Vercel | Deployed: the web app is live on Vercel and connected to a real Supabase project (2026-10-11). |
 
 ## Demo day: what to run
 
@@ -61,7 +61,7 @@ Needs the worker venv and the Supabase keys in `.env`. From `worker/`, each in i
 .venv/bin/python -m animal_worker.katmai_live --every 60 --publish
 ```
 
-Then open the web app (`cd web && npm run dev`, or the deployed site) and switch to **Demo** to watch sightings arrive. Add `--dry-run` to any command to print sightings without writing to Supabase. `--min-confidence 0.9` hides the occasional "Elk" guess on the bison clips (bison score 0.98 to 1.00). Ctrl+C stops each one.
+Then open the web app (the deployed Vercel site, or `cd web && npm run dev` locally) and switch to **Demo** to watch sightings arrive. Add `--dry-run` to any command to print sightings without writing to Supabase. `--min-confidence 0.9` hides the occasional "Elk" guess on the bison clips (bison score 0.98 to 1.00). Ctrl+C stops each one.
 
 ## Quick start
 

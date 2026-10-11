@@ -33,11 +33,11 @@ Update this section whenever it changes.
 - **Not verified:**
   - Katmai cameras show "No cameras registered yet" when the real Supabase `cameras` table has no `park = 'katmai'` rows: run `supabase/katmai-cams.sql` in the real project.
   - Globe, terrain and pings on a real GPU and on a phone (only headless swiftshader and a mouse were tried; touch tap card and the PWA install untested). `supabase/pings.sql` has not been run against a real project.
-  - Nothing has run against a real Supabase project (schema, seed, social tables, worker writes, realtime chat, `predict.py` write path).
+  - The web app is deployed on Vercel against a real Supabase project (user, 2026-10-11). Which SQL files were applied, worker writes to it, realtime chat and the `predict.py` write path have not been confirmed in this repo.
   - The worker has not seen daylight frames from the live Electric Peak cam; YOLO may miss small distant animals. Species ID on hard clips (bison calves) is about 59% right.
   - Demo video playback in a real browser (only the `src` was checked).
 - **Next (final push):** (1) real-data predictions from iNaturalist, park-level, labeled "based on public iNaturalist observations" (the synthetic camera-level sample stays out of the demo); (2) DONE: five greyed-out parks (Yosemite, Everglades, Grand Canyon, Great Smoky Mountains, Denali) with chat, a ping map and pings but "cameras coming soon" (species lists from public iNaturalist counts); (3) the worker saves an annotated frame (box, YOLO score) with every sighting, plus a Dev toggle next to Demo/Live to step through them; (4) a 10 s Demo mode; (5) rehearsal and a fallback video.
-- **Not started:** Vercel deploy; real accounts and moderation beyond the `is_hidden` flag.
+- **Not started:** real accounts and moderation beyond the `is_hidden` flag.
 - **Decided (2026-10-10):** live source is the NPS Yellowstone "North Entrance - Electric Peak" still. Demo uses recorded clips; the web app has a Demo/Live toggle. Social (per-park chat, comments on sightings) is added anonymously. Databricks is skipped.
 - **Decided (final push):** a live table demo with a recorded fallback video. Demo mode runs real YOLO + BioCLIP on recorded clips about every 10 s, with rows tagged `source_kind='replay'` and excluded from ML. The Yellowstone still is the live moment; Katmai video is a talking point. The user is the integrator and merges to `main`.
 - **Work split (24 h to go):** three people, no Claude Code for the two teammates. Teammates work on their own branches and never push straight to `main`. Run logs are in `docs/PROGRESS.md`. (The team guides, task lists and plan were removed before judging; they are in git history.)
