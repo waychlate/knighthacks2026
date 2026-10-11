@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import ErrorBanner from './components/ErrorBanner'
 import BearLoading from './components/BearLoading'
 import ModeToggle from './components/ModeToggle'
@@ -53,15 +53,34 @@ function AppShell({ children, route }) {
   )
 }
 
+// Short bear splash when moving between the globe and a park (either way), not on first load or park to camera moves.
+function useParkSplash(route) {
+  const [splash, setSplash] = useState(false)
+  const prev = useRef(route)
+  useEffect(() => {
+    const was = prev.current
+    prev.current = route
+    const crossing = (was.name === 'globe') !== (route.name === 'globe') && (was.name === 'park' || route.name === 'park')
+    if (!crossing || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    setSplash(true)
+    const t = setTimeout(() => setSplash(false), 900)
+    return () => clearTimeout(t)
+  }, [route.name, route.park]) // eslint-disable-line react-hooks/exhaustive-deps
+  return splash
+}
+
 export default function App() {
   const route = useRoute()
+  const splash = useParkSplash(route)
   if (route.name !== 'globe') markWelcomeSeen() // deep links skip the welcome screen
   const { mode } = useMode()
   const { sightings: all, loading, usingMock, error: sightingsError } = useSightings()
   const { cameras, error: camerasError } = useCameras()
   const sightings = useMemo(() => filterByMode(all, mode), [all, mode])
 
-  if (route.name === 'globe') return <Suspense fallback={<BearLoading />}><GlobePage sightings={sightings} cameras={cameras} /></Suspense>
+  const overlay = splash && <div className="bear-splash"><BearLoading /></div>
 
-  return <AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell>
+  if (route.name === 'globe') return <>{overlay}<Suspense fallback={<BearLoading />}><GlobePage sightings={sightings} cameras={cameras} /></Suspense></>
+
+  return <>{overlay}<AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell></>
 }

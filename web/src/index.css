@@ -214,3 +214,6 @@ html[data-theme='dark'] .yellowstone-page .border-stone-200 { border-color: #536
 html[data-theme='dark'] .leave-fade { background: #10251a; }
 html[data-theme='dark'] .yellowstone-page .yellowstone-prediction-card { background: #101d14 !important; border-color: #536d48 !important; }
 html[data-theme='dark'] .app-shell.yellowstone-page .yellowstone-camera-card { background-color: transparent !important; box-shadow: none !important; }
+.app-header { padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+.globe-brand { padding-left: calc(1rem + env(safe-area-inset-left)); padding-right: calc(1rem + env(safe-area-inset-right)); }
+.bear-splash { position: fixed; inset: 0; z-index: 60; }
