@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from './supabase'
 
 // A thread is the rows of `table` where `col` = `val`: a park's chat room (chat_messages.park) or the
@@ -13,6 +13,9 @@ const add = (list, msg) => (list.some((m) => m.id === msg.id) ? list : [...list,
 
 export function useThread(table, col, val, seed = []) {
   const key = `${table}:${val}`
+  // Two mounted copies of the same thread must not share a realtime channel: supabase-js hands back the existing
+  // (already joined) channel for a repeated topic, and adding callbacks to it throws.
+  const instance = useRef(Math.random().toString(36).slice(2, 8))
   const [messages, setMessages] = useState(() => (supabase ? [] : (mockStore.get(key) ?? seed)))
   const [error, setError] = useState(null)
 
@@ -43,7 +46,7 @@ export function useThread(table, col, val, seed = []) {
         else setMessages(data ?? [])
       })
     const channel = supabase
-      .channel(`${key}`)
+      .channel(`${key}:${instance.current}`)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table, filter: `${col}=eq.${val}` }, (p) => {
         if (!cancelled && !p.new.is_hidden) setMessages((prev) => add(prev, p.new))
       })

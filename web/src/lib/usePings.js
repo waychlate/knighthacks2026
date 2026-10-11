@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { addDemoPin, useDemoPins } from './demoPins'
 import { makeSamplePings, recent, roundCoord } from './pings'
 import { supabase } from './supabase'
@@ -10,6 +10,7 @@ export function usePings(mode) {
   const [error, setError] = useState(null)
   const samples = useMemo(() => makeSamplePings(), [])
   const demoPins = useDemoPins()
+  const instance = useRef(Math.random().toString(36).slice(2, 8)) // one realtime channel per hook instance
 
   useEffect(() => {
     if (!supabase) return
@@ -27,7 +28,7 @@ export function usePings(mode) {
         else setReal(data ?? [])
       })
     const channel = supabase
-      .channel('pings')
+      .channel(`pings:${instance.current}`)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'pings' }, (p) => {
         if (!cancelled && !p.new.is_hidden) setReal((prev) => (prev.some((x) => x.id === p.new.id) ? prev : [p.new, ...prev]))
       })

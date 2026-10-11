@@ -87,13 +87,13 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
                   </section>
                 </div>
               )}
-              {view === 'chat' && <div className="mobile-chat-route"><div className="katmai-chat-zone"><ChatPanel park={slug} /></div></div>}
+              {view === 'chat' && phone && <div className="mobile-chat-route"><div className="katmai-chat-zone"><ChatPanel park={slug} /></div></div>}
               {view === 'analytics' && <AnalyticsPage park={slug} sightings={parkSightings} loading={loading} mode={mode} />}
             </>
           )}
         </section>
         <aside className="desktop-chat-sidebar" aria-label={`${park?.name ?? slug} chat`}>
-          <ChatPanel park={slug} />
+          {!phone && <ChatPanel park={slug} />}
           {!phone && park && <ParkMap park={park} cameras={parkCameras} />}
         </aside>
       </div>
