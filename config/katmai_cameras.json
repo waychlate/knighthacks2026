@@ -1,0 +1,30 @@
+{
+  "park": "katmai",
+  "source_index": "https://www.nps.gov/katm/learn/photosmultimedia/webcams.htm",
+  "cameras": [
+    {
+      "id": "brooks-falls-low",
+      "name": "Brooks Falls Low",
+      "location": "Brooks Falls Platform, Brooks Camp",
+      "youtube_url": "https://www.youtube.com/watch?v=EwTH5yY7Mks",
+      "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/brooks-falls-low-camera.htm",
+      "description": "Low bear-eye view of Brooks Falls"
+    },
+    {
+      "id": "brooks-falls",
+      "name": "Brooks Falls",
+      "location": "Brooks Falls Wildlife Viewing Platform, Brooks Camp",
+      "youtube_url": "https://www.youtube.com/watch?v=J7ZrIDvqlic",
+      "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/brown-bear-salmon-cam-brooks-falls.htm",
+      "description": "Main view of bears fishing at Brooks Falls"
+    },
+    {
+      "id": "river-watch",
+      "name": "River Watch",
+      "location": "North Platform, lower Brooks River, Brooks Camp",
+      "youtube_url": "https://www.youtube.com/watch?v=wkVLYfU-Kew",
+      "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/river-watch-cam.htm",
+      "description": "Lower river view often used by family groups"
+    }
+  ]
+}

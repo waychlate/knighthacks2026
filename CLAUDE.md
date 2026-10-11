@@ -25,6 +25,8 @@ Update this section whenever it changes.
   - **Web:** feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
   - **Supabase SQL:** `schema.sql` (with `source_kind`, `cameras.park`), `social.sql`, and a synthetic `seed.sql`.
   - **`/ml`:** synthetic generator, three models, temporal-split evaluation, `predict.py` (10 tests). All on SYNTHETIC data; the simple hourly profile beat gradient boosting.
+  - **Katmai local ML:** optional `--park katmai` predictions, `--local-only` output, and `worker/species_katmai.json`. A reviewed two-class Katmai detector identifies bears and birds; its local, gitignored weights are `worker/training/katmai/current.pt`. Waterfall hard negatives removed the known Brooks Falls Low false positive while retaining the reference bear at 0.93 confidence. A separate 147-image holdout collected afterward produced 100 detections across 84 frames; all six Brooks Falls Low detections were visually confirmed bears. Species-level BioCLIP labels remain experimental. See `ml/KATMAI.md`. ML suite has 16 tests.
+  - **Katmai collector:** three named NPS-listed YouTube feeds are configured in `config/katmai_cameras.json`: Brooks Falls Low, Brooks Falls, and River Watch. `katmai_multi_poller` collects all three concurrently into separate folders; `still_poller --park katmai --camera-id ...` collects one. Both save JPEGs and UTC metadata locally. The folder scanner performs tiled detection, supports custom weights and optional BioCLIP bird identification, and writes local sightings. Review, dataset export, training, and clean annotation tools are included. Nothing publishes to Supabase without an explicit database run. Worker suite has 63 tests.
   - Both overnight branches are merged into `main`.
 - **Not verified:**
   - Nothing has run against a real Supabase project (schema, seed, social tables, worker writes, realtime chat, `predict.py` write path).
@@ -38,7 +40,12 @@ Update this section whenever it changes.
 
 Chosen: the NPS Yellowstone "North Entrance - Electric Peak" webcam, a JPEG at `https://www.nps.gov/webcams-yell/mammoth_electric.jpg` refreshed every 30-60 s. The user viewed the cam and the NPS disclaimer on 2026-10-10 and approved it. Credit NPS when showing its images. Poll no faster than every 30 s and send a descriptive User-Agent (see `worker/animal_worker/still_poller.py`).
 
-Other candidates (Katmai/explore.org, Cornell FeederWatch, African waterhole cams) were rejected for now: explore.org's terms bar bots without written consent, Katmai's bear season is ending, and Cornell's terms are unread. Background is in `docs/archive/HANDOFF.md`.
+**Updated by user request (2026-10-10):** Katmai camera names and current
+NPS-embedded YouTube links are stored in `config/katmai_cameras.json`.
+`python -m animal_worker.katmai_multi_poller --every 60` records all three
+locally in camera-specific folders when the user starts the collector. Details
+and capture provenance are in `ml/KATMAI.md`. Older source research is in
+`docs/archive/HANDOFF.md`.
 
 **Unattended runs must not fetch the live URL or any other live stream, scrape any site, or contact anyone.** The user starts the still collector by hand to record frames into the gitignored `worker/sample_videos/yellowstone/`; unattended runs may read those frames. Develop and test against local files, a local test server, and mock data.
 

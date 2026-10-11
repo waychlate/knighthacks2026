@@ -1,0 +1,19 @@
+{
+  "_comment": "Camera-specific BioCLIP shortlist, not the complete park inventory. Names were checked against the user-provided NPSpecies KATM export dated 2026-10-10; the full export and approved/present summary are in worker/reference/katmai/. Park occurrence does not mean these species are likely at Brooks Falls Low. Keep brown bear and grizzly out of separate competing classes.",
+  "species": [
+    {"common_name": "Brown bear", "scientific_name": "Ursus arctos", "group": "bear"},
+    {"common_name": "Moose", "scientific_name": "Alces alces", "group": "ungulate"},
+    {"common_name": "Caribou", "scientific_name": "Rangifer tarandus", "group": "ungulate"},
+    {"common_name": "Coyote", "scientific_name": "Canis latrans", "group": "canid"},
+    {"common_name": "Gray wolf", "scientific_name": "Canis lupus", "group": "canid"},
+    {"common_name": "Red fox", "scientific_name": "Vulpes vulpes", "group": "canid"},
+    {"common_name": "Herring gull", "scientific_name": "Larus argentatus", "group": "bird"},
+    {"common_name": "Mew gull", "scientific_name": "Larus canus", "group": "bird"},
+    {"common_name": "Glaucous-winged gull", "scientific_name": "Larus glaucescens", "group": "bird"},
+    {"common_name": "Glaucous gull", "scientific_name": "Larus hyperboreus", "group": "bird"},
+    {"common_name": "Bald eagle", "scientific_name": "Haliaeetus leucocephalus", "group": "bird"},
+    {"common_name": "Common raven", "scientific_name": "Corvus corax", "group": "bird"},
+    {"common_name": "Common merganser", "scientific_name": "Mergus merganser", "group": "bird"},
+    {"common_name": "Harlequin duck", "scientific_name": "Histrionicus histrionicus", "group": "bird"}
+  ]
+}

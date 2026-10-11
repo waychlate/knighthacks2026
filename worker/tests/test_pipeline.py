@@ -4,7 +4,7 @@ import pytest
 
 from animal_worker.capture import image_frames
 from animal_worker.dedupe import Deduper
-from animal_worker.main import StoreSink, is_image_url, process_frame
+from animal_worker.main import StoreSink, is_image_url, parse_args, process_frame
 
 ELK = SimpleNamespace(common_name="Elk", scientific_name="Cervus canadensis")
 BISON = SimpleNamespace(common_name="American bison", scientific_name="Bison bison")
@@ -67,6 +67,17 @@ def test_is_image_url():
     assert is_image_url("https://example.com/cam.jpg?x=1")
     assert not is_image_url("https://example.com/stream.m3u8")
     assert not is_image_url("sample_videos/clip.mp4")
+
+
+def test_custom_detector_options_are_exposed():
+    args = parse_args([
+        "--source", "clip.mp4", "--weights", "best.pt", "--bear-confidence", "0.15",
+        "--bird-confidence", "0.2", "--tile-size", "512",
+    ])
+    assert args.weights == "best.pt"
+    assert args.bear_confidence == 0.15
+    assert args.bird_confidence == 0.2
+    assert args.tile_size == 512
 
 
 def test_store_sink_tags_source_kind_and_park():

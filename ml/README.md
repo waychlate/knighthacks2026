@@ -19,6 +19,12 @@ then turns the next 24 hours into `Prediction` rows ("Predicting an elk around 6
 
 ## Run
 
+Katmai three-camera setup and Windows commands: [KATMAI.md](KATMAI.md).
+Use `python predict.py --park katmai --local-only --no-sample` for local synthetic
+brown-bear predictions without database access or frontend sample changes.
+`python evaluate.py --park katmai` evaluates the separate synthetic Katmai profile.
+The results table below is for Yellowstone and does not measure Katmai performance.
+
 ```bash
 cd ml
 python -m venv .venv && source .venv/bin/activate   # Python 3.10+

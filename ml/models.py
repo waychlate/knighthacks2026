@@ -17,9 +17,9 @@ from synthetic import PARK_TZ
 FEATURES = ["hour_sin", "hour_cos", "weekday", "prev7", "species_code", "camera_code"]
 
 
-def to_frame(rows: list[dict]) -> pd.DataFrame:
+def to_frame(rows: list[dict], park_tz=PARK_TZ) -> pd.DataFrame:
     df = pd.DataFrame(rows)
-    local = pd.to_datetime(df["seen_at"], utc=True).dt.tz_convert(PARK_TZ)
+    local = pd.to_datetime(df["seen_at"], utc=True).dt.tz_convert(park_tz)
     df["date"] = local.dt.tz_localize(None).dt.normalize()
     df["hour"] = local.dt.hour
     return df
