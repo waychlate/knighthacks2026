@@ -3,7 +3,7 @@ import { NOTE_MAX } from '../lib/pings'
 
 // Confirm step for a ping: optional species and note, plus the privacy notice. `species` is the list for
 // the park the user is in, or null outside every park (then a free-text box).
-export default function PingSheet({ species: options, onSubmit, onCancel }) {
+export default function PingSheet({ species: options, onSubmit, onCancel, fixed = false, demo = false }) {
   const [species, setSpecies] = useState('')
   const [note, setNote] = useState('')
   const [busy, setBusy] = useState(false)
@@ -20,11 +20,11 @@ export default function PingSheet({ species: options, onSubmit, onCancel }) {
   }
 
   return (
-    <div className="ping-sheet absolute inset-0 z-20 flex items-end justify-center bg-black/50 p-4 sm:items-center">
+    <div className={`ping-sheet ${fixed ? 'fixed z-[80]' : 'absolute z-20'} inset-0 flex items-end justify-center bg-black/50 p-4 sm:items-center`}>
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-xl">
         <h2 className="text-lg font-semibold text-stone-900">📍 Drop a ping</h2>
         <p className="mt-1 text-xs text-stone-500">
-          Your approximate location (about 500 m) will be shared publicly for 24 hours. This is a user report, not a camera detection.
+          {demo ? 'Demo ping: it stays in this browser only and is never shared.' : 'Your approximate location (about 500 m) will be shared publicly for 24 hours. This is a user report, not a camera detection.'}
         </p>
         <label className="mt-4 block text-sm text-stone-700">
           What did you see? (optional)

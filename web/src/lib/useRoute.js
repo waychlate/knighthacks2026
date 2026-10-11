@@ -7,7 +7,7 @@ export const TABS = ['sightings', 'cameras', 'predictions', 'chat', 'analytics']
 function parse(hash) {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   if (parts[0] === 'park' && parts[1]) {
-    const tab = TABS.includes(parts[2]) ? parts[2] : 'sightings'
+    const tab = TABS.includes(parts[2]) ? parts[2] : 'cameras'
     return { name: 'park', park: decodeURIComponent(parts[1]), tab }
   }
   if (parts[0] === 'cameras' || parts[0] === 'analytics') return { name: 'park', park: 'yellowstone', tab: parts[0] }
@@ -26,4 +26,4 @@ export function useRoute() {
 }
 
 export const cameraHref = (id) => `#/camera/${encodeURIComponent(id)}`
-export const parkHref = (slug, tab = 'sightings') => `#/park/${encodeURIComponent(slug)}/${tab}`
+export const parkHref = (slug, tab = 'cameras') => `#/park/${encodeURIComponent(slug)}/${tab}`

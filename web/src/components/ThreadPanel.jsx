@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { MAX_BODY, validateMessage } from '../lib/moderation'
+import { getDisplayName } from '../lib/settings'
 
 const input =
   'w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-800 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500'
 
-function loadName() {
-  try {
-    return window.localStorage.getItem('displayName') ?? ''
-  } catch {
-    return ''
-  }
-}
-
 // Shared UI for the park chat and for comments on a sighting. Anonymous: a display name and a message.
 export default function ThreadPanel({ title, messages, onPost, usingMock, empty, compact = false, error }) {
-  const [name, setName] = useState(loadName)
+  const [name] = useState(getDisplayName) // changed in Settings
   const [body, setBody] = useState('')
   const [problem, setProblem] = useState(null)
   const [sending, setSending] = useState(false)
@@ -34,18 +27,13 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
     setSending(false)
     if (err) return setProblem(err)
     lastSent.current = Date.now()
-    try {
-      window.localStorage.setItem('displayName', v.name)
-    } catch {
-      // storage blocked: the name just isn't remembered
-    }
     setBody('')
     setProblem(null)
   }
 
   const idPrefix = title.replace(/\W+/g, '-').toLowerCase()
   return (
-    <section aria-label={title} className={compact ? 'mt-3 border-t border-stone-100 pt-3' : 'rounded-xl border border-stone-200 bg-white p-4 shadow-sm'}>
+    <section aria-label={title} className={compact ? 'flex min-h-0 flex-1 flex-col border-t border-stone-100 pt-3' : 'rounded-xl border border-stone-200 bg-white p-4 shadow-sm'}>
       {!compact && (
         <div className="mb-2 flex items-center justify-between gap-2">
           <h3 className="font-semibold text-stone-900">{title}</h3>
@@ -53,7 +41,7 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         </div>
       )}
       {error && <p className="mb-2 rounded bg-red-50 px-2 py-1 text-sm text-red-700">Could not load messages: {error}</p>}
-      <ul ref={list} aria-live="polite" className={`${compact ? 'max-h-40' : 'max-h-64'} space-y-2 overflow-y-auto`}>
+      <ul ref={list} aria-live="polite" className={`${compact ? 'min-h-0 flex-1' : 'max-h-64'} space-y-2 overflow-y-auto`}>
         {messages.length === 0 && <li className="text-sm text-stone-500">{empty}</li>}
         {messages.map((m) => (
           <li key={m.id} className="text-sm">
@@ -64,9 +52,8 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         ))}
       </ul>
       <form onSubmit={submit} className="mt-3 space-y-2">
-        <div className="flex flex-wrap gap-2">
-          <label className="sr-only" htmlFor={`${idPrefix}-name`}>Display name</label>
-          <input id={`${idPrefix}-name`} className={`${input} sm:w-40 sm:flex-none`} placeholder="Your name" value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
+        <p className="text-xs text-stone-500">Posting as <span className="font-medium text-stone-700">{name}</span> · <button type="button" onClick={() => window.dispatchEvent(new Event('envision:open-settings'))} className="text-emerald-700 underline">Change</button></p>
+        <div className="flex gap-2">
           <label className="sr-only" htmlFor={`${idPrefix}-body`}>Message</label>
           <input id={`${idPrefix}-body`} className={`${input} min-w-0 flex-1`} placeholder="Say something about the animals…" value={body} onChange={(e) => setBody(e.target.value)} />
           <button

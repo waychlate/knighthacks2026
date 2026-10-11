@@ -40,6 +40,11 @@ describe('pings', () => {
     expect(f.some((x) => x.properties.near)).toBe(true)
     expect(f.some((x) => !x.properties.near)).toBe(true)
   })
+  it('marks demo pins so the UI can label them', () => {
+    const [f] = toGeoJSON([{ id: 'demo-1', lat: 44.6, lng: -110.5, created_at: new Date().toISOString(), sample: true, demo: true }]).features
+    expect(f.properties.demo).toBe(true)
+    expect(f.properties.sample).toBe(true)
+  })
   it('finds the newest sighting at a park', () => {
     const cams = [{ id: 'a', park: 'yellowstone' }, { id: 'b', park: 'katmai' }]
     const list = [{ id: 1, camera: { id: 'b' } }, { id: 2, camera: { id: 'a' } }, { id: 3, camera: { id: 'a' } }]
