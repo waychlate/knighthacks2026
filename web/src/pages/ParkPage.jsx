@@ -61,7 +61,6 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
           <div className="mb-4">
             <h2 className="text-xl font-bold text-stone-900">{park?.name ?? slug}</h2>
             {park?.region && <p className="text-sm text-stone-500">{park.region}</p>}
-            {slug === 'katmai' && <div className="katmai-waterline" aria-hidden><span>🐟</span><span>〰</span><span>🐟</span></div>}
             {slug === 'yellowstone' && <div className="yellowstone-trail" aria-hidden><span>🦬</span><span>━━━</span><span>♨</span></div>}
           </div>
 
