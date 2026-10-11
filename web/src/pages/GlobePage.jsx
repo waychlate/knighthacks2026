@@ -3,12 +3,15 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import PingSheet from '../components/PingSheet'
+import StarField from '../components/StarField'
+import Welcome from '../components/Welcome'
 import { useMode } from '../lib/useMode'
 import { latestSighting, PARKS, sightingsToday } from '../lib/parks'
 import { cooldownLeftMs, distanceKm, markPinged, speciesFor, toGeoJSON } from '../lib/pings'
 import { timeAgo } from '../lib/time'
 import { usePings } from '../lib/usePings'
 import { parkHref } from '../lib/useRoute'
+import { markWelcomeSeen, welcomeSeen } from '../lib/welcome'
 
 // Vite must bundle MapLibre's worker (it imports a shared chunk), so hand it the built URL.
 maplibregl.setWorkerUrl(workerUrl)
@@ -17,6 +20,12 @@ maplibregl.setWorkerUrl(workerUrl)
 const SHOW_PARKS_ZOOM = 2.6
 // Zoomed in this far with the map centred inside a park, its overview panel opens at the bottom.
 const OVERVIEW_ZOOM = 7
+// Set when a park is entered; the next globe mount starts at the park and zooms back out to `view`.
+let returnTo = null
+const snapshot = (map) => {
+  const c = map.getCenter()
+  return { center: [c.lng, c.lat], zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing() }
+}
 const isTouch = () => window.matchMedia('(hover: none)').matches
 
 // Imagery © Esri (no key; credited on screen). Terrain from the free AWS Terrarium tiles.
@@ -48,7 +57,7 @@ const STYLE = {
   terrain: { source: 'terrain', exaggeration: 1.5 },
 }
 
-function Card({ park, stats, latest, onOpen, showButton }) {
+function Card({ park, stats, latest, onOpen, onBack, showButton }) {
   return (
     <div className="globe-card pointer-events-auto absolute bottom-24 left-1/2 z-10 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 rounded-2xl bg-white/95 p-4 shadow-lg">
       <p className="font-semibold text-stone-900">🌲 {park.name}</p>
@@ -66,11 +75,18 @@ function Card({ park, stats, latest, onOpen, showButton }) {
         </p>
       )}
       {showButton ? (
-        <button onClick={onOpen} className="mt-3 rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white">
-          Open park
-        </button>
+        <div className="mt-3 flex gap-2">
+          <button onClick={onOpen} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white">
+            Open park
+          </button>
+          {onBack && (
+            <button onClick={onBack} className="rounded-lg bg-stone-200 px-3 py-1.5 text-sm font-medium text-stone-800">
+              Back
+            </button>
+          )}
+        </div>
       ) : (
-        <p className="mt-2 text-xs text-stone-400">Click the marker to open</p>
+        <p className="mt-2 text-xs text-stone-400">Click the marker to zoom in</p>
       )}
     </div>
   )
@@ -107,6 +123,88 @@ export default function GlobePage({ sightings, cameras }) {
 
   const shown = picked ?? focus
 
+  // Entering a park: fly in slowly, fade to the app background, then switch route.
+  const [leaving, setLeaving] = useState(0) // 0 = no, 1 = flying, 2 = fading
+  const enterRef = useRef()
+  // Back from a park page: start covered by the app background, fade out while the map zooms out.
+  const [arriving, setArriving] = useState(() => (returnTo ? 1 : 0))
+  useEffect(() => {
+    if (arriving === 1) setTimeout(() => setArriving(2), 50)
+  }, [arriving])
+  const [previewing, setPreviewing] = useState(null) // park the visitor zoomed into but has not opened
+  const view = useRef(null) // camera before the preview, to zoom back out to
+  const previewRef = useRef()
+  const backRef = useRef()
+  const preview = (park) => {
+    if (leaving || previewing?.slug === park.slug) return
+    const map = mapRef.current
+    if (!previewing) {
+      view.current = snapshot(map)
+    }
+    setPreviewing(park)
+    setPicked(null)
+    map.flyTo({ center: [park.lng, park.lat], zoom: 11, pitch: 50, duration: 2000 })
+  }
+  const back = () => {
+    if (!previewing || leaving) return
+    setPreviewing(null)
+    mapRef.current.flyTo({ ...view.current, duration: 2000 })
+    view.current = null
+  }
+  previewRef.current = preview
+  backRef.current = back
+  const enter = (park) => {
+    if (leaving) return
+    const go = () => {
+      returnTo = { park, view: view.current ?? snapshot(mapRef.current) }
+      setLeaving(2)
+      setTimeout(() => (window.location.hash = parkHref(park.slug).slice(1)), 500)
+    }
+    if (previewing?.slug === park.slug || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return go()
+    setLeaving(1)
+    setPicked(null)
+    let done = false
+    const finish = () => !done && ((done = true), go())
+    mapRef.current.flyTo({ center: [park.lng, park.lat], zoom: 11, pitch: 50, duration: 2500 })
+    mapRef.current.once('moveend', finish)
+    setTimeout(finish, 4000) // tiles or an interruption must not strand the visitor
+  }
+  enterRef.current = enter
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && backRef.current()
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  // 'open' -> 'closing' (600 ms fade) -> 'done'
+  const [welcome, setWelcome] = useState(() => (welcomeSeen() ? 'done' : 'open'))
+  const begin = () => {
+    markWelcomeSeen()
+    setWelcome('closing')
+    setTimeout(() => setWelcome('done'), 600)
+  }
+  const stage = useRef(null)
+  useEffect(() => {
+    if (welcome === 'open') stage.current.setAttribute('inert', '')
+    else stage.current.removeAttribute('inert')
+  }, [welcome])
+  // Slow spin behind the blur (skipped for reduced motion).
+  useEffect(() => {
+    if (welcome !== 'open' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf
+    const spin = () => {
+      const map = mapRef.current
+      if (map && !map.isMoving()) {
+        const c = map.getCenter()
+        map.setCenter([((c.lng + 180.04) % 360) - 180, c.lat])
+      }
+      raf = requestAnimationFrame(spin)
+    }
+    raf = requestAnimationFrame(spin)
+    return () => cancelAnimationFrame(raf)
+  }, [welcome])
+
   const stats = useMemo(
     () =>
       Object.fromEntries(
@@ -116,7 +214,9 @@ export default function GlobePage({ sightings, cameras }) {
   )
 
   useEffect(() => {
-    const map = new maplibregl.Map({ container: holder.current, style: STYLE, center: [-115, 45], zoom: 2.2, maxPitch: 70, attributionControl: { compact: true } })
+    const back = returnTo // coming back from a park page
+    const start = back ? { center: [back.park.lng, back.park.lat], zoom: 11, pitch: 50 } : { center: [-115, 45], zoom: 2.2 }
+    const map = new maplibregl.Map({ container: holder.current, style: STYLE, ...start, maxPitch: 70, attributionControl: { compact: true } })
     mapRef.current = map
     map.on('error', (e) => console.error('maplibre:', e.error?.message ?? e))
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right')
@@ -143,17 +243,13 @@ export default function GlobePage({ sightings, cameras }) {
       el.appendChild(halo)
       el.appendChild(pin)
       el.appendChild(label)
-      const open = () => {
-        window.location.hash = parkHref(park.slug).slice(1)
-      }
       if (!touch) {
         el.addEventListener('mouseenter', () => setPicked(park))
         el.addEventListener('mouseleave', () => setPicked(null))
       }
       el.addEventListener('click', (e) => {
         e.stopPropagation()
-        if (touch) setPicked(park)
-        else open()
+        previewRef.current(park)
       })
       new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat([park.lng, park.lat]).addTo(map)
       return el
@@ -169,9 +265,13 @@ export default function GlobePage({ sightings, cameras }) {
     }
     map.on('zoom', onZoom)
     map.on('moveend', onZoom)
-    map.on('click', () => touch && setPicked(null))
+    map.on('click', () => { if (touch) setPicked(null); backRef.current() })
 
     map.on('load', () => {
+      if (back) {
+        returnTo = null
+        map.flyTo({ ...back.view, duration: 2500 })
+      }
       map.addSource('pings', { type: 'geojson', data: toGeoJSON([]), cluster: true, clusterRadius: 40, clusterMaxZoom: 10 })
       map.addLayer({
         id: 'ping-clusters', type: 'circle', source: 'pings', filter: ['has', 'point_count'],
@@ -231,7 +331,12 @@ export default function GlobePage({ sightings, cameras }) {
   }
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black">
+    <>
+    {welcome !== 'done' && <Welcome closing={welcome === 'closing'} onBegin={begin} />}
+    <div ref={stage} className="relative h-screen w-screen overflow-hidden bg-black">
+      {leaving > 0 && <div className={`leave-fade absolute inset-0 z-40 transition-opacity duration-500 ${leaving === 2 ? 'opacity-100' : 'opacity-0'}`} />}
+      {arriving > 0 && <div className={`leave-fade pointer-events-none absolute inset-0 z-40 transition-opacity duration-[800ms] ${arriving === 1 ? 'opacity-100' : 'opacity-0'}`} />}
+      <StarField />
       <div className="absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
 
       <div className="globe-brand pointer-events-none absolute inset-x-0 top-0 z-10 p-4 text-center text-white">
@@ -254,7 +359,8 @@ export default function GlobePage({ sightings, cameras }) {
           park={shown}
           stats={stats[shown.slug]}
           latest={latestSighting(shown.slug, sightings, cameras)}
-          onOpen={() => (window.location.hash = parkHref(shown.slug).slice(1))}
+          onOpen={() => enter(shown)}
+          onBack={previewing?.slug === shown.slug ? back : null}
           showButton={touch || shown === focus}
         />
       )}
@@ -268,5 +374,6 @@ export default function GlobePage({ sightings, cameras }) {
 
       {here && <PingSheet species={speciesFor(here.lat, here.lng)} onSubmit={submitPing} onCancel={() => setHere(null)} />}
     </div>
+    </>
   )
 }

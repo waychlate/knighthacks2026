@@ -32,14 +32,14 @@ function Where({ camera }) {
   )
 }
 
-export default function PredictionCard({ predictions, loading, usingMock }) {
+export default function PredictionCard({ predictions, loading, usingMock, park }) {
   if (loading) return null
   const [next, ...later] = predictions
 
   return (
     <section
       aria-label="Sighting predictions"
-      className="mb-6 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-5 shadow-sm"
+      className={`prediction-card mb-6 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-5 shadow-sm ${park === 'yellowstone' ? 'yellowstone-prediction-card' : ''} ${park === 'katmai' ? 'katmai-prediction-card' : ''}`}
     >
       <div className="mb-3 flex items-center justify-between gap-2">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-800">🔮 Coming up</h2>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 2200" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0" stop-color="#0d6175"/>
+      <stop offset="0.32" stop-color="#168ca0"/>
+      <stop offset="0.58" stop-color="#35b8c5"/>
+      <stop offset="0.82" stop-color="#147d94"/>
+      <stop offset="1" stop-color="#084e67"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8fbf4" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#d8fbf4" stop-opacity=".58"/>
+      <stop offset="0.62" stop-color="#d8fbf4" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#d8fbf4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M405-120 C350 110 565 185 602 360 C646 565 365 610 344 785 C320 982 604 1015 665 1198 C733 1400 461 1517 423 1690 C383 1870 558 2055 600 2320 L815 2320 C774 2045 607 1855 660 1701 C710 1518 966 1370 853 1116 C760 906 505 850 526 758 C551 647 823 546 772 302 C737 126 546 63 586-120 Z" fill="#063e52" fill-opacity=".32"/>
+  <path d="M430-120 C380 105 580 185 620 365 C665 560 392 615 370 785 C350 960 620 1008 684 1197 C744 1380 484 1510 449 1690 C411 1866 580 2050 620 2320 L790 2320 C750 2040 590 1855 640 1695 C692 1510 938 1368 831 1125 C742 918 480 850 501 750 C527 632 793 540 742 310 C705 136 523 62 570-120 Z" fill="url(#water)"/>
+  <path d="M476-80 C430 115 612 205 651 376 C689 546 430 632 412 789 C393 938 654 1002 716 1194 C757 1322 646 1426 555 1510 C496 1565 474 1635 482 1704 C501 1870 641 2030 679 2260" fill="none" stroke="url(#shine)" stroke-width="24" stroke-linecap="round" opacity=".72"/>
+  <path d="M552 70 C590 130 616 182 622 238 M398 725 C430 689 468 669 511 650 M650 1090 C686 1128 711 1170 724 1217 M512 1740 C550 1798 584 1842 607 1890" fill="none" stroke="#d8fbf4" stroke-opacity=".42" stroke-width="8" stroke-linecap="round"/>
+  <path d="M561 109 C606 178 616 222 614 264 M397 812 C430 786 459 777 491 775 M682 1280 C710 1320 709 1357 688 1391 M512 1813 C534 1851 557 1880 578 1902" fill="none" stroke="#b7f5ed" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+</svg>
