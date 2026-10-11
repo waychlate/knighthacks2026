@@ -85,6 +85,12 @@ python -m animal_worker.main --source https://www.nps.gov/webcams-yell/mammoth_e
 ```
 An image-URL source is polled every `--every` seconds (default 60, minimum 30) and tagged `source_kind=live`; override with `--source-kind`. It stops on the first fetch error. Please be gentle: do not poll faster than 30 s.
 
+**Live video streams (Katmai / explore.org):** `--stream` takes a YouTube live or `.m3u8` URL, resolves it with `yt-dlp`, and grabs one frame every `--every` seconds (default 60, minimum 30) with `ffmpeg`. Both tools must be installed. The YouTube lives on 2026-10-10 were `https://www.youtube.com/live/` + `J7ZrIDvqlic` (Bearcam), `EwTH5yY7Mks` (Low cam), `wkVLYfU-Kew` (River Watch); they change between seasons, so look up the current ones on explore.org or the @explorebears channel.
+```bash
+python -m animal_worker.main --stream --source "<stream URL>" --park katmai --camera "Brooks Falls Low Cam" --every 60 --dry-run
+```
+`--park katmai` picks `species-katmai.json`. Outside bear season (before Jun 15 or after Oct 31) Katmai frames are tagged `replay`, because the cams then show old highlights.
+
 **Record your own replay footage** (saves each new still to `worker/sample_videos/yellowstone/`; the cam is infrared at night, so run it through the morning):
 ```bash
 python -m animal_worker.still_poller --out sample_videos/yellowstone --every 60

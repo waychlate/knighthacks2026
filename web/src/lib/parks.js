@@ -11,7 +11,7 @@ const KATMAI_SPECIES = [
 // Parks shown on the globe. radiusKm: pings within it of the centre count as "in the park" (parks are big). Only Yellowstone has cameras and data; Katmai is a placeholder marker.
 export const PARKS = [
   { slug: 'yellowstone', name: 'Yellowstone National Park', region: 'Wyoming, USA', lat: 44.6, lng: -110.5, radiusKm: 60, active: true, species: YELLOWSTONE_SPECIES },
-  { slug: 'katmai', name: 'Katmai National Park', region: 'Alaska, USA', lat: 58.5, lng: -155.0, radiusKm: 60, active: false, species: KATMAI_SPECIES },
+  { slug: 'katmai', name: 'Katmai National Park', region: 'Alaska, USA', lat: 58.5, lng: -155.0, radiusKm: 60, active: true, species: KATMAI_SPECIES },
 ]
 
 export const getPark = (slug) => PARKS.find((p) => p.slug === slug)

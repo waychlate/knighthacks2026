@@ -263,6 +263,11 @@ say "The globe's Drop ping button writes here. Locations are rounded to about 50
 run_sql_file supabase/pings.sql
 pause "Did it say Success?"
 
+stage "Add the Katmai cameras (katmai-cams.sql)"
+say "Three explore.org live-video cameras at Brooks Falls, so Katmai has cameras in the app."
+run_sql_file supabase/katmai-cams.sql
+pause "Did it say Success?"
+
 # ── 5 ─────────────────────────────────────────────────────────────────────
 stage "Load the synthetic demo data (seed.sql)"
 say "Made-up sightings so the feed isn't empty. They are labelled replay; they are not real."

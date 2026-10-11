@@ -22,7 +22,7 @@ Update this section whenever it changes.
 
 - **Done:**
   - **Worker:** capture (files, video, image URLs) -> YOLO -> BioCLIP -> dedupe -> Supabase, tested with fakes (14 tests). Ran on public-domain bison clips (CUDA); `worker/species.json` is the Yellowstone list.
-  - **Web:** 3D globe landing page (MapLibre GL JS globe, Esri satellite imagery + AWS Terrarium 3D terrain, both fetched at runtime so it needs internet; park markers (green map pins; pings are circles, orange in a park, grey elsewhere) appear on zoom with a hover/tap card, and zooming in over a park opens its overview panel at the bottom; Yellowstone live, Katmai a "no cameras yet" marker), user pings ("Drop ping" at your location, rounded to ~500 m, 24 h expiry, clustered on the globe, 1 per 5 min per device; sample pings show in Demo mode only), a PWA manifest with a placeholder icon (no service worker) leading to `#/park/:slug/{sightings,cameras,predictions,chat,analytics}`; old `#/cameras` and `#/analytics` redirect. Also: feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
+  - **Web:** 3D globe landing page (MapLibre GL JS globe, Esri satellite imagery + AWS Terrarium 3D terrain, both fetched at runtime so it needs internet; park markers (green map pins; pings are circles, orange in a park, grey elsewhere) appear on zoom with a hover/tap card, and zooming in over a park opens its overview panel at the bottom; Yellowstone live still, Katmai with three explore.org live-video cams), user pings ("Drop ping" at your location, rounded to ~500 m, 24 h expiry, clustered on the globe, 1 per 5 min per device; sample pings show in Demo mode only), a PWA manifest with a placeholder icon (no service worker) leading to `#/park/:slug/{sightings,cameras,predictions,chat,analytics}`; old `#/cameras` and `#/analytics` redirect. Also: feed, cameras and camera pages with the Demo/Live toggle and bubble, per-park chat, comments, analytics page, error banner, and a prediction card (sample predictions from `/ml`, with a "tomorrow" chip). Lint, build, 17 vitest tests and a headless-Chromium check pass.
   - **Supabase SQL:** `schema.sql` (with `source_kind`, `cameras.park`), `social.sql`, and a synthetic `seed.sql`.
   - **`/ml`:** synthetic generator, three models, temporal-split evaluation, `predict.py` (10 tests). All on SYNTHETIC data; the simple hourly profile beat gradient boosting.
   - Both overnight branches are merged into `main`.
@@ -39,7 +39,9 @@ Update this section whenever it changes.
 
 Chosen: the NPS Yellowstone "North Entrance - Electric Peak" webcam, a JPEG at `https://www.nps.gov/webcams-yell/mammoth_electric.jpg` refreshed every 30-60 s. The user viewed the cam and the NPS disclaimer on 2026-10-10 and approved it. Credit NPS when showing its images. Poll no faster than every 30 s and send a descriptive User-Agent (see `worker/animal_worker/still_poller.py`).
 
-Other candidates (Katmai/explore.org, Cornell FeederWatch, African waterhole cams) were rejected for now: explore.org's terms bar bots without written consent, Katmai's bear season is ending, and Cornell's terms are unread. Background is in `docs/archive/HANDOFF.md`.
+**Katmai (decided 2026-10-10):** the three NPS/explore.org Brooks Falls cams (Bearcam, Low cam, River Watch) are live video, not stills. The web app shows them in Live mode only (click-to-load YouTube embed for the Low cam, a link to explore.org for the others). The user decided to sample them for detection with `yt-dlp` + `ffmpeg` at 1 frame per 60 s (`worker --stream`), and says this is permitted; an earlier note here said explore.org's terms bar bots without written consent, and that has NOT been independently verified. Run it by hand only; unattended runs still must not fetch these streams. Outside bear season (Jun 15 - Oct 31) frames are tagged `replay` because the cams show old highlights. `worker/species-katmai.json` is unverified, from model knowledge. Current YouTube lives (2026-10-10; they change between seasons): Brooks Falls Bearcam `J7ZrIDvqlic`, Brooks Falls Low Cam `EwTH5yY7Mks`, River Watch `wkVLYfU-Kew` (set in `web/src/lib/cameraConfig.js`; the worker takes `https://www.youtube.com/live/<id>`). A dry run on the Bearcam logged `Brown bear 98%` (YOLO + BioCLIP with the Katmai list); nothing has been written to Supabase from a Katmai stream yet.
+
+Other candidates (Cornell FeederWatch, African waterhole cams) were rejected for now: Cornell's terms are unread. Background is in `docs/archive/HANDOFF.md`.
 
 **Unattended runs must not fetch the live URL or any other live stream, scrape any site, or contact anyone.** The user starts the still collector by hand to record frames into the gitignored `worker/sample_videos/yellowstone/`; unattended runs may read those frames. Develop and test against local files, a local test server, and mock data.
 
@@ -110,11 +112,11 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 
 - `/web` (React + Vite): `npm install`, `npm run dev`, `npm run build`, `npm run lint`. With no Supabase keys in `.env` it runs on mock data.
 - `/worker` (Python 3.10+): `pip install -r requirements.txt`, then from `/worker`:
-  `python -m animal_worker.main --source <file|url|webcam index> --camera "Name" [--dry-run]`
+  `python -m animal_worker.main --source <file|url|webcam index> --camera "Name" [--dry-run]`; for a live stream add `--stream --park katmai --every 60` (needs yt-dlp and ffmpeg)
   Tests: `python -m pytest` (from `/worker`).
 - `/ml` (Python, synthetic data only): from `/ml`, `pip install -r requirements.txt`, `python evaluate.py`, `python predict.py`, `python make_seed.py`, `python -m pytest`. See `ml/README.md`.
 - Setup: `bash scripts/setup-supabase-vercel.sh` (Supabase project, SQL files, keys, Vercel). `npm test` in `/web` runs vitest.
-- Database: run `supabase/schema.sql`, then `supabase/social.sql`, then `supabase/pings.sql` (and optionally the synthetic `supabase/seed.sql`) in the Supabase SQL editor.
+- Database: run `supabase/schema.sql`, then `supabase/social.sql`, then `supabase/pings.sql`, then `supabase/katmai-cams.sql` (and optionally the synthetic `supabase/seed.sql`) in the Supabase SQL editor.
 
 ## Conventions
 

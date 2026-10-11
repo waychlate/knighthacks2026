@@ -6,6 +6,9 @@ export const MOCK_CAMERAS = [
   { id: 'cam-1', name: 'Electric Peak Cam', location: 'North Entrance, Gardiner', park: 'yellowstone' },
   { id: 'cam-2', name: 'Lamar Valley Demo Cam', location: 'Lamar Valley (demo camera)', park: 'yellowstone' },
   { id: 'cam-3', name: 'Hayden Valley Demo Cam', location: 'Hayden Valley (demo camera)', park: 'yellowstone' },
+  { id: 'cam-4', name: 'Brooks Falls Bearcam', location: 'Brooks Falls, Katmai National Park', park: 'katmai' },
+  { id: 'cam-5', name: 'Brooks Falls Low Cam', location: 'Brooks Falls (low camera)', park: 'katmai' },
+  { id: 'cam-6', name: 'River Watch Cam', location: 'Brooks River', park: 'katmai' },
 ]
 
 export const MOCK_SPECIES = [
