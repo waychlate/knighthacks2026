@@ -37,12 +37,13 @@ function NetworkStatus() {
 function AppShell({ children, route, openSettings }) {
   const katmai = route.name === 'park' && route.park === 'katmai'
   const yellowstone = route.name === 'park' && route.park === 'yellowstone'
+  const parkPage = katmai || yellowstone
   return (
     <div className={`app-shell min-h-screen bg-stone-50 ${katmai ? 'katmai-page' : ''} ${yellowstone ? 'yellowstone-page' : ''}`}>
       <header className="app-header border-b border-stone-200 bg-white">
         <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center sm:grid-cols-[1fr_auto_1fr] gap-3 px-4 py-3 sm:py-4">
           <a href="#/" className="flex min-w-0 items-center gap-3 justify-self-start" aria-label="En-Vision globe home">
-            <img src={katmai ? '/icons/icon-katmai.svg' : yellowstone ? '/icons/icon-yellowstone.svg' : '/icons/icon-192.svg'} alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
+            <img src={parkPage ? '/ranger-bear.png' : '/icons/icon-192.svg'} alt="" className={`app-logo h-11 shrink-0 ${parkPage ? 'ranger-bear-logo w-16 object-contain' : 'w-11 rounded-xl'}`} />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
           <a href="#/" className="globe-pill">← 🌍 Globe</a>

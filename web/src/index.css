@@ -103,12 +103,11 @@ button:active, a:active { transform: translateY(1px); }
 .katmai-environment::before { content: ''; position: absolute; z-index: -2; right: -18%; bottom: 8%; left: -18%; height: 14rem; transform: rotate(-3deg); border-top: 2px solid rgba(14,116,144,.2); border-bottom: 2px solid rgba(14,116,144,.2); background: linear-gradient(180deg, rgba(125,211,252,.16), rgba(14,165,233,.3) 48%, rgba(2,132,199,.14)); clip-path: polygon(0 36%, 12% 25%, 26% 35%, 40% 16%, 55% 31%, 70% 14%, 86% 28%, 100% 18%, 100% 82%, 84% 72%, 68% 84%, 52% 70%, 36% 87%, 20% 69%, 0 80%); pointer-events: none; }
 .katmai-environment::after { content: ''; position: absolute; z-index: -1; top: 4.75rem; right: 0; left: 0; height: 4px; background: repeating-linear-gradient(90deg, transparent 0 22px, rgba(14,116,144,.22) 22px 38px, transparent 38px 64px); pointer-events: none; }
 .katmai-environment::before { content: none; }
-.katmai-waterline { display: flex; align-items: center; gap: .6rem; width: min(28rem, 100%); margin-top: .7rem; color: #0284c7; font-size: 1.1rem; letter-spacing: .35rem; }
-.katmai-waterline span:nth-child(2) { flex: 1; overflow: hidden; color: #38bdf8; font-size: 1.5rem; letter-spacing: .1rem; white-space: nowrap; }
 .katmai-fish { margin-right: .3rem; font-size: .9rem; }
 .yellowstone-bison { margin-right: .3rem; font-size: .9rem; }
 .yellowstone-page .app-header { background: #eef3e6 !important; border-color: #b7c9a8 !important; }
 .yellowstone-page .app-logo { border: 1px solid #536b3d; box-shadow: 0 2px 8px rgba(46,91,62,.16); }
+.yellowstone-page .ranger-bear-logo, .katmai-page .ranger-bear-logo { border: 0 !important; box-shadow: none !important; }
 .yellowstone-page .bg-emerald-600, .yellowstone-page .bg-emerald-700 { background-color: #2e5b3e !important; }
 .yellowstone-page .bg-emerald-600:hover, .yellowstone-page .bg-emerald-700:hover { background-color: #23472f !important; }
 .yellowstone-page .bg-amber-500 { background-color: #9a6b2f !important; }
