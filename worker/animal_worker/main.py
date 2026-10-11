@@ -40,7 +40,7 @@ def parse_args(argv=None):
     p.add_argument("--bear-confidence", type=float, default=0.3)
     p.add_argument("--tile-size", type=int, default=None, help="overlapping tile size for distant animals")
     p.add_argument("--demo", action="store_true",
-                   help="loop a recorded file forever, one replay sighting about every --demo-pause seconds")
+                   help="loop a recorded file (or every .mp4 in a folder) forever, one replay sighting about every --demo-pause seconds")
     p.add_argument("--demo-pause", type=float, default=10.0, help="seconds to wait after each logged sighting in --demo")
     p.add_argument("--dry-run", action="store_true", help="print sightings instead of writing to Supabase")
     return p.parse_args(argv)
@@ -178,10 +178,13 @@ def main():
         from .capture import frames
 
         deduper.cooldown_s = min(deduper.cooldown_s, args.demo_pause / 2)
-        while True:  # ponytail: reopens the file each lap; fine for short clips
-            for ts, frame in frames(args.source, fps=args.fps):
-                if process_frame(frame, time.time(), args.camera, detector, classifier, deduper, sink):
-                    time.sleep(args.demo_pause)
+        src = Path(args.source)
+        clips = sorted(map(str, src.glob("*.mp4"))) if src.is_dir() else [args.source]
+        while True:  # ponytail: reopens each file every lap; fine for short clips
+            for clip in clips:
+                for ts, frame in frames(clip, fps=args.fps):
+                    if process_frame(frame, time.time(), args.camera, detector, classifier, deduper, sink):
+                        time.sleep(args.demo_pause)
     else:
         for ts, frame in frame_iter:
             process_frame(frame, ts, args.camera, detector, classifier, deduper, sink)
