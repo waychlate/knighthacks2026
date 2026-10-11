@@ -64,9 +64,9 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         ))}
       </ul>
       <form onSubmit={submit} className="mt-3 space-y-2">
-        <div className="flex flex-wrap gap-2">
-          <label className="sr-only" htmlFor={`${idPrefix}-name`}>Display name</label>
-          <input id={`${idPrefix}-name`} className={`${input} sm:w-40 sm:flex-none`} placeholder="Your name" value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
+        <label className="sr-only" htmlFor={`${idPrefix}-name`}>Display name</label>
+        <input id={`${idPrefix}-name`} className={input} placeholder="Your name" value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
+        <div className="flex gap-2">
           <label className="sr-only" htmlFor={`${idPrefix}-body`}>Message</label>
           <input id={`${idPrefix}-body`} className={`${input} min-w-0 flex-1`} placeholder="Say something about the animals…" value={body} onChange={(e) => setBody(e.target.value)} />
           <button
