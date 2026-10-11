@@ -186,7 +186,7 @@ def replay_folder(folder: Path, args, processor):
         raise SystemExit("--replay needs exactly one --camera")
     camera = KATMAI_CAMERAS[args.camera[0]]
     processor.deduper = Deduper(0)  # the same stills repeat on purpose
-    paths = sorted(folder.glob("*.jpg"))
+    paths = sorted(folder.rglob("*.jpg"))
     if not paths:
         raise SystemExit(f"No JPEGs in {folder}")
     try:

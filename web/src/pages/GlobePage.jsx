@@ -89,6 +89,66 @@ function Card({ park, stats, latest, onOpen, onBack, showButton }) {
 }
 
 // Popup content built with DOM nodes and textContent: ping notes are user input, never inject them as HTML.
+// Park pins are a map layer, not DOM markers: markers ignore 3D terrain height, so on a tilted view they floated far from
+// the park. Symbols are placed on the terrain surface. Grey = no cameras yet, blue = Katmai, green = the rest.
+const PIN_COLORS = { green: '#047857', blue: '#0369a1', grey: '#6b7280' }
+
+function pinImage(color) {
+  const c = document.createElement('canvas')
+  c.width = 80
+  c.height = 104
+  const ctx = c.getContext('2d')
+  ctx.beginPath()
+  ctx.arc(40, 38, 30, Math.PI * 0.78, Math.PI * 2.22, false)
+  ctx.lineTo(40, 100)
+  ctx.closePath()
+  ctx.fillStyle = color
+  ctx.shadowColor = 'rgba(0,0,0,.45)'
+  ctx.shadowBlur = 8
+  ctx.fill()
+  ctx.shadowBlur = 0
+  ctx.lineWidth = 6
+  ctx.strokeStyle = '#fff'
+  ctx.stroke()
+  ctx.font = '34px sans-serif'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText('🌲', 40, 40)
+  return ctx.getImageData(0, 0, 80, 104)
+}
+
+function addParkPins(map, touch, setPicked) {
+  for (const [name, color] of Object.entries(PIN_COLORS)) map.addImage(`pin-${name}`, pinImage(color), { pixelRatio: 2 })
+  map.addSource('parks', {
+    type: 'geojson',
+    data: {
+      type: 'FeatureCollection',
+      features: PARKS.map((p) => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
+        properties: { slug: p.slug, label: p.name.replace(' National Park', ''), icon: `pin-${!p.active ? 'grey' : p.slug === 'katmai' ? 'blue' : 'green'}` },
+      })),
+    },
+  })
+  map.addLayer({
+    id: 'park-pins', type: 'symbol', source: 'parks', minzoom: SHOW_PARKS_ZOOM,
+    layout: {
+      'icon-image': ['get', 'icon'], 'icon-anchor': 'bottom', 'icon-allow-overlap': true, 'icon-ignore-placement': true,
+      'text-field': ['get', 'label'], 'text-font': ['Open Sans Semibold'], 'text-size': 12, 'text-anchor': 'top', 'text-offset': [0, 0.2],
+      'text-allow-overlap': true, 'text-ignore-placement': true,
+    },
+    paint: { 'text-color': '#ffffff', 'text-halo-color': 'rgba(8,47,73,0.95)', 'text-halo-width': 2 },
+  })
+  map.on('mouseenter', 'park-pins', (e) => {
+    map.getCanvas().style.cursor = 'pointer'
+    if (!touch) setPicked(PARKS.find((p) => p.slug === e.features[0].properties.slug))
+  })
+  map.on('mouseleave', 'park-pins', () => {
+    map.getCanvas().style.cursor = ''
+    if (!touch) setPicked(null)
+  })
+}
+
 export default function GlobePage({ sightings, cameras }) {
   const holder = useRef()
   const mapRef = useRef()
@@ -200,48 +260,13 @@ export default function GlobePage({ sightings, cameras }) {
     const back = returnTo // coming back from a park page
     const start = back ? { center: [back.park.lng, back.park.lat], zoom: 11, pitch: 50 } : { center: [-115, 45], zoom: 2.2 }
     const map = new maplibregl.Map({ container: holder.current, style: STYLE, ...start, maxPitch: 70, attributionControl: { compact: true } })
-    mapRef.current = map
+    mapRef.current = map; window.__map = map
     map.on('error', (e) => console.error('maplibre:', e.error?.message ?? e))
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right')
-
-    // Park markers are map pins (user pings are circles). Same colour for every park; parks without
-    // cameras are dimmed. The wrapper is positioned by MapLibre, so the shape lives on a child.
-    const markers = PARKS.map((park) => {
-      const el = document.createElement('div')
-      const accent = !park.active ? '#6b7280' : park.slug === 'katmai' ? '#0369a1' : '#047857' // grey: no cameras yet
-      el.style.cssText = 'display:none;cursor:pointer;position:relative;width:148px;height:76px;transition:opacity .2s ease'
-      el.setAttribute('role', 'button')
-      el.setAttribute('aria-label', park.name)
-      const halo = document.createElement('div')
-      halo.style.cssText = `position:absolute;left:50%;bottom:10px;width:52px;height:52px;transform:translateX(-50%);border-radius:50%;background:${accent};opacity:.18;box-shadow:0 0 0 7px rgba(255,255,255,.22),0 0 22px ${accent}`
-      const pin = document.createElement('div')
-      pin.style.cssText = `position:absolute;left:50%;bottom:18px;width:40px;height:40px;background:${accent};border:3px solid #fff;border-radius:50% 50% 50% 0;transform:translateX(-50%) rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 9px rgba(0,0,0,.55);opacity:${park.active ? 1 : 0.82}`
-      const icon = document.createElement('span')
-      icon.textContent = '🌲'
-      icon.style.cssText = 'transform:rotate(45deg);font-size:18px;line-height:1'
-      const label = document.createElement('span')
-      label.textContent = park.name.replace(' National Park', '')
-      label.style.cssText = `position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);white-space:nowrap;border:1px solid rgba(255,255,255,.9);border-radius:999px;padding:3px 8px;background:rgba(8,47,73,.9);color:#fff;font:600 11px/1.1 system-ui,sans-serif;letter-spacing:.01em;box-shadow:0 2px 8px rgba(0,0,0,.35)`
-      pin.appendChild(icon)
-      el.appendChild(halo)
-      el.appendChild(pin)
-      el.appendChild(label)
-      if (!touch) {
-        el.addEventListener('mouseenter', () => setPicked(park))
-        el.addEventListener('mouseleave', () => setPicked(null))
-      }
-      el.addEventListener('click', (e) => {
-        e.stopPropagation()
-        previewRef.current(park)
-      })
-      new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat([park.lng, park.lat]).addTo(map)
-      return el
-    })
 
     const onZoom = () => {
       const z = map.getZoom() >= SHOW_PARKS_ZOOM
       setZoomed(z)
-      markers.forEach((el) => (el.style.display = z ? 'block' : 'none'))
       const c = map.getCenter()
       const inside = map.getZoom() >= OVERVIEW_ZOOM ? PARKS.find((p) => distanceKm(c.lat, c.lng, p.lat, p.lng) <= p.radiusKm) : null
       setFocus((prev) => (prev?.slug === inside?.slug ? prev : (inside ?? null)))
@@ -250,6 +275,8 @@ export default function GlobePage({ sightings, cameras }) {
     map.on('moveend', onZoom)
     map.on('click', (e) => {
       if (flowRef.current.place(e.lngLat.lat, e.lngLat.lng)) return // Demo mode: this tap placed a demo ping
+      const pin = map.getLayer('park-pins') ? map.queryRenderedFeatures(e.point, { layers: ['park-pins'] })[0] : null
+      if (pin) return previewRef.current(PARKS.find((p) => p.slug === pin.properties.slug))
       if (touch) setPicked(null)
       backRef.current()
     })
@@ -259,6 +286,7 @@ export default function GlobePage({ sightings, cameras }) {
         returnTo = null
         map.flyTo({ ...back.view, duration: 2500 })
       }
+      addParkPins(map, touch, setPicked)
       map.addSource('pings', { type: 'geojson', data: toGeoJSON([]), cluster: true, clusterRadius: 40, clusterMaxZoom: 10 })
       map.addLayer({
         id: 'ping-clusters', type: 'circle', source: 'pings', filter: ['has', 'point_count'],
