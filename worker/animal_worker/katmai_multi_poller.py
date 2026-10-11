@@ -12,7 +12,8 @@ from .youtube_poller import collect_frames, resolve_youtube
 
 
 def run_cameras(cameras, out: Path, *, every=60, max_frames=None,
-                resolver=resolve_youtube, collector=collect_frames, log=print):
+                resolver=resolve_youtube, collector=collect_frames, log=print,
+                on_frame=None):
     """Run one collector per camera and stop all when interrupted or one fails."""
     stop_event = threading.Event()
 
@@ -27,6 +28,7 @@ def run_cameras(cameras, out: Path, *, every=60, max_frames=None,
             every=every,
             max_frames=max_frames,
             stop_event=stop_event,
+            on_frame=on_frame,
             log=lambda message: log(f"[{camera.name}] {message}"),
         )
         return camera.id, count

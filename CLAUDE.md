@@ -52,7 +52,8 @@ are live video. Their names and current NPS-embedded YouTube links are stored in
 `python -m animal_worker.katmai_multi_poller --every 60` by hand to record the
 feeds locally in separate camera folders. The web app shows the Katmai feeds in
 Live mode. Outside bear season, the feeds may show highlights rather than current
-observations. Nothing has been written to Supabase from a Katmai stream. Details,
+observations. Katmai publishing is available through the explicit
+`katmai_live --publish` command but has not been verified against a real project. Details,
 test results, and capture provenance are in `ml/KATMAI.md`; older source research
 is in `docs/archive/HANDOFF.md`.
 

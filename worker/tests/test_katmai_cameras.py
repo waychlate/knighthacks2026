@@ -29,5 +29,22 @@ def test_multi_poller_keeps_camera_output_separate(tmp_path):
     assert results == {camera_id: 2 for camera_id in KATMAI_CAMERAS}
     assert {path.name for _, path, _ in calls} == set(KATMAI_CAMERAS)
     assert {options["camera"] for _, _, options in calls} == {
-        "Brooks Falls Low", "Brooks Falls", "River Watch",
+        "Brooks Falls Low Cam", "Brooks Falls Bearcam", "River Watch Cam",
     }
+
+
+def test_multi_poller_forwards_live_frame_callback(tmp_path):
+    callback = object()
+
+    def resolve(url):
+        return SimpleNamespace(video_id="test")
+
+    def collect(stream, out, **options):
+        assert options["on_frame"] is callback
+        return 1
+
+    run_cameras(
+        [KATMAI_CAMERAS["river-watch"]], tmp_path,
+        max_frames=1, resolver=resolve, collector=collect,
+        on_frame=callback, log=lambda message: None,
+    )

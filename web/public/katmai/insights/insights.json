@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-10-11T04:42:57.617345+00:00",
+  "park": "katmai",
+  "kind": "historical_descriptive_insights",
+  "headline": "Katmai camera and historical observation patterns",
+  "summary": {
+    "camera_frames": 596,
+    "accepted_detection_boxes": 74,
+    "public_bear_records": 738,
+    "weather_days": 9415
+  },
+  "insights": [
+    {
+      "id": "highest-camera-rate",
+      "title": "Highest camera detection rate",
+      "value": "River Watch",
+      "detail": "19.13 of every 100 sampled frames had an accepted detection (95% interval 14.09-25.44).",
+      "caveat": "This short collection does not estimate animal abundance."
+    },
+    {
+      "id": "peak-public-month",
+      "title": "Peak public observation month",
+      "value": "Aug",
+      "detail": "239 GBIF records, or 32.7% of records with a month.",
+      "caveat": "GBIF counts reflect visitor access, observer effort, and reporting as well as bear presence."
+    },
+    {
+      "id": "historical-observation-conditions",
+      "title": "Conditions on historical observation days",
+      "value": "9.2\u00b0C",
+      "detail": "Observation days averaged 16.0 daylight hours, 3.9 mm precipitation, and 85.6% relative humidity.",
+      "caveat": "These are associations in opportunistic records, not causes or forecast probabilities."
+    }
+  ],
+  "charts": [
+    {
+      "id": "public-observations",
+      "title": "Public observations by month",
+      "src": "/katmai/insights/bear_observations_by_month.svg"
+    },
+    {
+      "id": "weather-daylight",
+      "title": "Weather and daylight by month",
+      "src": "/katmai/insights/weather_daylight_by_month.svg"
+    },
+    {
+      "id": "camera-rates",
+      "title": "Detection rates by camera",
+      "src": "/katmai/insights/camera_detection_rates.svg"
+    }
+  ],
+  "sources": [
+    {
+      "name": "GBIF occurrence search API",
+      "url": "https://api.gbif.org/v1/occurrence/search?taxon_key=2433433&has_coordinate=true&has_geospatial_issue=false&occurrence_status=present&geometry=POLYGON%28%28-157+57.5%2C-153+57.5%2C-153+59.7%2C-157+59.7%2C-157+57.5%29%29&year=2000%2C2026"
+    },
+    {
+      "name": "NASA POWER Daily API",
+      "url": "https://power.larc.nasa.gov/docs/services/api/temporal/daily/"
+    },
+    {
+      "name": "NPS Katmai species inventory",
+      "url": "https://irma.nps.gov/NPSpecies/"
+    }
+  ],
+  "limitations": [
+    "Detection rates describe sampled frames, not animal abundance or population size.",
+    "Consecutive frames are correlated and may show the same animal repeatedly.",
+    "The sighting cooldown can merge repeated detections and lower observed rates.",
+    "Capture time is not observation time when a live page is replaying highlights.",
+    "One short collection window cannot support seasonal or hour-of-day forecasts.",
+    "NPS inventory presence does not mean a species is visible from these cameras.",
+    "GBIF record counts reflect observer effort and publication bias, not animal abundance.",
+    "The GBIF regional envelope is not the legal boundary of Katmai National Park and Preserve.",
+    "NASA POWER weather is gridded data at one Katmai coordinate, not a camera-site weather station.",
+    "Calculated daylight is an astronomical approximation and does not include terrain or cloud cover.",
+    "A day without a GBIF record is not a confirmed day without bears."
+  ]
+}

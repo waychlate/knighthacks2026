@@ -4,7 +4,7 @@
   "cameras": [
     {
       "id": "brooks-falls-low",
-      "name": "Brooks Falls Low",
+      "name": "Brooks Falls Low Cam",
       "location": "Brooks Falls Platform, Brooks Camp",
       "youtube_url": "https://www.youtube.com/watch?v=EwTH5yY7Mks",
       "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/brooks-falls-low-camera.htm",
@@ -12,7 +12,7 @@
     },
     {
       "id": "brooks-falls",
-      "name": "Brooks Falls",
+      "name": "Brooks Falls Bearcam",
       "location": "Brooks Falls Wildlife Viewing Platform, Brooks Camp",
       "youtube_url": "https://www.youtube.com/watch?v=J7ZrIDvqlic",
       "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/brown-bear-salmon-cam-brooks-falls.htm",
@@ -20,7 +20,7 @@
     },
     {
       "id": "river-watch",
-      "name": "River Watch",
+      "name": "River Watch Cam",
       "location": "North Platform, lower Brooks River, Brooks Camp",
       "youtube_url": "https://www.youtube.com/watch?v=wkVLYfU-Kew",
       "nps_page": "https://www.nps.gov/katm/learn/photosmultimedia/river-watch-cam.htm",

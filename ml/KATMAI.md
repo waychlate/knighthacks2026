@@ -204,6 +204,51 @@ still the default; Katmai is selected explicitly with `--park katmai`.
 
 Add measured sighting histories after the three-camera collection and detection tests work.
 
+## Public historical occurrence analysis
+
+`fetch_gbif.py` queries the official GBIF occurrence API for coordinate-bearing
+`Ursus arctos` records from 2000 onward within a documented rectangular Katmai
+regional envelope. The envelope is centered around the NPS-published Katmai
+coordinates and is not the legal park boundary. The downloaded JSON is written
+to the gitignored `ml/out/katmai_brown_bear_gbif.json` with the exact filters,
+taxon match, retrieval time, record licenses, dataset keys, and source URL.
+
+From `ml/`:
+
+```powershell
+.\.venv\Scripts\python.exe fetch_gbif.py
+.\.venv\Scripts\python.exe fetch_weather.py
+.\.venv\Scripts\python.exe katmai_features.py
+.\.venv\Scripts\python.exe katmai_analysis.py
+.\.venv\Scripts\python.exe katmai_visualize.py
+```
+
+The 2026-10-10 run downloaded 738 unique records dated from 2001 through 2026.
+The resulting report keeps their monthly distribution separate from the camera
+detection rates. GBIF data is opportunistic: record counts reflect access,
+observer effort, reporting, and publication as well as animal presence. They
+must not be interpreted as population estimates or calibrated probabilities.
+The generated JSON and Markdown reports remain local in `ml/out/`.
+
+NASA POWER daily point data adds temperature, daily minimum and maximum
+temperature, precipitation, relative humidity, and wind speed at the
+NPS-published Katmai coordinate. `katmai_features.py` calculates approximate
+daylight from latitude and day of year, then creates one row per day with the
+weather values and exact-date GBIF record count. The 2026-10-10 run produced
+9,415 rows from 2001-01-01 through 2026-10-11 and matched 731 GBIF records across
+280 observation days. NASA POWER is gridded data for one point rather than a
+camera weather station, and a date without a GBIF record is not a confirmed
+absence. The feature table is suitable for exploration, but not for training a
+calibrated bear-presence model without standardized survey-effort or absence data.
+
+The visualization step writes three lightweight SVG charts and
+`web/public/katmai/insights/insights.json`. The frontend payload highlights the
+highest local camera detection rate, the peak month in the public occurrence
+records, and average weather/daylight conditions on historical observation
+days. Each item carries its interpretation caveat, and the payload links its
+GBIF, NASA POWER, and NPS sources. These outputs are descriptive demo assets,
+not live forecasts.
+
 ## Reviewed detector experiment (2026-10-10)
 
 The three cameras supplied 402 captured frames. A no-cooldown candidate scan

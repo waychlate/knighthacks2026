@@ -40,8 +40,16 @@ class SightingStore:
         bucket.upload(path, buf.getvalue(), {"content-type": "image/jpeg"})
         return bucket.get_public_url(path)
 
-    def insert_sighting(self, *, species_id: str, camera_id: str, confidence: float, snapshot_url: str | None, source_kind: str = "replay"):
-        self.client.table("sightings").insert(
-            {"species_id": species_id, "camera_id": camera_id, "confidence": round(confidence, 3), "snapshot_url": snapshot_url,
-             "source_kind": source_kind}
-        ).execute()
+    def insert_sighting(self, *, species_id: str, camera_id: str, confidence: float,
+                        snapshot_url: str | None, source_kind: str = "replay",
+                        seen_at: str | None = None):
+        payload = {
+            "species_id": species_id,
+            "camera_id": camera_id,
+            "confidence": round(confidence, 3),
+            "snapshot_url": snapshot_url,
+            "source_kind": source_kind,
+        }
+        if seen_at is not None:
+            payload["seen_at"] = seen_at
+        self.client.table("sightings").insert(payload).execute()

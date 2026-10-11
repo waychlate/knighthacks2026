@@ -3,3 +3,4 @@ pandas
 scikit-learn
 pytest>=8
 tzdata
+matplotlib>=3.9
