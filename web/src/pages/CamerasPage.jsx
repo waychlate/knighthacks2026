@@ -5,6 +5,7 @@ import { useMode } from '../lib/useMode'
 
 export default function CamerasPage({ sightings, cameras, park }) {
   const { mode } = useMode()
+  const leafCardClass = park === 'yellowstone' || park === 'katmai' ? `${park}-camera-card` : ''
   if (cameras.length === 0) return <p className="text-stone-500">No cameras registered yet.</p>
 
   return (
@@ -33,13 +34,13 @@ export default function CamerasPage({ sightings, cameras, park }) {
         return (
           <li key={cam.id}>
             {unavailable ? (
-              <div aria-disabled="true" className={`camera-card ${park === 'yellowstone' ? 'yellowstone-camera-card' : ''} block rounded-xl border border-stone-200 bg-stone-100 p-4 opacity-60`}>
+              <div aria-disabled="true" className={`camera-card ${leafCardClass} block rounded-xl border border-stone-200 bg-stone-100 p-4 opacity-60`}>
                 {body}
               </div>
             ) : (
               <a
                 href={cameraHref(cam.id)}
-                className={`camera-card ${park === 'yellowstone' ? 'yellowstone-camera-card' : ''} block rounded-xl border border-stone-200 bg-white p-4 shadow-sm hover:border-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500`}
+                className={`camera-card ${leafCardClass} block rounded-xl border border-stone-200 bg-white p-4 shadow-sm hover:border-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500`}
               >
                 {body}
               </a>
