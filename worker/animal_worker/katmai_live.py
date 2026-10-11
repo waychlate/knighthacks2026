@@ -195,8 +195,8 @@ def replay_folder(folder: Path, args, processor):
                 frame = cv2.imread(str(path))
                 metadata = {"camera": camera.name, "source_kind": "replay",
                             "captured_at": datetime.now(timezone.utc).isoformat()}
-                processor.process(frame, metadata, path)
-                time.sleep(args.every)
+                if processor.process(frame, metadata, path):
+                    time.sleep(args.every)
     except KeyboardInterrupt:
         log.info("Stopping Katmai replay")
 
