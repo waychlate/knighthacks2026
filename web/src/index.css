@@ -18,7 +18,9 @@ button:active, a:active { transform: translateY(1px); }
 .park-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem); gap: 1.5rem; align-items: start; }
 .park-main-column { position: relative; min-width: 0; isolation: isolate; }
 .park-main-column > *:not(.river-background):not(.yellowstone-trail-background) { position: relative; z-index: 1; }
-.desktop-chat-sidebar { position: sticky; top: 1rem; min-width: 0; height: calc(100vh - 2rem); }
+.desktop-chat-sidebar { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0; height: calc(100vh - 2rem); }
+.desktop-chat-sidebar .desktop-chat-panel, .desktop-chat-sidebar .park-map-card { flex: 1 1 0; height: auto; min-height: 0; }
+.park-map-phone { height: 17rem; }
 .desktop-chat-panel { display: flex; height: 100%; min-height: 32rem; flex-direction: column; overflow: hidden; }
 .desktop-chat-panel > div:last-child { max-height: none !important; flex: 1; overflow-y: auto; }
 .desktop-camera-dashboard { position: relative; display: grid; gap: 1.5rem; isolation: isolate; }

@@ -5,9 +5,11 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import PingSheet from '../components/PingSheet'
 import StarField from '../components/StarField'
 import Welcome from '../components/Welcome'
+import { IMAGERY_SOURCE, pingPopup } from '../lib/mapStyle'
 import { useMode } from '../lib/useMode'
+import { usePingFlow } from '../lib/usePingFlow'
 import { latestSighting, PARKS, sightingsToday } from '../lib/parks'
-import { cooldownLeftMs, distanceKm, markPinged, speciesFor, toGeoJSON } from '../lib/pings'
+import { distanceKm, speciesFor, toGeoJSON } from '../lib/pings'
 import { timeAgo } from '../lib/time'
 import { usePings } from '../lib/usePings'
 import { parkHref } from '../lib/useRoute'
@@ -35,13 +37,7 @@ const STYLE = {
   projection: { type: 'globe' },
   glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
   sources: {
-    imagery: {
-      type: 'raster',
-      tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
-      tileSize: 256,
-      maxzoom: 18,
-      attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
-    },
+    imagery: IMAGERY_SOURCE,
     terrain: {
       type: 'raster-dem',
       tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
@@ -93,21 +89,6 @@ function Card({ park, stats, latest, onOpen, onBack, showButton }) {
 }
 
 // Popup content built with DOM nodes and textContent: ping notes are user input, never inject them as HTML.
-function pingPopup(p) {
-  const el = document.createElement('div')
-  el.style.cssText = 'font:14px system-ui;color:#1c1917;max-width:220px'
-  const line = (text, css) => {
-    const d = document.createElement('div')
-    d.textContent = text
-    d.style.cssText = css ?? ''
-    el.appendChild(d)
-  }
-  line(p.species || 'Something spotted', 'font-weight:600')
-  if (p.note) line(p.note)
-  line(`${timeAgo(p.created_at)} · ${p.sample === true || p.sample === 'true' ? 'sample ping' : 'user-reported'}`, 'color:#78716c;font-size:12px;margin-top:2px')
-  return el
-}
-
 export default function GlobePage({ sightings, cameras }) {
   const holder = useRef()
   const mapRef = useRef()
@@ -115,11 +96,13 @@ export default function GlobePage({ sightings, cameras }) {
   const [zoomed, setZoomed] = useState(false)
   const [picked, setPicked] = useState(null) // park under the pointer / tapped
   const [focus, setFocus] = useState(null) // park the map is zoomed in over
-  const [here, setHere] = useState(null) // position waiting for the ping sheet
-  const [msg, setMsg] = useState(null)
   const touch = isTouch()
   const { mode } = useMode()
   const { pings, post, error: pingsError, usingMock } = usePings(mode)
+  const flow = usePingFlow({ mode, post, onDropped: (at) => mapRef.current?.flyTo({ center: [at.lng, at.lat], zoom: 9 }) })
+  const flowRef = useRef(flow)
+  flowRef.current = flow
+  const { here, msg } = flow
 
   const shown = picked ?? focus
 
@@ -265,7 +248,11 @@ export default function GlobePage({ sightings, cameras }) {
     }
     map.on('zoom', onZoom)
     map.on('moveend', onZoom)
-    map.on('click', () => { if (touch) setPicked(null); backRef.current() })
+    map.on('click', (e) => {
+      if (flowRef.current.place(e.lngLat.lat, e.lngLat.lng)) return // Demo mode: this tap placed a demo ping
+      if (touch) setPicked(null)
+      backRef.current()
+    })
 
     map.on('load', () => {
       if (back) {
@@ -293,7 +280,7 @@ export default function GlobePage({ sightings, cameras }) {
       })
       map.on('click', 'ping-point', (e) => {
         const f = e.features[0]
-        new maplibregl.Popup({ offset: 10 }).setLngLat(f.geometry.coordinates).setDOMContent(pingPopup(f.properties)).addTo(map)
+        new maplibregl.Popup({ offset: 10 }).setLngLat(f.geometry.coordinates).setDOMContent(pingPopup(f.properties, timeAgo)).addTo(map)
       })
       for (const id of ['ping-clusters', 'ping-point']) {
         map.on('mouseenter', id, () => (map.getCanvas().style.cursor = 'pointer'))
@@ -308,27 +295,9 @@ export default function GlobePage({ sightings, cameras }) {
     if (ready) mapRef.current.getSource('pings').setData(toGeoJSON(pings))
   }, [ready, pings])
 
-  function startPing() {
-    setMsg(null)
-    const left = cooldownLeftMs(window.localStorage)
-    if (left > 0) return setMsg(`One ping per 5 minutes. Try again in ${Math.ceil(left / 60000)} min.`)
-    if (!navigator.geolocation) return setMsg('Your browser cannot share its location.')
-    navigator.geolocation.getCurrentPosition(
-      (pos) => setHere({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      (err) => setMsg(err.code === 1 ? 'Location permission was denied, so no ping was sent.' : 'Could not get your location.'),
-      { enableHighAccuracy: true, timeout: 10000 },
-    )
-  }
-
-  async function submitPing(extra) {
-    const err = await post({ ...here, ...extra })
-    if (err) return err
-    markPinged(window.localStorage)
-    mapRef.current.flyTo({ center: [here.lng, here.lat], zoom: 9 })
-    setHere(null)
-    setMsg('Ping dropped. Thanks!')
-    return null
-  }
+  useEffect(() => {
+    if (ready) mapRef.current.getCanvas().style.cursor = flow.placing ? 'crosshair' : ''
+  }, [ready, flow.placing])
 
   return (
     <>
@@ -367,12 +336,12 @@ export default function GlobePage({ sightings, cameras }) {
 
       <div className="globe-actions absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
         {msg && <p className="rounded-lg bg-black/70 px-3 py-1.5 text-sm text-white">{msg}</p>}
-        <button onClick={startPing} className="rounded-full bg-emerald-600 px-5 py-3 font-medium text-white shadow-lg hover:bg-emerald-500">
+        <button onClick={flow.start} className="rounded-full bg-emerald-600 px-5 py-3 font-medium text-white shadow-lg hover:bg-emerald-500">
           📍 Drop ping
         </button>
       </div>
 
-      {here && <PingSheet species={speciesFor(here.lat, here.lng)} onSubmit={submitPing} onCancel={() => setHere(null)} />}
+      {here && <PingSheet demo={here.demo} species={speciesFor(here.lat, here.lng)} onSubmit={flow.submit} onCancel={flow.cancel} />}
     </div>
     </>
   )

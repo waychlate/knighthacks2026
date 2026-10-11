@@ -1,11 +1,19 @@
+import { lazy, Suspense } from 'react'
 import ChatPanel from '../components/ChatPanel'
 import Nav, { navTab } from '../components/Nav'
 import PredictionCard from '../components/PredictionCard'
 import { getPark } from '../lib/parks'
+import { useIsPhone } from '../lib/useIsPhone'
 import { usePredictions } from '../lib/usePredictions'
 import AnalyticsPage from './AnalyticsPage'
 import CamerasPage from './CamerasPage'
 import FeedPage from './FeedPage'
+
+const PingMap = lazy(() => import('../components/PingMap')) // MapLibre is heavy: load it only on park pages
+
+function ParkMap({ park, cameras, className }) {
+  return <Suspense fallback={<div className={`park-map-card rounded-2xl bg-stone-200 ${className}`} />}><PingMap park={park} cameras={cameras} className={className} /></Suspense>
+}
 
 function Predictions({ park }) {
   return <PredictionCard park={park} {...usePredictions()} />
@@ -40,6 +48,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
   const parkCameras = cameras.filter((c) => c.park === slug)
   const ids = new Set(parkCameras.map((c) => c.id))
   const parkSightings = sightings.filter((s) => ids.has(s.camera.id))
+  const phone = useIsPhone()
   const view = navTab(tab) // Sightings and Predictions are sections of the Cameras page
   const themeClass = slug === 'katmai' ? 'katmai-theme' : slug === 'yellowstone' ? 'yellowstone-theme' : 'forest-theme'
 
@@ -63,6 +72,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
               <div className="mb-5"><Nav park={slug} tab={tab} /></div>
               {view === 'cameras' && (
                 <div className="desktop-camera-dashboard">
+                  {phone && park && <ParkMap park={park} cameras={parkCameras} className="park-map-phone" />}
                   <section className="desktop-dashboard-section" aria-labelledby={`${slug}-camera-views`}>
                     <h3 id={`${slug}-camera-views`} className="desktop-section-title">Camera views</h3>
                     <CamerasPage park={slug} sightings={parkSightings} cameras={parkCameras} />
@@ -84,6 +94,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
         </section>
         <aside className="desktop-chat-sidebar" aria-label={`${park?.name ?? slug} chat`}>
           <ChatPanel park={slug} />
+          {!phone && park && <ParkMap park={park} cameras={parkCameras} />}
         </aside>
       </div>
     </div>

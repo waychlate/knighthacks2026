@@ -42,7 +42,7 @@ export function toGeoJSON(pings) {
     features: pings.map((p) => ({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
-      properties: { id: p.id, near: nearestPark(p.lat, p.lng) !== null, species: p.species_name ?? '', note: p.note ?? '', created_at: p.created_at, sample: Boolean(p.sample) },
+      properties: { id: p.id, near: nearestPark(p.lat, p.lng) !== null, species: p.species_name ?? '', note: p.note ?? '', created_at: p.created_at, sample: Boolean(p.sample), demo: Boolean(p.demo) },
     })),
   }
 }

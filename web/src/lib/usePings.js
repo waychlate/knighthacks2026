@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { addDemoPin, useDemoPins } from './demoPins'
 import { makeSamplePings, recent, roundCoord } from './pings'
 import { supabase } from './supabase'
 
@@ -8,6 +9,7 @@ export function usePings(mode) {
   const [real, setReal] = useState([])
   const [error, setError] = useState(null)
   const samples = useMemo(() => makeSamplePings(), [])
+  const demoPins = useDemoPins()
 
   useEffect(() => {
     if (!supabase) return
@@ -37,8 +39,13 @@ export function usePings(mode) {
   }, [])
 
   // Returns an error message string, or null on success. Coordinates are rounded here too.
-  const post = useCallback(async ({ lat, lng, species_name, note }) => {
+  // `demo: true` keeps the ping in this browser only (see demoPins.js); it is never sent to Supabase.
+  const post = useCallback(async ({ lat, lng, species_name, note }, { demo = false } = {}) => {
     const row = { lat: roundCoord(lat), lng: roundCoord(lng), species_name: species_name || null, note: note || null }
+    if (demo) {
+      addDemoPin(row)
+      return null
+    }
     if (!supabase) {
       setReal((prev) => [{ ...row, id: `local-${Date.now()}`, created_at: new Date().toISOString() }, ...prev])
       return null
@@ -49,6 +56,6 @@ export function usePings(mode) {
     return null
   }, [])
 
-  const pings = useMemo(() => recent(mode === 'demo' ? [...real, ...samples] : real), [real, samples, mode])
+  const pings = useMemo(() => recent(mode === 'demo' ? [...real, ...samples, ...demoPins] : real), [real, samples, demoPins, mode])
   return { pings, post, error, usingMock: !supabase }
 }
