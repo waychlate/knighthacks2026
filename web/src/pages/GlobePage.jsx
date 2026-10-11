@@ -306,7 +306,16 @@ export default function GlobePage({ sightings, cameras }) {
       {leaving > 0 && <div className={`leave-fade absolute inset-0 z-40 transition-opacity duration-500 ${leaving === 2 ? 'opacity-100' : 'opacity-0'}`} />}
       {arriving > 0 && <div className={`leave-fade pointer-events-none absolute inset-0 z-40 transition-opacity duration-[800ms] ${arriving === 1 ? 'opacity-100' : 'opacity-0'}`} />}
       <StarField />
-      <div className="absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
+      <div className={`space-bear-orbit ${zoomed ? 'space-bear-orbit-hidden' : ''}`} aria-hidden="true">
+        <div className="space-bear-drift">
+          <div className="space-bear-facing">
+            <div className="space-bear-float">
+              <img src="/space-bear.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="globe-map-layer absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
 
       <div className="globe-brand pointer-events-none absolute inset-x-0 top-0 z-10 p-4 text-center text-white">
         <h1 className="text-2xl font-bold drop-shadow">En-Vision</h1>
