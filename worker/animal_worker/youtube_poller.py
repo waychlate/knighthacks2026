@@ -127,7 +127,7 @@ def collect_frames(stream: StreamInfo, out: Path, *, park="katmai",
                    camera="Brooks Falls Low", every=60, max_frames=None,
                    capture_factory=None, write_frame=None, clock=time.monotonic,
                    utc_now=lambda: datetime.now(timezone.utc), log=print,
-                   stop_event=None) -> int:
+                   stop_event=None, on_frame=None) -> int:
     """Drain the stream continuously; save the first frame then every >=30 seconds.
 
     captured_at is receipt time, not a verified camera observation time. A live
@@ -174,6 +174,8 @@ def collect_frames(stream: StreamInfo, out: Path, *, park="katmai",
             )
             with (out / "frames.jsonl").open("a", encoding="utf-8") as manifest:
                 manifest.write(json.dumps(metadata) + "\n")
+            if on_frame is not None:
+                on_frame(frame.copy() if hasattr(frame, "copy") else frame, metadata, path)
             count += 1
             log(f"saved {path}")
             if max_frames is not None and count >= max_frames:

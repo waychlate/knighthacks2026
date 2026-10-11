@@ -109,6 +109,26 @@ test. Requires an installed Deno, Node, or Bun runtime for YouTube resolution.
 The collector does not run species recognition or write to Supabase.
 See [Katmai setup and test results](ml/KATMAI.md).
 
+**Run live Katmai recognition:** this uses the reviewed bear/bird model while it
+collects the cameras. Every accepted detection is appended to
+`sample_videos/katmai-live/live_sightings.jsonl`. With no flag it stays local:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.katmai_live --every 60
+```
+After `schema.sql` and `katmai-cams.sql` have been applied and the two worker
+Supabase variables are available in the environment, add `--publish`:
+```powershell
+.\.venv\Scripts\python.exe -m animal_worker.katmai_live --check --publish
+.\.venv\Scripts\python.exe -m animal_worker.katmai_live --every 60 --publish
+```
+The check command validates the local model, Supabase credentials, required
+Katmai camera rows, and sightings table without contacting a camera.
+The publisher uploads the detected crop, stores the frame's UTC capture time,
+and inserts a `source_kind=live` sighting. Supabase Realtime then adds it to the
+website feed without a page refresh. Use `--camera brooks-falls-low` to run one
+camera, or repeat `--camera` for a subset. Outside the documented bear season,
+rows are marked `replay` because the camera channels may show old highlights.
+
 To collect just one camera:
 ```powershell
 .\.venv\Scripts\python.exe -m animal_worker.still_poller --park katmai --camera-id river-watch --every 60
