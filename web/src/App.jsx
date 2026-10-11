@@ -3,6 +3,7 @@ import ErrorBanner from './components/ErrorBanner'
 import BearLoading from './components/BearLoading'
 import ModeToggle from './components/ModeToggle'
 import CameraPage from './pages/CameraPage'
+import SettingsPage from './pages/SettingsPage'
 import ParkPage from './pages/ParkPage'
 import { filterByMode } from './lib/live'
 import { useCameras } from './lib/useCameras'
@@ -44,7 +45,7 @@ function AppShell({ children, route }) {
             <img src={katmai ? '/icons/icon-katmai.svg' : yellowstone ? '/icons/icon-yellowstone.svg' : '/icons/icon-192.svg'} alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
-          <div className="flex flex-wrap items-center gap-2"><ModeToggle /></div>
+          <div className="flex flex-wrap items-center gap-2"><ModeToggle /><a href="#/settings" aria-label="Settings" title="Settings" className="flex h-9 w-9 items-center justify-center rounded-lg border border-stone-300 bg-white text-lg text-stone-600 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">⚙</a></div>
         </div>
       </header>
       <NetworkStatus />
@@ -82,5 +83,5 @@ export default function App() {
 
   if (route.name === 'globe') return <>{overlay}<Suspense fallback={<BearLoading />}><GlobePage sightings={sightings} cameras={cameras} /></Suspense></>
 
-  return <>{overlay}<AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell></>
+  return <>{overlay}<AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'settings' && <SettingsPage />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell></>
 }

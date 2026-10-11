@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { MAX_BODY, validateMessage } from '../lib/moderation'
+import { getDisplayName } from '../lib/settings'
 
 const input =
   'w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm text-stone-800 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500'
 
-function loadName() {
-  try {
-    return window.localStorage.getItem('displayName') ?? ''
-  } catch {
-    return ''
-  }
-}
-
 // Shared UI for the park chat and for comments on a sighting. Anonymous: a display name and a message.
 export default function ThreadPanel({ title, messages, onPost, usingMock, empty, compact = false, error }) {
-  const [name, setName] = useState(loadName)
+  const [name] = useState(getDisplayName) // changed in Settings
   const [body, setBody] = useState('')
   const [problem, setProblem] = useState(null)
   const [sending, setSending] = useState(false)
@@ -34,11 +27,6 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
     setSending(false)
     if (err) return setProblem(err)
     lastSent.current = Date.now()
-    try {
-      window.localStorage.setItem('displayName', v.name)
-    } catch {
-      // storage blocked: the name just isn't remembered
-    }
     setBody('')
     setProblem(null)
   }
@@ -64,8 +52,7 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         ))}
       </ul>
       <form onSubmit={submit} className="mt-3 space-y-2">
-        <label className="sr-only" htmlFor={`${idPrefix}-name`}>Display name</label>
-        <input id={`${idPrefix}-name`} className={input} placeholder="Your name" value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
+        <p className="text-xs text-stone-500">Posting as <span className="font-medium text-stone-700">{name}</span> · <a href="#/settings" className="text-emerald-700 underline">Change</a></p>
         <div className="flex gap-2">
           <label className="sr-only" htmlFor={`${idPrefix}-body`}>Message</label>
           <input id={`${idPrefix}-body`} className={`${input} min-w-0 flex-1`} placeholder="Say something about the animals…" value={body} onChange={(e) => setBody(e.target.value)} />
