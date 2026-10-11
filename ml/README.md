@@ -19,6 +19,7 @@ then turns the next 24 hours into `Prediction` rows ("Predicting an elk around 6
 | `fetch_gbif.py` | Downloads public brown-bear occurrence records from the official GBIF API for a documented Katmai regional envelope. |
 | `fetch_weather.py` | Downloads daily temperature, precipitation, humidity, and wind from NASA POWER at the NPS-published Katmai coordinate. |
 | `katmai_features.py` | Joins daily weather, calculated daylight, and exact-date GBIF record counts into a local analysis-ready CSV. |
+| `katmai_visualize.py` | Generates three SVG charts and `insights.json` for the frontend from the descriptive report. |
 | `make_seed.py` | Writes `supabase/seed.sql` from the same generator. |
 
 ## Run
@@ -41,6 +42,7 @@ python fetch_gbif.py             # cache public Katmai-region brown-bear records
 python fetch_weather.py          # cache NASA POWER daily weather locally
 python katmai_features.py        # build the joined daily feature table
 python katmai_analysis.py        # local Katmai effort/detection and NPS inventory report
+python katmai_visualize.py       # generate frontend charts and insights JSON
 ```
 
 `katmai_analysis.py` reports detection frames per 100 captured frames with 95%
@@ -57,6 +59,9 @@ NASA POWER values are analysis-ready gridded data for one point at the
 NPS-published Katmai coordinate; they are not readings from the cameras. The
 daylight feature is calculated from latitude and day of year. The joined CSV is
 `ml/out/katmai_daily_features.csv` and remains gitignored with the source data.
+The visualization step writes lightweight SVG charts and a frontend-ready JSON
+file below `web/public/katmai/insights/`. Every chart and insight retains the
+short-survey or observer-effort caveat required to interpret it honestly.
 
 `predict.py` writes to Supabase only if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are in the environment
 (it also needs the `supabase` package from `worker/requirements.txt`). That path has never been run against a real project.

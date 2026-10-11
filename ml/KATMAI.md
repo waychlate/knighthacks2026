@@ -220,6 +220,7 @@ From `ml/`:
 .\.venv\Scripts\python.exe fetch_weather.py
 .\.venv\Scripts\python.exe katmai_features.py
 .\.venv\Scripts\python.exe katmai_analysis.py
+.\.venv\Scripts\python.exe katmai_visualize.py
 ```
 
 The 2026-10-10 run downloaded 738 unique records dated from 2001 through 2026.
@@ -239,6 +240,14 @@ weather values and exact-date GBIF record count. The 2026-10-10 run produced
 camera weather station, and a date without a GBIF record is not a confirmed
 absence. The feature table is suitable for exploration, but not for training a
 calibrated bear-presence model without standardized survey-effort or absence data.
+
+The visualization step writes three lightweight SVG charts and
+`web/public/katmai/insights/insights.json`. The frontend payload highlights the
+highest local camera detection rate, the peak month in the public occurrence
+records, and average weather/daylight conditions on historical observation
+days. Each item carries its interpretation caveat, and the payload links its
+GBIF, NASA POWER, and NPS sources. These outputs are descriptive demo assets,
+not live forecasts.
 
 ## Reviewed detector experiment (2026-10-10)
 
