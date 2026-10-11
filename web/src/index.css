@@ -18,11 +18,11 @@ button:active, a:active { transform: translateY(1px); }
 .park-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem); gap: 1.5rem; align-items: start; }
 .park-main-column { position: relative; min-width: 0; isolation: isolate; }
 .park-main-column > *:not(.river-background):not(.yellowstone-trail-background) { position: relative; z-index: 1; }
-.desktop-chat-sidebar { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0; height: calc(100vh - 2rem); }
+.desktop-chat-sidebar { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0; height: calc(100vh - 12rem); min-height: 34rem; }
 .desktop-chat-sidebar .desktop-chat-panel, .desktop-chat-sidebar .park-map-card { flex: 1 1 0; height: auto; min-height: 0; }
 .park-map-phone { height: 17rem; }
 .desktop-chat-panel { display: flex; height: 100%; min-height: 32rem; flex-direction: column; overflow: hidden; }
-.desktop-chat-panel > div:last-child { max-height: none !important; flex: 1; overflow-y: auto; }
+.desktop-chat-panel > div:last-child { max-height: none !important; flex: 1; overflow: hidden; }
 .desktop-camera-dashboard { position: relative; display: grid; gap: 1.5rem; isolation: isolate; }
 .river-background { position: absolute; z-index: 0; inset: -2rem -8% -2rem -8%; min-height: 100%; background: url('/river/river-winding.svg') center top / 135% 100% no-repeat; opacity: .42; pointer-events: none; }
 .yellowstone-trail-background { position: absolute; z-index: 0; inset: -2rem -8% -2rem -8%; min-height: 100%; background: url('/yellowstone/trail-winding.svg') center top / 100% 100% no-repeat; opacity: .52; pointer-events: none; }
@@ -142,7 +142,7 @@ html[data-theme='dark'] .katmai-canopy { background: linear-gradient(145deg, #04
   .yellowstone-trail-background { inset: -1rem -28%; opacity: .2; }
   .app-main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
   .desktop-nav { display: none; }
-  .mobile-nav { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; display: block; padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #d6d3d1; background: rgba(255,255,255,.96); box-shadow: 0 -4px 18px rgba(28,25,23,.08); }
+  .mobile-nav { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; display: block; padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #d6d3d1; background: #ffffff; box-shadow: 0 -4px 18px rgba(28,25,23,.08); }
   .mobile-nav nav { display: flex; align-items: flex-end; }
   .mobile-nav-item { display: flex; flex: 1; min-width: 0; min-height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; padding: .25rem; border: 0; background: none; color: #57534e; font-size: .68rem; font-weight: 500; }
   .mobile-nav-item.is-active { color: #047857; font-weight: 700; }
@@ -222,4 +222,9 @@ html[data-theme='dark'] .app-shell.yellowstone-page .yellowstone-camera-card { b
 .bear-splash { position: fixed; inset: 0; z-index: 60; }
 .globe-pill { justify-self: center; border: 1px solid #a7f3d0; border-radius: 9999px; background: #ecfdf5; padding: .4rem 1rem; color: #047857; font-size: .9rem; font-weight: 600; white-space: nowrap; }
 .globe-pill:hover { background: #d1fae5; }
-@media (max-width: 639px) { .globe-pill-desktop { display: none; } }
+@media (max-width: 639px) { .globe-pill { display: none; } }
+.app-shell { overflow-x: clip; } /* decorative backgrounds bleed past the column; never let them widen the page (iOS then zooms out and the fixed bar looks narrower) */
+html[data-theme='dark'] .mobile-nav { background: #10251a; border-color: #2f6045; box-shadow: 0 -4px 18px rgba(0,0,0,.5); }
+html[data-theme='dark'] .mobile-nav-item { color: #cfe3c2; }
+html[data-theme='dark'] .mobile-nav-item.is-active, html[data-theme='dark'] .mobile-nav-globe { color: #6ee7b7; }
+html[data-theme='dark'] .mobile-nav-globe .nav-icon { border-color: #10251a; }

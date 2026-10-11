@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom'
 import { parkHref } from '../lib/useRoute'
 
 const link = (active) =>
@@ -33,6 +34,7 @@ export default function Nav({ park, tab }) {
           {['cameras', 'analytics'].map(renderLink)}
         </nav>
       </div>
+      {createPortal(
       <div className="mobile-nav">
         <nav aria-label="Park sections">
           {item('cameras', '📷', 'Cameras')}
@@ -47,7 +49,9 @@ export default function Nav({ park, tab }) {
             Settings
           </button>
         </nav>
-      </div>
+      </div>,
+        document.body,
+      )}
     </>
   )
 }

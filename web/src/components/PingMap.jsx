@@ -86,12 +86,12 @@ export default function PingMap({ park, cameras, className = '' }) {
   return (
     <section className={`park-map-card relative overflow-hidden rounded-2xl border border-stone-200 bg-black shadow-sm ${className}`} aria-label={`${park.name} pings`}>
       <div className="absolute inset-0"><div ref={holder} className="h-full w-full" /></div>
-      <p className="pointer-events-none absolute left-2 top-2 rounded-md bg-black/60 px-2 py-1 text-xs text-white">📍 Pings near {park.name} · last 24 h</p>
-      <div className="absolute inset-x-0 bottom-2 flex flex-col items-center gap-1.5 px-2">
-        {flow.msg && <p className="rounded-lg bg-black/75 px-3 py-1 text-center text-xs text-white">{flow.msg}</p>}
+      <div className="absolute left-2 top-2 flex max-w-[calc(100%-4rem)] flex-col items-start gap-1.5">
+        <p className="pointer-events-none rounded-md bg-black/60 px-2 py-1 text-xs text-white">📍 Pings near {park.name} · last 24 h</p>
         <button type="button" onClick={flow.start} className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-emerald-500">
           {flow.placing ? 'Tap the map…' : '📍 Drop ping'}
         </button>
+        {flow.msg && <p className="rounded-lg bg-black/75 px-3 py-1 text-xs text-white">{flow.msg}</p>}
       </div>
       {flow.here && <PingSheet fixed demo={flow.here.demo} species={speciesFor(flow.here.lat, flow.here.lng)} onSubmit={flow.submit} onCancel={flow.cancel} />}
     </section>

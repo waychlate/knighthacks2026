@@ -40,12 +40,12 @@ function AppShell({ children, route, openSettings }) {
   return (
     <div className={`app-shell min-h-screen bg-stone-50 ${katmai ? 'katmai-page' : ''} ${yellowstone ? 'yellowstone-page' : ''}`}>
       <header className="app-header border-b border-stone-200 bg-white">
-        <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 py-3 sm:py-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center sm:grid-cols-[1fr_auto_1fr] gap-3 px-4 py-3 sm:py-4">
           <a href="#/" className="flex min-w-0 items-center gap-3 justify-self-start" aria-label="En-Vision globe home">
             <img src={katmai ? '/icons/icon-katmai.svg' : yellowstone ? '/icons/icon-yellowstone.svg' : '/icons/icon-192.svg'} alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
-          <a href="#/" className={`globe-pill ${route.name === 'park' ? 'globe-pill-desktop' : ''}`}>← 🌍 Globe</a>
+          <a href="#/" className="globe-pill">← 🌍 Globe</a>
           <div className="flex flex-wrap items-center gap-2 justify-self-end"><ModeToggle /><button type="button" onClick={openSettings} aria-label="Settings" title="Settings" className={`flex h-9 w-9 items-center justify-center rounded-lg border border-stone-300 bg-white text-lg text-stone-600 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${route.name === 'park' ? 'hidden sm:flex' : ''}`}>⚙</button></div>
         </div>
       </header>

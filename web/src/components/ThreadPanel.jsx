@@ -33,7 +33,7 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
 
   const idPrefix = title.replace(/\W+/g, '-').toLowerCase()
   return (
-    <section aria-label={title} className={compact ? 'mt-3 border-t border-stone-100 pt-3' : 'rounded-xl border border-stone-200 bg-white p-4 shadow-sm'}>
+    <section aria-label={title} className={compact ? 'flex min-h-0 flex-1 flex-col border-t border-stone-100 pt-3' : 'rounded-xl border border-stone-200 bg-white p-4 shadow-sm'}>
       {!compact && (
         <div className="mb-2 flex items-center justify-between gap-2">
           <h3 className="font-semibold text-stone-900">{title}</h3>
@@ -41,7 +41,7 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         </div>
       )}
       {error && <p className="mb-2 rounded bg-red-50 px-2 py-1 text-sm text-red-700">Could not load messages: {error}</p>}
-      <ul ref={list} aria-live="polite" className={`${compact ? 'max-h-40' : 'max-h-64'} space-y-2 overflow-y-auto`}>
+      <ul ref={list} aria-live="polite" className={`${compact ? 'min-h-0 flex-1' : 'max-h-64'} space-y-2 overflow-y-auto`}>
         {messages.length === 0 && <li className="text-sm text-stone-500">{empty}</li>}
         {messages.map((m) => (
           <li key={m.id} className="text-sm">
