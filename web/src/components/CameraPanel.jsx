@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { cameraMedia } from '../lib/cameraConfig'
+import { bearSeasonNote, cameraMedia } from '../lib/cameraConfig'
 import { LIVE_REFRESH_MS, liveImageUrl } from '../lib/live'
 import { useMode } from '../lib/useMode'
 
@@ -10,6 +10,47 @@ function Bubble({ live, unavailable }) {
       {live && !unavailable && <span className="h-2 w-2 animate-pulse rounded-full bg-white" aria-hidden />}
       {unavailable ? 'Live (unavailable)' : live ? 'Live' : 'Demo clip'}
     </span>
+  )
+}
+
+// Live video from explore.org. Nothing is requested from YouTube until the visitor presses play.
+function StreamPanel({ camera, media }) {
+  const [playing, setPlaying] = useState(false)
+  const { youtubeId, page } = media.stream
+  const note = bearSeasonNote()
+  return (
+    <figure>
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-stone-900">
+        <Bubble live />
+        {playing && youtubeId ? (
+          <iframe
+            className="h-full w-full"
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&rel=0`}
+            title={`Live video: ${camera.name}`}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-sky-900 to-stone-900 px-4 text-center text-white">
+            <span className="text-4xl" aria-hidden>🐻</span>
+            <p className="text-sm text-sky-100">Live video from explore.org</p>
+            {youtubeId && (
+              <button onClick={() => setPlaying(true)} className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-sky-100">
+                ▶ Watch live
+              </button>
+            )}
+            <a href={page} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-200 underline">
+              {youtubeId ? 'Open on explore.org ↗' : 'Watch on explore.org ↗'}
+            </a>
+          </div>
+        )}
+      </div>
+      <figcaption className="mt-1 text-xs text-stone-500">
+        Live video, not recorded by us. AI detections are sampled about once a minute while our detector is running. Credit: {media.credit}.
+        {note && <span className="mt-1 block text-amber-700">{note}</span>}
+      </figcaption>
+    </figure>
   )
 }
 
@@ -32,6 +73,8 @@ export default function CameraPanel({ camera }) {
 
   const frame = 'relative aspect-video w-full overflow-hidden rounded-xl'
 
+  if (live && media.stream) return <StreamPanel camera={camera} media={media} />
+
   if (live && !media.liveImage) {
     return (
       <div className={`${frame} flex items-center justify-center bg-stone-200`}>
@@ -42,7 +85,9 @@ export default function CameraPanel({ camera }) {
   if (!live && !media.demoVideo) {
     return (
       <div className={`${frame} flex items-center justify-center bg-stone-200`}>
-        <p className="px-4 text-center text-sm text-stone-600">No demo clip for this camera.</p>
+        <p className="px-4 text-center text-sm text-stone-600">
+          {media.stream ? 'This camera is live video only. Switch to Live to watch.' : 'No demo clip for this camera.'}
+        </p>
       </div>
     )
   }

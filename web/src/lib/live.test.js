@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { filterByMode, kindForMode, liveImageUrl, readMode, saveMode } from './live'
-import { hasLiveFeed } from './cameraConfig'
+import { bearSeasonNote, hasLiveFeed } from './cameraConfig'
 
 const rows = [{ id: 1, source_kind: 'live' }, { id: 2, source_kind: 'replay' }, { id: 3 }]
 
@@ -44,6 +44,16 @@ describe('cameras', () => {
   it('only Electric Peak has a live feed', () => {
     expect(hasLiveFeed({ name: 'Electric Peak Cam' })).toBe(true)
     expect(hasLiveFeed({ name: 'Lamar Valley Demo Cam' })).toBe(false)
+    expect(hasLiveFeed({ name: 'Brooks Falls Low Cam' })).toBe(true) // explore.org video
     expect(hasLiveFeed(undefined)).toBe(false)
+  })
+})
+
+describe('bearSeasonNote', () => {
+  it('is silent in season and warns outside it', () => {
+    expect(bearSeasonNote(new Date(2026, 9, 10))).toBeNull() // Oct 10
+    expect(bearSeasonNote(new Date(2026, 5, 15))).toBeNull() // Jun 15
+    expect(bearSeasonNote(new Date(2026, 5, 14))).toMatch(/highlights/)
+    expect(bearSeasonNote(new Date(2026, 10, 1))).toMatch(/highlights/) // Nov 1
   })
 })

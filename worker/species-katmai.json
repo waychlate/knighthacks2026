@@ -1,0 +1,45 @@
+{
+  "_comment": "Candidate species BioCLIP chooses between: Katmai (Brooks Falls). List from model knowledge, not checked against NPSpecies (park code KATM). Mirrors web/src/lib/parks.js.",
+  "species": [
+    {
+      "common_name": "Brown bear",
+      "scientific_name": "Ursus arctos"
+    },
+    {
+      "common_name": "Gray wolf",
+      "scientific_name": "Canis lupus"
+    },
+    {
+      "common_name": "Moose",
+      "scientific_name": "Alces alces"
+    },
+    {
+      "common_name": "Caribou",
+      "scientific_name": "Rangifer tarandus"
+    },
+    {
+      "common_name": "Red fox",
+      "scientific_name": "Vulpes vulpes"
+    },
+    {
+      "common_name": "Wolverine",
+      "scientific_name": "Gulo gulo"
+    },
+    {
+      "common_name": "River otter",
+      "scientific_name": "Lontra canadensis"
+    },
+    {
+      "common_name": "Bald eagle",
+      "scientific_name": "Haliaeetus leucocephalus"
+    },
+    {
+      "common_name": "Harbor seal",
+      "scientific_name": "Phoca vitulina"
+    },
+    {
+      "common_name": "Arctic ground squirrel",
+      "scientific_name": "Urocitellus parryii"
+    }
+  ]
+}
