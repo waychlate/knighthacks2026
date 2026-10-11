@@ -144,7 +144,7 @@ The worker is a long-running process and cannot run on Vercel. Run it on a lapto
 
 - Check this file, `TEAM.md`, and the README before making structural decisions; update this file when the stack, commands, data model, or status change.
 - When the user is present: ask before adding heavy dependencies or paid/external services.
-- Develop on a feature branch, never `main`; don't open a PR unless asked.
+- Commit straight to `main` (the user is the integrator and has approved this); don't create feature branches unless the user asks for one, and don't open a PR unless asked. Run lint, build and tests before committing, and push to `main` only when the user says so.
 
 ## Unattended / overnight mode
 
@@ -167,13 +167,13 @@ Applies when the user is away (for example `claude -p` or a long unattended sess
 - Installing Python 3.12 with `uv python install 3.12` for the repo-local `worker/.venv` (the system Python 3.14 may lack wheels); approved by the user on 2026-10-10.
 - Downloading Hugging Face model weights (YOLO, BioCLIP) into the default cache.
 - Downloading a few small, clearly freely licensed (CC0/public domain) test images or clips for local testing. Keep them out of git (`worker/sample_videos/` is gitignored) and note the source in `docs/PROGRESS.md`.
-- `git add`, `git commit`, and `git push` to the current feature branch.
+- `git add` and `git commit` on `main`. Push only when the user says so.
 
 **Never**
 - Touch `.env` or any file with secrets; print or commit keys; hard-code credentials. Everything must work with no keys (mock data, `--dry-run`).
 - Connect to live camera streams, scrape websites, or send emails/messages. (See "Stream source".)
 - Call paid or metered APIs (including vision LLM APIs), or create accounts or deployments (Vercel, Supabase, Databricks).
-- Push to `main`, force-push, rewrite history, or delete branches.
+- Push to `main` unless the user asks in that session, force-push, rewrite history, or delete branches. (Unattended runs: never push to `main`.)
 - Run destructive commands (`rm -rf` outside build artifacts you created, `git reset --hard`, dropping databases), or install global packages or modify anything outside this repo directory.
 - Present synthetic or mock data as real. Anything generated must be labeled as synthetic in code, UI, and docs.
 
