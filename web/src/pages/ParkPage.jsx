@@ -88,7 +88,7 @@ export default function ParkPage({ slug, tab, sightings, cameras, loading, mode 
                 </div>
               )}
               {view === 'chat' && <div className="mobile-chat-route"><div className="katmai-chat-zone"><ChatPanel park={slug} /></div></div>}
-              {view === 'analytics' && <AnalyticsPage sightings={parkSightings} loading={loading} mode={mode} />}
+              {view === 'analytics' && <AnalyticsPage park={slug} sightings={parkSightings} loading={loading} mode={mode} />}
             </>
           )}
         </section>

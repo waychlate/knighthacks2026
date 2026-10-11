@@ -1,8 +1,9 @@
 import { useMemo } from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import KatmaiInsights from '../components/KatmaiInsights'
 import { byCamera, byHour, bySpecies } from '../lib/analytics'
 
-const COLOR = '#059669' // emerald-600
+const COLOR = '#059669'
 
 function Card({ title, children }) {
   return (
@@ -29,25 +30,27 @@ function Horizontal({ data }) {
   )
 }
 
-export default function AnalyticsPage({ sightings, loading, mode }) {
-  const hours = useMemo(() => byHour(sightings), [sightings])
-  const species = useMemo(() => bySpecies(sightings), [sightings])
-  const cameras = useMemo(() => byCamera(sightings), [sightings])
-
-  if (loading) return <p className="text-stone-500">Loading…</p>
+function FeedAnalytics({ sightings, mode, hours, species, cameras }) {
   if (sightings.length === 0) {
     return (
-      <p className="text-stone-500">
-        {mode === 'live' ? 'No live sightings yet. Switch to Demo to see charts from recorded clips.' : 'No sightings to chart yet.'}
-      </p>
+      <section aria-labelledby="feed-analytics-title" className="rounded-xl border border-dashed border-stone-300 bg-white p-5">
+        <h3 id="feed-analytics-title" className="font-semibold text-stone-900">Sighting feed analytics</h3>
+        <p className="mt-1 text-sm text-stone-500">
+          {mode === 'live' ? 'No live sightings yet. New model detections will appear here automatically.' : 'No demo sightings are available to chart.'}
+        </p>
+      </section>
     )
   }
 
   return (
-    <div className="space-y-4">
-      <p className="text-sm text-stone-500">
-        {sightings.length} {mode === 'live' ? 'live' : 'demo'} sightings. Times are in your local time zone.
-      </p>
+    <section aria-labelledby="feed-analytics-title" className="space-y-4">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Current app data</p>
+        <h3 id="feed-analytics-title" className="mt-1 text-xl font-bold text-stone-900">Sighting feed analytics</h3>
+        <p className="mt-1 text-sm text-stone-500">
+          {sightings.length} {mode === 'live' ? 'live' : 'demo'} sightings. Times are in your local time zone.
+        </p>
+      </div>
       <Card title="Sightings by hour of day">
         <div role="img" aria-label={`Sightings per hour. Busiest hour: ${hours.reduce((a, b) => (b.count > a.count ? b : a)).label}`} style={{ height: 220 }}>
           <ResponsiveContainer width="100%" height="100%">
@@ -62,14 +65,31 @@ export default function AnalyticsPage({ sightings, loading, mode }) {
         </div>
         <p className="sr-only">Sightings by hour: {hours.map((item) => `${item.label}, ${item.count}`).join('; ')}.</p>
       </Card>
-      <Card title="Sightings by species">
-        <Horizontal data={species} />
-        <p className="sr-only">Sightings by species: {species.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
-      </Card>
-      <Card title="Sightings by camera">
-        <Horizontal data={cameras} />
-        <p className="sr-only">Sightings by camera: {cameras.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
-      </Card>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card title="Sightings by species">
+          <Horizontal data={species} />
+          <p className="sr-only">Sightings by species: {species.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
+        </Card>
+        <Card title="Sightings by camera">
+          <Horizontal data={cameras} />
+          <p className="sr-only">Sightings by camera: {cameras.map((item) => `${item.name}, ${item.count}`).join('; ')}.</p>
+        </Card>
+      </div>
+    </section>
+  )
+}
+
+export default function AnalyticsPage({ sightings, loading, mode, park }) {
+  const hours = useMemo(() => byHour(sightings), [sightings])
+  const species = useMemo(() => bySpecies(sightings), [sightings])
+  const cameras = useMemo(() => byCamera(sightings), [sightings])
+
+  if (loading) return <p className="text-stone-500">Loading…</p>
+
+  return (
+    <div className="space-y-8">
+      {park === 'katmai' && <KatmaiInsights />}
+      <FeedAnalytics sightings={sightings} mode={mode} hours={hours} species={species} cameras={cameras} />
     </div>
   )
 }
