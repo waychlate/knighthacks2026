@@ -47,17 +47,19 @@ PROFILES: dict[str, dict] = {
 }
 
 
-def hourly_profile(scientific_name: str) -> np.ndarray:
+def hourly_profile(scientific_name: str, profiles: dict | None = None) -> np.ndarray:
     """True probability (sums to 1) that a sighting of this species falls in each local hour 0-23."""
     hours = np.arange(24) + 0.5
     dens = np.zeros(24)
-    for mu, sd, w in PROFILES[scientific_name]["peaks"]:
+    for mu, sd, w in (PROFILES if profiles is None else profiles)[scientific_name]["peaks"]:
         d = np.minimum(np.abs(hours - mu), 24 - np.abs(hours - mu))  # circular distance
         dens += w * np.exp(-0.5 * (d / sd) ** 2)
     return dens / dens.sum()
 
 
-def generate(end: datetime, days: int = 14, seed: int = 42) -> list[dict]:
+def generate(end: datetime, days: int = 14, seed: int = 42, *,
+             profiles: dict | None = None, cameras: list | None = None,
+             park_tz: ZoneInfo = PARK_TZ) -> list[dict]:
     """Return synthetic sightings for the `days` days before `end` (UTC), sorted by time.
 
     Same (end, days, seed) always gives the same rows. Rows are dicts with
@@ -65,17 +67,19 @@ def generate(end: datetime, days: int = 14, seed: int = 42) -> list[dict]:
     """
     rng = np.random.default_rng(seed)
     end = end.astimezone(timezone.utc)
-    first_day = (end - timedelta(days=days)).astimezone(PARK_TZ).date()
+    profiles = PROFILES if profiles is None else profiles
+    cameras = CAMERAS if cameras is None else cameras
+    first_day = (end - timedelta(days=days)).astimezone(park_tz).date()
     rows = []
-    for sci, prof in PROFILES.items():
-        hp = hourly_profile(sci)
-        for ci, (cam, _loc, _real) in enumerate(CAMERAS):
+    for sci, prof in profiles.items():
+        hp = hourly_profile(sci, profiles)
+        for ci, (cam, _loc, _real) in enumerate(cameras):
             for d in range(days + 1):
                 day = first_day + timedelta(days=d)
                 mult = prof["weekend"] if day.weekday() >= 5 else 1.0
                 for _ in range(rng.poisson(prof["rate"] * prof["cams"][ci] * mult)):
                     hour = int(rng.choice(24, p=hp))
-                    local = datetime(day.year, day.month, day.day, hour, int(rng.integers(60)), int(rng.integers(60)), tzinfo=PARK_TZ)
+                    local = datetime(day.year, day.month, day.day, hour, int(rng.integers(60)), int(rng.integers(60)), tzinfo=park_tz)
                     seen = local.astimezone(timezone.utc)
                     if end - timedelta(days=days) <= seen < end:
                         conf = float(np.clip(rng.beta(8, 2), 0.5, 0.99))

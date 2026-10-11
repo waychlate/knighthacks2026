@@ -1,0 +1,3 @@
+# Optional YouTube URL resolver for animal_worker.still_poller --park katmai.
+# Install after requirements.txt. Uses an existing Deno, Node, or Bun runtime.
+yt-dlp[default]

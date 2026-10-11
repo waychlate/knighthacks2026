@@ -13,11 +13,12 @@ HF_MODEL = "hf-hub:imageomics/bioclip"
 class Species:
     common_name: str
     scientific_name: str
+    group: str | None = None
 
 
 def load_species(path: str | Path) -> list[Species]:
     data = json.loads(Path(path).read_text())
-    return [Species(s["common_name"], s["scientific_name"]) for s in data["species"]]
+    return [Species(s["common_name"], s["scientific_name"], s.get("group")) for s in data["species"]]
 
 
 class SpeciesClassifier:
@@ -39,13 +40,42 @@ class SpeciesClassifier:
 
     def classify(self, crop) -> tuple[Species, float] | None:
         """Return (species, confidence) or None if below the confidence threshold."""
+        return self._classify_indices(crop, list(range(len(self.species))))
+
+    def classify_for_label(self, crop, broad_label: str, detector_score: float):
+        """Classify only among species compatible with YOLO's broad label.
+
+        If a configured group has one possible species (Katmai bear), preserve
+        the detector confidence rather than manufacturing a 100% softmax score.
+        """
+        group = {
+            "bear": "bear",
+            "bird": "bird",
+            "dog": "canid",
+            "horse": "ungulate",
+            "cow": "ungulate",
+            "sheep": "ungulate",
+            "cat": "felid",
+        }.get(broad_label)
+        indices = [i for i, species in enumerate(self.species) if species.group == group]
+        if not indices:
+            return self.classify(crop)
+        if len(indices) == 1:
+            return self.species[indices[0]], detector_score
+        result = self._classify_indices(crop, indices)
+        if result is not None:
+            return result
+        return Species(f"{broad_label.title()} (unidentified)", "", group), detector_score
+
+    def _classify_indices(self, crop, indices: list[int]) -> tuple[Species, float] | None:
         torch = self.torch
         with torch.no_grad():
             image = self.preprocess(crop).unsqueeze(0)
             feats = self.model.encode_image(image)
             feats = feats / feats.norm(dim=-1, keepdim=True)
-            probs = (100.0 * feats @ self.text_features.T).softmax(dim=-1)[0]
+            candidates = self.text_features[indices]
+            probs = (100.0 * feats @ candidates.T).softmax(dim=-1)[0]
         conf, idx = probs.max(dim=0)
         if conf.item() < self.min_confidence:
             return None
-        return self.species[idx.item()], conf.item()
+        return self.species[indices[idx.item()]], conf.item()

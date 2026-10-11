@@ -1,0 +1,231 @@
+{
+  "source_filename": "NPSpecies_FullList_KATM_20261010_130954.csv",
+  "park_code": "KATM",
+  "park_slug": "katmai",
+  "total_rows": 1050,
+  "filter": {
+    "record_status": "Approved",
+    "occurrence": "Present"
+  },
+  "approved_present_count": 762,
+  "approved_present_by_category": {
+    "Amphibian": 1,
+    "Bird": 160,
+    "Fish": 31,
+    "Mammal": 35,
+    "Vascular Plant": 535
+  },
+  "approved_present_mammals": [
+    {
+      "common_name": "Moose",
+      "scientific_name": "Alces alces",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Caribou",
+      "scientific_name": "Rangifer tarandus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Coyote",
+      "scientific_name": "Canis latrans",
+      "abundance": null,
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Gray wolf",
+      "scientific_name": "Canis lupus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Red fox",
+      "scientific_name": "Vulpes vulpes",
+      "abundance": "Common",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Canada lynx, Lynx",
+      "scientific_name": "Lynx canadensis",
+      "abundance": "Common",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Eastern Sea Otter, Northern Sea Otter",
+      "scientific_name": "Enhydra lutris kenyoni",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Wolverine",
+      "scientific_name": "Gulo gulo",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Northern river otter",
+      "scientific_name": "Lontra canadensis",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Ermine, Short-tailed weasel",
+      "scientific_name": "Mustela erminea",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Least weasel",
+      "scientific_name": "Mustela nivalis",
+      "abundance": null,
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Mink",
+      "scientific_name": "Mustela vison",
+      "abundance": "Uncommon",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Northern fur seal",
+      "scientific_name": "Callorhinus ursinus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Northern sea lion, Steller's sea lion",
+      "scientific_name": "Eumetopias jubatus",
+      "abundance": "Uncommon",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Harbor seal",
+      "scientific_name": "Phoca vitulina",
+      "abundance": "Common",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Brown bear, Grizzly bear",
+      "scientific_name": "Ursus arctos",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Humpback whale",
+      "scientific_name": "Megaptera novaeangliae",
+      "abundance": "Rare",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Killer whale, Orca",
+      "scientific_name": "Orcinus orca",
+      "abundance": "Uncommon",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Harbor porpoise",
+      "scientific_name": "Phocoena phocoena",
+      "abundance": "Uncommon",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Little brown bat, Little brown myotis",
+      "scientific_name": "Myotis lucifugus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Masked shrew",
+      "scientific_name": "Sorex cinereus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Pygmy shrew",
+      "scientific_name": "Sorex hoyi",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Dusky shrew, Montane shrew",
+      "scientific_name": "Sorex monticolus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Tundra shrew",
+      "scientific_name": "Sorex tundrensis",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Snowshoe hare, Varying hare",
+      "scientific_name": "Lepus americanus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "American beaver",
+      "scientific_name": "Castor canadensis",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Northern redback vole",
+      "scientific_name": "Clethrionomys rutilus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Tundra vole",
+      "scientific_name": "Microtus oeconomus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Meadow vole",
+      "scientific_name": "Microtus pennsylvanicus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Northern bog lemming",
+      "scientific_name": "Synaptomys borealis",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Meadow jumping mouse",
+      "scientific_name": "Zapus hudsonius",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Porcupine",
+      "scientific_name": "Erethizon dorsatum",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Hoary marmot",
+      "scientific_name": "Marmota caligata",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Arctic ground squirrel, Parka squirrel",
+      "scientific_name": "Spermophilus parryii",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    },
+    {
+      "common_name": "Red squirrel",
+      "scientific_name": "Tamiasciurus hudsonicus",
+      "abundance": "Unknown",
+      "nativeness": "Native"
+    }
+  ],
+  "note": "Reference inventory only. Park occurrence does not mean a species is likely or visible at the selected Brooks Falls Low camera."
+}
