@@ -42,6 +42,27 @@ flowchart LR
 | Predictions (`ml/`) | **Trained on synthetic data** (made-up hour-of-day patterns). The simple hourly profile beat gradient boosting; results are optimistic. See [ml/README.md](ml/README.md). |
 | Supabase and Vercel | SQL and a setup wizard exist; nothing has been verified end to end against a live project. |
 
+## Demo day: what to run
+
+Needs the worker venv and the Supabase keys in `.env`. From `worker/`, each in its own terminal:
+
+```bash
+# 1. Demo mode (required): real YOLO + BioCLIP on recorded NPS bison clips, looping forever,
+#    one sighting about every 10 s, tagged source_kind=replay (shown under Demo in the app).
+.venv/bin/python -m animal_worker.main --demo --source sample_videos/nps \
+  --camera "Lamar Valley Demo Cam" --park yellowstone --min-confidence 0.9
+
+# 2. Live moment (optional): the NPS Electric Peak still, polled every 60 s, tagged live.
+.venv/bin/python -m animal_worker.main --source https://www.nps.gov/webcams-yell/mammoth_electric.jpg \
+  --camera "Electric Peak Cam" --park yellowstone --every 60
+
+# 3. Katmai (optional talking point): three bear cams through the reviewed bear/bird model.
+#    Needs training/katmai/current.pt. Bear season is over, so rows are tagged replay.
+.venv/bin/python -m animal_worker.katmai_live --every 60 --publish
+```
+
+Then open the web app (`cd web && npm run dev`, or the deployed site) and switch to **Demo** to watch sightings arrive. Add `--dry-run` to any command to print sightings without writing to Supabase. `--min-confidence 0.9` hides the occasional "Elk" guess on the bison clips (bison score 0.98 to 1.00). Ctrl+C stops each one.
+
 ## Quick start
 
 Prerequisites: Node 18+ and npm; Python 3.10 to 3.12 for the worker (torch wheels may not exist for 3.13+); git. A GPU (CUDA) is optional but makes the worker much faster.
