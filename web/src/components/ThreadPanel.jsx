@@ -52,7 +52,7 @@ export default function ThreadPanel({ title, messages, onPost, usingMock, empty,
         ))}
       </ul>
       <form onSubmit={submit} className="mt-3 space-y-2">
-        <p className="text-xs text-stone-500">Posting as <span className="font-medium text-stone-700">{name}</span> · <a href="#/settings" className="text-emerald-700 underline">Change</a></p>
+        <p className="text-xs text-stone-500">Posting as <span className="font-medium text-stone-700">{name}</span> · <button type="button" onClick={() => window.dispatchEvent(new Event('envision:open-settings'))} className="text-emerald-700 underline">Change</button></p>
         <div className="flex gap-2">
           <label className="sr-only" htmlFor={`${idPrefix}-body`}>Message</label>
           <input id={`${idPrefix}-body`} className={`${input} min-w-0 flex-1`} placeholder="Say something about the animals…" value={body} onChange={(e) => setBody(e.target.value)} />

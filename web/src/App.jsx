@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ErrorBanner from './components/ErrorBanner'
 import BearLoading from './components/BearLoading'
 import ModeToggle from './components/ModeToggle'
@@ -34,7 +34,7 @@ function NetworkStatus() {
   return <div className="status-banner" role="status"><span>{offline ? 'Offline: cached park data may be stale; fresh sightings may be delayed.' : 'A new En-Vision update is ready.'}</span><div className="flex items-center gap-2">{offline && <button type="button" className="status-action" onClick={() => window.location.reload()}>Retry</button>}{update && <button type="button" className="status-action" onClick={() => window.envisionUpdateSW?.(true)}>Update</button>}</div></div>
 }
 
-function AppShell({ children, route }) {
+function AppShell({ children, route, openSettings }) {
   const katmai = route.name === 'park' && route.park === 'katmai'
   const yellowstone = route.name === 'park' && route.park === 'yellowstone'
   return (
@@ -45,7 +45,7 @@ function AppShell({ children, route }) {
             <img src={katmai ? '/icons/icon-katmai.svg' : yellowstone ? '/icons/icon-yellowstone.svg' : '/icons/icon-192.svg'} alt="" className="app-logo h-11 w-11 shrink-0 rounded-xl" />
             <span className="min-w-0"><span className="block truncate text-xl font-bold text-stone-900 sm:text-2xl">En-Vision</span><span className="hidden text-sm text-stone-500 sm:block">Wildlife, seen together</span></span>
           </a>
-          <div className="flex flex-wrap items-center gap-2"><ModeToggle /><a href="#/settings" aria-label="Settings" title="Settings" className="flex h-9 w-9 items-center justify-center rounded-lg border border-stone-300 bg-white text-lg text-stone-600 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">⚙</a></div>
+          <div className="flex flex-wrap items-center gap-2"><ModeToggle /><button type="button" onClick={openSettings} aria-label="Settings" title="Settings" className="flex h-9 w-9 items-center justify-center rounded-lg border border-stone-300 bg-white text-lg text-stone-600 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500">⚙</button></div>
         </div>
       </header>
       <NetworkStatus />
@@ -79,9 +79,17 @@ export default function App() {
   const { cameras, error: camerasError } = useCameras()
   const sightings = useMemo(() => filterByMode(all, mode), [all, mode])
 
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const openSettings = useCallback(() => setSettingsOpen(true), [])
+  useEffect(() => {
+    window.addEventListener('envision:open-settings', openSettings)
+    return () => window.removeEventListener('envision:open-settings', openSettings)
+  }, [openSettings])
+  const closeSettings = useCallback(() => setSettingsOpen(false), [])
+  const settings = settingsOpen && <SettingsPage onClose={closeSettings} />
   const overlay = splash && <div className="bear-splash"><BearLoading /></div>
 
   if (route.name === 'globe') return <>{overlay}<Suspense fallback={<BearLoading />}><GlobePage sightings={sightings} cameras={cameras} /></Suspense></>
 
-  return <>{overlay}<AppShell route={route}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'settings' && <SettingsPage />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell></>
+  return <>{overlay}{settings}<AppShell route={route} openSettings={openSettings}><ErrorBanner errors={[sightingsError, camerasError]} />{usingMock && <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Showing sample park data. Add Supabase keys to <code>.env</code> to see real sightings.</p>}{route.name === 'park' && <ParkPage slug={route.park} tab={route.tab} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}{route.name === 'camera' && <CameraPage id={route.id} sightings={sightings} cameras={cameras} loading={loading} mode={mode} />}</AppShell></>
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// Tiny hash router: #/ (globe), #/park/:slug[/tab], #/camera/:id, #/settings. No dependency needed.
+// Tiny hash router: #/ (globe), #/park/:slug[/tab], #/camera/:id. No dependency needed.
 // Old routes #/cameras and #/analytics redirect into Yellowstone.
 export const TABS = ['sightings', 'cameras', 'predictions', 'chat', 'analytics']
 
@@ -11,7 +11,6 @@ function parse(hash) {
     return { name: 'park', park: decodeURIComponent(parts[1]), tab }
   }
   if (parts[0] === 'cameras' || parts[0] === 'analytics') return { name: 'park', park: 'yellowstone', tab: parts[0] }
-  if (parts[0] === 'settings') return { name: 'settings' }
   if (parts[0] === 'camera' && parts[1]) return { name: 'camera', id: decodeURIComponent(parts[1]) }
   return { name: 'globe' }
 }
